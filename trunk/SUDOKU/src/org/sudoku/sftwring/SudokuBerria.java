@@ -1,9 +1,11 @@
+package org.sudoku.sftwring;
+
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class SudoduBerria {
+public class SudokuBerria {
 	public static void main(String[] args) {
 	int[][] hasi=sudokuHutsaEgin();	
 	int[][] beteta=sAusazBete(hasi);
