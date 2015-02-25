@@ -15,5 +15,10 @@ public class ProbatzekoMain {
 		b.inprimatuBloke();
 
 	}
+	private static void sudokuarenProba() {
+		Sudokua s=new Sudokua();
+		s.inprimatuSudoku();
+
+	}
 
 }
