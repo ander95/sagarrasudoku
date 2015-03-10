@@ -1,0 +1,243 @@
+package org.sudoku.sftwring;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.factories.FormFactory;
+
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.Color;
+
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+public class ErregistroLehioa extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private static JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+
+	private JPasswordField passwordField;
+	private JTextField textFieldErabIzen;
+	private JPasswordField passwordFieldErrepikatu;
+	private JLabel lblErrorea;
+	private JToggleButton tglbtnIkusi;
+	private JButton btnErrejistratu;
+	private JButton btnAtzera;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame = new ErregistroLehioa();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ErregistroLehioa() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+
+		JPanel erregistroPanel = new JPanel();
+		
+		JLabel lblErregistratu = new JLabel("Erregistratu");
+		lblErregistratu.setFont(new Font("EHUSerif", Font.BOLD, 18));
+		
+		btnAtzera = new JButton("<--");
+		btnAtzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				SarrerakoLehioa.ikustarazi();
+				frame.setVisible(false);
+			}
+		});
+		btnAtzera.setFont(new Font("EHUSerif", Font.BOLD, 15));
+		btnAtzera.setForeground(new Color(0, 0, 139));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(13)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(erregistroPanel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblErregistratu)
+							.addPreferredGap(ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+							.addComponent(btnAtzera)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(2))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblErregistratu)
+						.addComponent(btnAtzera, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(erregistroPanel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		erregistroPanel.setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,},
+			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
+
+		JLabel lblErabiltzaileIzena = new JLabel("Erabiltzaile izena:");
+		lblErabiltzaileIzena.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		erregistroPanel.add(lblErabiltzaileIzena, "2, 4, right, default");
+
+		textFieldErabIzen = new JTextField();
+		textFieldErabIzen.setFont(new Font("EHUSerif", Font.PLAIN, 14));
+		erregistroPanel.add(textFieldErabIzen, "4, 4, fill, default");
+		textFieldErabIzen.setColumns(10);
+		textFieldErabIzen.addKeyListener(new Kudeatzailea());
+
+		JLabel lblPasahitza = new JLabel("Pasahitza:");
+		lblPasahitza.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		erregistroPanel.add(lblPasahitza, "2, 6, right, default");
+
+		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("EHUSerif", Font.PLAIN, 14));
+		erregistroPanel.add(passwordField, "4, 6, fill, default");
+		passwordField.addKeyListener(new Kudeatzailea());
+
+		tglbtnIkusi = new JToggleButton("Ikusi");
+		tglbtnIkusi.addItemListener(new Kudeatzailea());
+		tglbtnIkusi.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		erregistroPanel.add(tglbtnIkusi, "6, 6");
+
+		JLabel lblErrepikatuPasahitza = new JLabel("Errepikatu pasahitza:");
+		lblErrepikatuPasahitza.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		erregistroPanel.add(lblErrepikatuPasahitza, "2, 8");
+
+		passwordFieldErrepikatu = new JPasswordField();
+		passwordFieldErrepikatu.setFont(new Font("EHUSerif", Font.PLAIN, 14));
+		erregistroPanel.add(passwordFieldErrepikatu, "4, 8, fill, default");
+		passwordFieldErrepikatu.addKeyListener(new Kudeatzailea());
+
+		lblErrorea = new JLabel("");
+		lblErrorea.setFont(new Font("EHUSerif", Font.PLAIN, 12));
+		lblErrorea.setForeground(new Color(255, 0, 0));
+		erregistroPanel.add(lblErrorea, "4, 10, 7, 5");
+		
+				btnErrejistratu = new JButton("Errejistratu");
+				btnErrejistratu.setFont(new Font("EHUSerif", Font.BOLD, 14));
+				erregistroPanel.add(btnErrejistratu, "4, 16");
+				btnErrejistratu.addActionListener(new Kudeatzailea());
+		contentPane.setLayout(gl_contentPane);
+	}
+
+	private class Kudeatzailea extends WindowAdapter implements ActionListener, KeyListener, ItemListener {
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			erregistratu();
+		}
+
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+			if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+				erregistratu();
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		private void erregistratu() {
+			//if (ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile(textFieldErabIzen.getText(), passwordField.getName())!=null) {
+				lblErrorea.setText("Erabiltzaile izen hau jada erregistratuta dago");
+			//}
+		}
+		
+		@Override
+		public void itemStateChanged(ItemEvent arg0) {
+			if (arg0.getStateChange() == ItemEvent.SELECTED) {
+				passwordField.setEchoChar((char)0);
+			} else {
+				passwordField.setEchoChar('\u2022');
+			}
+			
+		}
+
+	}
+}
