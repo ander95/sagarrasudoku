@@ -9,16 +9,11 @@ import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.factories.FormFactory;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
-import javax.swing.JSplitPane;
 
 public class AukeratuLehioa extends JFrame {
 
@@ -41,13 +36,14 @@ public class AukeratuLehioa extends JFrame {
 	private JLabel lblSudokuGordeta;
 	private JButton btnSudokuBerria;
 	private JButton btnJokatu;
+	private Erabiltzaile erabiltzaile;
 
 
-	public static void main(String[] args) {
+	public static void main(final Erabiltzaile erab) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AukeratuLehioa frame = new AukeratuLehioa();
+					AukeratuLehioa frame = new AukeratuLehioa(erab);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +55,8 @@ public class AukeratuLehioa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AukeratuLehioa() {
+	public AukeratuLehioa(Erabiltzaile erab) {
+		erabiltzaile = erab;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -102,15 +99,15 @@ public class AukeratuLehioa extends JFrame {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(66)
 					.addComponent(btnJokatu)
-					.addContainerGap(24, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(24, Short.MAX_VALUE)
+					.addContainerGap(70, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addGap(152))
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
