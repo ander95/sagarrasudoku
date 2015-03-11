@@ -25,13 +25,13 @@ public class ProbatzekoMain {
 
 	}
 	private static void ListaErabiltzaileenProba() {
-		 ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Mikel","Ocejo","kkkk");
+		 ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Mikel","kkkk");
 		 ErabiltzaileLista.getErabiltzaileLista().inprimatu();
-		 ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Martin","Zumarraga","llll");
+		 ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Martin","llll");
 		 ErabiltzaileLista.getErabiltzaileLista().inprimatu();
 		 ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("Mikel","kkkk").inprimatuDatuak();
 		 ErabiltzaileLista.getErabiltzaileLista().ezabatuErabiltzaile(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("Mikel","kkkk"));;
 		 ErabiltzaileLista.getErabiltzaileLista().inprimatu();
-		 ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Martin","Zumarraga","llll");
+		 ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Martin","llll");
 	}
 }

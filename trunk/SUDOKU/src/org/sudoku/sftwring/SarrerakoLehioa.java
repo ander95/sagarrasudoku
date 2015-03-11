@@ -10,6 +10,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -24,16 +25,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SarrerakoLehioa extends JFrame {
 
@@ -68,7 +68,8 @@ public class SarrerakoLehioa extends JFrame {
 	final JButton btnSartu;
 	JPanel loginPanel;
 	JLabel lblErregistratu;
-	
+	JLabel lblIcon;
+
 	public SarrerakoLehioa() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 497, 299);
@@ -80,7 +81,7 @@ public class SarrerakoLehioa extends JFrame {
 		lblOngietorria.setFont(new Font("EHUSerif", Font.BOLD, 19));
 		lblOngietorria.setForeground(new Color(0, 128, 0));
 
-		
+
 
 		lblErrorea = new JLabel();
 		lblErrorea.setForeground(Color.RED);
@@ -93,53 +94,61 @@ public class SarrerakoLehioa extends JFrame {
 		loginPanel = new JPanel();
 
 		lblErregistratu = new JLabel("Erregistratu");
-		lblErregistratu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) { //Errejistroa egiteko linka
-				frame.setVisible(false);
-				String[] args = new String[1];
-				ErregistroLehioa.main(args);
-			}
+		lblErregistratu.addMouseListener(new Kudeatzailea() {
+
 		});
 		lblErregistratu.setFont(new Font("EHUSerif", Font.ITALIC, 14));
 		lblErregistratu.setForeground(Color.BLUE);
+
+		lblIcon = new JLabel("");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+					.addGap(16)
+					.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 452, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(19, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(16)
-							.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 452, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap(70, Short.MAX_VALUE)
+							.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(28)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblErregistratu)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(168)
 									.addComponent(btnSartu))
-								.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblErregistratu))))
-					.addContainerGap(19, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(176, Short.MAX_VALUE)
-					.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE)
-					.addGap(60))
+								.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 6, Short.MAX_VALUE)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblIcon, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+					.addGap(14))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(11)
 					.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnSartu)
-					.addGap(24)
-					.addComponent(lblErregistratu)
-					.addGap(28))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(30)
+							.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnSartu)
+							.addGap(24)
+							.addComponent(lblErregistratu))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblIcon, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)))
+					.addGap(16))
 		);
+		
+		lblIcon.setIcon(sortuImageIcon("icon.png", "icon.png"));
+		
 		loginPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
@@ -161,8 +170,6 @@ public class SarrerakoLehioa extends JFrame {
 		textField.setColumns(10);
 		textField.addKeyListener(new Kudeatzailea());
 
-
-
 		JLabel lblPasahitza = new JLabel("Pasahitza:");
 		loginPanel.add(lblPasahitza, "2, 4");
 		lblPasahitza.setFont(new Font("EHUSerif", Font.BOLD, 14));
@@ -176,7 +183,18 @@ public class SarrerakoLehioa extends JFrame {
 		btnSartu.addActionListener(new Kudeatzailea());
 
 	}
-	private class Kudeatzailea extends WindowAdapter implements ActionListener, KeyListener {
+	
+	public ImageIcon sortuImageIcon(String path, String deskribapena) {
+		java.net.URL imgURL = getClass().getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL, deskribapena);
+		} else {
+			lblIcon.setText("Ezin izan da fitxategi hau aurkitu: " + path);
+			return null;
+		}
+	}
+	
+	private class Kudeatzailea extends WindowAdapter implements ActionListener, KeyListener, MouseListener {
 
 		@Override
 		public void windowClosing(WindowEvent e) {
@@ -185,53 +203,100 @@ public class SarrerakoLehioa extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//Aurre: objetuari lotutako akzioa egitea
+			//Post : login() egingo du
 			login();
 		}
-		
+
 		@Override
 		public void keyPressed(KeyEvent arg0) {
+			//Aurre: botoren bat sakatzea
+			//Post: ENTER sakatutakoan login() egingo du, besteren bat sakatuz gero ez du ezer egingo
 			if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 				login();
 			}
 		}
 
 		@Override
+		public void mouseClicked(MouseEvent e) { //Errejistroa egiteko linka
+			//Aurre: click egitea
+			//Post: Momentu horretan textField eta passwordField barruan sartuta dagoena emango zaio 
+			//erregistroko lehioari sorreran eta hau zabaldu egingo da sarrerako lehioa izkutatu ondoren
+			frame.setVisible(false);
+			String[] args = new String[2];
+			args[0] = textField.getText();
+			args[1] = String.copyValueOf(passwordField.getPassword());
+			ErregistroLehioa.main(args);
+		}
+
+		private void login() {
+			//Aurre:
+			//Post:Izena eta pasahitza ondo dauden begiratu, txarto egon ezkero
+			//errore mezua emango du. 
+/** Hau nahiago baduzue ere...
+			//ondo daudenean berriz zailtasuna begiratuko du eta hauetatik 
+			//bat aukeratuta badago honen inguruan egingo du sudokua eta ez badago bat ere aukeratuta
+			//errore mezua itzuliko du.
+			
+//			boolean izenaKonprob = ErabiltzaileLista.getErabiltzaileLista().badago(textField.getText());
+//			if (!izenaKonprob && pasahitzKonprob) {
+//				lblErrorea.setText("Erabiltzaile izena okerra");
+//			} else if (izenaKonprob && !pasahitzKonprob) {
+//				lblErrorea.setText("Pasahitza okerra");
+//			} else if (!izenaKonprob && !pasahitzKonprob) {
+//				lblErrorea.setText("Erabiltzaile izena eta pasahitza okerrak");
+//			} else {
+//				lblErrorea.setText("");
+//			}**/
+			
+			Erabiltzaile erab = ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile(textField.getText(), String.copyValueOf(passwordField.getPassword()));
+			
+			if (erab==null) {
+				lblErrorea.setText("Erabiltzaile izena edo pasahitza okerra");
+			} else {
+				lblErrorea.setText("");
+				frame.setVisible(false);
+				
+				AukeratuLehioa.main(erab);
+			}
+		}
+
+		@Override
 		public void keyReleased(KeyEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
-		private void login() {
-			//Aurre: Botoia sakatuko zaio.
-			//Post: Botoia sakatzean izena eta pasahitza ondo dauden begiratu, txarto egon ezkero
-			//errore mezua emango du, ondo daudenean berriz zailtasuna begiratuko du eta hauetatik 
-			//bat aukeratuta badago honen inguruan egingo du sudokua eta ez badago bat ere aukeratuta
-			//errore mezua itzuliko du.
-			boolean izenaKonprob = textField.getText().equals("erab"); //Proba egiteko erabiltzaile izen bat jartzen dot gero erabiltzaile zerrendan begiratuko da
-			boolean pasahitzKonprob = false;//Proba egiteko gero erabiltzailearen
-			char[] nirePasahitza="12345".toCharArray(); //pasahitzarekin konparatuko da
-			if (passwordField.getPassword().length == nirePasahitza.length) {
-				for (int i = 0; i < passwordField.getPassword().length; i++) {
-					pasahitzKonprob = passwordField.getPassword()[i]==nirePasahitza[i]; 
-				}
-			}
-			if (!izenaKonprob && pasahitzKonprob) {
-				lblErrorea.setText("Erabiltzaile izena okerra");
-			} else if (izenaKonprob && !pasahitzKonprob) {
-				lblErrorea.setText("Pasahitza okerra");
-			} else if (!izenaKonprob && !pasahitzKonprob) {
-				lblErrorea.setText("Erabiltzaile izena eta pasahitza okerrak");
-			} else {
-				lblErrorea.setText("");
-			}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+
 		}
-		
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
 	public static void ikustarazi() {
 		frame.setVisible(true);

@@ -53,11 +53,12 @@ public class ErregistroLehioa extends JFrame {
 	private JButton btnErrejistratu;
 	private JButton btnAtzera;
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new ErregistroLehioa();
+					if (args.length!=2) frame = new ErregistroLehioa("","");
+					else frame = new ErregistroLehioa(args[0],args[1]);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -69,7 +70,7 @@ public class ErregistroLehioa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ErregistroLehioa() {
+	public ErregistroLehioa(String pErabIzen, String pPasahitz) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 300);
 		contentPane = new JPanel();
@@ -77,43 +78,46 @@ public class ErregistroLehioa extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel erregistroPanel = new JPanel();
-		
+
 		JLabel lblErregistratu = new JLabel("Erregistratu");
 		lblErregistratu.setFont(new Font("EHUSerif", Font.BOLD, 18));
-		
+
 		btnAtzera = new JButton("<--");
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SarrerakoLehioa.ikustarazi();
+				//Aurre: <-- botoia sakatzea
+				//Post : errejistro lehioa izkutatu eta sarrera lehioa ikustarazi
 				frame.setVisible(false);
+				SarrerakoLehioa.ikustarazi();
+				
 			}
 		});
 		btnAtzera.setFont(new Font("EHUSerif", Font.BOLD, 15));
 		btnAtzera.setForeground(new Color(0, 0, 139));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(13)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(erregistroPanel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblErregistratu)
-							.addPreferredGap(ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-							.addComponent(btnAtzera)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGap(2))
-		);
+						.addGap(13)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(erregistroPanel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblErregistratu)
+										.addPreferredGap(ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+										.addComponent(btnAtzera)
+										.addPreferredGap(ComponentPlacement.RELATED)))
+										.addGap(2))
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblErregistratu)
-						.addComponent(btnAtzera, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(erregistroPanel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblErregistratu)
+								.addComponent(btnAtzera, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(erregistroPanel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap())
+				);
 		erregistroPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
@@ -129,7 +133,7 @@ public class ErregistroLehioa extends JFrame {
 				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,},
-			new RowSpec[] {
+				new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
@@ -151,7 +155,7 @@ public class ErregistroLehioa extends JFrame {
 		lblErabiltzaileIzena.setFont(new Font("EHUSerif", Font.BOLD, 14));
 		erregistroPanel.add(lblErabiltzaileIzena, "2, 4, right, default");
 
-		textFieldErabIzen = new JTextField();
+		textFieldErabIzen = new JTextField(pErabIzen);
 		textFieldErabIzen.setFont(new Font("EHUSerif", Font.PLAIN, 14));
 		erregistroPanel.add(textFieldErabIzen, "4, 4, fill, default");
 		textFieldErabIzen.setColumns(10);
@@ -161,7 +165,7 @@ public class ErregistroLehioa extends JFrame {
 		lblPasahitza.setFont(new Font("EHUSerif", Font.BOLD, 14));
 		erregistroPanel.add(lblPasahitza, "2, 6, right, default");
 
-		passwordField = new JPasswordField();
+		passwordField = new JPasswordField(pPasahitz);
 		passwordField.setFont(new Font("EHUSerif", Font.PLAIN, 14));
 		erregistroPanel.add(passwordField, "4, 6, fill, default");
 		passwordField.addKeyListener(new Kudeatzailea());
@@ -184,11 +188,11 @@ public class ErregistroLehioa extends JFrame {
 		lblErrorea.setFont(new Font("EHUSerif", Font.PLAIN, 12));
 		lblErrorea.setForeground(new Color(255, 0, 0));
 		erregistroPanel.add(lblErrorea, "4, 10, 7, 5");
-		
-				btnErrejistratu = new JButton("Errejistratu");
-				btnErrejistratu.setFont(new Font("EHUSerif", Font.BOLD, 14));
-				erregistroPanel.add(btnErrejistratu, "4, 16");
-				btnErrejistratu.addActionListener(new Kudeatzailea());
+
+		btnErrejistratu = new JButton("Errejistratu");
+		btnErrejistratu.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		erregistroPanel.add(btnErrejistratu, "4, 16");
+		btnErrejistratu.addActionListener(new Kudeatzailea());
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -201,13 +205,62 @@ public class ErregistroLehioa extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//Aurre: objetuari lotutako akzioa egitea
+			//Post : erregistratu() egingo du
 			erregistratu();
 		}
 
 		@Override
 		public void keyPressed(KeyEvent arg0) {
+			//Aurre: botoren bat sakatzea
+			//Post: ENTER sakatutakoan erregistratu() egingo du, besteren bat sakatuz gero ez du ezer egingo
 			if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 				erregistratu();
+			}
+		}
+
+		@Override
+		public void itemStateChanged(ItemEvent arg0) {
+			//Aurre: atsitutako 'item'ak aldaketa bat jasaten du
+			//Post: Lehenengo aldaketa SELECTED modoan badago goiko pasahitzeko karaktereak erakutziko dira eta berriz aldatuz gero berriz izkutatu
+			if (arg0.getStateChange() == ItemEvent.SELECTED) {
+				passwordField.setEchoChar((char)0);
+			} else {
+				passwordField.setEchoChar('\u2022'); // bullet edo puntu potoloa passworda ezkutatzeko
+			}
+
+		}
+		
+		private void erregistratu() {
+			//Aurre:
+			//Post: lehenengo textFieldErabIzen hutsik dagoen ikusiko du eta hutsik badago errore mezu bat bidali
+			//bestela erabiltzailea erabiltzaileListan jada exititzen den begiratuko du eta existitzen bada errore mezu bat bidali
+			//bestela bi pasahitzetatik goikoan, sartutako pasahitzak bost karaktere baño gutxiago baditu errore mezu bat bidaliko du
+			//bestela sartutako pasahitz biak desberdinak badira errore mezu bat bidaliko du eta beheko errepikapena ezabatu egingo du
+			//azkenean beste guztia ondo badago erailtzailea gehituko du erabiltzaileListan
+			
+			if (textFieldErabIzen.getText().isEmpty()) {
+				lblErrorea.setText("Erabiltzaile izena bete gabe dago");
+			} else {
+
+				if (ErabiltzaileLista.getErabiltzaileLista().badago(textFieldErabIzen.getText())) {
+					lblErrorea.setText("Erabiltzaile izen hau jada erregistratuta dago");
+				} else {
+					if (passwordField.getPassword().length < 5) {
+						lblErrorea.setText("Pasahitzak gutxienez 5 karaktere behar ditu");
+					} else {
+						lblErrorea.setText("");
+						String password = String.copyValueOf(passwordField.getPassword());
+						String passwordErrep = String.copyValueOf(passwordFieldErrepikatu.getPassword());
+
+						if (password.equals(passwordErrep)) {
+							ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile(textFieldErabIzen.getText(), password);
+						} else {
+							lblErrorea.setText("Pasahitzak ez dira berdinak");
+							passwordFieldErrepikatu.setText("");
+						}
+					}
+				}
 			}
 		}
 
@@ -221,22 +274,6 @@ public class ErregistroLehioa extends JFrame {
 		public void keyTyped(KeyEvent arg0) {
 			// TODO Auto-generated method stub
 
-		}
-
-		private void erregistratu() {
-			//if (ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile(textFieldErabIzen.getText(), passwordField.getName())!=null) {
-				lblErrorea.setText("Erabiltzaile izen hau jada erregistratuta dago");
-			//}
-		}
-		
-		@Override
-		public void itemStateChanged(ItemEvent arg0) {
-			if (arg0.getStateChange() == ItemEvent.SELECTED) {
-				passwordField.setEchoChar((char)0);
-			} else {
-				passwordField.setEchoChar('\u2022');
-			}
-			
 		}
 
 	}
