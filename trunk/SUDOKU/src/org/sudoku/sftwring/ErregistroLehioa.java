@@ -82,7 +82,7 @@ public class ErregistroLehioa extends JFrame {
 		JLabel lblErregistratu = new JLabel("Erregistratu");
 		lblErregistratu.setFont(new Font("EHUSerif", Font.BOLD, 18));
 
-		btnAtzera = new JButton("<--");
+		btnAtzera = new JButton("<—");
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Aurre: <-- botoia sakatzea
@@ -96,28 +96,28 @@ public class ErregistroLehioa extends JFrame {
 		btnAtzera.setForeground(new Color(0, 0, 139));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(13)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(erregistroPanel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblErregistratu)
-										.addPreferredGap(ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-										.addComponent(btnAtzera)
-										.addPreferredGap(ComponentPlacement.RELATED)))
-										.addGap(2))
-				);
+					.addGap(13)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(erregistroPanel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblErregistratu)
+							.addPreferredGap(ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+							.addComponent(btnAtzera, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(2))
+		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblErregistratu)
-								.addComponent(btnAtzera, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(erregistroPanel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap())
-				);
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblErregistratu)
+						.addComponent(btnAtzera, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(erregistroPanel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
 		erregistroPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
@@ -254,7 +254,18 @@ public class ErregistroLehioa extends JFrame {
 						String passwordErrep = String.copyValueOf(passwordFieldErrepikatu.getPassword());
 
 						if (password.equals(passwordErrep)) {
+							
 							ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile(textFieldErabIzen.getText(), password);
+							Erabiltzaile erab = ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile(textFieldErabIzen.getText(), String.copyValueOf(passwordField.getPassword()));
+							
+							if (erab==null) {
+								lblErrorea.setText("Erabiltzaile izena edo pasahitza okerra");
+							} else {
+								lblErrorea.setText("");
+								frame.setVisible(false);
+								
+								AukeratuLehioa.main(erab);
+							}
 						} else {
 							lblErrorea.setText("Pasahitzak ez dira berdinak");
 							passwordFieldErrepikatu.setText("");
