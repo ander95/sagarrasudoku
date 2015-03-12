@@ -5,31 +5,45 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+
 import javax.swing.JButton;
+import javax.swing.AbstractListModel;
 
 public class KlasifikazioLehioa extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
+	private static KlasifikazioLehioa frame;
+	private static Erabiltzaile erabiltzailea;
 	
-	public static void main(String[] args) {
+	public static void main(final Erabiltzaile erab) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					KlasifikazioLehioa frame = new KlasifikazioLehioa();
+					frame = new KlasifikazioLehioa();
 					frame.setVisible(true);
 					frame.setResizable(false);
+					erabiltzailea = erab;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,13 +54,13 @@ public class KlasifikazioLehioa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	JList KlasifikazioaList;
-	JButton btnHasiera;
-	JList egunekoKlasList;
+	private JList<String> KlasifikazioaList;
+	private JButton btnHasiera;
+	private JList<String> egunekoKlasList;
 	
 	public KlasifikazioLehioa() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 300);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,44 +76,63 @@ public class KlasifikazioLehioa extends JFrame {
 		JScrollPane klasifikazioaScrollPane = new JScrollPane();
 		GroupLayout gl_KlasifikazioPanel = new GroupLayout(KlasifikazioPanel);
 		gl_KlasifikazioPanel.setHorizontalGroup(
-			gl_KlasifikazioPanel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_KlasifikazioPanel.createSequentialGroup()
+			gl_KlasifikazioPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_KlasifikazioPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_KlasifikazioPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(klasifikazioaScrollPane, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-						.addComponent(Klasifikazioalabel))
+						.addComponent(Klasifikazioalabel)
+						.addComponent(klasifikazioaScrollPane, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_KlasifikazioPanel.setVerticalGroup(
 			gl_KlasifikazioPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_KlasifikazioPanel.createSequentialGroup()
 					.addGap(6)
-					.addComponent(Klasifikazioalabel)
+					.addComponent(Klasifikazioalabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(klasifikazioaScrollPane, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-					.addGap(25))
+					.addComponent(klasifikazioaScrollPane, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		
-		KlasifikazioaList = new JList();
+		AbstractListModel<String> model = lortuKlasifikazioarenModeloa(ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa());
+		KlasifikazioaList = new JList<String>(model);
 		klasifikazioaScrollPane.setViewportView(KlasifikazioaList);
 		KlasifikazioPanel.setLayout(gl_KlasifikazioPanel);
+		
+		btnHasiera = new JButton("Hasierako Menua");
+		btnHasiera.addActionListener(new Kudeatzailea());
+		
+		JLabel lblErabInfo = new JLabel(erabiltzailea.getIzen()+" - "+erabiltzailea.getPuntuazioa()+" puntu");
+		lblErabInfo.setForeground(new Color(128, 0, 128));
+		lblErabInfo.setFont(new Font("EHUSerif", Font.BOLD, 20));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(EgunekoKasPanel, GroupLayout.PREFERRED_SIZE, 223, Short.MAX_VALUE)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(18)
-					.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblErabInfo, GroupLayout.PREFERRED_SIZE, 353, GroupLayout.PREFERRED_SIZE)
+						.addComponent(EgunekoKasPanel, GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE))
+					.addGap(28)
+					.addComponent(KlasifikazioPanel, GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
 					.addContainerGap())
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(333, Short.MAX_VALUE)
+					.addComponent(btnHasiera)
+					.addGap(299))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(EgunekoKasPanel, GroupLayout.PREFERRED_SIZE, 278, Short.MAX_VALUE)
-						.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblErabInfo, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(EgunekoKasPanel, 0, 0, Short.MAX_VALUE))
+						.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, 515, GroupLayout.PREFERRED_SIZE))
+					.addGap(15)
+					.addComponent(btnHasiera)
+					.addGap(72))
 		);
 		
 		JLabel lblEgunekoKlasifikazioa = new JLabel("Eguneko Klasifikazioa");
@@ -107,8 +140,6 @@ public class KlasifikazioLehioa extends JFrame {
 		lblEgunekoKlasifikazioa.setForeground(new Color(128, 128, 0));
 		
 		JScrollPane egunekoKlasScrollPane = new JScrollPane();
-		
-		btnHasiera = new JButton("Hasierako Menua");
 		GroupLayout gl_EgunekoKasPanel = new GroupLayout(EgunekoKasPanel);
 		gl_EgunekoKasPanel.setHorizontalGroup(
 			gl_EgunekoKasPanel.createParallelGroup(Alignment.TRAILING)
@@ -117,28 +148,49 @@ public class KlasifikazioLehioa extends JFrame {
 						.addComponent(lblEgunekoKlasifikazioa)
 						.addGroup(gl_EgunekoKasPanel.createSequentialGroup()
 							.addGap(12)
-							.addComponent(egunekoKlasScrollPane, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(gl_EgunekoKasPanel.createSequentialGroup()
-					.addContainerGap(53, Short.MAX_VALUE)
-					.addComponent(btnHasiera)
-					.addContainerGap())
+							.addComponent(egunekoKlasScrollPane, GroupLayout.PREFERRED_SIZE, 331, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(20, Short.MAX_VALUE))
 		);
 		gl_EgunekoKasPanel.setVerticalGroup(
 			gl_EgunekoKasPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_EgunekoKasPanel.createSequentialGroup()
 					.addGap(6)
-					.addComponent(lblEgunekoKlasifikazioa)
+					.addComponent(lblEgunekoKlasifikazioa, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(egunekoKlasScrollPane, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnHasiera)
-					.addGap(16))
+					.addComponent(egunekoKlasScrollPane, GroupLayout.PREFERRED_SIZE, 407, GroupLayout.PREFERRED_SIZE)
+					.addGap(24))
 		);
 		
-		egunekoKlasList = new JList();
+		AbstractListModel<String> modelEgun = lortuKlasifikazioarenModeloa(ErabiltzaileLista.getErabiltzaileLista().getEgunekoKlasifikazioa());
+		egunekoKlasList = new JList<String>(modelEgun);
+		
 		egunekoKlasScrollPane.setViewportView(egunekoKlasList);
 		EgunekoKasPanel.setLayout(gl_EgunekoKasPanel);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	private DefaultListModel<String> lortuKlasifikazioarenModeloa(Klasifikazioa klasf) {
+		//Aurre: klasf!=null
+		//Post: sarrerako klasifikazioak dituen erabiltzaile guztiak hartu eta pantailaratzeko eran jarriko ditu:
+		//int(zenbatgarrena). erabiltzaile_izena - puntuazioa p.
+		DefaultListModel<String> model = new DefaultListModel<String>();
+		int index = 0;
+		for (Erabiltzaile erab : klasf.erabiltzaileenListaKlasifikatorian()) {
+			model.add(index, index+". "+erab.getIzen()+" - "+erab.getPuntuazioa()+" p.");
+		}
+		return model;
+	}
+	
+	private class Kudeatzailea extends WindowAdapter implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			//Aurre: objetuari lotutako akzioa egitea
+			//Post : AukeratuLehioa zabalduko du eta hau zarratu
+			frame.setVisible(false);
+			frame.remove(frame);
+			AukeratuLehioa.ikustarazi();
+		}
+		
 	}
 }

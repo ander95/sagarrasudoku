@@ -287,6 +287,8 @@ public class SarrerakoLehioa extends JFrame {
 
 	}
 	public static void ikustarazi() {
+		//Aurre:
+		//Post: Sarrerako lehioa berriz ikustaraziko du.
 		frame.setVisible(true);
 	}
 }
