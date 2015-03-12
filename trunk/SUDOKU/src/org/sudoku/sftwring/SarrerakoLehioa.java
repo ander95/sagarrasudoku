@@ -53,6 +53,7 @@ public class SarrerakoLehioa extends JFrame {
 			public void run() {
 				try {
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

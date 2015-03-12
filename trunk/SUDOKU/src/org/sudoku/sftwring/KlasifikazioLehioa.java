@@ -29,6 +29,7 @@ public class KlasifikazioLehioa extends JFrame {
 				try {
 					KlasifikazioLehioa frame = new KlasifikazioLehioa();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
