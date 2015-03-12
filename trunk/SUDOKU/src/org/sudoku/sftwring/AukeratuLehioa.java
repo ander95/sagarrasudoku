@@ -31,10 +31,11 @@ public class AukeratuLehioa extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	ButtonGroup zailtasunak;
-	JRadioButton rdbtnErraza;
-	JRadioButton rdbtnErdikoa;
-	JRadioButton rdbtnZaila;
+	private static AukeratuLehioa frame;
+	private ButtonGroup zailtasunak;
+	private JRadioButton rdbtnErraza;
+	private JRadioButton rdbtnErdikoa;
+	private JRadioButton rdbtnZaila;
 	private JLabel lblZailtasuna;
 	private JPanel jokatuPanel;
 	private JLabel lblSudokuGordeta;
@@ -50,7 +51,7 @@ public class AukeratuLehioa extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AukeratuLehioa frame = new AukeratuLehioa(erab);
+					frame = new AukeratuLehioa(erab);
 					frame.setVisible(true);
 					frame.setResizable(false);
 				} catch (Exception e) {
@@ -207,5 +208,11 @@ public class AukeratuLehioa extends JFrame {
 		lblSudokuGordeta.setText(ea);
 		//itxaron pixkatxo bat konprobatu ea baduen eta izaten badu jarri beztela ez duela jarri
 
+	}
+	
+	public static void ikustarazi() {
+		//Aurre:
+		//Post: Sarrerako lehioa berriz ikustaraziko du.
+		frame.setVisible(true);
 	}
 }

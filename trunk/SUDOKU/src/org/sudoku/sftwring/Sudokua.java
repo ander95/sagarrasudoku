@@ -1,7 +1,5 @@
 package org.sudoku.sftwring;
 
-import java.util.Random;
-
 public class Sudokua {
 	private Bloke [][] sudoku;
 

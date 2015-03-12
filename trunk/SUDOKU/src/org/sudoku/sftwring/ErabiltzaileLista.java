@@ -10,8 +10,12 @@ public class ErabiltzaileLista {
 	
 	private static ErabiltzaileLista nErabiltzaileLista=null;
 	private ArrayList<Erabiltzaile> erabiltzaileLista;
+	private Klasifikazioa egunekoKlasifikazioa;
+	private Klasifikazioa klasifikazioa;
 	private ErabiltzaileLista(){
 		this.erabiltzaileLista=new ArrayList<Erabiltzaile>();
+		this.egunekoKlasifikazioa = new Klasifikazioa();
+		this.klasifikazioa = new Klasifikazioa();
 	}
 	
 	public static ErabiltzaileLista getErabiltzaileLista(){
@@ -101,5 +105,13 @@ public class ErabiltzaileLista {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	}
+	}
+	
+	public Klasifikazioa getKlasifikazioa() {
+		return klasifikazioa;
+	}
+
+	public Klasifikazioa getEgunekoKlasifikazioa() {
+		return egunekoKlasifikazioa;
 	}
 }

@@ -88,7 +88,9 @@ public class ErregistroLehioa extends JFrame {
 				//Aurre: <-- botoia sakatzea
 				//Post : errejistro lehioa izkutatu eta sarrera lehioa ikustarazi
 				frame.setVisible(false);
+				frame.remove(frame);
 				SarrerakoLehioa.ikustarazi();
+				
 				
 			}
 		});
@@ -248,6 +250,8 @@ public class ErregistroLehioa extends JFrame {
 				} else {
 					if (passwordField.getPassword().length < 5) {
 						lblErrorea.setText("Pasahitzak gutxienez 5 karaktere behar ditu");
+					} else if (passwordField.getPassword().length > 12) {
+						lblErrorea.setText("Pasahitzak gehienez 12 karaktere izan ditzake");
 					} else {
 						lblErrorea.setText("");
 						String password = String.copyValueOf(passwordField.getPassword());
