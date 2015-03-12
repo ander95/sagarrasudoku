@@ -77,6 +77,10 @@ public class ErabiltzaileLista {
 		
 	}
 	
+	public Erabiltzaile getErabiltzaile(int pId) {
+		return erabiltzaileLista.get(pId);
+	}
+	
 	public void gorde(){
 		try
 	    {

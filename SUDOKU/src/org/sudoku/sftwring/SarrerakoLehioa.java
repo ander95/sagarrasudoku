@@ -235,21 +235,6 @@ public class SarrerakoLehioa extends JFrame {
 			//Aurre:
 			//Post:Izena eta pasahitza ondo dauden begiratu, txarto egon ezkero
 			//errore mezua emango du. 
-/** Hau nahiago baduzue ere...
-			//ondo daudenean berriz zailtasuna begiratuko du eta hauetatik 
-			//bat aukeratuta badago honen inguruan egingo du sudokua eta ez badago bat ere aukeratuta
-			//errore mezua itzuliko du.
-			
-//			boolean izenaKonprob = ErabiltzaileLista.getErabiltzaileLista().badago(textField.getText());
-//			if (!izenaKonprob && pasahitzKonprob) {
-//				lblErrorea.setText("Erabiltzaile izena okerra");
-//			} else if (izenaKonprob && !pasahitzKonprob) {
-//				lblErrorea.setText("Pasahitza okerra");
-//			} else if (!izenaKonprob && !pasahitzKonprob) {
-//				lblErrorea.setText("Erabiltzaile izena eta pasahitza okerrak");
-//			} else {
-//				lblErrorea.setText("");
-//			}**/
 			
 			Erabiltzaile erab = ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile(textField.getText(), String.copyValueOf(passwordField.getPassword()));
 			
