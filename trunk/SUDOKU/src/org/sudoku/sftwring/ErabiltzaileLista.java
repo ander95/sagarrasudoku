@@ -22,7 +22,7 @@ public class ErabiltzaileLista {
 	
 	public void gehituErabiltzaile(String pIzena,String pPasahitza){
 		if(!badago(pIzena))
-			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size()+1,new Sudokua(),pPasahitza));
+			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size()+1,"",pPasahitza));
 		else {System.out.println("Erabiltzaile izen hori hartuta dago, mesedez aukeratu beste bat");}
 	}
 
@@ -69,9 +69,7 @@ public class ErabiltzaileLista {
 		while(sarrera.hasNext()){
 			String lerroa=sarrera.nextLine();
 			String[] lerroArray=lerroa.split(" \\ ");
-			Sudokua sudo=new Sudokua();
-			Sudokua pSudoku=sudo.eraikiSudoku(lerroArray[3]);
-			Erabiltzaile pErab=new Erabiltzaile(lerroArray[0],new Integer(lerroArray[1]),pSudoku,lerroArray[3]);
+			Erabiltzaile pErab=new Erabiltzaile(lerroArray[0],new Integer(lerroArray[1]),lerroArray[2],lerroArray[3]);
 			ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.add(pErab);
 		}
 		sarrera.close();
@@ -89,8 +87,7 @@ public class ErabiltzaileLista {
 	    		pw.print(" \\ ");
 	    		pw.print(pErab.getID());
 	    		pw.print(" \\ ");
-	    		Sudokua sudo=new Sudokua();
-	    		String pSudoku=sudo.pasatuString(pErab.getSudoku());
+	    		String pSudoku=pErab.getSudokuZifratuta();
 	    		pw.print(pSudoku);
 	    		pw.print(" \\ ");
 	    		pw.print(pErab.getPasahitza());

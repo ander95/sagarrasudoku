@@ -30,7 +30,7 @@ public class Sudokua {
 		Sudokua sudokuBerria= new Sudokua();
 		return  sudokuBerria;	
 	}
-	public String pasatuString(Sudokua pSudoku){
+	public String pasatuString(){
 		String emaitza="";
 		return emaitza;
 	}
