@@ -2,9 +2,6 @@ package org.sudoku.sftwring;
 
 import java.util.Random;
 
-
-
-
 public class Sudokua {
 	private Bloke [][] sudoku;
 
@@ -32,7 +29,26 @@ public class Sudokua {
 	}
 	public String pasatuString(){
 		String emaitza="";
+			for(int j=0;j<3;j++){
+				for(int k=0;k<3;k++){
+					emaitza=emaitza+(String)sudoku[j][k].pasatuString();
+					emaitza=emaitza+"//";
+				}
+			}
 		return emaitza;
+	}
+	
+	public void pasatuSudoku(String pSudoku){
+		if(!pSudoku.equals("")){
+		String[] arrayString=pSudoku.split("//");
+		int cont=0;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				sudoku[j][k].idatziBloke(arrayString[cont]);
+				cont++;
+			}
+		}
+		}else eraikiSudoku(sSUdo);
 	}
 	public Sudokua eraikiSudoku(String sSUdo){
 		Sudokua pSudoku=null;
