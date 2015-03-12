@@ -48,7 +48,7 @@ public class Sudokua {
 				cont++;
 			}
 		}
-		}else eraikiSudoku(sSUdo);
+		}else eraikiSudoku(pSudoku);
 	}
 	public Sudokua eraikiSudoku(String sSUdo){
 		Sudokua pSudoku=null;
