@@ -76,6 +76,7 @@ public class ErabiltzaileLista {
 		}catch(IOException e) {e.printStackTrace();}
 		
 	}
+	
 	public void gorde(){
 		try
 	    {

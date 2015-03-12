@@ -19,12 +19,12 @@ public class Sudokua {
 
 
 	public void inprimatuSudoku(){
-		System.out.println(sudoku[0][0].inprimatuBloke()+"   "+sudoku[0][0].inprimatuBloke()+"   "+sudoku[0][0].inprimatuBloke()+"   "+"\n");	
-		System.out.println(sudoku[0][0].inprimatuBloke()+"   "+sudoku[0][0].inprimatuBloke()+"   "+sudoku[0][0].inprimatuBloke()+"   "+"\n");
-		System.out.println(sudoku[0][0].inprimatuBloke()+"   "+sudoku[0][0].inprimatuBloke()+"   "+sudoku[0][0].inprimatuBloke()+"   "+"\n");
-
-
-
+		
+		for (int i = 0; i < sudoku.length; i++) {
+			for (int j = 0; j < sudoku[i].length; j++) {
+				sudoku[i][j].inprimatuBloke();;
+			}
+		}
 	}
 	private Sudokua erreseteatuSudoku(){
 		Sudokua sudokuBerria= new Sudokua();
