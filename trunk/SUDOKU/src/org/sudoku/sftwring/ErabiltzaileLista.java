@@ -1,6 +1,11 @@
 package org.sudoku.sftwring;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
+
 public class ErabiltzaileLista {
 	
 	private static ErabiltzaileLista nErabiltzaileLista=null;
@@ -57,5 +62,42 @@ public class ErabiltzaileLista {
 			}
 		}
 		return false;
+	}
+	public void kargatu() throws IOException{
+		try{
+		Scanner sarrera = new Scanner(new FileReader("C:\\archivo.txt"));
+		while(sarrera.hasNext()){
+			String lerroa=sarrera.nextLine();
+			String[] lerroArray=lerroa.split(" \\ ");
+			Sudokua sudo=new Sudokua();
+			Sudokua pSudoku=sudo.eraikiSudoku(lerroArray[3]);
+			Erabiltzaile pErab=new Erabiltzaile(lerroArray[0],new Integer(lerroArray[1]),pSudoku,lerroArray[3]);
+			ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.add(pErab);
+		}
+		sarrera.close();
+		}catch(IOException e) {e.printStackTrace();}
+		
+	}
+	public void gorde(){
+		try
+	    {
+	    	PrintWriter pw = new PrintWriter(new FileWriter("C:\\archivo.txt"));
+	    	Iterator<Erabiltzaile> it=this.getIteradorea();
+	    	while(it.hasNext()){
+	    		Erabiltzaile pErab=it.next();
+	    		pw.print(pErab.getIzen());
+	    		pw.print(" \\ ");
+	    		pw.print(pErab.getID());
+	    		pw.print(" \\ ");
+	    		Sudokua sudo=new Sudokua();
+	    		String pSudoku=sudo.pasatuString(pErab.getSudoku());
+	    		pw.print(pSudoku);
+	    		pw.print(" \\ ");
+	    		pw.print(pErab.getPasahitza());
+	    	}
+	        pw.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	}
 	}
 }

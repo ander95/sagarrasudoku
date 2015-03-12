@@ -30,6 +30,14 @@ public class Sudokua {
 		Sudokua sudokuBerria= new Sudokua();
 		return  sudokuBerria;	
 	}
+	public String pasatuString(Sudokua pSudoku){
+		String emaitza="";
+		return emaitza;
+	}
+	public Sudokua eraikiSudoku(String sSUdo){
+		Sudokua pSudoku=null;
+		return pSudoku;
+	}
 //	private S ausazBete(){
 //
 //		S s=new S();	

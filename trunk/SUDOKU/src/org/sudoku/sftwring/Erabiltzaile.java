@@ -1,5 +1,6 @@
 package org.sudoku.sftwring;
 
+
 public class Erabiltzaile implements Comparable<Erabiltzaile> {
 
 	private String izena;
@@ -21,6 +22,15 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		return this.izena;
 	}
 	
+	public int getID(){
+		return this.ID;
+	}
+	public String getPasahitza() {
+		return this.pasahitza;
+	}
+	public Sudokua getSudoku(){
+		return this.azkenengoSudokua;
+	}
 	public boolean nirePasahitzaDa(String pPasahitza) {
 		//Aurre: pasahitzarekin konparatu nahi dugun stringa sartuko dugu
 		//Post: erabiltzailearen izena bueltatuko du
