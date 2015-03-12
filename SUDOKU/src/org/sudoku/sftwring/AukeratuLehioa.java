@@ -52,6 +52,7 @@ public class AukeratuLehioa extends JFrame {
 				try {
 					AukeratuLehioa frame = new AukeratuLehioa(erab);
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
