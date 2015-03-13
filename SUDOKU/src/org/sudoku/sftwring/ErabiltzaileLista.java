@@ -91,15 +91,8 @@ public class ErabiltzaileLista {
 	    	PrintWriter pw = new PrintWriter(new FileWriter("C:\\archivo.txt"));
 	    	Iterator<Erabiltzaile> it=this.getIteradorea();
 	    	while(it.hasNext()){
-	    		Erabiltzaile pErab=it.next();
-	    		pw.print(pErab.getIzen());
-	    		pw.print(" \\ ");
-	    		pw.print(pErab.getID());
-	    		pw.print(" \\ ");
-	    		String pSudoku=pErab.getSudokuZifratuta();
-	    		pw.print(pSudoku);
-	    		pw.print(" \\ ");
-	    		pw.print(pErab.getPasahitza());
+	    		String pErab=it.next().gorde();
+	    		pw.println(pErab);
 	    	}
 	        pw.close();
 	    } catch (Exception e) {
