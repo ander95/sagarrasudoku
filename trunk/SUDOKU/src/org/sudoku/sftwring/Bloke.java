@@ -54,7 +54,7 @@ public class Bloke {
 		String emaitza="";
 			for(int j=0;j<3;j++){
 				for(int k=0;k<3;k++){
-					emaitza=emaitza+bloke[j][k].getZuzena();
+					emaitza=emaitza+Kasila.getZuzena();
 					emaitza=emaitza+"-";
 					emaitza=emaitza+bloke[j][k].getErabiltzaileBal();
 					emaitza=emaitza+"-";
@@ -69,7 +69,7 @@ public class Bloke {
 		int cont=0;
 		for(int j=0;j<3;j++){
 			for(int k=0;k<3;k++){
-				bloke[j][k].setZuzena(new Integer(arrayKasila[cont]));
+				Kasila.setZuzena(new Integer(arrayKasila[cont]));
 				cont++;
 				bloke[j][k].setErabiltzaileBal(new Integer(arrayKasila[cont]));
 				cont++;
