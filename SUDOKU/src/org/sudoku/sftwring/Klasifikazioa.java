@@ -37,27 +37,10 @@ public class Klasifikazioa {
 	public int emanErabHonenPos(Erabiltzaile erab){
 		//	aurre: erab!=null
 		//	post: erabiltzailearen posizioa itzuliko du eta -1 erabiltzailea ez bada zerrendan aurkitzen
-		int hasi = 0;
-		int amai = ranking.size()-1;
-		int erdi = 0;
-
-		while (hasi<=amai) {
-
-			erdi = (hasi+amai)/2;
-			int konp =((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(erdi)).getPuntuazioa()).compareTo((Float)erab.getPuntuazioa());
-			if (konp>0) {
-				hasi=erdi+1;
-			} else if (konp<0) {
-				amai=erdi-1;
-			} else {
-				konp =((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(erdi)).getID()).compareTo((Integer)erab.getID());
-				
-				if (konp>0) {
-					hasi=erdi+1;
-				} else if (konp<0) {
-					amai=erdi-1;
-				} else return erdi;
-			}
+		int kont = 0;
+		for (Integer id : ranking) {
+			if (id == erab.getID()) return kont;
+			kont++;
 		}
 		return -1;
 	}
@@ -70,8 +53,9 @@ public class Klasifikazioa {
 		//Aurre:
 		//Post: Erabiltzaileen zerrenda bat bueltatuko du klasifikazioan ordenatuta dauden bezala.
 		ArrayList<Erabiltzaile> erabKlasf = new ArrayList<Erabiltzaile>();
-		for (Integer i : ranking) {
-			erabKlasf.add(ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(i)));
+
+		for (int j = 0; j < ranking.size(); j++) {
+			erabKlasf.add(ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(j)));
 		}
 		return erabKlasf;
 	}
@@ -80,15 +64,13 @@ public class Klasifikazioa {
 		//aurre: 
 		//post: Erabiltzaileen izena eta puntuazioa itzuliko du, beherazko ordenean
 		Iterator<Integer> itr = this.getIteradorea();
-		int pos = 1;
 		while(itr.hasNext()){
 			int erabID=(int)itr.next();
 			Erabiltzaile unekoa = ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(erabID);
-			System.out.println(pos + unekoa.getIzen() + unekoa.getPuntuazioa());
-			pos++;
+			unekoa.inprimatuDatuak();
 		}
 	}
-	
+
 	public String gorde(){
 		Iterator<Integer> it=this.getIteradorea();
 		String emaitza="";
@@ -98,15 +80,17 @@ public class Klasifikazioa {
 		}
 		return emaitza;
 	}
-	
+
 	public void kargatu(String pKlas){
 		String[] pK=pKlas.split("·");
 		for(int i=0;i<pK.length;i++)
 			this.ranking.add(new Integer(pK[i]));
 	}
-	
+
 
 	private void quickSort(ArrayList<Integer> taula, int hasiera,int bukaera) {
+		//Aurre:
+		//Post: IDak erabiltzailearen puntuen arabera ordenatuko ditu
 
 		if (bukaera-hasiera>0) {
 			int indizeaZatiketa = zatiketa(taula,hasiera,bukaera);
@@ -124,13 +108,7 @@ public class Klasifikazioa {
 
 		while (ezker<eskuin) {
 			while(((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getPuntuazioa()).compareTo((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) >= 0 && ezker<eskuin) {
-				if (((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getPuntuazioa()).compareTo((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) == 0) {
-					if (((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getID()).compareTo((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getID()) >= 0)
-						ezker++;
-					else
-						eskuin--;
-				} else
-					ezker ++;
+				ezker ++;
 
 			}
 

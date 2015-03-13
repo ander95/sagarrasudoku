@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Color;
@@ -182,15 +183,20 @@ public class KlasifikazioLehioa extends JFrame {
 		//int(zenbatgarrena). erabiltzaile_izena - puntuazioa p.
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		ArrayList<Erabiltzaile> erabKlsf = klasf.erabiltzaileenListaKlasifikatorian();
-		int index = erabKlsf.size();
+
+		int index = 1;
 		for (Erabiltzaile erab : erabKlsf) {
 			String iespazioak = " ";
 			String eespazioak = " ";
-			for (int i = 0; i < index/10; i++) {
+
+			for (int i = 0; i < 10-((int)Math.log10(index)+1+1); i++) {
 				iespazioak = iespazioak + " ";
 			}
-			model.add(0,index+"."+iespazioak+erab.getIzen()+eespazioak+"------    "+erab.getPuntuazioa()+" p.");
-			index--;
+			for (int i = 0; i < 10-(erab.getIzen().length()); i++) {
+				eespazioak = eespazioak + " ";
+			}
+			model.addElement(index+"."+iespazioak+erab.getIzen()+eespazioak+"------    "+erab.getPuntuazioa()+" p.");
+			index++;
 		}
 		return model;
 	}

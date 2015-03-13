@@ -4,23 +4,12 @@ public class Kasila{
 	private Integer erabiltzaileBal;
 	private boolean finkoa;
 	public Kasila(Integer Balioa){
-		this.zuzena=new Integer(Balioa);
+		Kasila.zuzena=new Integer(Balioa);
 		this.erabiltzaileBal=0;
 		this.finkoa=false;
 	}
 	public void aldatu(Integer balioBerri){
 		this.erabiltzaileBal=balioBerri;
-	}
-	private void imprimatu (){
-		System.out.println(this.erabiltzaileBal);
-	}
-	private void reset(){
-		this.zuzena=0;
-		this.erabiltzaileBal=0;
-		this.finkoa=false;
-	}
-	private boolean zuzenaDa(){
-		return this.zuzena==this.erabiltzaileBal;
 	}
 	public static Integer getZuzena() {
 		return zuzena;

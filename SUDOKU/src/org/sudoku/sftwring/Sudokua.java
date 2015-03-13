@@ -17,7 +17,7 @@ public class Sudokua {
 		}
 	}
 	
-	private Sudokua erreseteatuSudoku(){
+	public Sudokua erreseteatuSudoku(){
 		Sudokua sudokuBerria= new Sudokua();
 		return  sudokuBerria;	
 	}
