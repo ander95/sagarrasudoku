@@ -235,23 +235,24 @@ public class ErregistroLehioa extends JFrame {
 		
 		private void erregistratu() {
 			//Aurre:
-			//Post: lehenengo textFieldErabIzen hutsik dagoen ikusiko du eta hutsik badago errore mezu bat bidali
+			//Post: lehenengo textFieldErabIzen hutsik dagoen ikusiko du eta hutsik badago errore mezu bat bidali eta 12 karaktere baino gehiago baditu ere errore mezu bat itzuliko du
 			//bestela erabiltzailea erabiltzaileListan jada exititzen den begiratuko du eta existitzen bada errore mezu bat bidali
 			//bestela bi pasahitzetatik goikoan, sartutako pasahitzak bost karaktere baño gutxiago baditu errore mezu bat bidaliko du
 			//bestela sartutako pasahitz biak desberdinak badira errore mezu bat bidaliko du eta beheko errepikapena ezabatu egingo du
 			//azkenean beste guztia ondo badago erailtzailea gehituko du erabiltzaileListan
 			
-			if (textFieldErabIzen.getText().isEmpty()) {
-				lblErrorea.setText("Erabiltzaile izena bete gabe dago");
+			if (textFieldErabIzen.getText().isEmpty() || textFieldErabIzen.getText().length() > 12) {
+				if (textFieldErabIzen.getText().isEmpty())
+					lblErrorea.setText("Erabiltzaile izena bete gabe dago");
+				else
+					lblErrorea.setText("Izenak gehienez 12 karaktere izan ditzake");
 			} else {
 
 				if (ErabiltzaileLista.getErabiltzaileLista().badago(textFieldErabIzen.getText())) {
 					lblErrorea.setText("Erabiltzaile izen hau jada erregistratuta dago");
 				} else {
 					if (passwordField.getPassword().length < 5) {
-						lblErrorea.setText("Pasahitzak gutxienez 5 karaktere behar ditu");
-					} else if (passwordField.getPassword().length > 12) {
-						lblErrorea.setText("Pasahitzak gehienez 12 karaktere izan ditzake");
+							lblErrorea.setText("Pasahitzak gutxienez 5 karaktere behar ditu");
 					} else {
 						lblErrorea.setText("");
 						String password = String.copyValueOf(passwordField.getPassword());

@@ -12,6 +12,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	public Erabiltzaile(String pIzena, int pID,String pSudoku,String pPasahitza){
 		this.izena=pIzena;
 		this.ID=pID;
+		this.azkenengoSudokua = new Sudokua();
 		this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
 		this.pasahitza=pPasahitza;
 	}
