@@ -188,8 +188,8 @@ public class KlasifikazioLehioa extends JFrame {
 			//Aurre: objetuari lotutako akzioa egitea
 			//Post : AukeratuLehioa zabalduko du eta hau zarratu
 			frame.setVisible(false);
-			frame.remove(frame);
 			AukeratuLehioa.ikustarazi();
+			frame.remove(frame);
 		}
 		
 	}
