@@ -26,12 +26,16 @@ public class ErabiltzaileLista {
 	
 	public void gehituErabiltzaile(String pIzena,String pPasahitza){
 		if(!badago(pIzena))
-			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size()+1,"",pPasahitza));
+			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size(),"",pPasahitza));
 		else {System.out.println("Erabiltzaile izen hori hartuta dago, mesedez aukeratu beste bat");}
 	}
 
 	public void ezabatuErabiltzaile(Erabiltzaile pErabiltzaile){
 		erabiltzaileLista.remove(pErabiltzaile);
+	}
+	
+	public int erabiltzaileKop() {
+		return erabiltzaileLista.size();
 	}
 	
 	public Erabiltzaile bilatuErabiltzaile(String pIzen,String pPasaHitza){
