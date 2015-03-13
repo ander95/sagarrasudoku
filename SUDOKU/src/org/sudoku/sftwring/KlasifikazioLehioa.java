@@ -186,16 +186,23 @@ public class KlasifikazioLehioa extends JFrame {
 
 		int index = 1;
 		for (Erabiltzaile erab : erabKlsf) {
-			String iespazioak = " ";
-			String eespazioak = " ";
+			String iespazioak = "   ";
+			String eespazioak = "   ";
+			String despazioak = "   ";
 
-			for (int i = 0; i < 10-((int)Math.log10(index)+1+1); i++) {
-				iespazioak = iespazioak + " ";
+			for (int i = 0; i < 6-((int)Math.log10(index)+1); i++) {
+				iespazioak = iespazioak + "   ";
 			}
-			for (int i = 0; i < 10-(erab.getIzen().length()); i++) {
-				eespazioak = eespazioak + " ";
+			for (int i = 0; i < 6-(erab.getIzen().length()); i++) {
+				eespazioak = eespazioak + "   ";
 			}
-			model.addElement(index+"."+iespazioak+erab.getIzen()+eespazioak+"------    "+erab.getPuntuazioa()+" p.");
+			double punt = erab.getPuntuazioa();
+			if (punt == 0) punt++;
+			
+			for (int i = 0; i < 6-((int)Math.log10(punt)+1); i++) {
+				eespazioak = eespazioak + "   ";
+			}
+			model.addElement(index+"."+iespazioak+erab.getIzen()+eespazioak+erab.getPuntuazioa()+despazioak+"puntu");
 			index++;
 		}
 		return model;
