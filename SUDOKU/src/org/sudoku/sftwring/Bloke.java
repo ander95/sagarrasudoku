@@ -23,6 +23,33 @@ public class Bloke {
 		
 	}
 	
+	public String gorde(){
+		//Aurre
+		//Post:String bat bueltatiko du zeinek blokeko kasiletako datuak bananduta edokiko dituen.
+		String emaitza="";
+			for(int j=0;j<3;j++){
+				for(int k=0;k<3;k++){
+					emaitza=emaitza+bloke[j][k].gorde();
+					emaitza=emaitza+"%";
+				}
+			}
+			return emaitza;
+	}
+	
+	public void kargatu(String pBloke){
+		//Aurre:Bloke bat betetzeko bezain beste zenbaki daramatzan string bat sartuko da "-" banandurik
+		//Post:Blokeko kasilak dagokien zenbakiekin beteko ditu.
+		String[] arrayKasila=pBloke.split("%");
+		int cont=0;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				bloke[j][k].kargatu(arrayKasila[cont]);
+				cont++;
+			}
+			
+		}
+	}
+	
 	public String pasatuString(){
 		String emaitza="";
 			for(int j=0;j<3;j++){

@@ -9,13 +9,10 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Color;
@@ -102,8 +99,8 @@ public class KlasifikazioLehioa extends JFrame {
 
 		AbstractListModel<String> model = lortuKlasifikazioarenModeloa(ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa());
 		KlasifikazioaList = new JList<String>(model);
-		KlasifikazioaList.setForeground(new Color(105, 105, 105));
-		KlasifikazioaList.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		KlasifikazioaList.setCellRenderer(new ListaRenderizatzailea(erabiltzailea, ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa()));
+
 		klasifikazioaScrollPane.setViewportView(KlasifikazioaList);
 		KlasifikazioPanel.setLayout(gl_KlasifikazioPanel);
 
@@ -171,6 +168,7 @@ public class KlasifikazioLehioa extends JFrame {
 
 		AbstractListModel<String> modelEgun = lortuKlasifikazioarenModeloa(ErabiltzaileLista.getErabiltzaileLista().getEgunekoKlasifikazioa());
 		egunekoKlasList = new JList<String>(modelEgun);
+		egunekoKlasList.setCellRenderer(new ListaRenderizatzailea(erabiltzailea,ErabiltzaileLista.getErabiltzaileLista().getEgunekoKlasifikazioa()));
 
 
 		egunekoKlasScrollPane.setViewportView(egunekoKlasList);
@@ -186,7 +184,12 @@ public class KlasifikazioLehioa extends JFrame {
 		ArrayList<Erabiltzaile> erabKlsf = klasf.erabiltzaileenListaKlasifikatorian();
 		int index = erabKlsf.size();
 		for (Erabiltzaile erab : erabKlsf) {
-			model.add(0,index+". "+erab.getIzen()+" - "+erab.getPuntuazioa()+" p.");
+			String iespazioak = " ";
+			String eespazioak = " ";
+			for (int i = 0; i < index/10; i++) {
+				iespazioak = iespazioak + " ";
+			}
+			model.add(0,index+"."+iespazioak+erab.getIzen()+eespazioak+"------    "+erab.getPuntuazioa()+" p.");
 			index--;
 		}
 		return model;
@@ -207,17 +210,31 @@ public class KlasifikazioLehioa extends JFrame {
 
 	private class ListaRenderizatzailea extends DefaultListCellRenderer {
 
-		public Component getListCellRendererComponent(
-				JList<? extends String> arg0, String arg1, int arg2,
-				boolean arg3, boolean arg4) {
-			Component comp = super.getListCellRendererComponent(arg0, arg1, arg2, false, false);
-			JComponent jc = (JComponent) comp;
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private Erabiltzaile erabiltzaile;
+		private Klasifikazioa klsf;
 
-			comp.setForeground(Color.black);
-			comp.setBackground(Color.red);
+		public ListaRenderizatzailea(Erabiltzaile erab, Klasifikazioa pKlsf) {
+			setOpaque(true);
+			erabiltzaile = erab;
+			klsf = pKlsf;
+		}
+		
+		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+			//Aurre:
+			//Post: JListaren barruko klasifikazioari formatua emango dio eta sartutako erabiltzailea gorriz
+			setText(value.toString());
+			setFont(new Font("EHUSerif", Font.BOLD, 14));
 
-			return comp;
+			if (index == klsf.emanErabHonenPos(erabiltzaile)){
+				setForeground(new Color(128, 0, 128));
 
+			} else setForeground(new Color(105, 105, 105));
+
+			return this;
 		}
 
 	}

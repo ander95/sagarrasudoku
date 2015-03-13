@@ -27,8 +27,6 @@ public class Klasifikazioa {
 		}
 
 		quickSort(ranking, 0, ranking.size()-1);
-		
-		System.out.println(ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(0)).getPuntuazioa());
 
 	}
 
@@ -47,12 +45,19 @@ public class Klasifikazioa {
 
 			erdi = (hasi+amai)/2;
 			int konp =((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(erdi)).getPuntuazioa()).compareTo((Float)erab.getPuntuazioa());
-
-			if (konp<0) {
+			if (konp>0) {
 				hasi=erdi+1;
-			} else if (konp>0) {
+			} else if (konp<0) {
 				amai=erdi-1;
-			} else return erdi;
+			} else {
+				konp =((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(ranking.get(erdi)).getID()).compareTo((Integer)erab.getID());
+				
+				if (konp>0) {
+					hasi=erdi+1;
+				} else if (konp<0) {
+					amai=erdi-1;
+				} else return erdi;
+			}
 		}
 		return -1;
 	}
@@ -83,6 +88,23 @@ public class Klasifikazioa {
 			pos++;
 		}
 	}
+	
+	public String gorde(){
+		Iterator<Integer> it=this.getIteradorea();
+		String emaitza="";
+		while(it.hasNext()){
+			emaitza=it.next().toString();
+			emaitza=emaitza+"·";
+		}
+		return emaitza;
+	}
+	
+	public void kargatu(String pKlas){
+		String[] pK=pKlas.split("·");
+		for(int i=0;i<pK.length;i++)
+			this.ranking.add(new Integer(pK[i]));
+	}
+	
 
 	private void quickSort(ArrayList<Integer> taula, int hasiera,int bukaera) {
 
@@ -103,7 +125,7 @@ public class Klasifikazioa {
 		while (ezker<eskuin) {
 			while(((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getPuntuazioa()).compareTo((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) >= 0 && ezker<eskuin) {
 				if (((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getPuntuazioa()).compareTo((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) == 0) {
-					 if (((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getID()).compareTo((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getID()) >= 0)
+					if (((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getID()).compareTo((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getID()) >= 0)
 						ezker++;
 					else
 						eskuin--;
