@@ -56,6 +56,23 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	public float getPuntuazioa() {
 		return puntuazioa;
 	}
+	
+	public String gorde(){
+		String emaitza="";
+		emaitza=emaitza+this.izena;
+		emaitza=emaitza+" \\ ";
+		emaitza=emaitza+this.ID;
+		emaitza=emaitza+" \\ ";
+		emaitza=emaitza+this.azkenengoSudokua.gorde();
+		emaitza=emaitza+"\\";
+		return emaitza;
+	}
+	public void kargatu(String pErab){
+		String[] pEr=pErab.split("\\");
+		this.izena=pEr[0];
+		this.ID=new Integer(pEr[1]);
+		this.azkenengoSudokua.kargatu(pEr[2]);
+	}
 
 	public void inprimatuDatuak() {
 		//Aurre:
