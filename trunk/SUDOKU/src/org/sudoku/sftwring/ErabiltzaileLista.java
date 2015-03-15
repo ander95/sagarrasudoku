@@ -30,8 +30,10 @@ public class ErabiltzaileLista {
 		else {System.out.println("Erabiltzaile izen hori hartuta dago, mesedez aukeratu beste bat");}
 	}
 
-	public void ezabatuErabiltzaile(Erabiltzaile pErabiltzaile){
-		erabiltzaileLista.remove(pErabiltzaile);
+	public void ezabatuErabiltzaile(String pIzena,String pPasahitza){
+		
+		Erabiltzaile pErabiltzaile=ErabiltzaileLista.nErabiltzaileLista.bilatuErabiltzaile(pIzena, pPasahitza);
+		ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.remove(pErabiltzaile);
 	}
 	
 	public int erabiltzaileKop() {
@@ -40,9 +42,12 @@ public class ErabiltzaileLista {
 	
 	public Erabiltzaile bilatuErabiltzaile(String pIzen,String pPasaHitza){
 		Iterator<Erabiltzaile> itr=this.getIteradorea();
+		boolean aurk=false;
 		while(itr.hasNext()){
+			if(!aurk){
 			Erabiltzaile unekoErabiltzaile=itr.next();
 			if (unekoErabiltzaile.getIzen().equals(pIzen)&&unekoErabiltzaile.nirePasahitzaDa(pPasaHitza)){
+				aurk=true;}
 				return unekoErabiltzaile;
 			}
 		}
@@ -57,6 +62,7 @@ public class ErabiltzaileLista {
 		Iterator<Erabiltzaile> itr=this.getIteradorea();
 		while(itr.hasNext()){
 			itr.next().inprimatuDatuak();
+			System.out.println("----------");
 		}
 	}
 	
@@ -71,19 +77,23 @@ public class ErabiltzaileLista {
 		}
 		return false;
 	}
-	public void kargatu() throws IOException{
-		try{
-		Scanner sarrera = new Scanner(new FileReader("C:\\archivo.txt"));
-		while(sarrera.hasNext()){
-			String lerroa=sarrera.nextLine();
-			String[] lerroArray=lerroa.split(" \\ ");
-			Erabiltzaile pErab=new Erabiltzaile(lerroArray[0],new Integer(lerroArray[1]),lerroArray[2],lerroArray[3]);
-			ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.add(pErab);
-		}
-		sarrera.close();
-		}catch(IOException e) {e.printStackTrace();}
-		
-	}
+	
+		 public void kargatu() throws IOException{
+		        try{
+		        Scanner sarrera = new Scanner(new FileReader("C:\\eclipse\\archivo.txt"));
+		        this.egunekoKlasifikazioa.kargatu(sarrera.next());
+		        this.klasifikazioa.kargatu(sarrera.next());
+		        int cont;
+		        while(sarrera.hasNext()){
+		            String lerroa=sarrera.next();
+		            Erabiltzaile pErab = null;
+		            pErab.kargatu(lerroa);
+		            ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.add(pErab);
+		        }
+		        sarrera.close();
+		        }catch(IOException e) {e.printStackTrace();}
+		         
+		 }   
 	
 	public Erabiltzaile getErabiltzaile(int pId) {
 		return erabiltzaileLista.get(pId);
@@ -92,13 +102,14 @@ public class ErabiltzaileLista {
 	public void gorde(){
 		try
 	    {
-	    	PrintWriter pw = new PrintWriter(new FileWriter("C:\\archivo.txt"));
+	    	PrintWriter pw = new PrintWriter(new FileWriter("C:\\eclipse\\archivo.txt"));
 	    	Iterator<Erabiltzaile> it=this.getIteradorea();
 	    	while(it.hasNext()){
 	    		String pErab=it.next().gorde();
 	    		pw.println(pErab);
 	    	}
 	        pw.close();
+	        System.out.println("Fitxagian gorde da erabiltzaile lista");
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	}
@@ -110,5 +121,9 @@ public class ErabiltzaileLista {
 
 	public Klasifikazioa getEgunekoKlasifikazioa() {
 		return egunekoKlasifikazioa;
+	}
+	public void erreseteatuErabiltzaileLista(){
+		ErabiltzaileLista.nErabiltzaileLista=null;
+		System.out.println("Erabiltzaile lista berrabiarazi da");
 	}
 }

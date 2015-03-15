@@ -13,7 +13,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		this.izena=pIzena;
 		this.ID=pID;
 		this.azkenengoSudokua = new Sudokua();
-		this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
+		//this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
 		this.pasahitza=pPasahitza;
 	}
 	
@@ -64,6 +64,8 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		emaitza=emaitza+this.ID;
 		emaitza=emaitza+" \\ ";
 		emaitza=emaitza+this.azkenengoSudokua.gorde();
+		emaitza=emaitza+"\\";
+		emaitza=emaitza+this.puntuazioa;
 		emaitza=emaitza+"\\";
 		return emaitza;
 	}
