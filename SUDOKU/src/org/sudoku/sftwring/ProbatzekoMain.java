@@ -1,10 +1,5 @@
 package org.sudoku.sftwring;
 
-import test.Bloke;
-import test.ErabiltzaileLista;
-import test.Kasila;
-import test.Sudokua;
-
 public class ProbatzekoMain {
 
 	public static void main(String[] args) {
