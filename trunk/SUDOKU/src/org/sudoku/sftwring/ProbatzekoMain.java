@@ -119,6 +119,7 @@ public class ProbatzekoMain {
 	}
 
 	private static void klasifikazioarenProba(){
+		Klasifikazioa klasif = new Klasifikazioa();
 		
 	}
 
