@@ -17,7 +17,8 @@ public class Bloke {
 	public void inprimatuBloke(){
 		for (int i = 0; i < bloke.length; i++) {
 			for (int j = 0; j < bloke[i].length; j++) {
-				System.out.println(bloke[i][j].getErabiltzaileBal());
+				if (i==2&&j==2)System.out.println(bloke[i][j].getErabiltzaileBal()+"\n");else{
+				System.out.print(bloke[i][j].getErabiltzaileBal());}
 			}
 		}
 		

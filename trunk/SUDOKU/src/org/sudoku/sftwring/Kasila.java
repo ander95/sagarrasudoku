@@ -1,4 +1,7 @@
 package org.sudoku.sftwring;
+
+import test.Kasila;
+
 public class Kasila{
 	private static Integer zuzena;
 	private Integer erabiltzaileBal;
@@ -50,6 +53,15 @@ public class Kasila{
 		else this.finkoa=false;
 
 	}
+	public void inprimatuKasila(){
+		System.out.println("Erabiltzaile Balioa: "+this.erabiltzaileBal);
+		System.out.println("Balio Zuzena: "+this.zuzena);
+		if(this.finkoa==false)System.out.println("Ez da finkoa.");
+		else{System.out.println("Finkoa da.");}
+	}
+public Kasila kasilaErreseteatu(){
+	return new Kasila(0);
+}
 }
 
 
