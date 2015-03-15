@@ -18,11 +18,15 @@ public class Sudokua {
 	}
 	
 	public Sudokua erreseteatuSudoku(){
+		//Aurre:
+		//Post:Sudokua hasieratuko du
 		Sudokua sudokuBerria= new Sudokua();
 		return  sudokuBerria;	
 	}
 	
 	public String pasatuString(){
+		//Aurre:
+		//Post: sudoku bat emanda haren blokeak banan banan string bihurtzen ditu
 		String emaitza="";
 		for(int j=0;j<3;j++){
 			for(int k=0;k<3;k++){
@@ -62,6 +66,9 @@ public class Sudokua {
 	}
 
 	public void pasatuSudoku(String pSudoku){
+		//Aurre:
+		/*Post:String eran sudoku bat hartuz gordetzeko moldatzen du eta bestela
+		Berrabiarazi.*/
 		if(!pSudoku.equals("")){
 			String[] arrayString=pSudoku.split("//");
 			int cont=0;
@@ -75,6 +82,8 @@ public class Sudokua {
 	}
 	
 	public Sudokua eraikiSudoku(String sSUdo){
+		//Aurre:
+		//Post:Sudokua null bezala hasieratuko da.
 		Sudokua pSudoku=null;
 		return pSudoku;
 	}
