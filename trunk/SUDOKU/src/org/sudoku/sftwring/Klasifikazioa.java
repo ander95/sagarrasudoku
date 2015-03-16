@@ -72,19 +72,24 @@ public class Klasifikazioa {
 	}
 
 	public String gorde(){
-		Iterator<Integer> it=this.getIteradorea();
-		String emaitza="";
-		while(it.hasNext()){
-			emaitza=it.next().toString();
-			emaitza=emaitza+"·";
-		}
-		return emaitza;
+		if (!(this.ranking.size()==0)) {
+			Iterator<Integer> it=this.getIteradorea();
+			String emaitza="";
+			while(it.hasNext()){
+				emaitza=it.next().toString();
+				emaitza=emaitza+"·";
+			}
+			return emaitza;
+		} else
+			return "$";
 	}
 
 	public void kargatu(String pKlas){
-		String[] pK=pKlas.split("·");
-		for(int i=0;i<pK.length;i++)
-			this.ranking.add(new Integer(pK[i]));
+		if (!pKlas.equals("$")) {
+			String[] pK=pKlas.split("·");
+			for(int i=0;i<pK.length;i++)
+				this.ranking.add(new Integer(pK[i]));
+		}
 	}
 
 

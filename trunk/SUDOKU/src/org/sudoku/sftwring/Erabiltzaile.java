@@ -9,7 +9,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	private float puntuazioa;
 	private Sudokua azkenengoSudokua;
 
-	public Erabiltzaile(String pIzena, int pID,String pSudoku,String pPasahitza){
+	public Erabiltzaile(String pIzena, int pID,String pPasahitza){
 		this.izena=pIzena;
 		this.ID=pID;
 		this.azkenengoSudokua = new Sudokua();
@@ -34,7 +34,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		return this.azkenengoSudokua;
 	}
 	public String getSudokuZifratuta(){
-		return this.azkenengoSudokua.pasatuString();
+		return this.azkenengoSudokua.gorde();
 	}
 	public boolean nirePasahitzaDa(String pPasahitza) {
 		//Aurre: pasahitzarekin konparatu nahi dugun stringa sartuko dugu
@@ -61,17 +61,17 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	public String gorde(){
 		String emaitza="";
 		emaitza=emaitza+this.izena;
-		emaitza=emaitza+" \\ ";
+		emaitza=emaitza+",";
 		emaitza=emaitza+this.ID;
-		emaitza=emaitza+" \\ ";
+		emaitza=emaitza+",";
 		emaitza=emaitza+this.azkenengoSudokua.gorde();
-		emaitza=emaitza+"\\";
+		emaitza=emaitza+",";
 		emaitza=emaitza+this.puntuazioa;
-		emaitza=emaitza+"\\";
+		emaitza=emaitza+",";
 		return emaitza;
 	}
 	public void kargatu(String pErab){
-		String[] pEr=pErab.split("\\");
+		String[] pEr=pErab.split(",");
 		this.izena=pEr[0];
 		this.ID=new Integer(pEr[1]);
 		this.azkenengoSudokua.kargatu(pEr[2]);

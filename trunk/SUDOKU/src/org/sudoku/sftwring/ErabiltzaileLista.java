@@ -26,7 +26,7 @@ public class ErabiltzaileLista {
 	
 	public void gehituErabiltzaile(String pIzena,String pPasahitza){
 		if(!badago(pIzena))
-			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size(),"",pPasahitza));
+			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size(),pPasahitza));
 		else {System.out.println("Erabiltzaile izen hori hartuta dago, mesedez aukeratu beste bat");}
 	}
 
@@ -80,13 +80,12 @@ public class ErabiltzaileLista {
 	
 		 public void kargatu() throws IOException{
 		        try{
-		        Scanner sarrera = new Scanner(new FileReader("C:\\eclipse\\archivo.txt"));
+		        Scanner sarrera = new Scanner(new FileReader("archivo.txt"));
 		        this.egunekoKlasifikazioa.kargatu(sarrera.next());
 		        this.klasifikazioa.kargatu(sarrera.next());
-		        int cont;
 		        while(sarrera.hasNext()){
 		            String lerroa=sarrera.next();
-		            Erabiltzaile pErab = null;
+		            Erabiltzaile pErab = new Erabiltzaile("",0,"");
 		            pErab.kargatu(lerroa);
 		            ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.add(pErab);
 		        }
@@ -102,7 +101,9 @@ public class ErabiltzaileLista {
 	public void gorde(){
 		try
 	    {
-	    	PrintWriter pw = new PrintWriter(new FileWriter("C:\\eclipse\\archivo.txt"));
+	    	PrintWriter pw = new PrintWriter(new FileWriter("archivo.txt"));
+	    	pw.println(this.egunekoKlasifikazioa.gorde());
+	    	pw.println(this.klasifikazioa.gorde());
 	    	Iterator<Erabiltzaile> it=this.getIteradorea();
 	    	while(it.hasNext()){
 	    		String pErab=it.next().gorde();
