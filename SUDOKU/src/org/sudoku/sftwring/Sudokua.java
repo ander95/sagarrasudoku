@@ -24,18 +24,6 @@ public class Sudokua {
 		return  sudokuBerria;	
 	}
 
-	public String pasatuString(){
-		//Aurre:
-		//Post: sudoku bat emanda haren blokeak banan banan string bihurtzen ditu
-		String emaitza="";
-		for(int j=0;j<3;j++){
-			for(int k=0;k<3;k++){
-				emaitza=emaitza+(String)sudoku[j][k].pasatuString();
-				emaitza=emaitza+"//";
-			}
-		}
-		return emaitza;
-	}
 
 	public String gorde(){
 		//Aurre:
@@ -63,29 +51,6 @@ public class Sudokua {
 				}
 			}
 		}else beteZeroz();
-	}
-
-	public void pasatuSudoku(String pSudoku){
-		//Aurre:
-		/*Post:String eran sudoku bat hartuz gordetzeko moldatzen du eta bestela
-		Berrabiarazi.*/
-		if(!pSudoku.equals("")){
-			String[] arrayString=pSudoku.split("//");
-			int cont=0;
-			for(int j=0;j<3;j++){
-				for(int k=0;k<3;k++){
-					sudoku[j][k].idatziBloke(arrayString[cont]);
-					cont++;
-				}
-			}
-		}else eraikiSudoku(pSudoku);
-	}
-
-	public Sudokua eraikiSudoku(String sSUdo){
-		//Aurre:
-		//Post:Sudokua null bezala hasieratuko da.
-		Sudokua pSudoku=null;
-		return pSudoku;
 	}
 
 	public void beteZeroz(){

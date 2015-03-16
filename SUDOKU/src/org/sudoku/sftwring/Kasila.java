@@ -17,33 +17,14 @@ public class Kasila{
 			System.out.println("Ezin izan da balioa aldatu, finkoa da");
 		}
 	}
-	public static Integer getZuzena() {
-		return zuzena;
-	}
-	public static void setZuzena(Integer zuzena) {
-		Kasila.zuzena = zuzena;
-	}
-	public int getErabiltzaileBal() {
-		return erabiltzaileBal;
-	}
-	public void setErabiltzaileBal(Integer erabiltzaileBal) {
-		this.erabiltzaileBal = erabiltzaileBal;
-	}
-	public boolean getFinkoa() {
-		return finkoa;
-	}
-	public void setFinkoa(String finkoa) {
-		if(finkoa.equals("true"))
-			this.finkoa = true;
-		else this.finkoa=false;
-	}
+	
 	public String gorde(){
 		String emaitza="";
-		emaitza=emaitza+Kasila.getZuzena();
+		emaitza=emaitza+Kasila.zuzena;
 		emaitza=emaitza+"-";
-		emaitza=emaitza+this.getErabiltzaileBal();
+		emaitza=emaitza+this.erabiltzaileBal;
 		emaitza=emaitza+"-";
-		emaitza=emaitza+this.getFinkoa();
+		emaitza=emaitza+this.finkoa;
 		emaitza=emaitza+"-";
 		return emaitza;
 	}
@@ -62,8 +43,18 @@ public class Kasila{
 		if(this.finkoa==false)System.out.println("Ez da finkoa.");
 		else{System.out.println("Finkoa da.");}
 	}
+
 	public Kasila kasilaErreseteatu(){
 		return new Kasila(0);
+	}
+
+	public int getErabiltzaileBal() {
+		return erabiltzaileBal;
+	}
+
+	public void setFinkoa(boolean e) {
+		this.finkoa = e;
+		
 	}
 }
 

@@ -30,10 +30,7 @@ public class ProbatzekoMain {
 		b.inprimatuBloke();System.out.println("----------");
 		/*Blokea String bihurtzen da?*/
 		System.out.println("*/Blokea String bihurtzen da?");
-		System.out.println(b.pasatuString());System.out.println("----------");
-		//		/*Blokea idazten da?*/
-		//		b.idatziBloke("0-1-0-2-0-3-0-4-0-5-0-6-0-7-0-8-0-9");
-		//		b.inprimatuBloke();
+		System.out.println(b.gorde());System.out.println("----------");
 
 	}
 	private static void sudokuarenProba() {
@@ -68,30 +65,6 @@ public class ProbatzekoMain {
 				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
 				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%/");
 		s.inprimatuSudoku();System.out.println("----------");
-		/*String-era bihurtzen ditu Sudokuaren blokeak eta hauek itzultzen?*/
-		System.out.println("*/String-era bihurtzen ditu Sudokuaren blokeak eta hauek itzultzen?");
-		System.out.println(s.pasatuString());System.out.println("----------");
-		/*Sudokua bat pasata, haul null bezala itzultzen du?*/
-		System.out.println("*/Sudokua bat pasata, hau null bezala itzultzen du?");
-		if(s.eraikiSudoku("0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%"
-				+ "/0-1-false-%0-2-false-%0-3-false-%0-4-false-%0-5"
-				+ "-false-%0-6-false-%0-7-false-%0-8-false-%0-9-false-%/")==null);
-		{System.out.println("Sudokua eraikita null balioarekin!");System.out.println("----------");}
 
 		/*Sudokua 0-z betetzen da?*/
 		System.out.println("*/Sudokua 0-z betetzen da?");
@@ -110,7 +83,7 @@ public class ProbatzekoMain {
 		k.inprimatuKasila();System.out.println("----------");
 		/*Kasila finkoa bihurtu daiteke?*/
 		System.out.println("*/Kasila finkoa bihurtu daiteke?");
-		k.setFinkoa("true");
+		k.setFinkoa(true);
 		k.inprimatuKasila();System.out.println("----------");
 		/*Eta finkoa bada balioa aldatu daiteke?*/
 		System.out.println("*/Eta finkoa bada balioa aldatu daiteke?");
@@ -148,10 +121,11 @@ public class ProbatzekoMain {
 		System.out.println("*/Erabiltzaile lista archivo.txt-n gordetzen da?");
 		ErabiltzaileLista.getErabiltzaileLista().gorde();
 		System.out.println("*/Erabiltzaile lista erreseteatu daiteke?");
-		ErabiltzaileLista.getErabiltzaileLista().erreseteatuErabiltzaileLista();System.out.println("----------");
-		//System.out.println("*/Erabiltzaile lista archivo.txt-tik kargatzen da?");
-		//ErabiltzaileLista.getErabiltzaileLista().kargatu();
-		//ErabiltzaileLista.getErabiltzaileLista().inprimatu();System.out.println("----------");
+		ErabiltzaileLista.getErabiltzaileLista().erreseteatuErabiltzaileLista();
+		System.out.println("----------");
+		System.out.println("*/Erabiltzaile lista archivo.txt-tik kargatzen da?");
+		ErabiltzaileLista.getErabiltzaileLista().kargatu();
+		ErabiltzaileLista.getErabiltzaileLista().inprimatu();System.out.println("----------");
 		/*BEGIRATU BEHARREKO METODOA !!!*/
 		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("Mikel","kkkkk");
 		ErabiltzaileLista.getErabiltzaileLista().inprimatu();System.out.println("----------");
@@ -160,9 +134,8 @@ public class ProbatzekoMain {
 
 	}
 	private static void erabiltzailerenProba(){
-		String sudokuBerria="0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//";
 		System.out.println("Erabiltzailea sortzen da bere datu guztiekin?");
-		Erabiltzaile e=new Erabiltzaile("Mikel", 0, sudokuBerria, "kkkkk");
+		Erabiltzaile e=new Erabiltzaile("Mikel", 0, "kkkkk");
 		e.inprimatuDatuak();System.out.println("----------");
 		System.out.println("Erabiltzailearen puntuazioa eguneratzen da?");
 		System.out.println("Puntuazio zaharra: "+e.getPuntuazioa());
@@ -177,8 +150,7 @@ public class ProbatzekoMain {
 
 	private static void klasifikazioarenProba(){
 		Klasifikazioa k=new Klasifikazioa();
-		String sudokuBerria="0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//0-1-false-0-2-false-0-3-false-0-4-false-0-5-false-0-6-false-0-7-false-0-8-false-0-9-false-//";
-		Erabiltzaile erab=new Erabiltzaile("erab", 0, sudokuBerria, "qwerty");
+		Erabiltzaile erab=new Erabiltzaile("erab", 0, "qwerty");
 
 		erab.inprimatuDatuak();
 		for (int i = 0; i < 10; i++) {
