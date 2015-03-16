@@ -8,21 +8,22 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	private int ID;
 	private float puntuazioa;
 	private Sudokua azkenengoSudokua;
-	
+
 	public Erabiltzaile(String pIzena, int pID,String pSudoku,String pPasahitza){
 		this.izena=pIzena;
 		this.ID=pID;
 		this.azkenengoSudokua = new Sudokua();
 		//this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
 		this.pasahitza=pPasahitza;
+		this.puntuazioa=0;
 	}
-	
+
 	public String getIzen() {
 		//Aurre:
 		//Post: erabiltzailearen izena bueltatuko du
 		return this.izena;
 	}
-	
+
 	public int getID(){
 		return this.ID;
 	}
@@ -48,15 +49,15 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		//eta zero bien izenak berdinak direnean
 		return this.izena.compareTo(arg0.getIzen());
 	}
-	
+
 	public void gehituPuntuak(float pPuntuak) {
 		puntuazioa = puntuazioa + pPuntuak;
 	}
-	
+
 	public float getPuntuazioa() {
 		return puntuazioa;
 	}
-	
+
 	public String gorde(){
 		String emaitza="";
 		emaitza=emaitza+this.izena;
@@ -74,6 +75,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		this.izena=pEr[0];
 		this.ID=new Integer(pEr[1]);
 		this.azkenengoSudokua.kargatu(pEr[2]);
+		this.puntuazioa=new Float(pEr[3]);
 	}
 
 	public void inprimatuDatuak() {
@@ -82,6 +84,8 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		System.out.println("Izena: "+this.izena);
 		System.out.println("ID: "+this.ID);
 		System.out.println("Puntuazioa: "+this.puntuazioa);
+		System.out.println("Erabiltzailearen azken sudokua: ");
+		this.azkenengoSudokua.inprimatuSudoku();
 
 	}
 

@@ -16,14 +16,14 @@ public class Sudokua {
 			}
 		}
 	}
-	
+
 	public Sudokua erreseteatuSudoku(){
 		//Aurre:
 		//Post:Sudokua hasieratuko du
 		Sudokua sudokuBerria= new Sudokua();
 		return  sudokuBerria;	
 	}
-	
+
 	public String pasatuString(){
 		//Aurre:
 		//Post: sudoku bat emanda haren blokeak banan banan string bihurtzen ditu
@@ -80,14 +80,14 @@ public class Sudokua {
 			}
 		}else eraikiSudoku(pSudoku);
 	}
-	
+
 	public Sudokua eraikiSudoku(String sSUdo){
 		//Aurre:
 		//Post:Sudokua null bezala hasieratuko da.
 		Sudokua pSudoku=null;
 		return pSudoku;
 	}
-	
+
 	public void beteZeroz(){
 		//Aurre:
 		//Post:Sudokua 0roz beteko du.
@@ -174,4 +174,5 @@ public class Sudokua {
 	//		return hasY;
 	//	}
 }
+
 

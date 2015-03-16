@@ -9,8 +9,13 @@ public class Kasila{
 		this.erabiltzaileBal=0;
 		this.finkoa=false;
 	}
+
 	public void aldatu(Integer balioBerri){
-		this.erabiltzaileBal=balioBerri;
+		if(!this.finkoa)
+			this.erabiltzaileBal=balioBerri;
+		else{
+			System.out.println("Ezin izan da balioa aldatu, finkoa da");
+		}
 	}
 	public static Integer getZuzena() {
 		return zuzena;
@@ -53,13 +58,12 @@ public class Kasila{
 	}
 	public void inprimatuKasila(){
 		System.out.println("Erabiltzaile Balioa: "+this.erabiltzaileBal);
-		System.out.println("Balio Zuzena: "+ zuzena);
+		System.out.println("Balio Zuzena: "+Kasila.zuzena);
 		if(this.finkoa==false)System.out.println("Ez da finkoa.");
 		else{System.out.println("Finkoa da.");}
 	}
-public Kasila kasilaErreseteatu(){
-	return new Kasila(0);
+	public Kasila kasilaErreseteatu(){
+		return new Kasila(0);
+	}
 }
-}
-
 
