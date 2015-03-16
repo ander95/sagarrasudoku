@@ -23,7 +23,7 @@ public class Klasifikazioa {
 		//	aurre:
 		//	post: rankingeko erabiltzaileak beheranzko ordenean ordenatuko ditu puntuazioan oinarrituz
 		for (int i = 0; i < ErabiltzaileLista.getErabiltzaileLista().erabiltzaileKop(); i++) {
-			ranking.add(ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(i).getID());
+			this.add(ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(i));
 		}
 
 		quickSort(ranking, 0, ranking.size()-1);
@@ -103,6 +103,9 @@ public class Klasifikazioa {
 			quickSort(taula, indizeaZatiketa+1, bukaera);
 		}
 
+	}
+	public int tamaina(){
+		return this.ranking.size();
 	}
 
 	private int zatiketa(ArrayList<Integer> taula, int l, int r) {

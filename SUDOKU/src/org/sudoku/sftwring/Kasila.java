@@ -30,7 +30,7 @@ public class Kasila{
 	}
 	public void kargatu(String pKasila){
 		String[] pKas=pKasila.split("-");
-		Kasila.zuzena=new Integer(pKas[0]);
+		Kasila.zuzena=Integer.parseInt(pKas[0]);
 		this.erabiltzaileBal=new Integer(pKas[1]);
 		if(pKas[2].equals("true"))
 			this.finkoa=true;

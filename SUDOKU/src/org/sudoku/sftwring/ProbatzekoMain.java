@@ -141,32 +141,33 @@ public class ProbatzekoMain {
 		System.out.println("Puntuazio zaharra: "+e.getPuntuazioa());
 		e.gehituPuntuak(50);
 		System.out.println("Puntuazio berria: "+e.getPuntuazioa());System.out.println("----------");
+		System.out.println("Erabilzailea gordetzen da?");
 		System.out.println(e.gorde());System.out.println("----------");
-		//e.kargatu("Mikel \\ 0 \\ 0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/\\50.0\\");
+		System.out.println("Erabilzailea kargatzen da?");
+		e.kargatu("Mikel,0,kkkkk,0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/,50.0,");
+		e.inprimatuDatuak();System.out.println("----------");
 		System.out.println("Pasahitza okerra da (0000) beraz false: "+e.nirePasahitzaDa("0000"));
 		System.out.println("Pasahitza zuzena da (kkkkk) beraz true: "+e.nirePasahitzaDa("kkkkk"));
 
 	}
 
-	private static void klasifikazioarenProba(){
-		Klasifikazioa k=new Klasifikazioa();
-		Erabiltzaile erab=new Erabiltzaile("erab", 0, "qwerty");
-
-		erab.inprimatuDatuak();
-		for (int i = 0; i < 10; i++) {
-			k.add(erab);
-			erab.gehituPuntuak(erab.getPuntuazioa()+50);
-			i++;
+	private static void klasifikazioarenProba() throws IOException{
+		System.out.println("********************************************************");
+		ErabiltzaileLista.getErabiltzaileLista().erreseteatuErabiltzaileLista();
+		Klasifikazioa k= ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa();
+		k.erreseteatu();
+		for (int i = 0; i<5; i++) {
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erab"+i, "qwerty");
+			ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(i).gehituPuntuak(i*10);
 		}
+		System.out.println("erab1-en posizoa: "+k.emanErabHonenPos(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty")));
 		k.inprimatuKlasifikazioa();
-		k.emanErabHonenPos(erab);
+		
 		System.out.println(k.gorde());
-		String pKlas="0·";
-		k.kargatu(pKlas);
-		k.inprimatuKlasifikazioa();
-
-
-
+		//String pKlas="0·";
+		
+		//k.inprimatuKlasifikazioa();
+		System.out.println("********************************************************");
 	}
 
 }

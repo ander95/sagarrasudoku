@@ -54,7 +54,8 @@ public class RadixSort
 		System.out.println("\nElements after sorting ");        
 		for (i = 0; i < n; i++)
 			System.out.print(arr[i]+" ");            
-		System.out.println();                     
+		System.out.println(); 
+		scan.close();
 	}    
 }
 
