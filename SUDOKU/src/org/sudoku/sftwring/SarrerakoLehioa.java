@@ -153,7 +153,7 @@ public class SarrerakoLehioa extends JFrame {
 		);
 		
 		lblIcon.setText("");
-		lblIcon.setIcon(sortuImageIcon("icon.png", "icon.png"));
+		lblIcon.setIcon(sortuImageIcon("icon1.png", "icon1.png"));
 		
 		loginPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,

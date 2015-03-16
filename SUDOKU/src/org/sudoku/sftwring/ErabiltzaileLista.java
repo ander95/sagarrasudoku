@@ -45,10 +45,11 @@ public class ErabiltzaileLista {
 		Iterator<Erabiltzaile> itr=this.getIteradorea();
 		boolean aurk=false;
 		Erabiltzaile unekoErabiltzaile = null;
-		while(itr.hasNext()){
+		while(itr.hasNext()&&!aurk){
 			unekoErabiltzaile=itr.next();
 			if (unekoErabiltzaile.getIzen().equals(pIzen)&&unekoErabiltzaile.nirePasahitzaDa(pPasaHitza)){
-				aurk=true;}
+				aurk=true;
+			}
 		}
 		if(!aurk){return null;}
 		else{ return unekoErabiltzaile;}
@@ -81,7 +82,7 @@ public class ErabiltzaileLista {
 
 	public void kargatu() throws IOException{
 		try{
-			Scanner sarrera = new Scanner(new FileReader("archivo.txt"));
+			Scanner sarrera = new Scanner(new FileReader("usr.log"));
 			this.egunekoKlasifikazioa.kargatu(sarrera.next());
 			this.klasifikazioa.kargatu(sarrera.next());
 			while(sarrera.hasNext()){
@@ -102,7 +103,7 @@ public class ErabiltzaileLista {
 	public void gorde(){
 		try
 		{
-			PrintWriter pw = new PrintWriter(new FileWriter("archivo.txt"));
+			PrintWriter pw = new PrintWriter(new FileWriter("usr.log"));
 			pw.println(this.egunekoKlasifikazioa.gorde());
 			pw.println(this.klasifikazioa.gorde());
 			Iterator<Erabiltzaile> it=this.getIteradorea();

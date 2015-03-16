@@ -241,7 +241,6 @@ public class KlasifikazioLehioa extends JFrame {
 			//Post: JListaren barruko klasifikazioari formatua emango dio eta sartutako erabiltzailea gorriz
 			setText(value.toString());
 			setFont(new Font("EHUSerif", Font.BOLD, 14));
-
 			if (index == klsf.emanErabHonenPos(erabiltzaile)){
 				setForeground(new Color(128, 0, 128));
 
