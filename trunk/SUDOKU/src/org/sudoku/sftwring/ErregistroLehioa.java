@@ -82,7 +82,7 @@ public class ErregistroLehioa extends JFrame {
 		JLabel lblErregistratu = new JLabel("Erregistratu");
 		lblErregistratu.setFont(new Font("EHUSerif", Font.BOLD, 18));
 
-		btnAtzera = new JButton("<—");
+		btnAtzera = new JButton("<---");
 		btnAtzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Aurre: <-- botoia sakatzea
@@ -266,6 +266,7 @@ public class ErregistroLehioa extends JFrame {
 							if (erab==null) {
 								lblErrorea.setText("Erabiltzaile izena edo pasahitza okerra");
 							} else {
+								ErabiltzaileLista.getErabiltzaileLista().gorde();
 								lblErrorea.setText("");
 								frame.setVisible(false);
 								

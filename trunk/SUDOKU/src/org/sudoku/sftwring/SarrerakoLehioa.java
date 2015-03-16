@@ -31,8 +31,11 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SarrerakoLehioa extends JFrame {
@@ -184,6 +187,13 @@ public class SarrerakoLehioa extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 		btnSartu.addActionListener(new Kudeatzailea());
+		
+		try {
+			ErabiltzaileLista.getErabiltzaileLista().kargatu();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	

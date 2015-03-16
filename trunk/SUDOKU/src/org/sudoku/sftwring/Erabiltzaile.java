@@ -52,6 +52,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 
 	public void gehituPuntuak(float pPuntuak) {
 		puntuazioa = puntuazioa + pPuntuak;
+		ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa().eguneratu();
 	}
 
 	public float getPuntuazioa() {
@@ -64,6 +65,8 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		emaitza=emaitza+",";
 		emaitza=emaitza+this.ID;
 		emaitza=emaitza+",";
+		emaitza=emaitza+this.pasahitza;
+		emaitza=emaitza+",";
 		emaitza=emaitza+this.azkenengoSudokua.gorde();
 		emaitza=emaitza+",";
 		emaitza=emaitza+this.puntuazioa;
@@ -74,8 +77,9 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		String[] pEr=pErab.split(",");
 		this.izena=pEr[0];
 		this.ID=new Integer(pEr[1]);
-		this.azkenengoSudokua.kargatu(pEr[2]);
-		this.puntuazioa=new Float(pEr[3]);
+		this.pasahitza=pEr[2];
+		this.azkenengoSudokua.kargatu(pEr[3]);
+		this.puntuazioa=new Float(pEr[4]);
 	}
 
 	public void inprimatuDatuak() {
