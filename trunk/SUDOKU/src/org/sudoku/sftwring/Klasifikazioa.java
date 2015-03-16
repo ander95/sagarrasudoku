@@ -10,12 +10,11 @@ public class Klasifikazioa {
 		this.ranking = new ArrayList<Integer>();
 	}
 
-	public void add(Erabiltzaile erab){
+	private void add(Erabiltzaile erab){
 		//	aurre:
 		//	post: erabiltzailea zerrendan ez badago gehitu egingo du segituan ordenatzeko
 		if (this.emanErabHonenPos(erab)==-1){
 			ranking.add(erab.getID());
-			this.eguneratu();
 		}
 	}
 

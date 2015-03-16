@@ -160,13 +160,14 @@ public class ProbatzekoMain {
 			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erab"+i, "qwerty");
 			ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(i).gehituPuntuak(i*10);
 		}
-		System.out.println("erab1-en posizoa: "+k.emanErabHonenPos(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty")));
 		k.inprimatuKlasifikazioa();
+
+		System.out.println("erab1-en posizoa: "+k.emanErabHonenPos(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty")));
 		
-		System.out.println(k.gorde());
-		//String pKlas="0·";
-		
-		//k.inprimatuKlasifikazioa();
+		System.out.println("erab1 erabiltaileari 16 puntu gehituz gero.");
+		ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty").gehituPuntuak(16);
+		System.out.println("erab1-en posizoa: "+k.emanErabHonenPos(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty")));
+
 		System.out.println("********************************************************");
 	}
 
