@@ -1,7 +1,7 @@
 package org.sudoku.sftwring;
 
 public class Bloke {
-	
+
 	private Kasila [][] bloke;
 
 	public Bloke() {
@@ -12,31 +12,31 @@ public class Bloke {
 			}
 		}
 	}
-	
-	
+
+
 	public void inprimatuBloke(){
 		for (int i = 0; i < bloke.length; i++) {
 			for (int j = 0; j < bloke[i].length; j++) {
 				if ((i==2&&j==2)||(i==0&&j==2)||(i==1&&j==2))System.out.print(" "+bloke[i][j].getErabiltzaileBal()+"\n");else{
-				System.out.print(" "+bloke[i][j].getErabiltzaileBal());}
+					System.out.print(" "+bloke[i][j].getErabiltzaileBal());}
 			}
 		}
-		
+
 	}
-	
+
 	public String gorde(){
 		//Aurre
 		//Post:String bat bueltatiko du zeinek blokeko kasiletako datuak bananduta edokiko dituen.
 		String emaitza="";
-			for(int j=0;j<3;j++){
-				for(int k=0;k<3;k++){
-					emaitza=emaitza+bloke[j][k].gorde();
-					emaitza=emaitza+"%";
-				}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				emaitza=emaitza+bloke[j][k].gorde();
+				emaitza=emaitza+"%";
 			}
-			return emaitza;
+		}
+		return emaitza;
 	}
-	
+
 	public void kargatu(String pBloke){
 		//Aurre:Bloke bat betetzeko bezain beste zenbaki daramatzan string bat sartuko da "-" banandurik
 		//Post:Blokeko kasilak dagokien zenbakiekin beteko ditu.
@@ -47,23 +47,23 @@ public class Bloke {
 				bloke[j][k].kargatu(arrayKasila[cont]);
 				cont++;
 			}
-			
+
 		}
 	}
-	
+
 	public String pasatuString(){
 		String emaitza="";
-			for(int j=0;j<3;j++){
-				for(int k=0;k<3;k++){
-					emaitza=emaitza+Kasila.getZuzena();
-					emaitza=emaitza+"-";
-					emaitza=emaitza+bloke[j][k].getErabiltzaileBal();
-					emaitza=emaitza+"-";
-					emaitza=emaitza+bloke[j][k].getFinkoa();
-					emaitza=emaitza+"-";
-				}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				emaitza=emaitza+Kasila.getZuzena();
+				emaitza=emaitza+"-";
+				emaitza=emaitza+bloke[j][k].getErabiltzaileBal();
+				emaitza=emaitza+"-";
+				emaitza=emaitza+bloke[j][k].getFinkoa();
+				emaitza=emaitza+"-";
 			}
-			return emaitza;
+		}
+		return emaitza;
 	}
 	public void idatziBloke(String pBloke){
 		String[] arrayKasila=pBloke.split("-");
@@ -81,4 +81,3 @@ public class Bloke {
 
 
 }
-
