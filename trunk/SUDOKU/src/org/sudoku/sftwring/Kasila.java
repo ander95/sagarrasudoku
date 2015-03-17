@@ -4,10 +4,12 @@ public class Kasila{
 	private static Integer zuzena;
 	private Integer erabiltzaileBal;
 	private boolean finkoa;
+	private boolean[] posibleak;
 	public Kasila(Integer Balioa){
 		Kasila.zuzena=new Integer(Balioa);
 		this.erabiltzaileBal=0;
 		this.finkoa=false;
+		this.posibleak=new boolean[]{true,true,true,true,true,true,true,true,true};
 	}
 
 	public void aldatu(Integer balioBerri){
