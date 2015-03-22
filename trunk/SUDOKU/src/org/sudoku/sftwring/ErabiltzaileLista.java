@@ -24,10 +24,17 @@ public class ErabiltzaileLista {
 		return nErabiltzaileLista;
 	}
 
+	public void gehituErabiltzaile(String pIzena,String pPasahitza, String pZifraPasahitz){
+		if(!badago(pIzena))
+			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size(),pPasahitza,pZifraPasahitz));
+
+		else {System.out.println("Erabiltzaile izen hori hartuta dago, mesedez aukeratu beste bat");}
+	}
+
 	public void gehituErabiltzaile(String pIzena,String pPasahitza){
 		if(!badago(pIzena))
 			erabiltzaileLista.add(new Erabiltzaile(pIzena,this.erabiltzaileLista.size(),pPasahitza));
-			
+
 		else {System.out.println("Erabiltzaile izen hori hartuta dago, mesedez aukeratu beste bat");}
 	}
 
@@ -87,7 +94,7 @@ public class ErabiltzaileLista {
 			this.klasifikazioa.kargatu(sarrera.next());
 			while(sarrera.hasNext()){
 				String lerroa=sarrera.next();
-				Erabiltzaile pErab = new Erabiltzaile("",0,"");
+				Erabiltzaile pErab = new Erabiltzaile("",0,"","");
 				pErab.kargatu(lerroa);
 				ErabiltzaileLista.nErabiltzaileLista.erabiltzaileLista.add(pErab);
 			}
