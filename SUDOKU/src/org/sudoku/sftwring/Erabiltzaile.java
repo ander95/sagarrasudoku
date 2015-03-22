@@ -1,13 +1,37 @@
 package org.sudoku.sftwring;
 
+import javax.crypto.BadPaddingException;
+
 
 public class Erabiltzaile implements Comparable<Erabiltzaile> {
 
 	private String izena;
-	private  String pasahitza;
+	private String pasahitza;
+	private String zifraPasahitz;
 	private int ID;
 	private float puntuazioa;
 	private Sudokua azkenengoSudokua;
+
+	public Erabiltzaile(String pIzena, int pID,String pPasahitza, String pZifraPasahitz){
+
+		this.izena=pIzena;
+		this.ID=pID;
+		this.azkenengoSudokua = new Sudokua();
+		//this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
+		if (!pZifraPasahitz.equals("")) {
+			this.pasahitza=pPasahitza;
+			Zifra z0 = new Zifra(pasahitza);
+			this.zifraPasahitz = pZifraPasahitz;
+			Zifra z1 = new Zifra(zifraPasahitz);
+			try {
+				this.pasahitza = z1.encrypt(pasahitza);
+				zifraPasahitz = z0.encrypt(zifraPasahitz);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			this.puntuazioa=0;
+		}
+	}
 
 	public Erabiltzaile(String pIzena, int pID,String pPasahitza){
 		this.izena=pIzena;
@@ -15,6 +39,15 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		this.azkenengoSudokua = new Sudokua();
 		//this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
 		this.pasahitza=pPasahitza;
+		Zifra z0 = new Zifra(pasahitza);
+		this.zifraPasahitz = z0.generateKey();
+		Zifra z1 = new Zifra(zifraPasahitz);
+		try {
+			this.pasahitza = z1.encrypt(pasahitza);
+			zifraPasahitz = z0.encrypt(zifraPasahitz);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.puntuazioa=0;
 	}
 
@@ -37,9 +70,23 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		return this.azkenengoSudokua.gorde();
 	}
 	public boolean nirePasahitzaDa(String pPasahitza) {
-		//Aurre: pasahitzarekin konparatu nahi dugun stringa sartuko dugu
-		//Post: erabiltzailearen izena bueltatuko du
-		return pasahitza.equals(pPasahitza);
+		//Aurre: pasahitzarekin konparatu nahi dugun stringa sartuko dugu !=null
+		//Post: pasahitza berdina bada true bueltatuko du beztela false
+		Zifra zifrPas = new Zifra(pPasahitza);
+
+		try {
+			String z = zifrPas.decrypt(zifraPasahitz);
+			Zifra pas = new Zifra(z);
+			String e = pas.decrypt(pasahitza);
+			return pPasahitza.equals(e);
+		} catch (Exception e) {
+			if (e instanceof BadPaddingException) {
+				System.err.println("--------------------Okerreko pasahitza sartu da------------------");
+			}
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 	public int compareTo(Erabiltzaile arg0) {
@@ -65,6 +112,8 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		emaitza=emaitza+",";
 		emaitza=emaitza+this.ID;
 		emaitza=emaitza+",";
+		emaitza=emaitza+this.zifraPasahitz;
+		emaitza=emaitza+",";
 		emaitza=emaitza+this.pasahitza;
 		emaitza=emaitza+",";
 		emaitza=emaitza+this.azkenengoSudokua.gorde();
@@ -77,9 +126,10 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		String[] pEr=pErab.split(",");
 		this.izena=pEr[0];
 		this.ID=new Integer(pEr[1]);
-		this.pasahitza=pEr[2];
-		this.azkenengoSudokua.kargatu(pEr[3]);
-		this.puntuazioa=new Float(pEr[4]);
+		this.zifraPasahitz = (pEr[2]);
+		this.pasahitza=pEr[3];
+		this.azkenengoSudokua.kargatu(pEr[4]);
+		this.puntuazioa=new Float(pEr[5]);
 	}
 
 	public void inprimatuDatuak() {

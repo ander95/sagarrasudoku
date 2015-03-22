@@ -144,9 +144,9 @@ public class ProbatzekoMain {
 		System.out.println("Erabilzailea gordetzen da?");
 		System.out.println(e.gorde());System.out.println("----------");
 		System.out.println("Erabilzailea kargatzen da?");
-		e.kargatu("Mikel,0,kkkkk,0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/,50.0,");
+		e.kargatu("Mikel,0,0t5U2EeJ2+CcCd1qs61WY1yIakqUEPKNnDIwqlrwzQA=,wQx4M8OuNtzwIA4qXJ/0pw==,0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%0-0-false-%/,50.0,");
 		e.inprimatuDatuak();System.out.println("----------");
-		System.out.println("Pasahitza okerra da (0000) beraz false: "+e.nirePasahitzaDa("0000"));
+		System.out.println("Pasahitza okerra da (0000) beraz false: "+e.nirePasahitzaDa("00000"));
 		System.out.println("Pasahitza zuzena da (kkkkk) beraz true: "+e.nirePasahitzaDa("kkkkk"));
 
 	}
@@ -157,13 +157,13 @@ public class ProbatzekoMain {
 		Klasifikazioa k= ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa();
 		k.erreseteatu();
 		for (int i = 0; i<5; i++) {
-			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erab"+i, "qwerty");
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erab"+i, "qwerty", "aaaaaa");
 			ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(i).gehituPuntuak(i*10);
 		}
 		k.inprimatuKlasifikazioa();
 
 		System.out.println("erab1-en posizoa: "+k.emanErabHonenPos(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty")));
-		
+
 		System.out.println("erab1 erabiltaileari 16 puntu gehituz gero.");
 		ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty").gehituPuntuak(16);
 		System.out.println("erab1-en posizoa: "+k.emanErabHonenPos(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab1", "qwerty")));
