@@ -2,21 +2,32 @@ package org.sudoku.sftwring;
 
 public class Sudokua {
 	private Bloke [][] sudoku;
-
+	private int luzera = 3;
+	private int zabalera = 3;
+	
 	public Sudokua() {
-		sudoku = new Bloke[3][3];
+		sudoku = new Bloke[luzera][zabalera];
 		beteZeroz();
 	}
 
 	public void inprimatuSudoku(){
 
-		for (int i = 0; i < sudoku.length; i++) {
-			for (int j = 0; j < sudoku[i].length; j++) {
+		for (int i = 0; i < luzera; i++) {
+			for (int j = 0; j < zabalera; j++) {
 				sudoku[i][j].inprimatuBloke();;
 			}
 		}
 	}
+	
+	public void inprimatuSudokuZuzena(){
 
+		for (int i = 0; i < luzera; i++) {
+			for (int j = 0; j < zabalera; j++) {
+				sudoku[i][j].inprimatuBlokeZuzen();
+			}
+		}
+	}
+	
 	public Sudokua erreseteatuSudoku(){
 		//Aurre:
 		//Post:Sudokua hasieratuko du
@@ -62,40 +73,45 @@ public class Sudokua {
 			}
 		}
 	}
-	//	private S ausazBete(){
-	//
-	//		S s=new S();	
 
-	//		s.blokeZerrenda[0]=new Bloke();
-	//		s.blokeZerrenda[1]=new Bloke();
-	//		s.blokeZerrenda[2]=new Bloke();
-	//		s.blokeZerrenda[3]=new Bloke();
-	//		s.blokeZerrenda[4]=new Bloke();
-	//		s.blokeZerrenda[5]=new Bloke();
-	//		s.blokeZerrenda[6]=new Bloke();
-	//		s.blokeZerrenda[7]=new Bloke();
-	//		s.blokeZerrenda[8]=new Bloke();
-	//		for (int i=0;i<9;i++){
-	//			s.blokeZerrenda[0].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[1].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[2].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[3].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[4].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[5].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[6].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[7].kasilaZerrenda[i]=new Kasila();
-	//			s.blokeZerrenda[8].kasilaZerrenda[i]=new Kasila();}
-	//
-	//		int kont=0;
-	//		int zenb=1;
-	//		while (kont<10){
-	//			int unekoX=s.sortuX();
-	//			int unekoY=s.sortuY();
-	//			if(posibleX(s, unekoX, zenb)&&posibleY(s,unekoY,zenb)){
-	//				s.blokeZerrenda[unekoX].kasilaZerrenda[unekoY].balioa=zenb;
-	//				kont++;}
+	public void ausazBete() {
+		
 
-	//		}
+		for (int blokeI = 0; blokeI < luzera; blokeI++) {
+			for (int blokeJ = 0; blokeJ < zabalera; blokeJ++) {
+				for (int i = 0; i < sudoku[blokeI][blokeJ].getLuzera(); i++) {
+					for (int j = 0; j < sudoku[blokeI][blokeJ].getZabalera(); j++) {
+						int balioa = sudoku[blokeI][blokeJ].blokekoKasilaAusazEditatu(i, j);
+						errenkadaEzgaitu(blokeI, blokeJ, i, j, balioa);
+						zutabeaEzgaitu(blokeI, blokeJ, i, j, balioa);
+						blokeaEzgaitu(blokeI, blokeJ, balioa);
+					}
+				}
+			}
+		}
+
+	}
+	
+	public void errenkadaEzgaitu(int pBlokeI, int pBlokeJ, int pI, int pJ, int balioa){
+		for (int i = 0; i < sudoku[pBlokeI][pBlokeJ].getLuzera(); i++) {
+			sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(i, pJ, balioa);
+		}
+	}
+	
+	public void zutabeaEzgaitu(int pBlokeI, int pBlokeJ, int pI, int pJ, int balioa){
+		for (int j = 0; j < sudoku[pBlokeI][pBlokeJ].getLuzera();j++) {
+			sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(pI, j, balioa);
+		}
+	}
+	
+	public void blokeaEzgaitu(int pBlokeI, int pBlokeJ, int balioa){
+		for (int i = 0; i < sudoku[pBlokeI][pBlokeJ].getLuzera();i++) {
+			for (int j = 0; j < sudoku[pBlokeI][pBlokeJ].getZabalera(); j++) {
+				sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(i, j, balioa);
+			}
+		}
+	}
+
 
 
 

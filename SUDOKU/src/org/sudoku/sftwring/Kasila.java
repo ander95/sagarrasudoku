@@ -20,6 +20,19 @@ public class Kasila{
 		}
 	}
 	
+	public boolean betetaDago(){
+		return zuzena!=0;
+	}
+	
+	public void zenbPosibleaEzgaitu(int pZenb) {
+		this.posibleak[pZenb-1] = false;
+	}
+	
+	public boolean zenbPosibleaDa(int pZenb) {
+		if (betetaDago()) return false;
+		else return this.posibleak[pZenb-1];
+	}
+	
 	public String gorde(){
 		String emaitza="";
 		emaitza=emaitza+Kasila.zuzena;
@@ -52,6 +65,10 @@ public class Kasila{
 
 	public int getErabiltzaileBal() {
 		return erabiltzaileBal;
+	}
+	
+	public void inprimatuZuzena() {
+		System.out.print(zuzena);
 	}
 
 	public void setFinkoa(boolean e) {
