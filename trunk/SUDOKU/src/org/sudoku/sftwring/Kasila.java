@@ -21,7 +21,19 @@ public class Kasila{
 	}
 	
 	public boolean betetaDago(){
+//		true itzultzen du zenbakirik esleitu bazaio 
 		return zuzena!=0;
+	}
+	
+	public boolean zenbPosiblerikDago(){
+//		false itzultzen du kasilan zenbakirik jarri ezin bada
+		boolean emaitza=false;
+		for(int i=0; i<posibleak.length; i++){
+			if(posibleak[i]==true){
+				return true;
+			}
+		}
+		return emaitza;
 	}
 	
 	public void zenbPosibleaEzgaitu(int pZenb) {
