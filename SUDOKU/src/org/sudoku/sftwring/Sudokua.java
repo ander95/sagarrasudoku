@@ -1,5 +1,7 @@
 package org.sudoku.sftwring;
 
+import java.util.Stack;
+
 public class Sudokua {
 	private Bloke [][] sudoku;
 	private int luzera = 3;
@@ -75,32 +77,41 @@ public class Sudokua {
 	}
 
 	public void ausazBete() {
-		
+		Stack<Integer> sudokuBidea = new Stack<Integer>(); // sudokua egiten gaudela atzera egiteko erabiliko dugu
 
 		for (int blokeI = 0; blokeI < luzera; blokeI++) {
 			for (int blokeJ = 0; blokeJ < zabalera; blokeJ++) {
 				for (int i = 0; i < sudoku[blokeI][blokeJ].getLuzera(); i++) {
 					for (int j = 0; j < sudoku[blokeI][blokeJ].getZabalera(); j++) {
+						
 						int balioa = sudoku[blokeI][blokeJ].blokekoKasilaAusazEditatu(i, j);
-						errenkadaEzgaitu(blokeI, blokeJ, i, j, balioa);
-						zutabeaEzgaitu(blokeI, blokeJ, i, j, balioa);
-						blokeaEzgaitu(blokeI, blokeJ, balioa);
+						if (balioa!=-1){
+							sudokuBidea.push(balioa);
+							errenkadaEzgaitu(blokeI, blokeJ, i, j, balioa);
+							zutabeaEzgaitu(blokeI, blokeJ, i, j, balioa);
+							blokeaEzgaitu(blokeI, blokeJ, balioa);
+						}
+						else {/*sudokuBidean atzera joan eta balioak erreseteatuz joan ahala
+						bloke errenkada eta zutabeetako posibleak eguneratu*/}
 					}
 				}
 			}
 		}
-
 	}
 	
 	public void errenkadaEzgaitu(int pBlokeI, int pBlokeJ, int pI, int pJ, int balioa){
-		for (int i = 0; i < sudoku[pBlokeI][pBlokeJ].getLuzera(); i++) {
-			sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(i, pJ, balioa);
+		for(int blokeI=0; blokeI < luzera; blokeI++){//errenkadako hiru blokeak erabili behar dira
+			for (int i = 0; i < sudoku[pBlokeI][pBlokeJ].getLuzera(); i++) {
+				sudoku[blokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(i, pJ, balioa);
+			}
 		}
 	}
 	
 	public void zutabeaEzgaitu(int pBlokeI, int pBlokeJ, int pI, int pJ, int balioa){
-		for (int j = 0; j < sudoku[pBlokeI][pBlokeJ].getLuzera();j++) {
-			sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(pI, j, balioa);
+		for(int blokeJ=0; blokeJ < luzera; blokeJ++){//zutabeko hiru blokeak erabili behar dira
+			for (int j = 0; j < sudoku[pBlokeI][pBlokeJ].getLuzera();j++) {
+				sudoku[pBlokeI][blokeJ].kasilaZenbPosibleaEzgaitu(pI, j, balioa);
+			}
 		}
 	}
 	
