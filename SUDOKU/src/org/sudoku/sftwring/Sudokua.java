@@ -1,11 +1,10 @@
 package org.sudoku.sftwring;
 
-import java.util.Stack;
-
 public class Sudokua {
 	private Bloke [][] sudoku;
 	private int luzera = 3;
 	private int zabalera = 3;
+	private int zailtasuna;
 	
 	public Sudokua() {
 		sudoku = new Bloke[luzera][zabalera];
@@ -37,7 +36,21 @@ public class Sudokua {
 		return  sudokuBerria;	
 	}
 
-
+	public Bloke getBloke(int i){
+		Bloke pBloke=null;
+		switch(i){
+		case 0:pBloke=sudoku[0][0];
+		case 1:pBloke=sudoku[0][1];
+		case 2:pBloke=sudoku[0][2];
+		case 3:pBloke=sudoku[1][0];
+		case 4:pBloke=sudoku[1][1];
+		case 5:pBloke=sudoku[1][2];
+		case 6:pBloke=sudoku[2][0];
+		case 7:pBloke=sudoku[2][1];
+		case 8:pBloke=sudoku[2][2];
+		}
+		return pBloke;
+	}
 	public String gorde(){
 		//Aurre:
 		//Post:Sudokua String batetara pasako da.
@@ -77,41 +90,32 @@ public class Sudokua {
 	}
 
 	public void ausazBete() {
-		Stack<Integer> sudokuBidea = new Stack<Integer>(); // sudokua egiten gaudela atzera egiteko erabiliko dugu
+		
 
 		for (int blokeI = 0; blokeI < luzera; blokeI++) {
 			for (int blokeJ = 0; blokeJ < zabalera; blokeJ++) {
 				for (int i = 0; i < sudoku[blokeI][blokeJ].getLuzera(); i++) {
 					for (int j = 0; j < sudoku[blokeI][blokeJ].getZabalera(); j++) {
-						
 						int balioa = sudoku[blokeI][blokeJ].blokekoKasilaAusazEditatu(i, j);
-						if (balioa!=-1){
-							sudokuBidea.push(balioa);
-							errenkadaEzgaitu(blokeI, blokeJ, i, j, balioa);
-							zutabeaEzgaitu(blokeI, blokeJ, i, j, balioa);
-							blokeaEzgaitu(blokeI, blokeJ, balioa);
-						}
-						else {/*sudokuBidean atzera joan eta balioak erreseteatuz joan ahala
-						bloke errenkada eta zutabeetako posibleak eguneratu*/}
+						errenkadaEzgaitu(blokeI, blokeJ, i, j, balioa);
+						zutabeaEzgaitu(blokeI, blokeJ, i, j, balioa);
+						blokeaEzgaitu(blokeI, blokeJ, balioa);
 					}
 				}
 			}
 		}
+
 	}
 	
 	public void errenkadaEzgaitu(int pBlokeI, int pBlokeJ, int pI, int pJ, int balioa){
-		for(int blokeI=0; blokeI < luzera; blokeI++){//errenkadako hiru blokeak erabili behar dira
-			for (int i = 0; i < sudoku[pBlokeI][pBlokeJ].getLuzera(); i++) {
-				sudoku[blokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(i, pJ, balioa);
-			}
+		for (int i = 0; i < sudoku[pBlokeI][pBlokeJ].getLuzera(); i++) {
+			sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(i, pJ, balioa);
 		}
 	}
 	
 	public void zutabeaEzgaitu(int pBlokeI, int pBlokeJ, int pI, int pJ, int balioa){
-		for(int blokeJ=0; blokeJ < luzera; blokeJ++){//zutabeko hiru blokeak erabili behar dira
-			for (int j = 0; j < sudoku[pBlokeI][pBlokeJ].getLuzera();j++) {
-				sudoku[pBlokeI][blokeJ].kasilaZenbPosibleaEzgaitu(pI, j, balioa);
-			}
+		for (int j = 0; j < sudoku[pBlokeI][pBlokeJ].getLuzera();j++) {
+			sudoku[pBlokeI][pBlokeJ].kasilaZenbPosibleaEzgaitu(pI, j, balioa);
 		}
 	}
 	
@@ -122,7 +126,12 @@ public class Sudokua {
 			}
 		}
 	}
-
+	public void setZailtasuna(int i){
+		this.zailtasuna=i;
+	}
+	public int getZailtasuna(){
+		return this.zailtasuna;
+	}
 
 
 

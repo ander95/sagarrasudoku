@@ -12,6 +12,11 @@ import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -123,6 +128,7 @@ public class AukeratuLehioa extends JFrame {
 		lblSudokuGordeta.setFont(new Font("EHUSerif", Font.BOLD, 16));
 
 		btnJokatu = new JButton("Jokatu");
+		btnJokatu.addActionListener(new Kudeatzailea());
 		GroupLayout gl_jokatuPanel = new GroupLayout(jokatuPanel);
 		gl_jokatuPanel.setHorizontalGroup(
 				gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
@@ -163,8 +169,10 @@ public class AukeratuLehioa extends JFrame {
 		rdbtnZaila.setFont(new Font("EHUSerif", Font.BOLD, 14));
 		rdbtnZaila.setForeground(new Color(255, 0, 0));
 		zailtasunak.add(rdbtnZaila);
+		
 
 		btnSudokuBerria = new JButton("Sudoku Berria");
+		btnSudokuBerria.addActionListener(new Kudeatzailea());
 		GroupLayout gl_zailtasunakPanel = new GroupLayout(zailtasunakPanel);
 		gl_zailtasunakPanel.setHorizontalGroup(
 				gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
@@ -202,7 +210,23 @@ public class AukeratuLehioa extends JFrame {
 		zailtasunakPanel.setLayout(gl_zailtasunakPanel);
 		begiratuSudokurikBadu();
 	}
+	private class Kudeatzailea extends WindowAdapter implements ActionListener {
 
+			@Override
+		public void actionPerformed(ActionEvent arg0) {
+				Sudokua pSudo=new Sudokua();
+			if(rdbtnErraza.isSelected()){
+				pSudo.setZailtasuna(0);
+			}else if(rdbtnErdikoa.isSelected()){
+				pSudo.setZailtasuna(1);
+			}else if(rdbtnZaila.isSelected()){
+				pSudo.setZailtasuna(2);
+			}
+			SudokuLehioa.main(erabiltzaile);
+			frame.setVisible(false);
+		}
+		
+	}
 	private void begiratuSudokurikBadu() {
 		String ea = "EA SUDOKURIK BADUZUN";
 		lblSudokuGordeta.setText(ea);
