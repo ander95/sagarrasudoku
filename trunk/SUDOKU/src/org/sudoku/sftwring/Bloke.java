@@ -12,7 +12,8 @@ public class Bloke {
 		bloke = new Kasila[luzera][zabalera];
 		for (int i=0;i<3;i++){
 			for (int j=0;j<3;j++) {
-				bloke[i][j]=new Kasila(0);	 
+				bloke[i][j]=new Kasila(0);
+				bloke[i][j].setFinkoa(true);
 			}
 		}
 	}
@@ -98,5 +99,19 @@ public class Bloke {
 
 		}
 	}
-
+	public Kasila getKasila(int i){
+		Kasila pKasila=null;
+		switch(i){
+		case 0:pKasila=bloke[0][0];
+		case 1:pKasila=bloke[0][1];
+		case 2:pKasila=bloke[0][2];
+		case 3:pKasila=bloke[1][0];
+		case 4:pKasila=bloke[1][1];
+		case 5:pKasila=bloke[1][2];
+		case 6:pKasila=bloke[2][0];
+		case 7:pKasila=bloke[2][1];
+		case 8:pKasila=bloke[2][2];
+		}
+		return pKasila;
+	}
 }

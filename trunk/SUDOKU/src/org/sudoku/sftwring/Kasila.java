@@ -87,5 +87,12 @@ public class Kasila{
 		this.finkoa = e;
 		
 	}
+	public boolean getFinkoa(){
+		return finkoa;
+	}
+	public int getBalioZuzena(){
+		return this.zuzena;
+	}
+	
 }
 
