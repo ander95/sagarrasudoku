@@ -928,246 +928,327 @@ public class SudokuLehioa{
 					if ("00".equals(ik)) {
 						textField_00.setForeground(Color.BLUE);
 						textField_00.setText(kasila.toString());
+						textField_00.setEditable(false);
+	
 					} else if ("01".equals(ik)) {
 						textField_01.setForeground(Color.BLUE);
 						textField_01.setText(kasila.toString());
+						textField_01.setEditable(false);
 					} else if ("02".equals(ik)) {
 						textField_02.setForeground(Color.BLUE);
 						textField_02.setText(kasila.toString());
+						textField_02.setEditable(false);
 					} else if ("03".equals(ik)) {
 						textField_03.setForeground(Color.BLUE);
 						textField_03.setText(kasila.toString());
+						textField_03.setEditable(false);
 					} else if ("04".equals(ik)) {
 						textField_04.setForeground(Color.BLUE);
 						textField_04.setText(kasila.toString());
+						textField_04.setEditable(false);
 					} else if ("05".equals(ik)) {
 						textField_05.setForeground(Color.BLUE);
 						textField_05.setText(kasila.toString());
+						textField_05.setEditable(false);
 					} else if ("06".equals(ik)) {
 						textField_06.setForeground(Color.BLUE);
 						textField_06.setText(kasila.toString());
+						textField_06.setEditable(false);
 					} else if ("07".equals(ik)) {
 						textField_07.setForeground(Color.BLUE);
 						textField_07.setText(kasila.toString());
+						textField_07.setEditable(false);
 					} else if ("08".equals(ik)) {
 						textField_08.setForeground(Color.BLUE);
 						textField_08.setText(kasila.toString());
+						textField_08.setEditable(false);
 					} else if ("10".equals(ik)) {
 						textField_10f.setForeground(Color.BLUE);
 						textField_10f.setText(kasila.toString());
+						textField_10f.setEditable(false);
 					} else if ("11".equals(ik)) {
 						textField_11f.setForeground(Color.BLUE);
 						textField_11f.setText(kasila.toString());
+						textField_11f.setEditable(false);
 					} else if ("12".equals(ik)) {
 						textField_12f.setForeground(Color.BLUE);
 						textField_12f.setText(kasila.toString());
+						textField_12f.setEditable(false);
 					} else if ("13".equals(ik)) {
 						textField_13f.setForeground(Color.BLUE);
 						textField_13f.setText(kasila.toString());
+						textField_13f.setEditable(false);
 					} else if ("14".equals(ik)) {
 						textField_14f.setForeground(Color.BLUE);
 						textField_14f.setText(kasila.toString());
+						textField_14f.setEditable(false);
 					} else if ("15".equals(ik)) {
 						textField_15f.setForeground(Color.BLUE);
 						textField_15f.setText(kasila.toString());
+						textField_15f.setEditable(false);
 					} else if ("16".equals(ik)) {
 						textField_16f.setForeground(Color.BLUE);
 						textField_16f.setText(kasila.toString());
+						textField_16f.setEditable(false);
 					} else if ("17".equals(ik)) {
 						textField_17f.setForeground(Color.BLUE);
 						textField_17f.setText(kasila.toString());
+						textField_17f.setEditable(false);
 					} else if ("18".equals(ik)) {
 						textField_18f.setForeground(Color.BLUE);
 						textField_18f.setText(kasila.toString());
+						textField_18f.setEditable(false);
 					} else if ("20".equals(ik)) {
 						textField_20f.setForeground(Color.BLUE);
 						textField_20f.setText(kasila.toString());
+						textField_20f.setEditable(false);
 					} else if ("21".equals(ik)) {
 						textField_21f.setForeground(Color.BLUE);
 						textField_21f.setText(kasila.toString());
+						textField_21f.setEditable(false);
 					} else if ("22".equals(ik)) {
 						textField_22f.setForeground(Color.BLUE);
 						textField_22f.setText(kasila.toString());
+						textField_22f.setEditable(false);
 					} else if ("23".equals(ik)) {
 						textField_23f.setForeground(Color.BLUE);
 						textField_23f.setText(kasila.toString());
+						textField_23f.setEditable(false);
 					} else if ("24".equals(ik)) {
 						textField_24f.setForeground(Color.BLUE);
 						textField_24f.setText(kasila.toString());
+						textField_24f.setEditable(false);
 					} else if ("25".equals(ik)) {
 						textField_25f.setForeground(Color.BLUE);
 						textField_25f.setText(kasila.toString());
+						textField_25f.setEditable(false);
 					} else if ("26".equals(ik)) {
 						textField_26f.setForeground(Color.BLUE);
 						textField_26f.setText(kasila.toString());
+						textField_26f.setEditable(false);
 					} else if ("27".equals(ik)) {
 						textField_27f.setForeground(Color.BLUE);
 						textField_27f.setText(kasila.toString());
+						textField_27f.setEditable(false);
 					} else if ("28".equals(ik)) {
 						textField_28f.setForeground(Color.BLUE);
 						textField_28f.setText(kasila.toString());
+						textField_28f.setEditable(false);
 					} else if ("30".equals(ik)) {
 						textField_30f.setForeground(Color.BLUE);
 						textField_30f.setText(kasila.toString());
+						textField_30f.setEditable(false);
 					} else if ("31".equals(ik)) {
 						textField_31f.setForeground(Color.BLUE);
 						textField_31f.setText(kasila.toString());
+						textField_31f.setEditable(false);
 					} else if ("32".equals(ik)) {
 						textField_32f.setForeground(Color.BLUE);
 						textField_32f.setText(kasila.toString());
+						textField_32f.setEditable(false);
 					} else if ("33".equals(ik)) {
 						textField_33f.setForeground(Color.BLUE);
 						textField_33f.setText(kasila.toString());
+						textField_33f.setEditable(false);
 					} else if ("34".equals(ik)) {
 						textField_34f.setForeground(Color.BLUE);
 						textField_34f.setText(kasila.toString());
+						textField_34f.setEditable(false);
 					} else if ("35".equals(ik)) {
 						textField_35f.setForeground(Color.BLUE);
 						textField_35f.setText(kasila.toString());
+						textField_35f.setEditable(false);
 					} else if ("36".equals(ik)) {
 						textField_36f.setForeground(Color.BLUE);
 						textField_36f.setText(kasila.toString());
+						textField_36f.setEditable(false);
 					} else if ("37".equals(ik)) {
 						textField_37f.setForeground(Color.BLUE);
 						textField_37f.setText(kasila.toString());
+						textField_00.setEditable(false);
 					} else if ("38".equals(ik)) {
 						textField_38f.setForeground(Color.BLUE);
 						textField_38f.setText(kasila.toString());
+						textField_38f.setEditable(false);
 					} else if ("40".equals(ik)) {
 						textField_40f.setForeground(Color.BLUE);
 						textField_40f.setText(kasila.toString());
+						textField_40f.setEditable(false);
 					} else if ("41".equals(ik)) {
 						textField_41f.setForeground(Color.BLUE);
 						textField_41f.setText(kasila.toString());
+						textField_41f.setEditable(false);
 					} else if ("42".equals(ik)) {
 						textField_42f.setForeground(Color.BLUE);
 						textField_42f.setText(kasila.toString());
+						textField_42f.setEditable(false);
 					} else if ("43".equals(ik)) {
 						textField_43f.setForeground(Color.BLUE);
 						textField_43f.setText(kasila.toString());
+						textField_43f.setEditable(false);
 					} else if ("44".equals(ik)) {
 						textField_44f.setForeground(Color.BLUE);
 						textField_44f.setText(kasila.toString());
+						textField_44f.setEditable(false);
 					} else if ("45".equals(ik)) {
 						textField_45f.setForeground(Color.BLUE);
 						textField_45f.setText(kasila.toString());
+						textField_45f.setEditable(false);
 					} else if ("46".equals(ik)) {
 						textField_46f.setForeground(Color.BLUE);
 						textField_46f.setText(kasila.toString());
+						textField_46f.setEditable(false);
 					} else if ("47".equals(ik)) {
 						textField_47f.setForeground(Color.BLUE);
 						textField_47f.setText(kasila.toString());
+						textField_47f.setEditable(false);
 					} else if ("48".equals(ik)) {
 						textField_48f.setForeground(Color.BLUE);
 						textField_48f.setText(kasila.toString());
+						textField_48f.setEditable(false);
 					} else if ("50".equals(ik)) {
 						textField_50f.setForeground(Color.BLUE);
 						textField_50f.setText(kasila.toString());
+						textField_50f.setEditable(false);
 					} else if ("51".equals(ik)) {
 						textField_51f.setForeground(Color.BLUE);
 						textField_51f.setText(kasila.toString());
+						textField_51f.setEditable(false);
 					} else if ("52".equals(ik)) {
 						textField_52f.setForeground(Color.BLUE);
 						textField_52f.setText(kasila.toString());
+						textField_52f.setEditable(false);
 					} else if ("53".equals(ik)) {
 						textField_53f.setForeground(Color.BLUE);
 						textField_53f.setText(kasila.toString());
+						textField_53f.setEditable(false);
 					} else if ("54".equals(ik)) {
 						textField_54f.setForeground(Color.BLUE);
 						textField_54f.setText(kasila.toString());
+						textField_54f.setEditable(false);
 					} else if ("55".equals(ik)) {
 						textField_55f.setForeground(Color.BLUE);
 						textField_55f.setText(kasila.toString());
+						textField_55f.setEditable(false);
 					} else if ("56".equals(ik)) {
 						textField_56f.setForeground(Color.BLUE);
 						textField_56f.setText(kasila.toString());
 					} else if ("57".equals(ik)) {
 						textField_57f.setForeground(Color.BLUE);
 						textField_57f.setText(kasila.toString());
+						textField_56f.setEditable(false);
 					} else if ("58".equals(ik)) {
 						textField_58f.setForeground(Color.BLUE);
 						textField_58f.setText(kasila.toString());
+						textField_58f.setEditable(false);
 					} else if ("60".equals(ik)) {
 						textField_60f.setForeground(Color.BLUE);
 						textField_60f.setText(kasila.toString());
+						textField_60f.setEditable(false);
 					} else if ("61".equals(ik)) {
 						textField_61f.setForeground(Color.BLUE);
 						textField_61f.setText(kasila.toString());
+						textField_61f.setEditable(false);
 					} else if ("62".equals(ik)) {
 						textField_62f.setForeground(Color.BLUE);
 						textField_62f.setText(kasila.toString());
+						textField_62f.setEditable(false);
 					} else if ("63".equals(ik)) {
 						textField_63f.setForeground(Color.BLUE);
 						textField_63f.setText(kasila.toString());
+						textField_63f.setEditable(false);
 					} else if ("64".equals(ik)) {
 						textField_64f.setForeground(Color.BLUE);
 						textField_64f.setText(kasila.toString());
+						textField_64f.setEditable(false);
 					} else if ("65".equals(ik)) {
 						textField_65f.setForeground(Color.BLUE);
 						textField_65f.setText(kasila.toString());
+						textField_65f.setEditable(false);
 					} else if ("66".equals(ik)) {
 						textField_66f.setForeground(Color.BLUE);
 						textField_66f.setText(kasila.toString());
+						textField_66f.setEditable(false);
 					} else if ("67".equals(ik)) {
 						textField_67f.setForeground(Color.BLUE);
 						textField_67f.setText(kasila.toString());
+						textField_67f.setEditable(false);
 					} else if ("68".equals(ik)) {
 						textField_68f.setForeground(Color.BLUE);
 						textField_68f.setText(kasila.toString());
+						textField_68f.setEditable(false);
 					} else if ("70".equals(ik)) {
 						textField_70f.setForeground(Color.BLUE);
 						textField_70f.setText(kasila.toString());
+						textField_70f.setEditable(false);
 					} else if ("71".equals(ik)) {
 						textField_71f.setForeground(Color.BLUE);
 						textField_71f.setText(kasila.toString());
+						textField_71f.setEditable(false);
 					} else if ("72".equals(ik)) {
 						textField_72f.setForeground(Color.BLUE);
 						textField_72f.setText(kasila.toString());
+						textField_72f.setEditable(false);
 					} else if ("73".equals(ik)) {
 						textField_73f.setForeground(Color.BLUE);
 						textField_73f.setText(kasila.toString());
+						textField_73f.setEditable(false);
 					} else if ("74".equals(ik)) {
 						textField_74f.setForeground(Color.BLUE);
 						textField_74f.setText(kasila.toString());
+						textField_74f.setEditable(false);
 					} else if ("75".equals(ik)) {
 						textField_75f.setForeground(Color.BLUE);
 						textField_75f.setText(kasila.toString());
+						textField_75f.setEditable(false);
 					} else if ("76".equals(ik)) {
 						textField_76f.setForeground(Color.BLUE);
 						textField_76f.setText(kasila.toString());
+						textField_76f.setEditable(false);
 					} else if ("77".equals(ik)) {
 						textField_77f.setForeground(Color.BLUE);
 						textField_77f.setText(kasila.toString());
+						textField_77f.setEditable(false);
 					} else if ("78".equals(ik)) {
 						textField_78f.setForeground(Color.BLUE);
 						textField_78f.setText(kasila.toString());
+						textField_78f.setEditable(false);
 					} else if ("80".equals(ik)) {
 						textField_80f.setForeground(Color.BLUE);
 						textField_80f.setText(kasila.toString());
+						textField_80f.setEditable(false);
 					} else if ("81".equals(ik)) {
 						textField_81f.setForeground(Color.BLUE);
 						textField_81f.setText(kasila.toString());
+						textField_81f.setEditable(false);
 					} else if ("82".equals(ik)) {
 						textField_82f.setForeground(Color.BLUE);
 						textField_82f.setText(kasila.toString());
+						textField_82f.setEditable(false);
 					} else if ("83".equals(ik)) {
 						textField_83f.setForeground(Color.BLUE);
 						textField_83f.setText(kasila.toString());
+						textField_83f.setEditable(false);
 					} else if ("84".equals(ik)) {
 						textField_84f.setForeground(Color.BLUE);
 						textField_84f.setText(kasila.toString());
+						textField_84f.setEditable(false);
 					} else if ("85".equals(ik)) {
 						textField_85f.setForeground(Color.BLUE);
 						textField_85f.setText(kasila.toString());
+						textField_85f.setEditable(false);
 					} else if ("86".equals(ik)) {
 						textField_86f.setForeground(Color.BLUE);
 						textField_86f.setText(kasila.toString());
+						textField_86f.setEditable(false);
 					} else if ("87".equals(ik)) {
 						textField_87f.setForeground(Color.BLUE);
 						textField_87f.setText(kasila.toString());
+						textField_87f.setEditable(false);
 					} else {
 						textField_88f.setForeground(Color.BLUE);
 						textField_88f.setText(kasila.toString());
+						textField_88f.setEditable(false);
 					}
 					
 				}else if(kasila.getErabiltzaileBal()!=0){

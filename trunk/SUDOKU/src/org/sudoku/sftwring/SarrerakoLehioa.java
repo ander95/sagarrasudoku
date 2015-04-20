@@ -75,6 +75,7 @@ public class SarrerakoLehioa extends JFrame {
 	JLabel lblIcon;
 
 	public SarrerakoLehioa() {
+		setTitle("Sarrera");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 497, 299);
 		contentPane = new JPanel();
