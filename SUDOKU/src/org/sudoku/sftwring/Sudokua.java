@@ -38,17 +38,28 @@ public class Sudokua {
 
 	public Bloke getBloke(int i){
 		Bloke pBloke=null;
-		switch(i){
-		case 0:pBloke=sudoku[0][0];
-		case 1:pBloke=sudoku[0][1];
-		case 2:pBloke=sudoku[0][2];
-		case 3:pBloke=sudoku[1][0];
-		case 4:pBloke=sudoku[1][1];
-		case 5:pBloke=sudoku[1][2];
-		case 6:pBloke=sudoku[2][0];
-		case 7:pBloke=sudoku[2][1];
-		case 8:pBloke=sudoku[2][2];
-		}
+//		switch(i){
+//		case 0:pBloke=sudoku[0][0];
+//		case 1:pBloke=sudoku[0][1];
+//		case 2:pBloke=sudoku[0][2];
+//		case 3:pBloke=sudoku[1][0];
+//		case 4:pBloke=sudoku[1][1];
+//		case 5:pBloke=sudoku[1][2];
+//		case 6:pBloke=sudoku[2][0];
+//		case 7:pBloke=sudoku[2][1];
+//		case 8:pBloke=sudoku[2][2];
+//		}
+		if (i==0) pBloke=sudoku[0][0];
+		else if (i==1) pBloke=sudoku[0][1];
+		else if (i==2) pBloke=sudoku[0][2];
+		else if (i==3) pBloke=sudoku[1][0];
+		else if (i==4) pBloke=sudoku[1][1];
+		else if (i==5) pBloke=sudoku[1][2];
+		else if (i==6) pBloke=sudoku[2][0];
+		else if (i==7) pBloke=sudoku[2][1];
+		else if (i==8) pBloke=sudoku[2][2];
+		
+		
 		return pBloke;
 	}
 	public String gorde(){

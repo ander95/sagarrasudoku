@@ -71,6 +71,7 @@ public class ErregistroLehioa extends JFrame {
 	 * Create the frame.
 	 */
 	public ErregistroLehioa(String pErabIzen, String pPasahitz) {
+		setTitle("Erregistratu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 300);
 		contentPane = new JPanel();
