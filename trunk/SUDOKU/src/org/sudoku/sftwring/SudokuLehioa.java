@@ -140,7 +140,7 @@ public class SudokuLehioa{
 				try {
 					erabiltzailea = erab;
 					sudokuBerria = berria;
-					SudokuLehioa window = new SudokuLehioa();
+					SudokuLehioa window = new SudokuLehioa(erab);
 					window.frmSudokua.setVisible(true);
 
 				} catch (Exception e) {
@@ -153,15 +153,15 @@ public class SudokuLehioa{
 	/**
 	 * Create the application.
 	 */
-	public SudokuLehioa() {
+	public SudokuLehioa(final Erabiltzaile erab) {
 
-		initialize();
+		initialize(erab);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {			
+	private void initialize(final Erabiltzaile erab) {			
 		frmSudokua = new JFrame();
 		frmSudokua.setTitle("SUDOKUA");
 		frmSudokua.setBounds(100, 100, 700, 619);
@@ -230,6 +230,15 @@ public class SudokuLehioa{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//gorde
+				Object[] opzioak={"Jolasten jarraitu","Sudokutik irten"};
+				erab.setSudoku(unekoSudoku);
+				int baiEz = JOptionPane.showOptionDialog(
+						   frmSudokua, "Sudokua ondo gorde da!","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,opzioak,null);
+							
+						if (JOptionPane.NO_OPTION == baiEz){
+							//Sudokua itxi egingo da
+							frmSudokua.dispose();
+						} 
 			}
 		});
 
@@ -237,7 +246,32 @@ public class SudokuLehioa{
 		mnOpzioak.add(mntmZailtazunaAldatu);
 		mntmZailtazunaAldatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Zailtasuna aldatzeko aukera pantilaratu
+				//Zailtasuna aldatzeko aukera pantailaratu
+				Object[] opzioak={"Bai","Ez"};
+				int baiEz = JOptionPane.showOptionDialog(
+						   frmSudokua, "Zihur zailtasuna aldatu nahi duzula?(Zailtasuna aldatzen baduzu zailtasun\n handiagoko sudoku bat bakarrik aukeratu ahalko duzu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
+							
+//						if (JOptionPane.OK_OPTION == baiEz){
+//							//Zailtasuna aukeratzeko ahukera
+//							int zailtasuna=2-unekoSudoku.getZailtasuna();
+//							int aukera;							
+//							if(zailtasuna==0){
+//								Object[] opzioak2={"Zaila"};
+//								 aukera= JOptionPane.showOptionDialog(
+//										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
+//							}
+//							else if(zailtasuna==1){
+//								Object[] opzioak2={"Erdikoa","Zaila"};
+//								 aukera= JOptionPane.showOptionDialog(
+//										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
+//							}
+//							else if(zailtasuna==2){
+//								Object[] opzioak2={"Erdikoa","Zaila"};
+//								 aukera= JOptionPane.showOptionDialog(
+//										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
+//							}
+//							
+//						} 
 			}
 		});
 
@@ -247,12 +281,34 @@ public class SudokuLehioa{
 		mntmZuzendu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Zihur zuzendu nahi duzula?Bai/Ez...
+				Object[] opzioak={"Bai","Ez"};
+				int baiEz = JOptionPane.showOptionDialog(
+						   frmSudokua, "Zihur zuzendu nahi duzula?(Zuzentzen baduzu ezingo duzu sudokua egiten jarraitu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
+							
+						if (JOptionPane.OK_OPTION == baiEz){
+							//erabiltzailearen sudokua zuzendu
+						} 
 			}
 		});
 
 		mntmLaguntza = new JMenuItem("Laguntza");
 		menuBar.add(mntmLaguntza);
 		JPanel panel=new Panel("icon2.png");
+		mntmLaguntza.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int puntuKop=0;
+				Object[] opzioak={"Laguntza","Ez dut behar laguntzarik"};
+				int baiEz = JOptionPane.showOptionDialog(
+						   frmSudokua,"Zihur Laguntza behar duzula?\n(Laguntza eskatzeak puntuak kentzen ditu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
+							
+						if (JOptionPane.OK_OPTION == baiEz){
+							//Laguntza eskaini
+						} 
+			}
+		});
 		frmSudokua.setContentPane(panel);
 
 		frmSudokua.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
