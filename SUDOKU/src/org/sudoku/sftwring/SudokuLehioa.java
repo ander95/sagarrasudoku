@@ -4,7 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JMenuBar;
@@ -37,7 +40,6 @@ import java.awt.Color;
 
 public class SudokuLehioa{
 	private Sudokua unekoSudoku;
-	private JPanel contentPane;
 	private static Erabiltzaile erabiltzailea;
 	private JFrame frmSudokua;
 	private JTextField textField_00;
@@ -159,14 +161,12 @@ public class SudokuLehioa{
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		
+	private void initialize() {			
 		frmSudokua = new JFrame();
 		frmSudokua.setTitle("SUDOKUA");
 		frmSudokua.setBounds(100, 100, 700, 619);
 		//frmSudokua.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSudokua.addWindowListener(new WindowListener() {
-			
 			@Override
 			public void windowClosed(WindowEvent arg0) {
 				// TODO Auto-generated method stub
@@ -181,39 +181,14 @@ public class SudokuLehioa{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
-				JFrame a=new JFrame();
-				a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				a.setBounds(100, 100, 320, 150);
-				a.add(contentPane = new JPanel());
-				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-				a.setContentPane(contentPane);
-				contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-				
-				JTextPane txtpnZiurItxiNahi = new JTextPane();
-				txtpnZiurItxiNahi.setBackground(new Color(238, 238, 238));
-				txtpnZiurItxiNahi.setFont(new Font("Dialog", Font.PLAIN, 18));
-				txtpnZiurItxiNahi.setText("Itxi aurretik gorde nahi duzu?");
-				contentPane.add(txtpnZiurItxiNahi);
-				
-				JButton btnBai = new JButton("BAI");
-				btnBai.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						//Gorde eta itxi
-					}
-				});
-				contentPane.add(btnBai);
-				
-				JButton btnEz = new JButton("EZ");
-				contentPane.add(btnEz);
-				btnEz.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						// Gorde barik itxi
-						
-					}
-				});
-				a.setVisible(true);
+				//baiEz.setVisible(true);
+				Object[] opzioak={"Bai","Ez"};
+				int baiEz = JOptionPane.showOptionDialog(
+						   frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
+							
+						if (JOptionPane.OK_OPTION == baiEz){
+							//erabiltzaileak sudokua gorde
+						}  							
 			}
 
 			@Override
