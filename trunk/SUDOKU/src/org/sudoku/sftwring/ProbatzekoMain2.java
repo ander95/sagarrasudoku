@@ -8,11 +8,10 @@ public class ProbatzekoMain2 {
 	}
 	
 	private static void sudokuaAusazBete() {
-		Sudokua s = new Sudokua();
+		GeneradoreSudoku s = new GeneradoreSudoku();
 		System.out.println("\nHasieran...\n");
-		s.inprimatuSudokuZuzena();
-		s.bete();
+		s.beteAusaz();
 		System.out.println("\nAusaz bete ondoren...\n");
-		s.inprimatuSudokuZuzena();
+		s.inprimatuZuzena();
 	}
 }
