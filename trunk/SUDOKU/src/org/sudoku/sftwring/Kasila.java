@@ -101,5 +101,9 @@ public class Kasila{
 		} else return "";
 	}
 
+	public void setBalioZuzena(int zenb){
+		zuzena=zenb;
+	}
+	
 }
 

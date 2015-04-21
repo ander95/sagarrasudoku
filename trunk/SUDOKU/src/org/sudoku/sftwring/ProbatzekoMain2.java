@@ -11,7 +11,7 @@ public class ProbatzekoMain2 {
 		Sudokua s = new Sudokua();
 		System.out.println("\nHasieran...\n");
 		s.inprimatuSudokuZuzena();
-		s.ausazBete();
+		s.bete();
 		System.out.println("\nAusaz bete ondoren...\n");
 		s.inprimatuSudokuZuzena();
 	}
