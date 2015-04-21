@@ -3,18 +3,22 @@ package org.sudoku.sftwring;
 import java.awt.EventQueue;
 
 import javax.swing.AbstractAction;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JTextPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -22,7 +26,9 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -31,6 +37,7 @@ import java.awt.Color;
 
 public class SudokuLehioa{
 	private Sudokua unekoSudoku;
+	private JPanel contentPane;
 	private static Erabiltzaile erabiltzailea;
 	private JFrame frmSudokua;
 	private JTextField textField_00;
@@ -157,8 +164,79 @@ public class SudokuLehioa{
 		frmSudokua = new JFrame();
 		frmSudokua.setTitle("SUDOKUA");
 		frmSudokua.setBounds(100, 100, 700, 619);
-		frmSudokua.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frmSudokua.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSudokua.addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+			}
 
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				JFrame a=new JFrame();
+				a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				a.setBounds(100, 100, 320, 150);
+				a.add(contentPane = new JPanel());
+				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				a.setContentPane(contentPane);
+				contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				
+				JTextPane txtpnZiurItxiNahi = new JTextPane();
+				txtpnZiurItxiNahi.setBackground(new Color(238, 238, 238));
+				txtpnZiurItxiNahi.setFont(new Font("Dialog", Font.PLAIN, 18));
+				txtpnZiurItxiNahi.setText("Itxi aurretik gorde nahi duzu?");
+				contentPane.add(txtpnZiurItxiNahi);
+				
+				JButton btnBai = new JButton("BAI");
+				btnBai.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						//Gorde eta itxi
+					}
+				});
+				contentPane.add(btnBai);
+				
+				JButton btnEz = new JButton("EZ");
+				contentPane.add(btnEz);
+				btnEz.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// Gorde barik itxi
+						
+					}
+				});
+				a.setVisible(true);
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		menuBar = new JMenuBar();
 		frmSudokua.setJMenuBar(menuBar);
 
@@ -182,9 +260,20 @@ public class SudokuLehioa{
 
 		mntmZailtazunaAldatu = new JMenuItem("Zailtazuna aldatu");
 		mnOpzioak.add(mntmZailtazunaAldatu);
+		mntmZailtazunaAldatu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Zailtasuna aldatzeko aukera pantilaratu
+			}
+		});
+
 
 		mntmZuzendu = new JMenuItem("Zuzendu");
 		mnOpzioak.add(mntmZuzendu);
+		mntmZuzendu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Zihur zuzendu nahi duzula?Bai/Ez...
+			}
+		});
 
 		mntmLaguntza = new JMenuItem("Laguntza");
 		menuBar.add(mntmLaguntza);
