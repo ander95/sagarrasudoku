@@ -1,5 +1,7 @@
 package org.sudoku.sftwring;
 
+import java.util.Random;
+
 public class Sudokua {
 	private Bloke [][] sudoku;
 	private int luzera = 3;
@@ -99,6 +101,20 @@ public class Sudokua {
 			}
 		}
 	}
+	
+	public void bete(){
+		Random ausa = new Random();
+		for(int i=0; i<9; i++){
+			for(int j=0; j<9; j++){
+				Kasila unekoa = getBloke(i).getKasila(j);
+				unekoa.setBalioZuzena(ausa.nextInt(9)+1);
+			}
+		}
+	}
+	
+//	public Adabegia<Integer> osotu(Adabegia guraso){
+//		
+//	}
 
 	public void ausazBete() {
 		
