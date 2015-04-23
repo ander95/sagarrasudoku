@@ -247,29 +247,29 @@ public class SudokuLehioa{
 				//Zailtasuna aldatzeko aukera pantailaratu
 				Object[] opzioak={"Bai","Ez"};
 				int baiEz = JOptionPane.showOptionDialog(
-						   frmSudokua, "Zihur zailtasuna aldatu nahi duzula?(Zailtasuna aldatzen baduzu zailtasun\n handiagoko sudoku bat bakarrik aukeratu ahalko duzu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
+						   frmSudokua, "Zihur zailtasuna aldatu nahi duzula?\n(Zailtasuna aldatzen baduzu zailtasun handiagoko sudoku bat bakarrik aukeratu ahalko duzu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
 							
-//						if (JOptionPane.OK_OPTION == baiEz){
-//							//Zailtasuna aukeratzeko ahukera
-//							int zailtasuna=2-unekoSudoku.getZailtasuna();
-//							int aukera;							
-//							if(zailtasuna==0){
-//								Object[] opzioak2={"Zaila"};
-//								 aukera= JOptionPane.showOptionDialog(
-//										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
-//							}
-//							else if(zailtasuna==1){
-//								Object[] opzioak2={"Erdikoa","Zaila"};
-//								 aukera= JOptionPane.showOptionDialog(
-//										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
-//							}
-//							else if(zailtasuna==2){
-//								Object[] opzioak2={"Erdikoa","Zaila"};
-//								 aukera= JOptionPane.showOptionDialog(
-//										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
-//							}
-//							
-//						} 
+						if (JOptionPane.OK_OPTION == baiEz){
+							//Zailtasuna aukeratzeko ahukera
+							int zailtasuna=2;
+							int aukera;							
+							if(zailtasuna==0){
+								Object[] opzioak2={"Zaila"};
+								 aukera= JOptionPane.showOptionDialog(
+										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
+							}
+							else if(zailtasuna==1){
+								Object[] opzioak2={"Erdikoa","Zaila"};
+								 aukera= JOptionPane.showOptionDialog(
+										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
+							}
+							else if(zailtasuna==2){
+								Object[] opzioak2={"Erdikoa","Zaila"};
+								 aukera= JOptionPane.showOptionDialog(
+										   frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
+							}
+							
+						} 
 			}
 		});
 
@@ -281,7 +281,7 @@ public class SudokuLehioa{
 				//Zihur zuzendu nahi duzula?Bai/Ez...
 				Object[] opzioak={"Bai","Ez"};
 				int baiEz = JOptionPane.showOptionDialog(
-						   frmSudokua, "Zihur zuzendu nahi duzula?(Zuzentzen baduzu ezingo duzu sudokua egiten jarraitu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
+						   frmSudokua, "Zihur zuzendu nahi duzula?\n(Zuzentzen baduzu ezingo duzu sudokua egiten jarraitu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
 							
 						if (JOptionPane.OK_OPTION == baiEz){
 							//erabiltzailearen sudokua zuzendu

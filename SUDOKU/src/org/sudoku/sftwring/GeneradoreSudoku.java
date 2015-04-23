@@ -216,6 +216,7 @@ public class GeneradoreSudoku {
 			//zenbakia sudokuko dagokion posizioan jartzen da
 			hurrengoaJarri(0, zenb);
 			osotu(lehena);
+
 		}
 		
 		public boolean osotu(Adabegia<Integer> adabegi){
@@ -356,5 +357,9 @@ public class GeneradoreSudoku {
 				zerrenda[i] = balioa;
 				}
 			}
+		}
+
+		public Kasila getSudokuKasila(int i, int j) {
+			return this.sudoku[i][j];
 		}
 }

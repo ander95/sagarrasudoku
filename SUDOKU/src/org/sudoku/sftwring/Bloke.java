@@ -24,6 +24,7 @@ public class Bloke {
 		return zabalera;
 	}
 
+
 	public void inprimatuBloke(){
 		for (int i = 0; i < luzera; i++) {
 			for (int j = 0; j < zabalera; j++) {
