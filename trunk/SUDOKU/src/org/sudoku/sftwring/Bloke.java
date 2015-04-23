@@ -23,7 +23,8 @@ public class Bloke {
 	public int getZabalera() {
 		return zabalera;
 	}
-
+	public Kasila[][] getBloke(){
+		return this.bloke;}
 
 	public void inprimatuBloke(){
 		for (int i = 0; i < luzera; i++) {

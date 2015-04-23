@@ -14,9 +14,7 @@ public class Adapter {
 		Sudokua sudo = new Sudokua();
 		GeneradoreSudoku genSudo = new GeneradoreSudoku();
 		genSudo.beteAusaz();
-		genSudo.inprimatuZuzena();
 		Sudokua berria=this.pasatu(sudo,genSudo,0,0,0);
-		berria.inprimatuSudokuZuzena();
 		return berria;
 	}
 	public Sudokua pasatu(Sudokua pSudo,GeneradoreSudoku pGenSudo, int i,int j,int count){
