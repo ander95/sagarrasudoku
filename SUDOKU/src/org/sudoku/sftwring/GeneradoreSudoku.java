@@ -4,18 +4,22 @@ package org.sudoku.sftwring;
 
 public class GeneradoreSudoku {
 
-	private GeneradoreKasila[][] sudoku;
+	private Kasila[][] sudoku;
 		private int luzera=9;
 		private int zabalera=9;
 		private int zailtasuna;
 		
 		public GeneradoreSudoku(){
-			sudoku = new GeneradoreKasila [luzera][zabalera];
+			sudoku = new Kasila [luzera][zabalera];
 			beteZeroz();
 		}
 		
 		public void setZailtasuna(int maila){
 			this.zailtasuna = maila;
+		}
+		
+		public Kasila[][] getSudoku(){
+			return sudoku;
 		}
 		
 		public int getZailtasuna(){
@@ -199,7 +203,7 @@ public class GeneradoreSudoku {
 		public void beteZeroz(){
 			for (int z = 0; z < luzera; z++) {
 				for (int i = 0; i < zabalera; i++) {
-					sudoku[z][i] = new GeneradoreKasila(0);
+					sudoku[z][i] = new Kasila(0);
 				}
 			}
 		}

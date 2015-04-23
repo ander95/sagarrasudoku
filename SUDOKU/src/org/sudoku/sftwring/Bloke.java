@@ -1,7 +1,5 @@
 package org.sudoku.sftwring;
 
-import java.util.Random;
-
 public class Bloke {
 
 	private Kasila [][] bloke;
@@ -18,32 +16,12 @@ public class Bloke {
 		}
 	}
 
-	public int blokekoKasilaAusazEditatu(int i,int j) {
-		Random ausa = new Random();
-		int balioa = ausa.nextInt(9)+1;
-		while (!bloke[i][j].betetaDago()) {
-			if (bloke[i][j].zenbPosibleaDa(balioa))
-				bloke[i][j] = new Kasila(balioa);
-		}
-
-		return balioa;
-
-	}
-
-	public void kasilaZenbPosibleaEzgaitu(int i,int j,int pZenb) {
-		bloke[i][j].zenbPosibleaEzgaitu(pZenb);
-	}
-
 	public int getLuzera() {
 		return luzera;
 	}
 
 	public int getZabalera() {
 		return zabalera;
-	}
-
-	public boolean kasilaZenbPosibleaDa(int i,int j,int pZenb) {
-		return bloke[i][j].zenbPosibleaDa(pZenb);
 	}
 
 	public void inprimatuBloke(){
