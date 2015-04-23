@@ -3,18 +3,13 @@ package org.sudoku.sftwring;
 import java.awt.EventQueue;
 
 import javax.swing.AbstractAction;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JTextPane;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -29,9 +24,6 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Color;
 
@@ -182,13 +174,19 @@ public class SudokuLehioa{
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
 				//baiEz.setVisible(true);
-				Object[] opzioak={"Bai","Ez"};
+				Object[] opzioak={"Bai","Ez", "Ezeztatu"};
 				int baiEz = JOptionPane.showOptionDialog(
-						   frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
+						   frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
 							
 						if (JOptionPane.OK_OPTION == baiEz){
 							//erabiltzaileak sudokua gorde
-						}  							
+							erab.setSudoku(unekoSudoku);
+							ErabiltzaileLista.getErabiltzaileLista().gorde();
+							
+						}else if(JOptionPane.CANCEL_OPTION==baiEz){
+							erabiltzailea.setSudoku(new Sudokua());
+							SudokuLehioa.main(erabiltzailea, false);
+						}
 			}
 
 			@Override

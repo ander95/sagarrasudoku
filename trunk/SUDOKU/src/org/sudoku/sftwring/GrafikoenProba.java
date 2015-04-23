@@ -148,7 +148,8 @@ public class GrafikoenProba {
 		s.inprimatuSudokuZuzena();
 		
 		try {
-			ErabiltzaileLista.getErabiltzaileLista().kargatu();	
+			ErabiltzaileLista.getErabiltzaileLista().kargatu();
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erab", "qwerty");
 			ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab", "qwerty").setSudoku(s);
 			ErabiltzaileLista.getErabiltzaileLista().gorde();
 		} catch (IOException e) {
