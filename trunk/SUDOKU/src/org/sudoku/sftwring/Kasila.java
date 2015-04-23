@@ -4,12 +4,11 @@ public class Kasila{
 	private Integer zuzena;
 	private Integer erabiltzaileBal;
 	private boolean finkoa;
-	private boolean[] posibleak;
 	public Kasila(Integer Balioa){
 		zuzena=Balioa;
 		this.erabiltzaileBal=0;
 		this.finkoa=false;
-		this.posibleak=new boolean[]{true,true,true,true,true,true,true,true,true};
+
 	}
 
 	public void aldatu(Integer balioBerri){
@@ -18,31 +17,6 @@ public class Kasila{
 		else{
 			System.out.println("Ezin izan da balioa aldatu, finkoa da");
 		}
-	}
-
-	public boolean betetaDago(){
-		//		true itzultzen du zenbakirik esleitu bazaio 
-		return zuzena!=0;
-	}
-
-	public boolean zenbPosiblerikDago(){
-		//		false itzultzen du kasilan zenbakirik jarri ezin bada
-		boolean emaitza=false;
-		for(int i=0; i<posibleak.length; i++){
-			if(posibleak[i]==true){
-				return true;
-			}
-		}
-		return emaitza;
-	}
-
-	public void zenbPosibleaEzgaitu(int pZenb) {
-		this.posibleak[pZenb-1] = false;
-	}
-
-	public boolean zenbPosibleaDa(int pZenb) {
-		if (betetaDago()) return false;
-		else return this.posibleak[pZenb-1];
 	}
 
 	public String gorde(){
