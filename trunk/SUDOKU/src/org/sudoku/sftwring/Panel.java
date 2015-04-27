@@ -6,6 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ImageIcon irudia;
 	String izena;
 	
