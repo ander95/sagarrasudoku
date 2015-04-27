@@ -231,7 +231,6 @@ public class AukeratuLehioa extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(erabiltzaile);
 			Sudokua pSudo=new Sudokua();
 			if (sudokuBerria) {
 				if(rdbtnErraza.isSelected()){

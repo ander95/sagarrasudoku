@@ -15,7 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.RootPaneContainer;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Color;

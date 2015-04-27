@@ -9,6 +9,7 @@ public class GrafikoenProba {
 	    	//klsfProba();
 	    
 	}
+	@SuppressWarnings("unused")
 	private static void klsfProba() {
 		
 		for (int i = 0; i < 30; i++) {
@@ -25,125 +26,125 @@ public class GrafikoenProba {
 	private static void sudokuProba() {
 		Sudokua s = new Sudokua();
 		
-		s.getBloke(0).setKasila(0, new Kasila(5));
-		s.getBloke(0).getKasila(0).setFinkoa(true);
-		s.getBloke(0).setKasila(1, new Kasila(3));
-		s.getBloke(0).getKasila(1).setFinkoa(true);
-		s.getBloke(0).setKasila(2, new Kasila(4));
-		s.getBloke(0).setKasila(3, new Kasila(6));
-		s.getBloke(0).getKasila(3).setFinkoa(true);
-		s.getBloke(0).setKasila(4, new Kasila(7));
-		s.getBloke(0).setKasila(5, new Kasila(2));
-		s.getBloke(0).setKasila(6, new Kasila(1));
-		s.getBloke(0).setKasila(7, new Kasila(9));
-		s.getBloke(0).getKasila(7).setFinkoa(true);
-		s.getBloke(0).setKasila(8, new Kasila(8));
-		s.getBloke(0).getKasila(8).setFinkoa(true);
+		s.getBloke(0).setKasila(0,0, new Kasila(5));
+		s.getBloke(0).getKasila(0,0).setFinkoa(true);
+		s.getBloke(0).setKasila(0,1, new Kasila(3));
+		s.getBloke(0).getKasila(0,1).setFinkoa(true);
+		s.getBloke(0).setKasila(0,2, new Kasila(4));
+		s.getBloke(0).setKasila(1,0, new Kasila(6));
+		s.getBloke(0).getKasila(1,0).setFinkoa(true);
+		s.getBloke(0).setKasila(1,1, new Kasila(7));
+		s.getBloke(0).setKasila(1,2, new Kasila(2));
+		s.getBloke(0).setKasila(2,0, new Kasila(1));
+		s.getBloke(0).setKasila(2,1, new Kasila(9));
+		s.getBloke(0).getKasila(2,1).setFinkoa(true);
+		s.getBloke(0).setKasila(2,2, new Kasila(8));
+		s.getBloke(0).getKasila(2,2).setFinkoa(true);
 		
-		s.getBloke(1).setKasila(0, new Kasila(6));
-		s.getBloke(1).setKasila(1, new Kasila(7));
-		s.getBloke(1).getKasila(1).setFinkoa(true);
-		s.getBloke(1).setKasila(2, new Kasila(8));
-		s.getBloke(1).setKasila(3, new Kasila(1));
-		s.getBloke(1).getKasila(1).setFinkoa(true);
-		s.getBloke(1).setKasila(4, new Kasila(9));
-		s.getBloke(1).getKasila(4).setFinkoa(true);
-		s.getBloke(1).setKasila(5, new Kasila(5));
-		s.getBloke(1).getKasila(5).setFinkoa(true);
-		s.getBloke(1).setKasila(6, new Kasila(3));
-		s.getBloke(1).setKasila(7, new Kasila(4));
-		s.getBloke(1).setKasila(8, new Kasila(2));
+		s.getBloke(1).setKasila(0,0, new Kasila(6));
+		s.getBloke(1).setKasila(0,1, new Kasila(7));
+		s.getBloke(1).getKasila(0,1).setFinkoa(true);
+		s.getBloke(1).setKasila(0,2, new Kasila(8));
+		s.getBloke(1).setKasila(1,0, new Kasila(1));
+		s.getBloke(1).getKasila(1,0).setFinkoa(true);
+		s.getBloke(1).setKasila(1,1, new Kasila(9));
+		s.getBloke(1).getKasila(1,1).setFinkoa(true);
+		s.getBloke(1).setKasila(1,2, new Kasila(5));
+		s.getBloke(1).getKasila(1,2).setFinkoa(true);
+		s.getBloke(1).setKasila(2,0, new Kasila(3));
+		s.getBloke(1).setKasila(2,1, new Kasila(4));
+		s.getBloke(1).setKasila(2,2, new Kasila(2));
 		
-		s.getBloke(2).setKasila(0, new Kasila(9));
-		s.getBloke(2).setKasila(1, new Kasila(1));
-		s.getBloke(2).setKasila(2, new Kasila(2));
-		s.getBloke(2).setKasila(3, new Kasila(3));
-		s.getBloke(2).setKasila(4, new Kasila(4));
-		s.getBloke(2).setKasila(5, new Kasila(8));
-		s.getBloke(2).setKasila(6, new Kasila(5));
-		s.getBloke(2).setKasila(7, new Kasila(6));
-		s.getBloke(2).getKasila(7).setFinkoa(true);
-		s.getBloke(2).setKasila(8, new Kasila(7));
+		s.getBloke(2).setKasila(0,0, new Kasila(9));
+		s.getBloke(2).setKasila(0,1, new Kasila(1));
+		s.getBloke(2).setKasila(0,2, new Kasila(2));
+		s.getBloke(2).setKasila(1,0, new Kasila(3));
+		s.getBloke(2).setKasila(1,1, new Kasila(4));
+		s.getBloke(2).setKasila(1,2, new Kasila(8));
+		s.getBloke(2).setKasila(2,0, new Kasila(5));
+		s.getBloke(2).setKasila(2,1, new Kasila(6));
+		s.getBloke(2).getKasila(2,1).setFinkoa(true);
+		s.getBloke(2).setKasila(2,2, new Kasila(7));
 		
-		s.getBloke(3).setKasila(0, new Kasila(8));
-		s.getBloke(3).getKasila(0).setFinkoa(true);
-		s.getBloke(3).setKasila(1, new Kasila(5));
-		s.getBloke(3).setKasila(2, new Kasila(9));
-		s.getBloke(3).setKasila(3, new Kasila(4));
-		s.getBloke(3).getKasila(3).setFinkoa(true);
-		s.getBloke(3).setKasila(4, new Kasila(2));
-		s.getBloke(3).setKasila(5, new Kasila(6));
-		s.getBloke(3).setKasila(6, new Kasila(7));
-		s.getBloke(3).getKasila(6).setFinkoa(true);
-		s.getBloke(3).setKasila(7, new Kasila(1));
-		s.getBloke(3).setKasila(8, new Kasila(3));
+		s.getBloke(3).setKasila(0,0, new Kasila(8));
+		s.getBloke(3).getKasila(0,0).setFinkoa(true);
+		s.getBloke(3).setKasila(0,1, new Kasila(5));
+		s.getBloke(3).setKasila(0,2, new Kasila(9));
+		s.getBloke(3).setKasila(1,0, new Kasila(4));
+		s.getBloke(3).getKasila(1,0).setFinkoa(true);
+		s.getBloke(3).setKasila(1,1, new Kasila(2));
+		s.getBloke(3).setKasila(1,2, new Kasila(6));
+		s.getBloke(3).setKasila(2,0, new Kasila(7));
+		s.getBloke(3).getKasila(2,0).setFinkoa(true);
+		s.getBloke(3).setKasila(2,1, new Kasila(1));
+		s.getBloke(3).setKasila(2,2, new Kasila(3));
 		
-		s.getBloke(4).setKasila(0, new Kasila(7));
-		s.getBloke(4).setKasila(1, new Kasila(6));
-		s.getBloke(4).getKasila(1).setFinkoa(true);
-		s.getBloke(4).setKasila(2, new Kasila(1));
-		s.getBloke(4).setKasila(3, new Kasila(8));
-		s.getBloke(4).getKasila(3).setFinkoa(true);
-		s.getBloke(4).setKasila(4, new Kasila(5));
-		s.getBloke(4).setKasila(5, new Kasila(3));
-		s.getBloke(4).getKasila(5).setFinkoa(true);
-		s.getBloke(4).setKasila(6, new Kasila(9));
-		s.getBloke(4).setKasila(7, new Kasila(2));
-		s.getBloke(4).getKasila(7).setFinkoa(true);
-		s.getBloke(4).setKasila(8, new Kasila(4));
+		s.getBloke(4).setKasila(0,0, new Kasila(7));
+		s.getBloke(4).setKasila(0,1, new Kasila(6));
+		s.getBloke(4).getKasila(0,1).setFinkoa(true);
+		s.getBloke(4).setKasila(0,2, new Kasila(1));
+		s.getBloke(4).setKasila(1,0, new Kasila(8));
+		s.getBloke(4).getKasila(1,0).setFinkoa(true);
+		s.getBloke(4).setKasila(1,1, new Kasila(5));
+		s.getBloke(4).setKasila(1,2, new Kasila(3));
+		s.getBloke(4).getKasila(1,2).setFinkoa(true);
+		s.getBloke(4).setKasila(2,0, new Kasila(9));
+		s.getBloke(4).setKasila(2,1, new Kasila(2));
+		s.getBloke(4).getKasila(2,1).setFinkoa(true);
+		s.getBloke(4).setKasila(2,2, new Kasila(4));
 
-		s.getBloke(5).setKasila(0, new Kasila(4));
-		s.getBloke(5).setKasila(1, new Kasila(2));
-		s.getBloke(5).setKasila(2, new Kasila(3));
-		s.getBloke(5).getKasila(2).setFinkoa(true);
-		s.getBloke(5).setKasila(3, new Kasila(7));
-		s.getBloke(5).setKasila(4, new Kasila(9));
-		s.getBloke(5).setKasila(5, new Kasila(1));
-		s.getBloke(5).getKasila(5).setFinkoa(true);
-		s.getBloke(5).setKasila(6, new Kasila(8));
-		s.getBloke(5).setKasila(7, new Kasila(5));
-		s.getBloke(5).setKasila(8, new Kasila(6));
-		s.getBloke(5).getKasila(8).setFinkoa(true);
+		s.getBloke(5).setKasila(0,0, new Kasila(4));
+		s.getBloke(5).setKasila(0,1, new Kasila(2));
+		s.getBloke(5).setKasila(0,2, new Kasila(3));
+		s.getBloke(5).getKasila(0,2).setFinkoa(true);
+		s.getBloke(5).setKasila(1,0, new Kasila(7));
+		s.getBloke(5).setKasila(1,1, new Kasila(9));
+		s.getBloke(5).setKasila(1,2, new Kasila(1));
+		s.getBloke(5).getKasila(1,2).setFinkoa(true);
+		s.getBloke(5).setKasila(2,0, new Kasila(8));
+		s.getBloke(5).setKasila(2,1, new Kasila(5));
+		s.getBloke(5).setKasila(2,2, new Kasila(6));
+		s.getBloke(5).getKasila(2,2).setFinkoa(true);
 		
-		s.getBloke(6).setKasila(0, new Kasila(9));
-		s.getBloke(6).setKasila(1, new Kasila(6));
-		s.getBloke(6).getKasila(1).setFinkoa(true);
-		s.getBloke(6).setKasila(2, new Kasila(1));
-		s.getBloke(6).setKasila(3, new Kasila(2));
-		s.getBloke(6).setKasila(4, new Kasila(8));
-		s.getBloke(6).setKasila(5, new Kasila(7));
-		s.getBloke(6).setKasila(6, new Kasila(3));
-		s.getBloke(6).setKasila(7, new Kasila(4));
-		s.getBloke(6).setKasila(8, new Kasila(5));
+		s.getBloke(6).setKasila(0,0, new Kasila(9));
+		s.getBloke(6).setKasila(0,1, new Kasila(6));
+		s.getBloke(6).getKasila(0,1).setFinkoa(true);
+		s.getBloke(6).setKasila(0,2, new Kasila(1));
+		s.getBloke(6).setKasila(1,0, new Kasila(2));
+		s.getBloke(6).setKasila(1,1, new Kasila(8));
+		s.getBloke(6).setKasila(1,2, new Kasila(7));
+		s.getBloke(6).setKasila(2,0, new Kasila(3));
+		s.getBloke(6).setKasila(2,1, new Kasila(4));
+		s.getBloke(6).setKasila(2,2, new Kasila(5));
 		
-		s.getBloke(7).setKasila(0, new Kasila(5));
-		s.getBloke(7).setKasila(1, new Kasila(3));
-		s.getBloke(7).setKasila(2, new Kasila(7));
-		s.getBloke(7).setKasila(3, new Kasila(4));
-		s.getBloke(7).getKasila(3).setFinkoa(true);
-		s.getBloke(7).setKasila(4, new Kasila(1));
-		s.getBloke(7).getKasila(4).setFinkoa(true);
-		s.getBloke(7).setKasila(5, new Kasila(9));
-		s.getBloke(7).getKasila(5).setFinkoa(true);
-		s.getBloke(7).setKasila(6, new Kasila(2));
-		s.getBloke(7).setKasila(7, new Kasila(8));
-		s.getBloke(7).getKasila(7).setFinkoa(true);
-		s.getBloke(7).setKasila(8, new Kasila(6));
+		s.getBloke(7).setKasila(0,0, new Kasila(5));
+		s.getBloke(7).setKasila(0,1, new Kasila(3));
+		s.getBloke(7).setKasila(0,2, new Kasila(7));
+		s.getBloke(7).setKasila(1,0, new Kasila(4));
+		s.getBloke(7).getKasila(1,0).setFinkoa(true);
+		s.getBloke(7).setKasila(1,1, new Kasila(1));
+		s.getBloke(7).getKasila(1,1).setFinkoa(true);
+		s.getBloke(7).setKasila(1,2, new Kasila(9));
+		s.getBloke(7).getKasila(1,2).setFinkoa(true);
+		s.getBloke(7).setKasila(2,0, new Kasila(2));
+		s.getBloke(7).setKasila(2,1, new Kasila(8));
+		s.getBloke(7).getKasila(2,1).setFinkoa(true);
+		s.getBloke(7).setKasila(2,2, new Kasila(6));
 		
-		s.getBloke(8).setKasila(0, new Kasila(2));
-		s.getBloke(8).getKasila(0).setFinkoa(true);
-		s.getBloke(8).setKasila(1, new Kasila(8));
-		s.getBloke(8).getKasila(1).setFinkoa(true);
-		s.getBloke(8).setKasila(2, new Kasila(4));
-		s.getBloke(8).setKasila(3, new Kasila(6));
-		s.getBloke(8).setKasila(4, new Kasila(3));
-		s.getBloke(8).setKasila(5, new Kasila(5));
-		s.getBloke(8).getKasila(5).setFinkoa(true);
-		s.getBloke(8).setKasila(6, new Kasila(1));
-		s.getBloke(8).setKasila(7, new Kasila(7));
-		s.getBloke(8).getKasila(7).setFinkoa(true);
-		s.getBloke(8).setKasila(8, new Kasila(9));
-		s.getBloke(8).getKasila(8).setFinkoa(true);
+		s.getBloke(8).setKasila(0,0, new Kasila(2));
+		s.getBloke(8).getKasila(0,0).setFinkoa(true);
+		s.getBloke(8).setKasila(0,1, new Kasila(8));
+		s.getBloke(8).getKasila(0,1).setFinkoa(true);
+		s.getBloke(8).setKasila(0,2, new Kasila(4));
+		s.getBloke(8).setKasila(1,0, new Kasila(6));
+		s.getBloke(8).setKasila(1,1, new Kasila(3));
+		s.getBloke(8).setKasila(1,2, new Kasila(5));
+		s.getBloke(8).getKasila(1,2).setFinkoa(true);
+		s.getBloke(8).setKasila(2,0, new Kasila(1));
+		s.getBloke(8).setKasila(2,1, new Kasila(7));
+		s.getBloke(8).getKasila(2,1).setFinkoa(true);
+		s.getBloke(8).setKasila(2,2, new Kasila(9));
+		s.getBloke(8).getKasila(2,2).setFinkoa(true);
 		
 		s.inprimatuSudokuZuzena();
 		
@@ -158,4 +159,6 @@ public class GrafikoenProba {
 		}
 		
 	}
+	
+	
 }

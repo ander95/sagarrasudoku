@@ -79,43 +79,13 @@ public class Bloke {
 
 		}
 	}
-	public Kasila getKasila(int i){
-		Kasila pKasila=null;
-//		switch(i){
-//		case 0:pKasila=bloke[0][0];
-//		case 1:pKasila=bloke[0][1];
-//		case 2:pKasila=bloke[0][2];
-//		case 3:pKasila=bloke[1][0];
-//		case 4:pKasila=bloke[1][1];
-//		case 5:pKasila=bloke[1][2];
-//		case 6:pKasila=bloke[2][0];
-//		case 7:pKasila=bloke[2][1];
-//		case 8:pKasila=bloke[2][2];
-//		}
-		if (i==0) pKasila=bloke[0][0];
-		else if (i==1) pKasila=bloke[0][1];
-		else if (i==2) pKasila=bloke[0][2];
-		else if (i==3) pKasila=bloke[1][0];
-		else if (i==4) pKasila=bloke[1][1];
-		else if (i==5) pKasila=bloke[1][2];
-		else if (i==6) pKasila=bloke[2][0];
-		else if (i==7) pKasila=bloke[2][1];
-		else if (i==8) pKasila=bloke[2][2];
-		
-		return pKasila;
+	public Kasila getKasila(int i , int j){
+		return bloke[i][j];
 	}
 	
-	public void setKasila(int i, Kasila pKasila){
-		switch(i){
-		case 0:bloke[0][0]=pKasila;
-		case 1:bloke[0][1]=pKasila;
-		case 2:bloke[0][2]=pKasila;
-		case 3:bloke[1][0]=pKasila;
-		case 4:bloke[1][1]=pKasila;
-		case 5:bloke[1][2]=pKasila;
-		case 6:bloke[2][0]=pKasila;
-		case 7:bloke[2][1]=pKasila;
-		case 8:bloke[2][2]=pKasila;
-		}
+	public void setKasila(int i , int j, Kasila pKasila){
+
+		bloke[i][j]= pKasila;
+		
 	}
 }

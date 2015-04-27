@@ -1,7 +1,5 @@
 package org.sudoku.sftwring;
 
-import java.util.Random;
-
 public class Sudokua {
 	private Bloke [][] sudoku;
 	private int luzera = 3;
@@ -40,29 +38,43 @@ public class Sudokua {
 
 	public Bloke getBloke(int i){
 		Bloke pBloke=null;
-//		switch(i){
-//		case 0:pBloke=sudoku[0][0];
-//		case 1:pBloke=sudoku[0][1];
-//		case 2:pBloke=sudoku[0][2];
-//		case 3:pBloke=sudoku[1][0];
-//		case 4:pBloke=sudoku[1][1];
-//		case 5:pBloke=sudoku[1][2];
-//		case 6:pBloke=sudoku[2][0];
-//		case 7:pBloke=sudoku[2][1];
-//		case 8:pBloke=sudoku[2][2];
-//		}
-		if (i==0) pBloke=sudoku[0][0];
-		else if (i==1) pBloke=sudoku[0][1];
-		else if (i==2) pBloke=sudoku[0][2];
-		else if (i==3) pBloke=sudoku[1][0];
-		else if (i==4) pBloke=sudoku[1][1];
-		else if (i==5) pBloke=sudoku[1][2];
-		else if (i==6) pBloke=sudoku[2][0];
-		else if (i==7) pBloke=sudoku[2][1];
-		else if (i==8) pBloke=sudoku[2][2];
+		switch(i){
+		case 0:pBloke=sudoku[0][0];break;
+		case 1:pBloke=sudoku[0][1];break;
+		case 2:pBloke=sudoku[0][2];break;
+		case 3:pBloke=sudoku[1][0];break;
+		case 4:pBloke=sudoku[1][1];break;
+		case 5:pBloke=sudoku[1][2];break;
+		case 6:pBloke=sudoku[2][0];break;
+		case 7:pBloke=sudoku[2][1];break;
+		case 8:pBloke=sudoku[2][2];break;
+		}
+//		if (i==0) pBloke=sudoku[0][0];
+//		else if (i==1) pBloke=sudoku[0][1];
+//		else if (i==2) pBloke=sudoku[0][2];
+//		else if (i==3) pBloke=sudoku[1][0];
+//		else if (i==4) pBloke=sudoku[1][1];
+//		else if (i==5) pBloke=sudoku[1][2];
+//		else if (i==6) pBloke=sudoku[2][0];
+//		else if (i==7) pBloke=sudoku[2][1];
+//		else if (i==8) pBloke=sudoku[2][2];
 		
 		
 		return pBloke;
+	}
+	public Kasila getKasila(int i, int j) {
+		int blokeI = i/3;
+		int blokeJ = j/3;
+		int kasilaI = i - (blokeI*3);
+		int kasilaJ = j - (blokeJ*3);
+		return sudoku[blokeI][blokeJ].getKasila(kasilaI,kasilaJ);
+	}
+	public void setKasila(int i, int j, Kasila pKasila) {
+		int blokeI = i/3;
+		int blokeJ = j/3;
+		int kasilaI = i - (blokeI*3);
+		int kasilaJ = j - (blokeJ*3);
+		sudoku[blokeI][blokeJ].setKasila(kasilaI,kasilaJ,pKasila);
 	}
 	public String gorde(){
 		//Aurre:
@@ -110,10 +122,7 @@ public class Sudokua {
 		return this.zailtasuna;
 	}
 
-	public void ausazBete() {
-		
-		
-	}
+	public void ausazBete() {/*Ausaz betetzeko metodoa bere semeetan definituko da Adib.: Adapterrean*/}
 }
 
 
