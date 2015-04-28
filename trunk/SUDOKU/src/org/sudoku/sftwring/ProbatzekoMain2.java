@@ -15,6 +15,8 @@ public class ProbatzekoMain2 {
 		s.ausazBete();
 		System.out.println("\nAusaz bete ondoren...\n");
 		s.inprimatuSudokuZuzena();
+		
+		s.inprimatuSudoku();
 		//s.inprimatuZuzena();
 	}
 }

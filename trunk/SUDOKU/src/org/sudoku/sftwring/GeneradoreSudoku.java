@@ -15,7 +15,10 @@ public class GeneradoreSudoku {
 		}
 		
 		public void setZailtasuna(int maila){
-			this.zailtasuna = maila;
+			if (maila==0||maila==1||maila==2) {
+				this.zailtasuna = maila;
+			}
+			else {}
 		}
 		
 		public Kasila[][] getSudoku(){
@@ -26,89 +29,143 @@ public class GeneradoreSudoku {
 			return this.zailtasuna;
 		}
 		
+		private void kopiatu(){
+			for (int i = 0; i < sudoku.length; i++) {
+				for (int j = 0; j < sudoku[0].length; j++) {
+					sudoku[i][j].setFinkoa(false);
+					sudoku[i][j].aldatu(sudoku[i][j].getBalioZuzena());
+				}
+			}
+		}
+		
+		private void kasilakEzabatu(int zailtazuna){
+			int kopurua=0;
+			Random rg=new Random();
+			int batu = rg.nextInt(4);
+			switch(zailtazuna){
+			case 0:kopurua = 38 + batu; break;
+			case 1:kopurua = 44 + batu; break;
+			case 2:kopurua = 52 + batu; break;
+			}
+			boolean osotuDaiteke = false;
+			do {
+				kopiatu();
+				ezabatuAusaz(kopurua);
+				osotuDaiteke = sudokuaEgin();
+			} while (!osotuDaiteke);
+		}
+		
+		private boolean sudokuaEgin() {
+			boolean osatuta = false;
+			//sudokua osatzeko algoritmoa(k)
+			
+			return osatuta;
+		}
+
+		private void ezabatuAusaz(int kopurua) {
+			Random r = new Random();
+			int i = r.nextInt(9);
+			int z = r.nextInt(9);
+			while (kopurua>0) {
+				if (sudoku[i][z].getErabiltzaileBal()!=0) {
+					sudoku[i][z].aldatu(0);
+					kopurua--;	
+				}
+				i = r.nextInt(9)+1;
+				z = r.nextInt(9)+1;
+			}
+			for (int j = 0; j < sudoku.length; j++) {
+				for (int k = 0; k < sudoku.length; k++) {
+					if (sudoku[j][k].getErabiltzaileBal()!=0) {
+						sudoku[j][k].setFinkoa(true);
+					}
+				}
+			}
+		}
+
 		public void hurrengoaJarri(int pos, int zenb){
 			switch(pos){
-			case 0:sudoku[0][0].setBalioZuzena(zenb);
-			case 1:sudoku[0][1].setBalioZuzena(zenb);
-			case 2:sudoku[0][2].setBalioZuzena(zenb);
-			case 3:sudoku[0][3].setBalioZuzena(zenb);
-			case 4:sudoku[0][4].setBalioZuzena(zenb);
-			case 5:sudoku[0][5].setBalioZuzena(zenb);
-			case 6:sudoku[0][6].setBalioZuzena(zenb);
-			case 7:sudoku[0][7].setBalioZuzena(zenb);
-			case 8:sudoku[0][8].setBalioZuzena(zenb);
-			case 9:sudoku[1][0].setBalioZuzena(zenb);
-			case 10:sudoku[1][1].setBalioZuzena(zenb);
-			case 11:sudoku[1][2].setBalioZuzena(zenb);
-			case 12:sudoku[1][3].setBalioZuzena(zenb);
-			case 13:sudoku[1][4].setBalioZuzena(zenb);
-			case 14:sudoku[1][5].setBalioZuzena(zenb);
-			case 15:sudoku[1][6].setBalioZuzena(zenb);
-			case 16:sudoku[1][7].setBalioZuzena(zenb);
-			case 17:sudoku[1][8].setBalioZuzena(zenb);
-			case 18:sudoku[2][0].setBalioZuzena(zenb);
-			case 19:sudoku[2][1].setBalioZuzena(zenb);
-			case 20:sudoku[2][2].setBalioZuzena(zenb);
-			case 21:sudoku[2][3].setBalioZuzena(zenb);
-			case 22:sudoku[2][4].setBalioZuzena(zenb);
-			case 23:sudoku[2][5].setBalioZuzena(zenb);
-			case 24:sudoku[2][6].setBalioZuzena(zenb);
-			case 25:sudoku[2][7].setBalioZuzena(zenb);
-			case 26:sudoku[2][8].setBalioZuzena(zenb);
-			case 27:sudoku[3][0].setBalioZuzena(zenb);
-			case 28:sudoku[3][1].setBalioZuzena(zenb);
-			case 29:sudoku[3][2].setBalioZuzena(zenb);
-			case 30:sudoku[3][3].setBalioZuzena(zenb);
-			case 31:sudoku[3][4].setBalioZuzena(zenb);
-			case 32:sudoku[3][5].setBalioZuzena(zenb);
-			case 33:sudoku[3][6].setBalioZuzena(zenb);
-			case 34:sudoku[3][7].setBalioZuzena(zenb);
-			case 35:sudoku[3][8].setBalioZuzena(zenb);
-			case 36:sudoku[4][0].setBalioZuzena(zenb);
-			case 37:sudoku[4][1].setBalioZuzena(zenb);
-			case 38:sudoku[4][2].setBalioZuzena(zenb);
-			case 39:sudoku[4][3].setBalioZuzena(zenb);
-			case 40:sudoku[4][4].setBalioZuzena(zenb);
-			case 41:sudoku[4][5].setBalioZuzena(zenb);
-			case 42:sudoku[4][6].setBalioZuzena(zenb);
-			case 43:sudoku[4][7].setBalioZuzena(zenb);
-			case 44:sudoku[4][8].setBalioZuzena(zenb);
-			case 45:sudoku[5][0].setBalioZuzena(zenb);
-			case 46:sudoku[5][1].setBalioZuzena(zenb);
-			case 47:sudoku[5][2].setBalioZuzena(zenb);
-			case 48:sudoku[5][3].setBalioZuzena(zenb);
-			case 49:sudoku[5][4].setBalioZuzena(zenb);
-			case 50:sudoku[5][5].setBalioZuzena(zenb);
-			case 51:sudoku[5][6].setBalioZuzena(zenb);
-			case 52:sudoku[5][7].setBalioZuzena(zenb);
-			case 53:sudoku[5][8].setBalioZuzena(zenb);
-			case 54:sudoku[6][0].setBalioZuzena(zenb);
-			case 55:sudoku[6][1].setBalioZuzena(zenb);
-			case 56:sudoku[6][2].setBalioZuzena(zenb);
-			case 57:sudoku[6][3].setBalioZuzena(zenb);
-			case 58:sudoku[6][4].setBalioZuzena(zenb);
-			case 59:sudoku[6][5].setBalioZuzena(zenb);
-			case 60:sudoku[6][6].setBalioZuzena(zenb);
-			case 61:sudoku[6][7].setBalioZuzena(zenb);
-			case 62:sudoku[6][8].setBalioZuzena(zenb);
-			case 63:sudoku[7][0].setBalioZuzena(zenb);
-			case 64:sudoku[7][1].setBalioZuzena(zenb);
-			case 65:sudoku[7][2].setBalioZuzena(zenb);
-			case 66:sudoku[7][3].setBalioZuzena(zenb);
-			case 67:sudoku[7][4].setBalioZuzena(zenb);
-			case 68:sudoku[7][5].setBalioZuzena(zenb);
-			case 69:sudoku[7][6].setBalioZuzena(zenb);
-			case 70:sudoku[7][7].setBalioZuzena(zenb);
-			case 71:sudoku[7][8].setBalioZuzena(zenb);
-			case 72:sudoku[8][0].setBalioZuzena(zenb);
-			case 73:sudoku[8][1].setBalioZuzena(zenb);
-			case 74:sudoku[8][2].setBalioZuzena(zenb);
-			case 75:sudoku[8][3].setBalioZuzena(zenb);
-			case 76:sudoku[8][4].setBalioZuzena(zenb);
-			case 77:sudoku[8][5].setBalioZuzena(zenb);
-			case 78:sudoku[8][6].setBalioZuzena(zenb);
-			case 79:sudoku[8][7].setBalioZuzena(zenb);
-			case 80:sudoku[8][8].setBalioZuzena(zenb);
+			case 0:sudoku[0][0].setBalioZuzena(zenb); break;
+			case 1:sudoku[0][1].setBalioZuzena(zenb); break;
+			case 2:sudoku[0][2].setBalioZuzena(zenb); break;
+			case 3:sudoku[0][3].setBalioZuzena(zenb); break;
+			case 4:sudoku[0][4].setBalioZuzena(zenb); break;
+			case 5:sudoku[0][5].setBalioZuzena(zenb); break;
+			case 6:sudoku[0][6].setBalioZuzena(zenb); break;
+			case 7:sudoku[0][7].setBalioZuzena(zenb); break;
+			case 8:sudoku[0][8].setBalioZuzena(zenb); break;
+			case 9:sudoku[1][0].setBalioZuzena(zenb); break;
+			case 10:sudoku[1][1].setBalioZuzena(zenb); break;
+			case 11:sudoku[1][2].setBalioZuzena(zenb); break;
+			case 12:sudoku[1][3].setBalioZuzena(zenb); break;
+			case 13:sudoku[1][4].setBalioZuzena(zenb); break;
+			case 14:sudoku[1][5].setBalioZuzena(zenb); break;
+			case 15:sudoku[1][6].setBalioZuzena(zenb); break;
+			case 16:sudoku[1][7].setBalioZuzena(zenb); break;
+			case 17:sudoku[1][8].setBalioZuzena(zenb); break;
+			case 18:sudoku[2][0].setBalioZuzena(zenb); break;
+			case 19:sudoku[2][1].setBalioZuzena(zenb); break;
+			case 20:sudoku[2][2].setBalioZuzena(zenb); break;
+			case 21:sudoku[2][3].setBalioZuzena(zenb); break;
+			case 22:sudoku[2][4].setBalioZuzena(zenb); break;
+			case 23:sudoku[2][5].setBalioZuzena(zenb); break;
+			case 24:sudoku[2][6].setBalioZuzena(zenb); break;
+			case 25:sudoku[2][7].setBalioZuzena(zenb); break;
+			case 26:sudoku[2][8].setBalioZuzena(zenb); break;
+			case 27:sudoku[3][0].setBalioZuzena(zenb); break;
+			case 28:sudoku[3][1].setBalioZuzena(zenb); break;
+			case 29:sudoku[3][2].setBalioZuzena(zenb); break;
+			case 30:sudoku[3][3].setBalioZuzena(zenb); break;
+			case 31:sudoku[3][4].setBalioZuzena(zenb); break;
+			case 32:sudoku[3][5].setBalioZuzena(zenb); break;
+			case 33:sudoku[3][6].setBalioZuzena(zenb); break;
+			case 34:sudoku[3][7].setBalioZuzena(zenb); break;
+			case 35:sudoku[3][8].setBalioZuzena(zenb); break;
+			case 36:sudoku[4][0].setBalioZuzena(zenb); break;
+			case 37:sudoku[4][1].setBalioZuzena(zenb); break;
+			case 38:sudoku[4][2].setBalioZuzena(zenb); break;
+			case 39:sudoku[4][3].setBalioZuzena(zenb); break;
+			case 40:sudoku[4][4].setBalioZuzena(zenb); break;
+			case 41:sudoku[4][5].setBalioZuzena(zenb); break;
+			case 42:sudoku[4][6].setBalioZuzena(zenb); break;
+			case 43:sudoku[4][7].setBalioZuzena(zenb); break;
+			case 44:sudoku[4][8].setBalioZuzena(zenb); break;
+			case 45:sudoku[5][0].setBalioZuzena(zenb); break;
+			case 46:sudoku[5][1].setBalioZuzena(zenb); break;
+			case 47:sudoku[5][2].setBalioZuzena(zenb); break;
+			case 48:sudoku[5][3].setBalioZuzena(zenb); break;
+			case 49:sudoku[5][4].setBalioZuzena(zenb); break;
+			case 50:sudoku[5][5].setBalioZuzena(zenb); break;
+			case 51:sudoku[5][6].setBalioZuzena(zenb); break;
+			case 52:sudoku[5][7].setBalioZuzena(zenb); break;
+			case 53:sudoku[5][8].setBalioZuzena(zenb); break;
+			case 54:sudoku[6][0].setBalioZuzena(zenb); break;
+			case 55:sudoku[6][1].setBalioZuzena(zenb); break;
+			case 56:sudoku[6][2].setBalioZuzena(zenb); break;
+			case 57:sudoku[6][3].setBalioZuzena(zenb); break;
+			case 58:sudoku[6][4].setBalioZuzena(zenb); break;
+			case 59:sudoku[6][5].setBalioZuzena(zenb); break;
+			case 60:sudoku[6][6].setBalioZuzena(zenb); break;
+			case 61:sudoku[6][7].setBalioZuzena(zenb); break;
+			case 62:sudoku[6][8].setBalioZuzena(zenb); break;
+			case 63:sudoku[7][0].setBalioZuzena(zenb); break;
+			case 64:sudoku[7][1].setBalioZuzena(zenb); break;
+			case 65:sudoku[7][2].setBalioZuzena(zenb); break;
+			case 66:sudoku[7][3].setBalioZuzena(zenb); break;
+			case 67:sudoku[7][4].setBalioZuzena(zenb); break;
+			case 68:sudoku[7][5].setBalioZuzena(zenb); break;
+			case 69:sudoku[7][6].setBalioZuzena(zenb); break;
+			case 70:sudoku[7][7].setBalioZuzena(zenb); break;
+			case 71:sudoku[7][8].setBalioZuzena(zenb); break;
+			case 72:sudoku[8][0].setBalioZuzena(zenb); break;
+			case 73:sudoku[8][1].setBalioZuzena(zenb); break;
+			case 74:sudoku[8][2].setBalioZuzena(zenb); break;
+			case 75:sudoku[8][3].setBalioZuzena(zenb); break;
+			case 76:sudoku[8][4].setBalioZuzena(zenb); break;
+			case 77:sudoku[8][5].setBalioZuzena(zenb); break;
+			case 78:sudoku[8][6].setBalioZuzena(zenb); break;
+			case 79:sudoku[8][7].setBalioZuzena(zenb); break;
+			case 80:sudoku[8][8].setBalioZuzena(zenb); break;
 			}
 		}
 		
@@ -216,7 +273,8 @@ public class GeneradoreSudoku {
 			//zenbakia sudokuko dagokion posizioan jartzen da
 			hurrengoaJarri(0, zenb);
 			osotu(lehena);
-
+			kopiatu();
+			kasilakEzabatu(this.zailtasuna);
 		}
 		
 		public boolean osotu(Adabegia<Integer> adabegi){
