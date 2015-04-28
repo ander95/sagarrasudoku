@@ -71,11 +71,11 @@ public class GeneradoreSudoku {
 					sudoku[i][z].aldatu(0);
 					kopurua--;	
 				}
-				i = r.nextInt(9)+1;
-				z = r.nextInt(9)+1;
+				i = r.nextInt(9);
+				z = r.nextInt(9);
 			}
 			for (int j = 0; j < sudoku.length; j++) {
-				for (int k = 0; k < sudoku.length; k++) {
+				for (int k = 0; k < sudoku[0].length; k++) {
 					if (sudoku[j][k].getErabiltzaileBal()!=0) {
 						sudoku[j][k].setFinkoa(true);
 					}
