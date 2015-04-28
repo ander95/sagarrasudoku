@@ -77,7 +77,6 @@ public class SudokuLehioa{
 		frmSudokua = new JFrame();
 		frmSudokua.setTitle("SUDOKUA");
 		frmSudokua.setBounds(100, 100, 700, 619);
-		//frmSudokua.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSudokua.addWindowListener(new WindowListener() {
 			@Override
 			public void windowClosed(WindowEvent arg0) {
@@ -93,13 +92,13 @@ public class SudokuLehioa{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
-				//baiEz.setVisible(true);
 				Object[] opzioak={"Bai","Ez", "Ezeztatu"};
 				int baiEz = JOptionPane.showOptionDialog(
 						frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
 
 				if (JOptionPane.OK_OPTION == baiEz){
 					//erabiltzaileak sudokua gorde
+					gorde();
 					erab.setSudoku(unekoSudoku);
 					ErabiltzaileLista.getErabiltzaileLista().gorde();
 
@@ -149,6 +148,7 @@ public class SudokuLehioa{
 			public void actionPerformed(ActionEvent arg0) {
 				//gorde
 				Object[] opzioak={"Jolasten jarraitu","Sudokutik irten"};
+				gorde();
 				erab.setSudoku(unekoSudoku);
 				int baiEz = JOptionPane.showOptionDialog(
 						frmSudokua, "Sudokua ondo gorde da!","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,opzioak,null);
@@ -281,11 +281,12 @@ public class SudokuLehioa{
 		}
 
 		if (sudokuBerria==true) {
-			Sudokua pSudo=new Sudokua();
-			pSudo.ausazBete();
-			this.kargatu(pSudo);
+			unekoSudoku = new SudokuAdapter();
+			unekoSudoku.ausazBete();
+			this.kargatu();
 		} else {
-			this.kargatu(erabiltzailea.getSudoku());
+			unekoSudoku = erabiltzailea.getSudoku();
+			this.kargatu();
 		}
 
 	}
@@ -329,10 +330,10 @@ public class SudokuLehioa{
 
 	}
 
-	private void kargatu(Sudokua pSudo){
+	private void kargatu(){
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				Kasila kas = pSudo.getKasila(i, j);
+				Kasila kas = unekoSudoku.getKasila(i, j);
 				if (kas.getBalioZuzena()!=0 && kas.getFinkoa()) {
 					txtFMatrix[i][j].setText(""+kas.getBalioZuzena());
 					txtFMatrix[i][j].setForeground(Color.BLUE);
@@ -343,15 +344,13 @@ public class SudokuLehioa{
 		}
 	}
 	
-//	private void gorde() {
-//		for (int i = 0; i < 9; i++) {
-//			for (int j = 0; j < 9; j++) {
-//				Kasila kas;
-//				if (!txtFMatrix[i][j].isEditable()) {
-//					kas = new Kasila(Integer.getInteger(txtFMatrix[i][j].getText()));
-//				}
-//			}
-//		}
-//	}
+	private void gorde() {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (txtFMatrix[i][j].isEditable() && !txtFMatrix[i][j].getText().equals(""))
+					unekoSudoku.getKasila(i, j).aldatu(new Integer(txtFMatrix[i][j].getText()));
+			}
+		}
+	}
 
 }

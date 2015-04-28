@@ -250,7 +250,7 @@ public class AukeratuLehioa extends JFrame {
 				}
 			} else {
 				SudokuLehioa.main(erabiltzaile, sudokuBerria);
-				frame.setVisible(false);
+				frame.dispose();
 			}
 
 		}
