@@ -16,8 +16,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 
 		this.izena=pIzena;
 		this.ID=pID;
-		this.azkenengoSudokua = new Sudokua();
-		//this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
+		this.azkenengoSudokua = new SudokuAdapter();
 		if (!pZifraPasahitz.equals("")) {
 			this.pasahitza=pPasahitza;
 			Zifra z0 = new Zifra(pasahitza);
@@ -37,7 +36,6 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		this.izena=pIzena;
 		this.ID=pID;
 		this.azkenengoSudokua = new Sudokua();
-		//this.azkenengoSudokua=this.azkenengoSudokua.eraikiSudoku(pSudoku);
 		this.pasahitza=pPasahitza;
 		Zifra z0 = new Zifra(pasahitza);
 		this.zifraPasahitz = z0.generateKey();
