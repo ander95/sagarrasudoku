@@ -318,7 +318,7 @@ public class SudokuLehioa{
 			{
 				e.consume();  // ignorar el evento de teclado
 			}
-			if(txt.getText().length()==1){txt.setText("");}
+			if(txt.getText().length()==1 && txt.isEditable()){txt.setText("");}
 		}
 
 		@Override
