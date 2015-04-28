@@ -172,17 +172,17 @@ public class SudokuLehioa{
 				if (JOptionPane.OK_OPTION == baiEz){
 					//Zailtasuna aukeratzeko ahukera
 					int zailtasuna=2;
-					if(zailtasuna==0){
+					if(zailtasuna==2){
 						Object[] opzioak2={"Zaila"};
 						JOptionPane.showOptionDialog(
-								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
+								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
 					}
 					else if(zailtasuna==1){
-						Object[] opzioak2={"Erdikoa","Zaila"};
+						Object[] opzioak2={"Zaila"};
 						JOptionPane.showOptionDialog(
-								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
+								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
 					}
-					else if(zailtasuna==2){
+					else if(zailtasuna==0){
 						Object[] opzioak2={"Erdikoa","Zaila"};
 						JOptionPane.showOptionDialog(
 								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
