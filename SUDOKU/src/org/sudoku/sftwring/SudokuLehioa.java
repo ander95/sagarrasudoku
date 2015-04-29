@@ -24,8 +24,14 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.SwingConstants;
+
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JButton;
 
 
 
@@ -41,8 +47,12 @@ public class SudokuLehioa{
 	private JMenuItem mntmLaguntza;
 	private JMenuItem mntmZailtazunaAldatu;
 	private JMenuItem mntmZuzendu;
+	private int zenbatgarrena;
+	private int tokatu;
 
 	private static boolean sudokuBerria;
+	private JButton btnLaguntza;
+	private JPanel panel_1;
 	/**
 	 * Launch the application.
 	 */
@@ -138,7 +148,7 @@ public class SudokuLehioa{
 		mntmGorde = new JMenuItem("Gorde");
 		mnOpzioak.add(mntmGorde);
 		mntmGorde.addActionListener(new AbstractAction() {
-
+			
 			/**
 			 * 
 			 */
@@ -207,11 +217,19 @@ public class SudokuLehioa{
 				} 
 			}
 		});
+		
+		panel_1 = new JPanel();
+		menuBar.add(panel_1);
+		
+		btnLaguntza = new JButton("Laguntza");
+		btnLaguntza.setBackground(menuBar.getBackground());
+		menuBar.add(btnLaguntza);
 
-		mntmLaguntza = new JMenuItem("Laguntza");
-		menuBar.add(mntmLaguntza);
+		//mntmLaguntza = new JMenuItem("Laguntza");
+		//menuBar.add(mntmLaguntza);
+		
 		JPanel panel=new Panel("icon2.png");
-		mntmLaguntza.addActionListener(new ActionListener() {
+		btnLaguntza.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -219,11 +237,16 @@ public class SudokuLehioa{
 				int baiEz = JOptionPane.showOptionDialog(
 						frmSudokua,"Zihur Laguntza behar duzula?\n(Laguntza eskatzeak puntuak kentzen ditu)","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE,null,opzioak,null);
 
-				if (JOptionPane.OK_OPTION == baiEz){
-					//Laguntza eskaini
-				} 
+				if (JOptionPane.OK_OPTION== baiEz){		
+					try {
+						 markatuGorriz();
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+				}
 			}
 		});
+	
 		frmSudokua.setContentPane(panel);
 
 		frmSudokua.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
@@ -288,7 +311,6 @@ public class SudokuLehioa{
 			unekoSudoku = erabiltzailea.getSudoku();
 			this.kargatu();
 		}
-
 	}
 
 
@@ -352,5 +374,73 @@ public class SudokuLehioa{
 			}
 		}
 	}
+	public void markatuGorriz() throws InterruptedException {
+		boolean bukatu=true;
+		Random rand=new Random();
+		int count=0;
+		tokatu=rand.nextInt(3);
+		zenbatgarrena=0;
+		while (count<3 && !bukatu) {
+			if(tokatu==0){
+				//blokeak  zuzentzeko metodoari deitu
+				//if(blokeak zuzendu)bukatu==true;
+				//else tokatu++;
+				count++;
+			}else if(tokatu==1){
+				//zutabeak  zuzentzeko metodoari deitu
+				//if(zutabe zuzendu)bukatu==true;
+				//else tokatu++;
+				count++;
+			}else{//errenkadak zuzentzeko metodoari deitu
+			//if(errenkada zuzendu)bukatu==true;
+			//else tokatu++;
+				count++;
+			}
+		}
+		if(!bukatu){//Momentuz dena ondo dago
+		}
+		else{
+			TimerTask timerTask = new TimerTask()
+			 {	int count=0;
+	         public void run() {
+	        	 if(count==0 || count==3 || count==5){
+	        		 count++;
+	        		 if(tokatu==0){
+	        			 for (int i = zenbatgarrena; i <zenbatgarrena+3; i++) {
+	        				 for (int j = 0; j < 3; j++) {
+	        					 txtFMatrix[i][j].setOpaque(true);
+	        					 txtFMatrix[i][j].setBackground(Color.red);					
+	        				 }
+	        			 }
+	        		 	}else if(tokatu==1){
+	 						for (int i = 0; i <9; i++) {
+	 							txtFMatrix[i][zenbatgarrena].setOpaque(true);
+	 							txtFMatrix[i][zenbatgarrena].setBackground(Color.red);
+	 						}
+	 					}else{
+	 							for (int i = 0; i <9; i++) {
+	 								txtFMatrix[zenbatgarrena][i].setOpaque(true);
+	 								txtFMatrix[zenbatgarrena][i].setBackground(Color.red);	
+	 							}
+	 						}
+	        	}else {
+	        		 count++;
+					 for (int j = 0; j < 9; j++) {
+		        		 for (int k = 0; k < 9; k++) {
+		        			txtFMatrix[j][k].setBackground(Color.white); 
+							txtFMatrix[j][k].setOpaque(false);
+		        		 }
+					 }
+					 if(count==6)this.cancel();
+	        	 }
+	         }
+	         
+	     };
+	     Timer timer = new Timer();
+	     timer.scheduleAtFixedRate(timerTask, 0, 750);
+			
+			}
+	
+		}	
 
 }
