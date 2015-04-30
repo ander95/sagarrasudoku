@@ -217,8 +217,8 @@ public class KlasifikazioLehioa extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			//Aurre: objetuari lotutako akzioa egitea
 			//Post : AukeratuLehioa zabalduko du eta hau zarratu
-			frame.setVisible(false);
-			AukeratuLehioa.ikustarazi();
+			frame.dispose();
+			AukeratuLehioa.main(erabiltzailea);
 			frame.remove(frame);
 		}
 
