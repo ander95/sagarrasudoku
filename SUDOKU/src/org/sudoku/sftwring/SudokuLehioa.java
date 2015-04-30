@@ -108,7 +108,6 @@ public class SudokuLehioa{
 				//gorde
 				Object[] opzioak={"Jolasten jarraitu","Sudokutik irten"};
 				gorde();
-				erab.setSudoku(unekoSudoku);
 				int baiEz = JOptionPane.showOptionDialog(
 						frmSudokua, "Sudokua ondo gorde da!","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE,null,opzioak,null);
 
@@ -323,8 +322,6 @@ public class SudokuLehioa{
 				if (JOptionPane.OK_OPTION == baiEz){
 					//erabiltzaileak sudokua gorde
 					gorde();
-					erabiltzailea.setSudoku(unekoSudoku);
-					ErabiltzaileLista.getErabiltzaileLista().gorde();
 
 				}else if(JOptionPane.CANCEL_OPTION==baiEz){
 				frmSudokua.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -375,6 +372,8 @@ public class SudokuLehioa{
 					unekoSudoku.getKasila(i, j).aldatu(new Integer(txtFMatrix[i][j].getText()));
 			}
 		}
+		erabiltzailea.setSudoku(unekoSudoku);
+		ErabiltzaileLista.getErabiltzaileLista().gorde();
 	}
 	public void markatuGorriz() throws InterruptedException {
 		boolean bukatu=true;

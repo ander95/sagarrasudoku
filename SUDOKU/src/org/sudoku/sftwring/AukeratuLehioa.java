@@ -82,7 +82,7 @@ public class AukeratuLehioa extends JFrame {
 		setTitle("Menua");
 		erabiltzaile = erab;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 698, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -94,81 +94,83 @@ public class AukeratuLehioa extends JFrame {
 		infoPanel = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(15)
-						.addComponent(jokatuPanel, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(40)
-										.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(infoPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-												.addGap(21))
-				);
+					.addGap(15)
+					.addComponent(jokatuPanel, GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 321, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(97)
+							.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)))
+					.addGap(36))
+		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(22)
-										.addComponent(jokatuPanel, GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addGap(58)
-												.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-												.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)))
-												.addContainerGap())
-				);
+					.addGap(20)
+					.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(67)
+					.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)
+					.addGap(77))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(jokatuPanel, GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+					.addGap(22))
+		);
 		infoPanel.setLayout(new MigLayout("", "[85px][]", "[19px][]"));
 
 		lblErabizen = new JLabel(erabiltzaile.getIzen());
 		infoPanel.add(lblErabizen, "cell 0 0,alignx left,aligny top");
 		lblErabizen.setForeground(new Color(128, 0, 128));
-		lblErabizen.setFont(new Font("EHUSerif", Font.BOLD, 18));
+		lblErabizen.setFont(new Font("EHUSerif", Font.BOLD, 28));
 
 		lblPuntuazioa = new JLabel(erabiltzaile.getPuntuazioa()+" puntu");
-		lblPuntuazioa.setFont(new Font("EHUSerif", Font.BOLD, 15));
+		lblPuntuazioa.setFont(new Font("EHUSerif", Font.BOLD, 18));
 		lblPuntuazioa.setForeground(new Color(128, 0, 128));
 		infoPanel.add(lblPuntuazioa, "cell 0 1");
 
 		lblSudokuGordeta = new JLabel("");
 		lblSudokuGordeta.setForeground(new Color(139, 0, 139));
-		lblSudokuGordeta.setFont(new Font("EHUSerif", Font.BOLD, 16));
+		lblSudokuGordeta.setFont(new Font("EHUSerif", Font.BOLD, 20));
 
 		btnJokatu = new JButton("Jokatu");
+		btnJokatu.setFont(new Font("EHUSerif", Font.BOLD, 26));
 		btnJokatu.addActionListener(new Kudeatzailea(false));
 
 		String icon = "icon2.png";
 		boolean baduSudokurik = begiratuSudokurikBadu();
-		if (!baduSudokurik) icon ="";
+		if (!baduSudokurik) icon ="icon3.png";
 
 		sudopanel = new Panel(icon);
 		GroupLayout gl_jokatuPanel = new GroupLayout(jokatuPanel);
 		gl_jokatuPanel.setHorizontalGroup(
-				gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
+			gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_jokatuPanel.createSequentialGroup()
-						.addGap(66)
-						.addComponent(btnJokatu)
-						.addContainerGap(102, Short.MAX_VALUE))
-						.addComponent(lblSudokuGordeta, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+					.addGroup(gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_jokatuPanel.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(sudopanel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-								.addContainerGap())
-				);
+							.addContainerGap()
+							.addComponent(sudopanel, GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+						.addGroup(gl_jokatuPanel.createSequentialGroup()
+							.addGap(87)
+							.addComponent(btnJokatu))
+						.addGroup(gl_jokatuPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblSudokuGordeta, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)))
+					.addContainerGap())
+		);
 		gl_jokatuPanel.setVerticalGroup(
-				gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
+			gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_jokatuPanel.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(sudopanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-						.addComponent(btnJokatu)
-						.addContainerGap())
-				);
+					.addContainerGap(37, Short.MAX_VALUE)
+					.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(sudopanel, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnJokatu)
+					.addGap(69))
+		);
 
 		kargatu(baduSudokurik);
 
@@ -182,70 +184,71 @@ public class AukeratuLehioa extends JFrame {
 
 
 		lblZailtasuna = new JLabel("Zailtasuna:");
-		lblZailtasuna.setFont(new Font("EHUSerif", Font.BOLD, 16));
+		lblZailtasuna.setFont(new Font("EHUSerif", Font.BOLD, 22));
 
 		rdbtnErraza = new JRadioButton("Erraza");
-		rdbtnErraza.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		rdbtnErraza.setFont(new Font("EHUSerif", Font.BOLD, 19));
 		rdbtnErraza.setForeground(new Color(0, 128, 0));
 		zailtasunak.add(rdbtnErraza);
 
 
 		rdbtnErdikoa = new JRadioButton("Erdikoa");
 		rdbtnErdikoa.setForeground(new Color(255, 215, 0));
-		rdbtnErdikoa.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		rdbtnErdikoa.setFont(new Font("EHUSerif", Font.BOLD, 20));
 		zailtasunak.add(rdbtnErdikoa);
 
 		rdbtnZaila = new JRadioButton("Zaila");
-		rdbtnZaila.setFont(new Font("EHUSerif", Font.BOLD, 14));
+		rdbtnZaila.setFont(new Font("EHUSerif", Font.BOLD, 20));
 		rdbtnZaila.setForeground(new Color(255, 0, 0));
 		zailtasunak.add(rdbtnZaila);
 
 
 		btnSudokuBerria = new JButton("Sudoku Berria");
+		btnSudokuBerria.setFont(new Font("EHUSerif", Font.BOLD, 20));
 		btnSudokuBerria.addActionListener(new Kudeatzailea(true));
 
 		lblError = new JLabel("");
-		lblError.setFont(new Font("EHUSerif", Font.BOLD, 12));
+		lblError.setFont(new Font("EHUSerif", Font.BOLD, 16));
 		lblError.setForeground(Color.RED);
 		GroupLayout gl_zailtasunakPanel = new GroupLayout(zailtasunakPanel);
 		gl_zailtasunakPanel.setHorizontalGroup(
-				gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
+			gl_zailtasunakPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-						.addGroup(gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-										.addGap(37)
-										.addGroup(gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
-												.addComponent(rdbtnErraza, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-												.addComponent(rdbtnErdikoa, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-												.addComponent(rdbtnZaila, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)))
-												.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-														.addContainerGap()
-														.addComponent(lblZailtasuna))
-														.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-																.addContainerGap()
-																.addComponent(btnSudokuBerria))
-																.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-																		.addGap(24)
-																		.addComponent(lblError)))
-																		.addContainerGap(21, Short.MAX_VALUE))
-				);
+					.addGroup(gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_zailtasunakPanel.createSequentialGroup()
+							.addGap(37)
+							.addGroup(gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(rdbtnZaila, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+								.addComponent(rdbtnErraza, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+								.addComponent(rdbtnErdikoa, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addGroup(gl_zailtasunakPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblZailtasuna))
+						.addGroup(gl_zailtasunakPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblError, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_zailtasunakPanel.createSequentialGroup()
+							.addContainerGap(15, Short.MAX_VALUE)
+							.addComponent(btnSudokuBerria)))
+					.addContainerGap())
+		);
 		gl_zailtasunakPanel.setVerticalGroup(
-				gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
+			gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(lblZailtasuna)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(rdbtnErraza)
-						.addGap(7)
-						.addComponent(rdbtnErdikoa)
-						.addGap(7)
-						.addComponent(rdbtnZaila)
-						.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-						.addComponent(lblError)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(btnSudokuBerria)
-						.addContainerGap())
-				);
+					.addContainerGap()
+					.addComponent(lblZailtasuna)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(rdbtnErraza)
+					.addGap(7)
+					.addComponent(rdbtnErdikoa)
+					.addGap(7)
+					.addComponent(rdbtnZaila)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblError, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnSudokuBerria)
+					.addGap(24))
+		);
 		zailtasunakPanel.setLayout(gl_zailtasunakPanel);
 		begiratuSudokurikBadu();
 	}
@@ -306,12 +309,12 @@ public class AukeratuLehioa extends JFrame {
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
 				ColumnSpec.decode("default:grow"),
 				ColumnSpec.decode("default:grow"),
@@ -320,12 +323,12 @@ public class AukeratuLehioa extends JFrame {
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				RowSpec.decode("default:grow"),
 				RowSpec.decode("default:grow"),
@@ -340,7 +343,7 @@ public class AukeratuLehioa extends JFrame {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				txtFMatrix[i][j] = new JTextField();
-				txtFMatrix[i][j].setFont(new Font("EHUSerif", Font.BOLD, 10));
+				txtFMatrix[i][j].setFont(new Font("EHUSerif", Font.BOLD, 20));
 				txtFMatrix[i][j].setHorizontalAlignment(SwingConstants.CENTER);
 				txtFMatrix[i][j].setColumns(1);
 				sudopanel.add(txtFMatrix[i][j], (""+zutabe+", "+lerro+", fill, fill"));
