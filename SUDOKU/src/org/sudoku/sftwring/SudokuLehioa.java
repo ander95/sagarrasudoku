@@ -48,7 +48,7 @@ public class SudokuLehioa{
 	private JMenuItem mntmZuzendu;
 	private int zenbatgarrena;
 	private int tokatu;
-
+	
 	private static boolean sudokuBerria;
 	private JButton btnLaguntza;
 	private JPanel panel_1;
@@ -241,11 +241,11 @@ public class SudokuLehioa{
 				txtFMatrix[i][j].addKeyListener(new Kudeatzailea(txtFMatrix[i][j]));
 				txtFMatrix[i][j].setColumns(1);
 				frmSudokua.getContentPane().add(txtFMatrix[i][j], (""+zutabe+", "+lerro+", fill, fill"));
-				txtFMatrix[i][j].setColumns(1);
 				if (zutabe!=13) {
 					if (zutabe==3||zutabe==8) zutabe = zutabe + 3;
 					else zutabe++;
 				} else zutabe = 1;
+				txtFMatrix[i][j].setOpaque(false);
 			}
 			if (lerro!=13) {
 				if (lerro==3||lerro==8) lerro = lerro + 3;
@@ -269,7 +269,6 @@ public class SudokuLehioa{
 		JTextField txt;
 		public Kudeatzailea(JTextField pTxt){
 			txt=pTxt;
-			txt.setOpaque(false);
 		}
 		public Kudeatzailea(){
 			super();

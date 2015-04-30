@@ -6,6 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -21,12 +22,13 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
 import net.miginfocom.swing.MigLayout;
-import java.awt.GridBagLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridLayout;
+
 import javax.swing.JTextField;
+
+import com.jgoodies.forms.factories.FormFactory;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class AukeratuLehioa extends JFrame {
 
@@ -56,8 +58,7 @@ public class AukeratuLehioa extends JFrame {
 	private JLabel lblPuntuazioa;
 	private JLabel lblError;
 	private JPanel sudopanel;
-	private JTextField textField;
-
+	private JTextField[][] txtFMatrix;
 
 
 	public static void main(final Erabiltzaile erab) {
@@ -138,63 +139,44 @@ public class AukeratuLehioa extends JFrame {
 
 		btnJokatu = new JButton("Jokatu");
 		btnJokatu.addActionListener(new Kudeatzailea(false));
-		
-		sudopanel = new Panel("icon2.png");
+
+		String icon = "icon2.png";
+		boolean baduSudokurik = begiratuSudokurikBadu();
+		if (!baduSudokurik) icon ="";
+
+		sudopanel = new Panel(icon);
 		GroupLayout gl_jokatuPanel = new GroupLayout(jokatuPanel);
 		gl_jokatuPanel.setHorizontalGroup(
-			gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
+				gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_jokatuPanel.createSequentialGroup()
-					.addGap(66)
-					.addComponent(btnJokatu)
-					.addContainerGap(102, Short.MAX_VALUE))
-				.addComponent(lblSudokuGordeta, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-				.addGroup(gl_jokatuPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(sudopanel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+						.addGap(66)
+						.addComponent(btnJokatu)
+						.addContainerGap(102, Short.MAX_VALUE))
+						.addComponent(lblSudokuGordeta, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+						.addGroup(gl_jokatuPanel.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(sudopanel, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+								.addContainerGap())
+				);
 		gl_jokatuPanel.setVerticalGroup(
-			gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
+				gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_jokatuPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(sudopanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-					.addComponent(btnJokatu)
-					.addContainerGap())
-		);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		GroupLayout gl_sudopanel = new GroupLayout(sudopanel);
-		gl_sudopanel.setHorizontalGroup(
-			gl_sudopanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_sudopanel.createSequentialGroup()
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(194, Short.MAX_VALUE))
-		);
-		gl_sudopanel.setVerticalGroup(
-			gl_sudopanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_sudopanel.createSequentialGroup()
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(181, Short.MAX_VALUE))
-		);
-		sudopanel.setLayout(gl_sudopanel);
-		
-		JTextField[][] txtFMatrix = new JTextField[9][9];
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				txtFMatrix[i][j] = new JTextField();
-				sudopanel.add(txtFMatrix[i][j], "cell "+j+" "+i+",growx");
-			}
-		}
+						.addContainerGap()
+						.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(sudopanel, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+						.addComponent(btnJokatu)
+						.addContainerGap())
+				);
+
+		kargatu(baduSudokurik);
 
 		jokatuPanel.setLayout(gl_jokatuPanel);
 		contentPane.setLayout(gl_contentPane);
-		
-		
-		
+
+
+
 
 		zailtasunak = new ButtonGroup();
 
@@ -302,17 +284,88 @@ public class AukeratuLehioa extends JFrame {
 		}
 
 	}
-	private void begiratuSudokurikBadu() {
-		String ea = "EA SUDOKURIK BADUZUN";
-		lblSudokuGordeta.setText(ea);
-
-		//itxaron pixkatxo bat konprobatu ea baduen eta izaten badu jarri beztela ez duela jarri
-
+	private boolean begiratuSudokurikBadu() {
+		//konprobatu ea baduen eta izaten badu jarri beztela ez duela jarri
+		if (erabiltzaile.getSudoku().getKasila(0, 0).getBalioZuzena()==0){
+			lblSudokuGordeta.setText("Ez duzu sudokurik gordeta");
+			return false;
+		} else {
+			lblSudokuGordeta.setText("Sudoku hau duzu amaitzeko");
+			return true;
+		}
 	}
 
 	public static void ikustarazi() {
 		//Aurre:
 		//Post: Sarrerako lehioa berriz ikustaraziko du.
 		frame.setVisible(true);
+	}
+
+	private void kargatu(boolean sudoBadu){
+		sudopanel.setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),},
+				new RowSpec[] {
+				RowSpec.decode("default:grow"),
+				RowSpec.decode("default:grow"),
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				RowSpec.decode("default:grow"),
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				RowSpec.decode("default:grow"),
+				RowSpec.decode("default:grow"),}));
+
+
+		txtFMatrix = new JTextField[9][9];
+
+		int zutabe = 1;
+		int lerro = 1;
+
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				txtFMatrix[i][j] = new JTextField();
+				txtFMatrix[i][j].setFont(new Font("EHUSerif", Font.BOLD, 10));
+				txtFMatrix[i][j].setHorizontalAlignment(SwingConstants.CENTER);
+				txtFMatrix[i][j].setColumns(1);
+				sudopanel.add(txtFMatrix[i][j], (""+zutabe+", "+lerro+", fill, fill"));
+				if (zutabe!=13) {
+					if (zutabe==3||zutabe==8) zutabe = zutabe + 3;
+					else zutabe++;
+				} else zutabe = 1;
+				txtFMatrix[i][j].setOpaque(false);
+				txtFMatrix[i][j].setEditable(false);
+			}
+			if (lerro!=13) {
+				if (lerro==3||lerro==8) lerro = lerro + 3;
+				else lerro++;
+			} else lerro = 1;
+		}
+
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				Kasila kas = erabiltzaile.getSudoku().getKasila(i, j);
+				if (kas.getBalioZuzena()!=0 && kas.getFinkoa()) {
+					txtFMatrix[i][j].setText(""+kas.getBalioZuzena());
+					txtFMatrix[i][j].setForeground(Color.BLUE);
+				}
+				if (kas.getErabiltzaileBal()!=0) txtFMatrix[i][j].setText(""+kas.getBalioZuzena());
+			}
+		}
 	}
 }
