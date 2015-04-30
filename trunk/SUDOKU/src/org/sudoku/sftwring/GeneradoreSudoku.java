@@ -1,6 +1,7 @@
 package org.sudoku.sftwring;
 
-	import java.util.Random;
+	import java.util.ArrayList;
+import java.util.Random;
 
 public class GeneradoreSudoku {
 
@@ -30,10 +31,20 @@ public class GeneradoreSudoku {
 		}
 		
 		private void kopiatu(){
+			ArrayList<Integer> balioGuztiak = new ArrayList<Integer>();
+			balioGuztiak.add(1);
+			balioGuztiak.add(2);
+			balioGuztiak.add(3);
+			balioGuztiak.add(4);
+			balioGuztiak.add(5);
+			balioGuztiak.add(6);
+			balioGuztiak.add(7);
+			balioGuztiak.add(8);
 			for (int i = 0; i < sudoku.length; i++) {
 				for (int j = 0; j < sudoku[0].length; j++) {
 					sudoku[i][j].setFinkoa(false);
 					sudoku[i][j].aldatu(sudoku[i][j].getBalioZuzena());
+					sudoku[i][j].setPosibleak(balioGuztiak);
 				}
 			}
 		}
@@ -51,15 +62,86 @@ public class GeneradoreSudoku {
 			do {
 				kopiatu();
 				ezabatuAusaz(kopurua);
-				osotuDaiteke = sudokuaEgin();
+				posibleakEguneratu();
+				osotuDaiteke = true; //sudokuaEgin(); jarri behar da, momentuz true jarriko dugu
 			} while (!osotuDaiteke);
+			for (int i = 0; i < sudoku.length; i++) {
+				for (int z = 0; z < sudoku.length; z++) {
+					if (!sudoku[i][z].getFinkoa()) {
+						sudoku[i][z].aldatu(0);
+					}
+				}
+			}
 		}
 		
-		private boolean sudokuaEgin() {
-			boolean osatuta = false;
-			//sudokua osatzeko algoritmoa(k)
+		private void posibleakEguneratu() {
+			for (int i = 0; i < sudoku.length; i++) {
+				for (int z = 0; z < sudoku.length; z++) {
+					if (sudoku[i][z].getErabiltzaileBal()!=0) {
+						int balioa = sudoku[i][z].getErabiltzaileBal();
+						blokeaEzgaitu(i,z,balioa);
+						errenkadaEzgaitu(i,z,balioa);
+						zutabeaEzgaitu(i,z,balioa);
+					}				
+				}
+			}
+		}
+
+		private void zutabeaEzgaitu(int i, int z, int balioa) {
+			// TODO Auto-generated method stub
 			
-			return osatuta;
+		}
+
+		private void errenkadaEzgaitu(int i, int z, int balioa) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private void blokeaEzgaitu(int i, int z, int balioa) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		private boolean sudokuaEgin() {
+			//lehenengo algoritmoa saiatuko da, aldaketarik badago true itzuliko du, bestela,
+			//hurrengo algoritmoarekin saiatuko da. Algoritmo batek ere ez badu aldaketarik egiten
+			//ezin da sudokua bete. False itzuli eta beste konbinazio batekin saiatuko da
+			boolean aldaketak = false;
+			while (!bukatuDu()) {
+				//lehen algoritmoa: kasilan posible bakarra dago
+				for (int i = 0; i < sudoku.length; i++) {
+					for (int z = 0; z < sudoku.length; z++) {
+						if (sudoku[i][z].getPosibleak().size()==1) {
+							sudoku[i][z].aldatu(sudoku[i][z].getPosibleak().get(0));
+							aldaketak = true;
+						}
+					}
+				}
+				//bigarren algoritmoa: blokeko kasila bakarrak du zenbaki jakin bat jartzeko aukera
+				
+				//hirugarren algoritmoa: ilarako edo zutabeko kasila bakarrak du zenbaki jakin bat jartzeko aukera
+				
+				//laugarren algoritmo bat dago, sudoku bat osatzeko gutxi erabiltzen dena
+
+				if (!aldaketak) {return false;}//hiru algoritmoetatik bat ere ezin izan du kasila bakar baten balioa lortu
+												//ondorioz ezin dasudokua bete bestela aldaketak aldagaiafalse jarriko du
+												//algoritmoak sudokua osotzen amaitu arte jarraitu dezan
+				else {aldaketak = false;}
+			}
+			//hona helduz gero sudokua balio zuzenekin lortu daiteke
+			return true;
+		}
+
+		private boolean bukatuDu() {
+			boolean amaituta = true;
+			for (int i = 0; i < sudoku.length; i++) {
+				for (int z = 0; z < sudoku[0].length; z++) {
+					if (sudoku[i][z].getErabiltzaileBal()!=sudoku[i][z].getBalioZuzena()) {
+						return false;
+					}
+				}
+			}
+			return amaituta;
 		}
 
 		private void ezabatuAusaz(int kopurua) {
@@ -273,8 +355,7 @@ public class GeneradoreSudoku {
 			//zenbakia sudokuko dagokion posizioan jartzen da
 			hurrengoaJarri(0, zenb);
 			osotu(lehena);
-			kopiatu();
-			kasilakEzabatu(this.zailtasuna);
+			kasilakEzabatu(zailtasuna);
 		}
 		
 		public boolean osotu(Adabegia<Integer> adabegi){
