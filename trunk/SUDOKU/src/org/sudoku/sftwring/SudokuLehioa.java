@@ -85,7 +85,7 @@ public class SudokuLehioa{
 	 */
 	private void initialize(final Erabiltzaile erab) {			
 		frmSudokua = new JFrame();
-		frmSudokua.setTitle("SUDOKUA");
+		frmSudokua.setTitle("SUDOKUA-"+erabiltzailea.getIzen());
 		frmSudokua.setBounds(100, 100, 700, 619);
 		frmSudokua.addWindowListener(new WindowListener() {
 			@Override
@@ -403,7 +403,7 @@ public class SudokuLehioa{
 			TimerTask timerTask = new TimerTask()
 			 {	int count=0;
 	         public void run() {
-	        	 if(count==0 || count==3 || count==5){
+	        	 if(count==0 ){
 	        		 count++;
 	        		 if(tokatu==0){
 	        			 for (int i = zenbatgarrena; i <zenbatgarrena+3; i++) {
@@ -431,13 +431,13 @@ public class SudokuLehioa{
 							txtFMatrix[j][k].setOpaque(false);
 		        		 }
 					 }
-					 if(count==6)this.cancel();
+					 this.cancel();
 	        	 }
 	         }
 	         
 	     };
 	     Timer timer = new Timer();
-	     timer.scheduleAtFixedRate(timerTask, 0, 750);
+	     timer.scheduleAtFixedRate(timerTask, 0, 2000);
 			
 			}
 	
