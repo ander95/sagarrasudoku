@@ -1,13 +1,18 @@
 package org.sudoku.sftwring;
 
+import java.util.ArrayList;
+
 public class Kasila{
 	private Integer zuzena;
 	private Integer erabiltzaileBal;
 	private boolean finkoa;
+	private ArrayList<Integer> posibleak;
+	
 	public Kasila(Integer Balioa){
 		zuzena=Balioa;
 		this.erabiltzaileBal=0;
 		this.finkoa=false;
+		posibleak = new ArrayList<Integer>();
 
 	}
 
@@ -77,6 +82,14 @@ public class Kasila{
 
 	public void setBalioZuzena(int zenb){
 		zuzena=zenb;
+	}
+	
+	public ArrayList<Integer> getPosibleak(){
+		return posibleak;
+	}
+	
+	public void setPosibleak(ArrayList<Integer> balioak){
+		this.posibleak = balioak;
 	}
 	
 }
