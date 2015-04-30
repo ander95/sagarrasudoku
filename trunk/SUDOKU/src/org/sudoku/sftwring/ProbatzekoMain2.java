@@ -8,6 +8,7 @@ public class ProbatzekoMain2 {
 	}
 	
 	private static void sudokuaAusazBete() {
+		
 		//GeneradoreSudoku s = new GeneradoreSudoku();
 		Sudokua s = new SudokuAdapter();
 		System.out.println("\nHasieran...\n");
