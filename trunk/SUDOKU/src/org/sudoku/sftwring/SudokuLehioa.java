@@ -10,13 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.WindowConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -25,7 +26,6 @@ import com.jgoodies.forms.factories.FormFactory;
 
 import javax.swing.SwingConstants;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Color;
 import java.util.Random;
@@ -44,7 +44,6 @@ public class SudokuLehioa{
 	private JMenuBar menuBar;
 	private JMenu mnOpzioak;
 	private JMenuItem mntmGorde;
-	private JMenuItem mntmLaguntza;
 	private JMenuItem mntmZailtazunaAldatu;
 	private JMenuItem mntmZuzendu;
 	private int zenbatgarrena;
@@ -87,58 +86,8 @@ public class SudokuLehioa{
 		frmSudokua = new JFrame();
 		frmSudokua.setTitle("SUDOKUA-"+erabiltzailea.getIzen());
 		frmSudokua.setBounds(100, 100, 700, 619);
-		frmSudokua.addWindowListener(new WindowListener() {
-			@Override
-			public void windowClosed(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				Object[] opzioak={"Bai","Ez", "Ezeztatu"};
-				int baiEz = JOptionPane.showOptionDialog(
-						frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
-
-				if (JOptionPane.OK_OPTION == baiEz){
-					//erabiltzaileak sudokua gorde
-					gorde();
-					erab.setSudoku(unekoSudoku);
-					ErabiltzaileLista.getErabiltzaileLista().gorde();
-
-				}else if(JOptionPane.CANCEL_OPTION==baiEz){
-					erabiltzailea.setSudoku(new Sudokua());
-					SudokuLehioa.main(erabiltzailea, false);
-				}
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-			}
-		});
+		frmSudokua.addWindowListener(new Kudeatzailea());
+		
 		menuBar = new JMenuBar();
 		frmSudokua.setJMenuBar(menuBar);
 
@@ -165,6 +114,7 @@ public class SudokuLehioa{
 
 				if (JOptionPane.NO_OPTION == baiEz){
 					//Sudokua itxi egingo da
+					AukeratuLehioa.main(erabiltzailea);
 					frmSudokua.dispose();
 				} 
 			}
@@ -321,6 +271,9 @@ public class SudokuLehioa{
 			txt=pTxt;
 			txt.setOpaque(false);
 		}
+		public Kudeatzailea(){
+			super();
+		}
 		@Override
 		public void keyPressed(KeyEvent e) {
 			if(!(e.getKeyChar()<'1' || e.getKeyChar()>'9')) e.consume();
@@ -349,7 +302,57 @@ public class SudokuLehioa{
 			// TODO Auto-generated method stub
 
 		}
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+			}
 
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				frmSudokua.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				Object[] opzioak={"Bai","Ez", "Ezeztatu"};
+				int baiEz = JOptionPane.showOptionDialog(
+						frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
+
+				if (JOptionPane.OK_OPTION == baiEz){
+					//erabiltzaileak sudokua gorde
+					gorde();
+					erabiltzailea.setSudoku(unekoSudoku);
+					ErabiltzaileLista.getErabiltzaileLista().gorde();
+
+				}else if(JOptionPane.CANCEL_OPTION==baiEz){
+				frmSudokua.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+				}
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+			}
+		
 	}
 
 	private void kargatu(){
