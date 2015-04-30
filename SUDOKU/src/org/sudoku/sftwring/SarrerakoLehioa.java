@@ -236,7 +236,7 @@ public class SarrerakoLehioa extends JFrame {
 			//Aurre: click egitea
 			//Post: Momentu horretan textField eta passwordField barruan sartuta dagoena emango zaio 
 			//erregistroko lehioari sorreran eta hau zabaldu egingo da sarrerako lehioa izkutatu ondoren
-			frame.setVisible(false);
+			frame.dispose();
 			String[] args = new String[2];
 			args[0] = textField.getText();
 			args[1] = String.copyValueOf(passwordField.getPassword());
@@ -254,7 +254,7 @@ public class SarrerakoLehioa extends JFrame {
 				lblErrorea.setText("Erabiltzaile izena edo pasahitza okerra");
 			} else {
 				lblErrorea.setText("");
-				frame.setVisible(false);
+				frame.dispose();
 				
 				AukeratuLehioa.main(erab);
 			}
