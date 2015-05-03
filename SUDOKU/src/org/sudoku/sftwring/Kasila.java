@@ -92,5 +92,11 @@ public class Kasila{
 		this.posibleak = balioak;
 	}
 	
+	public void kenduPosibleak(int balioa){
+		if (this.posibleak.contains(balioa)) {
+			this.posibleak.remove((Integer)balioa);
+		}
+	}
+	
 }
 
