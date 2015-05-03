@@ -360,7 +360,7 @@ public class SudokuLehioa{
 					txtFMatrix[i][j].setForeground(Color.BLUE);
 					txtFMatrix[i][j].setEditable(false);
 				}
-				if (kas.getErabiltzaileBal()!=0) txtFMatrix[i][j].setText(""+kas.getBalioZuzena());
+				if (kas.getErabiltzaileBal()!=0) txtFMatrix[i][j].setText(""+kas.getErabiltzaileBal());
 			}
 		}
 	}
@@ -370,6 +370,7 @@ public class SudokuLehioa{
 			for (int j = 0; j < 9; j++) {
 				if (txtFMatrix[i][j].isEditable() && !txtFMatrix[i][j].getText().equals(""))
 					unekoSudoku.getKasila(i, j).aldatu(new Integer(txtFMatrix[i][j].getText()));
+				else unekoSudoku.getKasila(i, j).aldatu(0);
 			}
 		}
 		erabiltzailea.setSudoku(unekoSudoku);
