@@ -367,7 +367,7 @@ public class AukeratuLehioa extends JFrame {
 					txtFMatrix[i][j].setText(""+kas.getBalioZuzena());
 					txtFMatrix[i][j].setForeground(Color.BLUE);
 				}
-				if (kas.getErabiltzaileBal()!=0) txtFMatrix[i][j].setText(""+kas.getBalioZuzena());
+				if (kas.getErabiltzaileBal()!=0) txtFMatrix[i][j].setText(""+kas.getErabiltzaileBal());
 			}
 		}
 	}
