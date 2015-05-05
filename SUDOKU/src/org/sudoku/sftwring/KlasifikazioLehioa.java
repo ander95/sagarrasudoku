@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
-import javax.swing.RootPaneContainer;
-
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Color;
@@ -68,8 +66,6 @@ public class KlasifikazioLehioa extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		JPanel panel=new Panel("icon1.png");
-		((RootPaneContainer) contentPane).setContentPane(panel);
 		setContentPane(contentPane);
 
 		JPanel EgunekoKasPanel = new JPanel();
