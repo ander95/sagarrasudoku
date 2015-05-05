@@ -1,5 +1,8 @@
 package org.sudoku.sftwring;
 
+import java.lang.reflect.Array;
+import java.util.Random;
+
 public class Sudokua {
 	private Bloke [][] sudoku;
 	private int luzera = 3;
@@ -123,6 +126,129 @@ public class Sudokua {
 	}
 
 	public void ausazBete() {/*Ausaz betetzeko metodoa bere semeetan definituko da Adib.: Adapterrean*/}
+	
+	public int laguntzaIlarak(){
+		Random rand=new Random();
+		int i=-1;
+		i=rand.nextInt(3);
+		if(i==0)i=0;
+		else if(i==1)i=3;
+		else i=6;
+		boolean[] ilara=new boolean[10];
+		int bukatu=0;
+		Kasila[] ilar=new Kasila[9];
+		int k=rand.nextInt(3);
+		System.out.println(i);
+		while(bukatu<9){
+			ilar=this.artuIlara(k, i);
+			for (int j = 0; j < ilar.length; j++) {
+				if(ilar[j].getErabiltzaileBal()!=0){
+					if(ilara[ilar[j].getErabiltzaileBal()]){
+						System.out.println("Erabiltzaile bal: "+ilar[j].getErabiltzaileBal());
+
+							return i+k;
+					}else {
+						ilara[ilar[j].getErabiltzaileBal()]=true;
+					}
+				}
+				else if(ilar[j].getFinkoa()){
+					if( ilara[ilar[j].getBalioZuzena()]){
+						System.out.println("Balio zuzen: "+ilar[j].getBalioZuzena());
+						return i+k;
+					}
+					else{
+					ilara[ilar[j].getBalioZuzena()]=true;
+				}
+				}
+			}
+			bukatu++;
+			ilara=new boolean[10];
+			if(k==2){ k=0;
+					if(i==6)i=0;
+					else i=i+3;}
+			else {k++;}
+		}
+		return -1;
+	}
+	
+	public int laguntzaZutabe(){
+		Random rand=new Random();
+		int i=rand.nextInt(3);
+		boolean[] ilara=new boolean[10];
+		int bukatu=0;
+		Kasila[] zutab=new Kasila[9];;
+		int k=rand.nextInt(3);
+		while(bukatu<9){
+			zutab=this.artuZutabe(k,i);
+			for (int j = 0; j < zutab.length; j++) {
+				if(zutab[j].getErabiltzaileBal()!=0){
+					if(ilara[zutab[j].getErabiltzaileBal()]){
+							return i*3+k;
+					}else {
+						ilara[zutab[j].getErabiltzaileBal()]=true;
+					}
+				}
+				else if(zutab[j].getFinkoa()){
+					if( ilara[zutab[j].getBalioZuzena()]){
+
+						return i*3+k;
+					}
+					else{
+					ilara[zutab[j].getBalioZuzena()]=true;
+				}
+				}
+			}
+			bukatu++;
+			ilara=new boolean[10];
+			if(k==2){ k=0;
+				if(i==2)i=0;
+				else i++;
+				
+			}
+			else {k++;}
+			}
+		return -1;
+	}
+	
+	public int laguntzaBloke(){
+		Random rand=new Random();
+		int i=rand.nextInt(9);
+		for (int j = 0; j < 9; j++) {
+			if(this.getBloke(i).laguntza()){
+				return i;
+			}
+			if(i==8)i=0;
+			else i++;
+			
+		}
+		return -1;
+	}
+	public Kasila[] artuZutabe(int k, int blok){
+		Kasila[] kas=new Kasila[9];
+		Kasila[] kas3=new Kasila[3];
+		int count=0;
+		for (int i = blok; i <9; i=i+3) {
+			kas3=this.getBloke(i).getZutabe(k);
+			for (int j = 0; j < kas3.length; j++) {
+				kas[count]=kas3[j];
+				count++;
+			}
+		}
+		return kas;
+	}
+	public Kasila[] artuIlara(int k, int ilar){
+		Kasila[] kas=new Kasila[9];
+		Kasila[] kas3=new Kasila[3];
+		int count=0;
+		for (int i = 0; i <3; i++) {
+			kas3=this.getBloke(ilar++).getIlara(k);
+			for (int j = 0; j < kas3.length; j++) {
+				kas[count]=kas3[j];
+				count++;
+			}
+		}
+		return kas;
+	}
 }
 
 

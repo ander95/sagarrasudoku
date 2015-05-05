@@ -189,6 +189,7 @@ public class SudokuLehioa{
 				if (JOptionPane.OK_OPTION== baiEz){		
 					try {
 						 markatuGorriz();
+						
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
 						}
@@ -377,29 +378,34 @@ public class SudokuLehioa{
 		ErabiltzaileLista.getErabiltzaileLista().gorde();
 	}
 	public void markatuGorriz() throws InterruptedException {
-		boolean bukatu=true;
+		boolean bukatu=false;
 		Random rand=new Random();
 		int count=0;
 		tokatu=rand.nextInt(3);
 		zenbatgarrena=0;
+		this.gorde();
+		int i=-1;
 		while (count<3 && !bukatu) {
 			if(tokatu==0){
-				//blokeak  zuzentzeko metodoari deitu
-				//if(blokeak zuzendu)bukatu==true;
-				//else tokatu++;
+				i=erabiltzailea.getSudoku().laguntzaBloke();
+				if(i!=-1){bukatu=true;zenbatgarrena=i;}
+				else tokatu++;
 				count++;
 			}else if(tokatu==1){
-				//zutabeak  zuzentzeko metodoari deitu
-				//if(zutabe zuzendu)bukatu==true;
-				//else tokatu++;
+				i=erabiltzailea.getSudoku().laguntzaZutabe();
+				System.out.println("zutab"+i);
+				if(i!=-1){bukatu=true;zenbatgarrena=i;}
+				else tokatu++;
 				count++;
-			}else{//errenkadak zuzentzeko metodoari deitu
-			//if(errenkada zuzendu)bukatu==true;
-			//else tokatu++;
+			}else{
+				i=erabiltzailea.getSudoku().laguntzaIlarak();
+				System.out.println("ilara"+i);
+				if(i!=-1){bukatu=true;zenbatgarrena=i;}
+				else tokatu=0;
 				count++;
 			}
 		}
-		if(!bukatu){//Momentuz dena ondo dago
+		if(!bukatu){System.out.println("dena ondo!!!");
 		}
 		else{
 			TimerTask timerTask = new TimerTask()
@@ -407,6 +413,7 @@ public class SudokuLehioa{
 	         public void run() {
 	        	 if(count==0 ){
 	        		 count++;
+	        		 System.out.println(tokatu+" "+zenbatgarrena);
 	        		 if(tokatu==0){
 	        			 for (int i = zenbatgarrena; i <zenbatgarrena+3; i++) {
 	        				 for (int j = 0; j < 3; j++) {
@@ -426,6 +433,7 @@ public class SudokuLehioa{
 	 							}
 	 						}
 	        	}else {
+	        		tokatu=0;
 	        		 count++;
 					 for (int j = 0; j < 9; j++) {
 		        		 for (int k = 0; k < 9; k++) {
@@ -444,5 +452,4 @@ public class SudokuLehioa{
 			}
 	
 		}	
-
 }
