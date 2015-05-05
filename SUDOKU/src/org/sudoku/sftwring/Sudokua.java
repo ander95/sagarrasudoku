@@ -130,7 +130,7 @@ public class Sudokua {
 			for (int j = 0; j < 9; j++) {
 				Kasila kas = this.getKasila(i, j);
 				if (!kas.getFinkoa()) zuzen[i][j] = kas.getBalioZuzena()==kas.getErabiltzaileBal();
-				else zuzen[i][j] = false;
+				else zuzen[i][j] = true;
 			}
 		}
 		return zuzen;
