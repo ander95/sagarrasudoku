@@ -1,6 +1,6 @@
 package org.sudoku.sftwring;
 
-public class probaLaguntza {
+public class ProbaLaguntza {
 	public static void main(String[] args) {
 
 		//Sudokua sortu
