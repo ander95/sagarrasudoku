@@ -278,8 +278,11 @@ public class AukeratuLehioa extends JFrame {
 					lblError.setText("Zailtasuna aukeratu barik");
 				}
 			} else {
+				if (erabiltzaile.getSudoku().getKasila(0, 0).getBalioZuzena()!=0) {
 				SudokuLehioa.main(erabiltzaile, sudokuBerria);
 				frame.dispose();
+				} else 
+					lblSudokuGordeta.setForeground(Color.RED);
 			}
 
 		}

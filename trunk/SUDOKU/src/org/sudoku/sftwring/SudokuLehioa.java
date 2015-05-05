@@ -31,6 +31,7 @@ import java.awt.Color;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
@@ -50,7 +51,7 @@ public class SudokuLehioa{
 	private JMenuItem mntmZuzendu;
 	private int zenbatgarrena;
 	private int tokatu;
-	
+
 	private static boolean sudokuBerria;
 	private JButton btnLaguntza;
 	private JPanel panel_1;
@@ -98,7 +99,7 @@ public class SudokuLehioa{
 		frmSudokua.setBounds(100, 100, 700, 619);
 		frmSudokua.addWindowListener(new Kudeatzailea());
 		this.kronometro();
-		
+
 		menuBar = new JMenuBar();
 		frmSudokua.setJMenuBar(menuBar);
 
@@ -108,7 +109,7 @@ public class SudokuLehioa{
 		mntmGorde = new JMenuItem("Gorde");
 		mnOpzioak.add(mntmGorde);
 		mntmGorde.addActionListener(new AbstractAction() {
-			
+
 			/**
 			 * 
 			 */
@@ -129,8 +130,8 @@ public class SudokuLehioa{
 				} 
 			}
 		});
-		
-	     
+
+
 		mntmZailtazunaAldatu = new JMenuItem("Zailtazuna aldatu");
 		mnOpzioak.add(mntmZailtazunaAldatu);
 		mntmZailtazunaAldatu.addActionListener(new ActionListener() {
@@ -179,17 +180,17 @@ public class SudokuLehioa{
 				} 
 			}
 		});
-		
+
 		panel_1 = new JPanel();
 		menuBar.add(panel_1);
-		
-			
 
-		
+
+
+
 		btnLaguntza = new JButton("Laguntza");
 		btnLaguntza.setBackground(menuBar.getBackground());
 		menuBar.add(btnLaguntza);
-		
+
 		JPanel panel=new Panel("icon2.png");
 		btnLaguntza.addActionListener(new ActionListener() {
 
@@ -201,15 +202,15 @@ public class SudokuLehioa{
 
 				if (JOptionPane.OK_OPTION== baiEz){		
 					try {
-						 markatuGorriz();
-						
-						} catch (InterruptedException e1) {
-							e1.printStackTrace();
-						}
+						markatuGorriz();
+
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
-	
+
 		frmSudokua.setContentPane(panel);
 
 		frmSudokua.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
@@ -314,55 +315,55 @@ public class SudokuLehioa{
 			// TODO Auto-generated method stub
 
 		}
-			@Override
-			public void windowClosed(WindowEvent arg0) {
-				// TODO Auto-generated method stub
-			}
+		@Override
+		public void windowClosed(WindowEvent arg0) {
+			// TODO Auto-generated method stub
+		}
 
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
+		@Override
+		public void windowActivated(WindowEvent e) {
+			// TODO Auto-generated method stub
 
-			}
+		}
 
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				frmSudokua.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-				Object[] opzioak={"Bai","Ez", "Ezeztatu"};
-				int baiEz = JOptionPane.showOptionDialog(
-						frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
+		@Override
+		public void windowClosing(WindowEvent e) {
+			// TODO Auto-generated method stub
+			frmSudokua.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			Object[] opzioak={"Bai","Ez", "Ezeztatu"};
+			int baiEz = JOptionPane.showOptionDialog(
+					frmSudokua, "Irten aurretik sudokua gorde nahi duzu?","Abisua", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
 
-				if (JOptionPane.OK_OPTION == baiEz){
-					//erabiltzaileak sudokua gorde
-					gorde();
+			if (JOptionPane.OK_OPTION == baiEz){
+				//erabiltzaileak sudokua gorde
+				gorde();
 
-				}else if(JOptionPane.CANCEL_OPTION==baiEz){
+			}else if(JOptionPane.CANCEL_OPTION==baiEz){
 				frmSudokua.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-				}
 			}
+		}
 
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-			}
+		@Override
+		public void windowDeactivated(WindowEvent e) {
+			// TODO Auto-generated method stub
+		}
 
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-			}
+		@Override
+		public void windowDeiconified(WindowEvent e) {
+			// TODO Auto-generated method stub
+		}
 
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
+		@Override
+		public void windowIconified(WindowEvent e) {
+			// TODO Auto-generated method stub
 
-			}
+		}
 
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-			}
-		
+		@Override
+		public void windowOpened(WindowEvent e) {
+			// TODO Auto-generated method stub
+		}
+
 	}
 
 	private void kargatu(){
@@ -378,19 +379,21 @@ public class SudokuLehioa{
 			}
 		}
 	}
-	
+
 	private void gorde() {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (txtFMatrix[i][j].isEditable() && !txtFMatrix[i][j].getText().equals(""))
-					unekoSudoku.getKasila(i, j).aldatu(new Integer(txtFMatrix[i][j].getText()));
-				else unekoSudoku.getKasila(i, j).aldatu(0);
+				if (txtFMatrix[i][j].isEditable()) {
+					if (!txtFMatrix[i][j].getText().equals(""))
+						unekoSudoku.getKasila(i, j).aldatu(new Integer(txtFMatrix[i][j].getText()));
+					else unekoSudoku.getKasila(i, j).aldatu(0);
+				}
 			}
 		}
 		erabiltzailea.setSudoku(unekoSudoku);
 		ErabiltzaileLista.getErabiltzaileLista().gorde();
 	}
-	
+
 	private void zuzendu() {
 		gorde();
 		boolean[][] zuzenketa = unekoSudoku.zuzendu();
@@ -403,8 +406,27 @@ public class SudokuLehioa{
 				txtFMatrix[i][j].setEditable(false);
 			}
 		}
+		
+		erabiltzailea.setSudoku(new Sudokua());
+		ErabiltzaileLista.getErabiltzaileLista().gorde();
+
+		Object[] opzioak={"Menu Nagusia","Klasifikazioa"};
+		int baiEz = JOptionPane.showOptionDialog(
+				frmSudokua, "Nora joan nahi duzu?","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
+
+		if (JOptionPane.YES_OPTION == baiEz){
+			//erabiltzaileak sudokua gorde
+			frmSudokua.dispose();
+			AukeratuLehioa.main(erabiltzailea);
+			frmSudokua.remove(frmSudokua);
+
+		}else if(JOptionPane.NO_OPTION==baiEz){
+			frmSudokua.dispose();
+			KlasifikazioLehioa.main(erabiltzailea);
+			frmSudokua.remove(frmSudokua);
+		}
 	}
-	
+
 	public void markatuGorriz() throws InterruptedException {
 		boolean bukatu=false;
 		Random rand=new Random();
@@ -437,76 +459,76 @@ public class SudokuLehioa{
 		}
 		else{
 			TimerTask timerTask = new TimerTask()
-			 {	int count=0;
-	         public void run() {
-	        	 if(count==0 ){
-	        		 count++;
-	        		 if(tokatu==0){
-	        			 int o=0;
-	        			 if(zenbatgarrena<3)o=0;
-	        			 else if(zenbatgarrena<6)o=3;
-	        			 else o=6;
-	        			 int k=0;
-	        			 if(zenbatgarrena%3==0)k=0;
-	        			 else if(zenbatgarrena==1 ||zenbatgarrena==4 ||zenbatgarrena==7)k=3;
-	        			 else k=6;
-	        			
-	        			 for (int i =o ; i <o+3; i++) {
-	        				 for (int j = k; j <k+3; j++) {
-	        					 txtFMatrix[i][j].setOpaque(true);
-	        					 txtFMatrix[i][j].setBackground(Color.red);					
-	        				 }
-	        			 }
-	        		 	}else if(tokatu==1){
-	 						for (int i = 0; i <9; i++) {
-	 							txtFMatrix[i][zenbatgarrena].setOpaque(true);
-	 							txtFMatrix[i][zenbatgarrena].setBackground(Color.red);
-	 						}
-	 					}else{
-	 							for (int i = 0; i <9; i++) {
-	 								txtFMatrix[zenbatgarrena][i].setOpaque(true);
-	 								txtFMatrix[zenbatgarrena][i].setBackground(Color.red);	
-	 							}
-	 						}
-	        	}else {
-	        		tokatu=0;
-	        		 count++;
-					 for (int j = 0; j < 9; j++) {
-		        		 for (int k = 0; k < 9; k++) {
-		        			txtFMatrix[j][k].setBackground(Color.white); 
+			{	int count=0;
+			public void run() {
+				if(count==0 ){
+					count++;
+					if(tokatu==0){
+						int o=0;
+						if(zenbatgarrena<3)o=0;
+						else if(zenbatgarrena<6)o=3;
+						else o=6;
+						int k=0;
+						if(zenbatgarrena%3==0)k=0;
+						else if(zenbatgarrena==1 ||zenbatgarrena==4 ||zenbatgarrena==7)k=3;
+						else k=6;
+
+						for (int i =o ; i <o+3; i++) {
+							for (int j = k; j <k+3; j++) {
+								txtFMatrix[i][j].setOpaque(true);
+								txtFMatrix[i][j].setBackground(Color.red);					
+							}
+						}
+					}else if(tokatu==1){
+						for (int i = 0; i <9; i++) {
+							txtFMatrix[i][zenbatgarrena].setOpaque(true);
+							txtFMatrix[i][zenbatgarrena].setBackground(Color.red);
+						}
+					}else{
+						for (int i = 0; i <9; i++) {
+							txtFMatrix[zenbatgarrena][i].setOpaque(true);
+							txtFMatrix[zenbatgarrena][i].setBackground(Color.red);	
+						}
+					}
+				}else {
+					tokatu=0;
+					count++;
+					for (int j = 0; j < 9; j++) {
+						for (int k = 0; k < 9; k++) {
+							txtFMatrix[j][k].setBackground(Color.white); 
 							txtFMatrix[j][k].setOpaque(false);
-		        		 }
-					 }
-					 this.cancel();
-	        	 }
-	         }
-	         
-	     };
-	     Timer timer = new Timer();
-	     timer.scheduleAtFixedRate(timerTask, 0, 2000);
-			
+						}
+					}
+					this.cancel();
+				}
 			}
-	
-		}	
+
+			};
+			Timer timer = new Timer();
+			timer.scheduleAtFixedRate(timerTask, 0, 2000);
+
+		}
+
+	}	
 	private void kronometro(){
 		TimerTask timerTask = new TimerTask()
-	     {
+		{
 			public void run() 
-	         {seg++;
-	         if(seg==60){
-	        	 seg=0;
-	        	 min++;
-	        	 if(min==60){
-	        		 min=0;
-	        		 ordu++;
-	        	 }
-	         }
-	        if(bukatuKronometro){
-	        	this.cancel();
-	        }
-	         }
-	     };
-	    Timer timer = new Timer();
-	    timer.scheduleAtFixedRate(timerTask, 0, 1000); 
+			{seg++;
+			if(seg==60){
+				seg=0;
+				min++;
+				if(min==60){
+					min=0;
+					ordu++;
+				}
+			}
+			if(bukatuKronometro){
+				this.cancel();
+			}
+			}
+		};
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(timerTask, 0, 1000); 
 	}
 }	
