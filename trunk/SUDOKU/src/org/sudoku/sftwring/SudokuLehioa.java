@@ -163,6 +163,7 @@ public class SudokuLehioa{
 
 				if (JOptionPane.OK_OPTION == baiEz){
 					//erabiltzailearen sudokua zuzendu
+					zuzendu();
 				} 
 			}
 		});
@@ -377,6 +378,21 @@ public class SudokuLehioa{
 		erabiltzailea.setSudoku(unekoSudoku);
 		ErabiltzaileLista.getErabiltzaileLista().gorde();
 	}
+	
+	private void zuzendu() {
+		gorde();
+		boolean[][] zuzenketa = unekoSudoku.zuzendu();
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (!zuzenketa[i][j]) {
+					txtFMatrix[i][j].setForeground(Color.RED);
+					txtFMatrix[i][j].setText(""+unekoSudoku.getKasila(i, j).getBalioZuzena());
+				}
+				txtFMatrix[i][j].setEditable(false);
+			}
+		}
+	}
+	
 	public void markatuGorriz() throws InterruptedException {
 		boolean bukatu=false;
 		Random rand=new Random();

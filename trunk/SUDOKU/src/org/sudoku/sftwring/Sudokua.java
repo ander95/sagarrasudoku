@@ -1,6 +1,5 @@
 package org.sudoku.sftwring;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 
 public class Sudokua {
@@ -123,6 +122,18 @@ public class Sudokua {
 	}
 	public int getZailtasuna(){
 		return this.zailtasuna;
+	}
+	
+	public boolean[][] zuzendu()  {
+		boolean[][] zuzen = new boolean[9][9];
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				Kasila kas = this.getKasila(i, j);
+				if (!kas.getFinkoa()) zuzen[i][j] = kas.getBalioZuzena()==kas.getErabiltzaileBal();
+				else zuzen[i][j] = false;
+			}
+		}
+		return zuzen;
 	}
 
 	public void ausazBete() {/*Ausaz betetzeko metodoa bere semeetan definituko da Adib.: Adapterrean*/}
