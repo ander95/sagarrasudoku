@@ -88,4 +88,46 @@ public class Bloke {
 		bloke[i][j]= pKasila;
 		
 	}
+	
+	public boolean laguntza(){
+		boolean[] ilara=new boolean[10];
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+					if(!this.bloke[i][j].getFinkoa() && this.bloke[i][j].getErabiltzaileBal()!=0){
+						if(ilara[this.bloke[i][j].getErabiltzaileBal()]) {
+						return true;
+						}
+						else{
+							ilara[this.bloke[i][j].getErabiltzaileBal()]=true;
+						}
+					}
+					else if(this.bloke[i][j].getFinkoa()) {
+						if(ilara[this.bloke[i][j].getBalioZuzena()]){
+							return true;
+							}
+							else{
+								ilara[this.bloke[i][j].getBalioZuzena()]=true;
+							}
+					}			
+			}
+		}
+		return false;
+	}
+
+	public Kasila[] getZutabe(int k) {
+		Kasila[] emaitza = new Kasila[3];
+		for (int i = 0; i < 3; i++) {
+			emaitza[i]=this.bloke[i][k];
+		}
+		return emaitza;
+	}
+
+	public Kasila[] getIlara(int k) {
+		Kasila[] emaitza = new Kasila[3];
+		for (int i = 0; i < 3; i++) {
+			emaitza[i]=this.bloke[k][i];
+		}
+		return emaitza;
+	}
+	
 }
