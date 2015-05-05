@@ -32,6 +32,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JButton;
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
 
 
 
@@ -52,6 +54,14 @@ public class SudokuLehioa{
 	private static boolean sudokuBerria;
 	private JButton btnLaguntza;
 	private JPanel panel_1;
+	private JPanel panel_2;
+	private JTextPane textPane;
+	private boolean bukatuKronometro=false;
+	private int seg=0;
+	private int min=0;
+	private int ordu=0;
+	private JTextPane textPane_1;
+	private JEditorPane editorPane;
 	/**
 	 * Launch the application.
 	 */
@@ -87,6 +97,7 @@ public class SudokuLehioa{
 		frmSudokua.setTitle("SUDOKUA-"+erabiltzailea.getIzen());
 		frmSudokua.setBounds(100, 100, 700, 619);
 		frmSudokua.addWindowListener(new Kudeatzailea());
+		this.kronometro();
 		
 		menuBar = new JMenuBar();
 		frmSudokua.setJMenuBar(menuBar);
@@ -118,7 +129,8 @@ public class SudokuLehioa{
 				} 
 			}
 		});
-
+		
+	     
 		mntmZailtazunaAldatu = new JMenuItem("Zailtazuna aldatu");
 		mnOpzioak.add(mntmZailtazunaAldatu);
 		mntmZailtazunaAldatu.addActionListener(new ActionListener() {
@@ -130,7 +142,7 @@ public class SudokuLehioa{
 
 				if (JOptionPane.OK_OPTION == baiEz){
 					//Zailtasuna aukeratzeko ahukera
-					int zailtasuna=2;
+					int zailtasuna=unekoSudoku.getZailtasuna();
 					if(zailtasuna==2){
 						Object[] opzioak2={"Zaila"};
 						JOptionPane.showOptionDialog(
@@ -171,12 +183,12 @@ public class SudokuLehioa{
 		panel_1 = new JPanel();
 		menuBar.add(panel_1);
 		
+			
+
+		
 		btnLaguntza = new JButton("Laguntza");
 		btnLaguntza.setBackground(menuBar.getBackground());
 		menuBar.add(btnLaguntza);
-
-		//mntmLaguntza = new JMenuItem("Laguntza");
-		//menuBar.add(mntmLaguntza);
 		
 		JPanel panel=new Panel("icon2.png");
 		btnLaguntza.addActionListener(new ActionListener() {
@@ -429,10 +441,18 @@ public class SudokuLehioa{
 	         public void run() {
 	        	 if(count==0 ){
 	        		 count++;
-	        		 System.out.println(tokatu+" "+zenbatgarrena);
 	        		 if(tokatu==0){
-	        			 for (int i = zenbatgarrena; i <zenbatgarrena+3; i++) {
-	        				 for (int j = 0; j < 3; j++) {
+	        			 int o=0;
+	        			 if(zenbatgarrena<3)o=0;
+	        			 else if(zenbatgarrena<6)o=3;
+	        			 else o=6;
+	        			 int k=0;
+	        			 if(zenbatgarrena%3==0)k=0;
+	        			 else if(zenbatgarrena==1 ||zenbatgarrena==4 ||zenbatgarrena==7)k=3;
+	        			 else k=6;
+	        			
+	        			 for (int i =o ; i <o+3; i++) {
+	        				 for (int j = k; j <k+3; j++) {
 	        					 txtFMatrix[i][j].setOpaque(true);
 	        					 txtFMatrix[i][j].setBackground(Color.red);					
 	        				 }
@@ -468,4 +488,25 @@ public class SudokuLehioa{
 			}
 	
 		}	
-}
+	private void kronometro(){
+		TimerTask timerTask = new TimerTask()
+	     {
+			public void run() 
+	         {seg++;
+	         if(seg==60){
+	        	 seg=0;
+	        	 min++;
+	        	 if(min==60){
+	        		 min=0;
+	        		 ordu++;
+	        	 }
+	         }
+	        if(bukatuKronometro){
+	        	this.cancel();
+	        }
+	         }
+	     };
+	    Timer timer = new Timer();
+	    timer.scheduleAtFixedRate(timerTask, 0, 1000); 
+	}
+}	
