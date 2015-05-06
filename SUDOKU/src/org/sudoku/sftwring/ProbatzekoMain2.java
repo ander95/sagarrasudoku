@@ -10,12 +10,13 @@ public class ProbatzekoMain2 {
 	private static void sudokuaAusazBete() {
 		
 		//GeneradoreSudoku s = new GeneradoreSudoku();
-		Sudokua s = new SudokuAdapter();
+		Sudokua s = new SudokuAdapter(0);
 		System.out.println("\nHasieran...\n");
 		//s.beteAusaz();
-		s.ausazBete();
+		s.ausazBete(0);
+	
 		System.out.println("\nAusaz bete ondoren...\n");
-		s.inprimatuSudokuZuzena();
+//		s.inprimatuSudokuZuzena();
 		
 		s.inprimatuSudoku();
 		//s.inprimatuZuzena();

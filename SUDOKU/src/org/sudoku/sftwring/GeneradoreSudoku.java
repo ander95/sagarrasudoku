@@ -10,8 +10,10 @@ public class GeneradoreSudoku {
 		private int zabalera=9;
 		private int zailtasuna;
 		
-		public GeneradoreSudoku(){
+		public GeneradoreSudoku(int zailtazuna){
+			
 			sudoku = new Kasila [luzera][zabalera];
+			this.zailtasuna=zailtazuna;
 			beteZeroz();
 		}
 		
@@ -93,7 +95,7 @@ public class GeneradoreSudoku {
 				kopiatu();					//balio guztiak erabiltzaile baliora kopiatzen ditu
 				ezabatuAusaz(kopurua);		//zenbakiak ausaz kentzen dira eta gelditu direnak finko bihurtu
 				posibleakEguneratu();		//hutsik gelditu diren kasileta zeintzuk zenbaki jarri daitezken begiratzen da
-				osotuDaiteke = true;//sudokuaEgin(); jarri behar da, momentuz true jarriko dugu
+				osotuDaiteke = sudokuaEgin();// jarri behar da, momentuz true jarriko dugu
 			} while (!osotuDaiteke);		//ordenagailuak sudoku bakarra lortu badu eta hasierako balioen berdina bada true itzultzen da, bestela,
 											//prosezua berriz hasten da
 			
@@ -163,53 +165,113 @@ public class GeneradoreSudoku {
 			boolean aldaketak = false;		//hurrengo algoritmoarekin saiatuko da. Algoritmo batek ere ez badu aldaketarik egiten
 			while (!bukatuDu()) {			//ezin da sudokua bete. False itzuli eta beste konbinazio batekin saiatuko da
 
-				for (int z = 0; z < sudoku.length; z++) {		//lehen algoritmoa: kasilan posible bakarra dago
-					for (int i = 0; i < sudoku.length; i++) {
-						if (sudoku[z][i].getErabiltzaileBal()!=0 && sudoku[z][i].getPosibleak().size()==1) {
-							int balioa = sudoku[z][i].getPosibleak().get(0);
-							sudoku[z][i].aldatu(balioa);
-							blokeaEzgaitu(z,i,balioa);
-							errenkadaEzgaitu(z,i,balioa);
-							zutabeaEzgaitu(z,i,balioa);
-							aldaketak = true;
-						}	
-					}
-				}
-				
+				aldaketak=kasilaAlgoritmo();
+				if (!aldaketak) {aldaketak=zutabeAlgoritmo();}
 				//bigarren algoritmoa: blokeko kasila bakarrak du zenbaki jakin bat jartzeko aukera
 				//2.algoritmoa//
-				
-				for (int z = 0; z < sudoku.length; z++) {		//hirugarren algoritmoa: zutabeko kasila bakarrak du zenbaki jakin bat jartzeko aukera
-					
-					Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};	//zutabe bakoitzean aldatzeko
-					for (int i = 0; i < sudoku.length; i++) {
-						if (sudoku[z][i].getErabiltzaileBal()!=0) {
-							ArrayList<Integer> unekoPosibleak= sudoku[i][z].getPosibleak();
-							
-						}
-					}
-				}
+				if (!aldaketak) {aldaketak=ilaraAlgoritmo();}
+	
 
-				for (int z = 0; z < sudoku.length; z++) {		//laugarren algoritmoa: ilarako kasila bakarrak du zenbaki jakin bat jartzeko aukera
 
-					Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};	//ilara bakoitzean aldatzeko
-					for (int i = 0; i < sudoku.length; i++) {
-						if (sudoku[i][z].getErabiltzaileBal()!=0) {
-							ArrayList<Integer> unekoPosibleak= sudoku[i][z].getPosibleak();
-
-						}
-					}
-				}
-				
 				//bostgarren algoritmo bat dago, sudoku bat osatzeko gutxi erabiltzen dena
 
 				if (!aldaketak) {return false;}//hiru algoritmoetatik bat ere ezin izan du kasila bakar baten balioa lortu
-												//ondorioz ezin da sudokua bete, bestela, aldaketak aldagaia false jarriko du
-												//algoritmoak sudokua osotzen amaitu arte jarraitu dezan
+				//ondorioz ezin da sudokua bete, bestela, aldaketak aldagaia false jarriko du
+				//algoritmoak sudokua osotzen amaitu arte jarraitu dezan
 				else {aldaketak = false;}
 			}
 			//hona helduz gero sudokua balio zuzenekin lortu daiteke
-			return true;
+			return true;}
+		
+		
+		private boolean ilaraAlgoritmo() {
+			boolean aldaketak=false;
+			for (int z = 0; z < sudoku.length; z++) {		//laugarren algoritmoa: ilarako kasila bakarrak du zenbaki jakin bat jartzeko aukera
+
+				Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};	//ilara bakoitzean aldatzeko
+				for (int i = 0; i < sudoku.length; i++) {
+					if (sudoku[i][z].getErabiltzaileBal()!=0) {
+						ArrayList<Integer> unekoPosibleak= sudoku[i][z].getPosibleak();
+						for (Integer zenb : unekoPosibleak) {
+							agerpenKop[zenb-1]++;								
+						}
+					}
+				}
+				for (int i = 0; i < agerpenKop.length; i++) {
+					if (agerpenKop[i]==1) {
+						for (int i1 = 0; i1 < sudoku.length; i1++) {
+							if (sudoku[i1][z].getErabiltzaileBal()!=0) {
+								ArrayList<Integer> unekoPosibleak= sudoku[i1][z].getPosibleak();
+								for (Integer zenb : unekoPosibleak) {
+									if (zenb==i+1) {
+										sudoku[i1][z].aldatu(i+1);
+										aldaketak=true;
+										zutabeaEzgaitu(i1, z, i+1);
+										errenkadaEzgaitu(i1, z, i+1);
+										blokeaEzgaitu(i1, z, i+1);
+									}	
+								}
+							}
+						}
+					}
+				}
+			}
+			return aldaketak;
+		}
+		
+		
+		private boolean zutabeAlgoritmo() {
+			boolean aldaketak=false;
+			for (int z = 0; z < sudoku.length; z++) {		//hirugarren algoritmoa: zutabeko kasila bakarrak du zenbaki jakin bat jartzeko aukera
+
+				Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};	//zutabe bakoitzean aldatzeko
+				for (int i = 0; i < sudoku.length; i++) {
+					if (sudoku[z][i].getErabiltzaileBal()!=0) {
+						ArrayList<Integer> unekoPosibleak= sudoku[z][i].getPosibleak();
+						for (Integer zenb : unekoPosibleak) {
+							agerpenKop[zenb-1]++;								
+						}
+					}
+				}
+				for (int i = 0; i < agerpenKop.length; i++) {
+					if (agerpenKop[i]==1) {
+						for (int i1 = 0; i1 < sudoku.length; i1++) {
+							if (sudoku[z][i1].getErabiltzaileBal()!=0) {
+								ArrayList<Integer> unekoPosibleak= sudoku[z][i1].getPosibleak();
+								for (Integer zenb : unekoPosibleak) {
+									if (zenb==i+1) {
+										sudoku[z][i1].aldatu(i+1);
+										aldaketak=true;
+										zutabeaEzgaitu(z, i1, i+1);
+										errenkadaEzgaitu(z, i1, i+1);
+										blokeaEzgaitu(z, i1, i+1);
+									}							
+								}
+							}
+						}
+					}
+				}
+			}
+
+			return aldaketak;
+		}
+
+		private boolean kasilaAlgoritmo(){
+			boolean aldaketak=false;
+			for (int z = 0; z < sudoku.length; z++) {		//lehen algoritmoa: kasilan posible bakarra dago
+				for (int i = 0; i < sudoku.length; i++) {
+					if (sudoku[z][i].getErabiltzaileBal()!=0 && sudoku[z][i].getPosibleak().size()==1) {
+						int balioa = sudoku[z][i].getPosibleak().get(0);
+						sudoku[z][i].aldatu(balioa);
+						blokeaEzgaitu(z,i,balioa);
+						errenkadaEzgaitu(z,i,balioa);
+						zutabeaEzgaitu(z,i,balioa);
+						aldaketak = true;
+					}	
+				}
+			}
+			return aldaketak;
+			
 		}
 
 		private boolean bukatuDu() {
