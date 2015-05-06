@@ -3,8 +3,16 @@ package org.sudoku.sftwring;
 public class ProbatzekoMain2 {
 
 	public static void main(String[] args) {
-		sudokuaAusazBete();
+//		sudokuaAusazBete();
+		proba();
 
+	}
+	
+	private static void proba(){
+		GeneradoreSudoku s = new GeneradoreSudoku(0);
+		s.beteAusaz();
+		s.inprimatuZuzena();
+//		s.inprimatuErabiltzaile();
 	}
 	
 	private static void sudokuaAusazBete() {
