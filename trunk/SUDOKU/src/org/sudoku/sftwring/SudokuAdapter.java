@@ -2,13 +2,12 @@ package org.sudoku.sftwring;
 
 public class SudokuAdapter extends Sudokua {
 
-	public SudokuAdapter() {
+	public SudokuAdapter(int i) {
 		super();
 	}
 
-	public void ausazBete() {
-		GeneradoreSudoku genSudo = new GeneradoreSudoku();
-		//zailtasuna hemen nonbaiten doa generadoreko zenbakiak kentzeko metodoak 0, 1 edo 2 zenbalia beharko duelako
+	public void ausazBete(int i) {
+		GeneradoreSudoku genSudo = new GeneradoreSudoku(i);
 		genSudo.beteAusaz();
 		pasatu(genSudo);
 	}

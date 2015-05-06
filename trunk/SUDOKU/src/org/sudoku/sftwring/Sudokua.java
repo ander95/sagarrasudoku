@@ -136,7 +136,7 @@ public class Sudokua {
 		return zuzen;
 	}
 
-	public void ausazBete() {/*Ausaz betetzeko metodoa bere semeetan definituko da Adib.: Adapterrean*/}
+	public void ausazBete(int zailtasuna) {/*Ausaz betetzeko metodoa bere semeetan definituko da Adib.: Adapterrean*/}
 	
 	public int laguntzaIlarak(){
 		Random rand=new Random();
