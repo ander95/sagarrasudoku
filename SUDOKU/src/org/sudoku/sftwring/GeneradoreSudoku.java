@@ -191,39 +191,47 @@ public class GeneradoreSudoku {
 			return aldaketak;
 		}
 		
-		private boolean ilaraAlgoritmo() {
-			boolean aldaketak=false;
+		private boolean ilaraAlgoritmo(){
+			boolean aldaketak = false;
 			for (int z = 0; z < sudoku.length; z++) {
-				Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};
-				for (int i = 0; i < sudoku.length; i++) {
-					if (sudoku[i][z].getErabiltzaileBal()!=0) {
-						ArrayList<Integer> unekoPosibleak= sudoku[i][z].getPosibleak();
-						for (Integer zenb : unekoPosibleak) {
-							agerpenKop[zenb-1]++;								
-						}
-					}
-				}
-				for (int i = 0; i < agerpenKop.length; i++) {
-					if (agerpenKop[i]==1) {
-						for (int i1 = 0; i1 < sudoku.length; i1++) {
-							if (sudoku[i1][z].getErabiltzaileBal()!=0) {
-								ArrayList<Integer> unekoPosibleak= sudoku[i1][z].getPosibleak();
-								for (Integer zenb : unekoPosibleak) {
-									if (zenb==i+1) {
-										sudoku[i1][z].aldatu(i+1);
-										aldaketak=true;
-										zutabeaEzgaitu(i1, z, i+1);
-										errenkadaEzgaitu(i1, z, i+1);
-										blokeaEzgaitu(i1, z, i+1);
-									}	
-								}
-							}
-						}
-					}
-				}
+				
 			}
 			return aldaketak;
 		}
+		
+//		private boolean ilaraAlgoritmo() {
+//			boolean aldaketak=false;
+//			for (int z = 0; z < sudoku.length; z++) {
+//				Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};
+//				for (int i = 0; i < sudoku.length; i++) {
+//					if (sudoku[i][z].getErabiltzaileBal()!=0) {
+//						ArrayList<Integer> unekoPosibleak= sudoku[i][z].getPosibleak();
+//						for (Integer zenb : unekoPosibleak) {
+//							agerpenKop[zenb-1]++;								
+//						}
+//					}
+//				}
+//				for (int i = 0; i < agerpenKop.length; i++) {
+//					if (agerpenKop[i]==1) {
+//						for (int i1 = 0; i1 < sudoku.length; i1++) {
+//							if (sudoku[i1][z].getErabiltzaileBal()!=0) {
+//								ArrayList<Integer> unekoPosibleak= sudoku[i1][z].getPosibleak();
+//								for (Integer zenb : unekoPosibleak) {
+//									if (zenb==i+1) {
+//										sudoku[i1][z].aldatu(i+1);
+//										aldaketak=true;
+//										zutabeaEzgaitu(i1, z, i+1);
+//										errenkadaEzgaitu(i1, z, i+1);
+//										blokeaEzgaitu(i1, z, i+1);
+//									}	
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//			return aldaketak;
+//		}
 		
 		private boolean zutabeAlgoritmo() {
 			boolean aldaketak=false;
