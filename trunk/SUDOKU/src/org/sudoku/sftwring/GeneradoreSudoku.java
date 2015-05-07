@@ -10,9 +10,9 @@ public class GeneradoreSudoku {
 		private int zabalera=9;
 		private int zailtasuna;
 		
-		public GeneradoreSudoku(){
+		public GeneradoreSudoku(int zailtasun){
 			sudoku = new Kasila [luzera][zabalera];
-//			this.zailtasuna=zailtasuna;
+			this.zailtasuna=zailtasun;
 			beteZeroz();
 		}
 		
