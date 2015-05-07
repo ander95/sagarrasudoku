@@ -7,6 +7,7 @@ public class SudokuAdapter extends Sudokua {
 	}
 
 	public void ausazBete(int zailtasun) {
+		setZailtasuna(zailtasun);
 		GeneradoreSudoku genSudo = new GeneradoreSudoku(zailtasun);
 		genSudo.beteAusaz();
 		pasatu(genSudo);

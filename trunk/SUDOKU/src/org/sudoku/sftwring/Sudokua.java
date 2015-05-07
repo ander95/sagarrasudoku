@@ -51,15 +51,6 @@ public class Sudokua {
 		case 7:pBloke=sudoku[2][1];break;
 		case 8:pBloke=sudoku[2][2];break;
 		}
-//		if (i==0) pBloke=sudoku[0][0];
-//		else if (i==1) pBloke=sudoku[0][1];
-//		else if (i==2) pBloke=sudoku[0][2];
-//		else if (i==3) pBloke=sudoku[1][0];
-//		else if (i==4) pBloke=sudoku[1][1];
-//		else if (i==5) pBloke=sudoku[1][2];
-//		else if (i==6) pBloke=sudoku[2][0];
-//		else if (i==7) pBloke=sudoku[2][1];
-//		else if (i==8) pBloke=sudoku[2][2];
 		
 		
 		return pBloke;

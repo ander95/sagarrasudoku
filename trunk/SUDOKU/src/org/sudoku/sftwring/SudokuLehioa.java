@@ -33,8 +33,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JEditorPane;
 
 
 
@@ -52,26 +50,17 @@ public class SudokuLehioa{
 	private int zenbatgarrena;
 	private int tokatu;
 
-	private static boolean sudokuBerria;
 	private JButton btnLaguntza;
 	private JPanel panel_1;
-	private JPanel panel_2;
-	private JTextPane textPane;
-	private boolean bukatuKronometro=false;
-	private int seg=0;
-	private int min=0;
-	private int ordu=0;
-	private JTextPane textPane_1;
-	private JEditorPane editorPane;
+	private int laguntzaKop;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(final Erabiltzaile erab, final boolean berria) {
+	public static void main(final Erabiltzaile erab) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					erabiltzailea = erab;
-					sudokuBerria = berria;
 					SudokuLehioa window = new SudokuLehioa(erab);
 					window.frmSudokua.setVisible(true);
 
@@ -86,6 +75,7 @@ public class SudokuLehioa{
 	 * Create the application.
 	 */
 	public SudokuLehioa(final Erabiltzaile erab) {
+		laguntzaKop = 0;
 
 		initialize(erab);
 	}
@@ -93,16 +83,14 @@ public class SudokuLehioa{
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(final Erabiltzaile erab) {			
+	private void initialize(final Erabiltzaile erab) {
 		frmSudokua = new JFrame();
 		frmSudokua.setTitle("SUDOKUA-"+erabiltzailea.getIzen());
 		frmSudokua.setBounds(100, 100, 700, 619);
 		frmSudokua.addWindowListener(new Kudeatzailea());
-		this.kronometro();
 
 		menuBar = new JMenuBar();
 		frmSudokua.setJMenuBar(menuBar);
-
 		mnOpzioak = new JMenu("Opzioak");
 		menuBar.add(mnOpzioak);
 
@@ -144,23 +132,37 @@ public class SudokuLehioa{
 				if (JOptionPane.OK_OPTION == baiEz){
 					//Zailtasuna aukeratzeko ahukera
 					int zailtasuna=unekoSudoku.getZailtasuna();
-					if(zailtasuna==2){
+					int erantzun = -1;
+					if(zailtasuna==2|| zailtasuna==1){
 						Object[] opzioak2={"Zaila"};
-						JOptionPane.showOptionDialog(
-								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
-					}
-					else if(zailtasuna==1){
-						Object[] opzioak2={"Zaila"};
-						JOptionPane.showOptionDialog(
-								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
+
+						erantzun=JOptionPane.showOptionDialog(
+								frmSudokua, "Autatu aukera:","Abisua", JOptionPane.NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);	
+						//						if (JOptionPane.YES_OPTION == erantzun){
+						//							GeneradoreSudoku gen=new GeneradoreSudoku(2);
+						//							unekoSudoku=gen.getSudoku();
+						//							gorde();
 					}
 					else if(zailtasuna==0){
 						Object[] opzioak2={"Erdikoa","Zaila"};
-						JOptionPane.showOptionDialog(
-								frmSudokua, "Autatu aukera","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
-					}
+						erantzun=JOptionPane.showOptionDialog(
+								frmSudokua, "Autatu aukera:","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE,null,opzioak2,null);
 
-				} 
+					}
+					if (JOptionPane.YES_OPTION == erantzun){
+						unekoSudoku=new SudokuAdapter();
+						unekoSudoku.ausazBete(2);
+						erabiltzailea.setSudoku(unekoSudoku);
+					}else if(JOptionPane.NO_OPTION == erantzun){
+						unekoSudoku=new SudokuAdapter();
+						unekoSudoku.ausazBete(1);
+						erabiltzailea.setSudoku(unekoSudoku);
+
+					}
+					frmSudokua.dispose();
+					SudokuLehioa.main(erabiltzailea);
+				}
+
 			}
 		});
 
@@ -177,7 +179,7 @@ public class SudokuLehioa{
 				if (JOptionPane.OK_OPTION == baiEz){
 					//erabiltzailearen sudokua zuzendu
 					zuzendu();
-				} 
+				}
 			}
 		});
 
@@ -267,14 +269,10 @@ public class SudokuLehioa{
 			} else lerro = 1;
 		}
 
-		if (sudokuBerria==true) {
-			unekoSudoku = new SudokuAdapter();
-			unekoSudoku.ausazBete();
-			this.kargatu();
-		} else {
+	
 			unekoSudoku = erabiltzailea.getSudoku();
 			this.kargatu();
-		}
+
 	}
 
 
@@ -395,6 +393,7 @@ public class SudokuLehioa{
 	}
 
 	private void zuzendu() {
+		int puntu = erabiltzailea.puntuatu(laguntzaKop);
 		gorde();
 		boolean[][] zuzenketa = unekoSudoku.zuzendu();
 		for (int i = 0; i < 9; i++) {
@@ -406,13 +405,13 @@ public class SudokuLehioa{
 				txtFMatrix[i][j].setEditable(false);
 			}
 		}
-		
+
 		erabiltzailea.setSudoku(new Sudokua());
 		ErabiltzaileLista.getErabiltzaileLista().gorde();
 
 		Object[] opzioak={"Menu Nagusia","Klasifikazioa"};
 		int baiEz = JOptionPane.showOptionDialog(
-				frmSudokua, "Nora joan nahi duzu?","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
+				frmSudokua, puntu+" puntu lortu dituzu\nNora joan nahi duzu?","Abisua", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opzioak,null);
 
 		if (JOptionPane.YES_OPTION == baiEz){
 			//erabiltzaileak sudokua gorde
@@ -420,7 +419,7 @@ public class SudokuLehioa{
 			AukeratuLehioa.main(erabiltzailea);
 			frmSudokua.remove(frmSudokua);
 
-		}else if(JOptionPane.NO_OPTION==baiEz){
+		}else if(JOptionPane.NO_OPTION==baiEz || JOptionPane.CLOSED_OPTION == baiEz){
 			frmSudokua.dispose();
 			KlasifikazioLehioa.main(erabiltzailea);
 			frmSudokua.remove(frmSudokua);
@@ -428,6 +427,7 @@ public class SudokuLehioa{
 	}
 
 	public void markatuGorriz() throws InterruptedException {
+		laguntzaKop++;
 		boolean bukatu=false;
 		Random rand=new Random();
 		int count=0;
@@ -510,25 +510,5 @@ public class SudokuLehioa{
 		}
 
 	}	
-	private void kronometro(){
-		TimerTask timerTask = new TimerTask()
-		{
-			public void run() 
-			{seg++;
-			if(seg==60){
-				seg=0;
-				min++;
-				if(min==60){
-					min=0;
-					ordu++;
-				}
-			}
-			if(bukatuKronometro){
-				this.cancel();
-			}
-			}
-		};
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(timerTask, 0, 1000); 
-	}
+
 }	
