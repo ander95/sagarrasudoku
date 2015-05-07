@@ -6,8 +6,8 @@ import java.util.Collections;
 public class ProbatzekoMain2 {
 
 	public static void main(String[] args) {
-//		sudokuaAusazBete();
-		proba();
+		sudokuaAusazBete();
+//		proba();
 
 	}
 	

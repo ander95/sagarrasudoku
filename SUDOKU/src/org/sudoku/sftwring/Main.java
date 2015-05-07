@@ -8,7 +8,7 @@ public class Main {
 		s.generateSolution(game, 0);
 		for (int i = 0; i < game.length; i++) {
 			for (int j = 0; j < game[i].length; j++) {
-				System.out.print(game[i][j]);
+				System.out.print(game[i][j]+" ");
 			}System.out.print("\n");
 		}
 	}
