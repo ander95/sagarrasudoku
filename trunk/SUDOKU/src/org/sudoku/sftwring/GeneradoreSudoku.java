@@ -87,7 +87,6 @@ public class GeneradoreSudoku {
 			case 1:kopurua = 44 + batu; break;
 			case 2:kopurua = 52 + batu; break;
 			}
-//			ezabatuAusaz(kopurua);
 			boolean osotuDaiteke = false;
 			do {
 				kopiatu();

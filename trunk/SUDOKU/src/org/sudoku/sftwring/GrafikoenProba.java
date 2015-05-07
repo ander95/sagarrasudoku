@@ -6,7 +6,7 @@ public class GrafikoenProba {
 	public static void main(String[] args) {
 	    	
 			sudokuProba();
-	    	//klsfProba();
+//	    	klsfProba();
 	    
 	}
 	@SuppressWarnings("unused")
