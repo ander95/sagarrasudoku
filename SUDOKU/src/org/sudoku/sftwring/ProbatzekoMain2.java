@@ -1,5 +1,8 @@
 package org.sudoku.sftwring;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ProbatzekoMain2 {
 
 	public static void main(String[] args) {
@@ -9,12 +12,29 @@ public class ProbatzekoMain2 {
 	}
 	
 	private static void proba(){
+
 		GeneradoreSudoku s = new GeneradoreSudoku(0);
-		s.beteAusaz();
-		s.setZailtasuna(0);
-		s.kasilakEzabatu(0);
-		s.inprimatuZuzena();
-		s.inprimatuErabiltzaile();
+		ArrayList posizioak = new ArrayList(81);
+		for (int i = 0; i < posizioak.size(); i++) {
+			posizioak.add(i);
+		}
+		Collections.shuffle(posizioak);
+		for (Object i : posizioak) {
+		int unekoPosizioa=(int) posizioak.get((int) i);
+		if(s.KalkulatuPosibleak(unekoPosizioa).length>1){
+			
+		}else{
+		
+		}
+		}
+
+		GeneradoreSudoku s1 = new GeneradoreSudoku(0);
+
+		s1.beteAusaz();
+		s1.setZailtasuna(0);
+		s1.kasilakEzabatu(0);
+		s1.inprimatuZuzena();
+		s1.inprimatuErabiltzaile();
 	}
 	
 	@SuppressWarnings("unused")
