@@ -389,7 +389,7 @@ public class GeneradoreSudoku {
 			}
 		}
 		
-		private Integer[] KalkulatuPosibleak(int pos){		//kasilan posible diren zenbakiak kalkulatzen ditu
+		public Integer[] KalkulatuPosibleak(int pos){		//kasilan posible diren zenbakiak kalkulatzen ditu
 			Integer[] emaitza = null;
 			switch(pos){
 			case 0:return emaitza = KalkulatuPosibleak(0, 0);
