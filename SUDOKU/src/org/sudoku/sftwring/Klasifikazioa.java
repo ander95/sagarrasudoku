@@ -114,12 +114,12 @@ public class Klasifikazioa {
 		int eskuin=r;
 
 		while (ezker<eskuin) {
-			while(((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getPuntuazioa()).compareTo((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) >= 0 && ezker<eskuin) {
+			while(((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(ezker))).getPuntuazioa()).compareTo((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) >= 0 && ezker<eskuin) {
 				ezker ++;
 
 			}
 
-			while(((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(eskuin))).getPuntuazioa()).compareTo((Float)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) < 0)
+			while(((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile((taula.get(eskuin))).getPuntuazioa()).compareTo((Integer)ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(lag).getPuntuazioa()) < 0)
 				eskuin--;
 			if(ezker<eskuin)
 				swap(taula,ezker,eskuin);

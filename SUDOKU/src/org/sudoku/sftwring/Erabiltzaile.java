@@ -100,7 +100,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa().eguneratu();
 	}
 
-	public float getPuntuazioa() {
+	public int getPuntuazioa() {
 		return puntuazioa;
 	}
 
