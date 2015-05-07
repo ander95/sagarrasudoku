@@ -9,7 +9,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	private String pasahitza;
 	private String zifraPasahitz;
 	private int ID;
-	private float puntuazioa;
+	private int puntuazioa;
 	private Sudokua azkenengoSudokua;
 
 	public Erabiltzaile(String pIzena, int pID,String pPasahitza, String pZifraPasahitz){
@@ -95,7 +95,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		return this.izena.compareTo(arg0.getIzen());
 	}
 
-	public void gehituPuntuak(float pPuntuak) {
+	public void gehituPuntuak(int pPuntuak) {
 		puntuazioa = puntuazioa + pPuntuak;
 		ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa().eguneratu();
 	}
@@ -127,7 +127,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		this.zifraPasahitz = (pEr[2]);
 		this.pasahitza=pEr[3];
 		this.azkenengoSudokua.kargatu(pEr[4]);
-		this.puntuazioa=new Float(pEr[5]);
+		this.puntuazioa=new Integer(pEr[5]);
 	}
 
 	public void inprimatuDatuak() {
@@ -141,6 +141,25 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 	}
 	public void setSudoku(Sudokua pSudo){
 		this.azkenengoSudokua=pSudo;
+	}
+
+	public int puntuatu(int laguntzaKop) {
+		boolean[][] sudo =azkenengoSudokua.zuzendu();
+		boolean zuzena = true;
+		for (int i = 0; i < sudo.length; i++) {
+			for (int j = 0; j < sudo.length; j++) {
+				zuzena = sudo[i][j];
+				if (!zuzena) break;
+			}
+			if (!zuzena) break;
+		}
+
+		int puntu = ((azkenengoSudokua.getZailtasuna()+1)*100)-(7*azkenengoSudokua.getZailtasuna()*laguntzaKop);
+		if (zuzena&&puntu>0) {
+			gehituPuntuak(puntu);
+			return puntu;
+		} else return 0;
+
 	}
 
 }

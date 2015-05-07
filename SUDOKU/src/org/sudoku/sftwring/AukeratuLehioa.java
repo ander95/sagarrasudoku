@@ -94,39 +94,39 @@ public class AukeratuLehioa extends JFrame {
 		infoPanel = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(15)
-					.addComponent(jokatuPanel, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-					.addGap(30)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(zailtasunakPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
+						.addGap(15)
+						.addComponent(jokatuPanel, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+						.addGap(30)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(zailtasunakPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
+								.addContainerGap())
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(20)
-					.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(90)
-					.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE)
-					.addGap(22))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(jokatuPanel, GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+						.addGap(20)
+						.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+						.addGap(90)
+						.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE)
+						.addGap(22))
+						.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(jokatuPanel, GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+								.addContainerGap())
+				);
 		infoPanel.setLayout(new MigLayout("", "[85px][][][][][][]", "[19px][]"));
-		
-				lblErabizen = new JLabel(erabiltzaile.getIzen());
-				infoPanel.add(lblErabizen, "cell 6 0,alignx right,aligny top");
-				lblErabizen.setForeground(new Color(128, 0, 128));
-				lblErabizen.setFont(new Font("EHUSerif", Font.BOLD, 28));
-		
-				lblPuntuazioa = new JLabel(erabiltzaile.getPuntuazioa()+" puntu");
-				lblPuntuazioa.setFont(new Font("EHUSerif", Font.BOLD, 18));
-				lblPuntuazioa.setForeground(new Color(128, 0, 128));
-				infoPanel.add(lblPuntuazioa, "cell 6 1");
+
+		lblErabizen = new JLabel(erabiltzaile.getIzen());
+		infoPanel.add(lblErabizen, "cell 6 0,alignx right,aligny top");
+		lblErabizen.setForeground(new Color(128, 0, 128));
+		lblErabizen.setFont(new Font("EHUSerif", Font.BOLD, 28));
+
+		lblPuntuazioa = new JLabel(erabiltzaile.getPuntuazioa()+" puntu");
+		lblPuntuazioa.setFont(new Font("EHUSerif", Font.BOLD, 18));
+		lblPuntuazioa.setForeground(new Color(128, 0, 128));
+		infoPanel.add(lblPuntuazioa, "cell 6 1");
 
 		lblSudokuGordeta = new JLabel("");
 		lblSudokuGordeta.setForeground(new Color(139, 0, 139));
@@ -143,31 +143,31 @@ public class AukeratuLehioa extends JFrame {
 		sudopanel = new Panel(icon);
 		GroupLayout gl_jokatuPanel = new GroupLayout(jokatuPanel);
 		gl_jokatuPanel.setHorizontalGroup(
-			gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
+				gl_jokatuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_jokatuPanel.createSequentialGroup()
-					.addGroup(gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_jokatuPanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(sudopanel, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
-						.addGroup(Alignment.LEADING, gl_jokatuPanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblSudokuGordeta, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
-						.addGroup(Alignment.LEADING, gl_jokatuPanel.createSequentialGroup()
-							.addGap(93)
-							.addComponent(btnJokatu)))
-					.addContainerGap())
-		);
+						.addGroup(gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, gl_jokatuPanel.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(sudopanel, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+										.addGroup(Alignment.LEADING, gl_jokatuPanel.createSequentialGroup()
+												.addContainerGap()
+												.addComponent(lblSudokuGordeta, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+												.addGroup(Alignment.LEADING, gl_jokatuPanel.createSequentialGroup()
+														.addGap(93)
+														.addComponent(btnJokatu)))
+														.addContainerGap())
+				);
 		gl_jokatuPanel.setVerticalGroup(
-			gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
+				gl_jokatuPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_jokatuPanel.createSequentialGroup()
-					.addContainerGap(25, Short.MAX_VALUE)
-					.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(sudopanel, GroupLayout.PREFERRED_SIZE, 319, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnJokatu)
-					.addGap(40))
-		);
+						.addContainerGap(25, Short.MAX_VALUE)
+						.addComponent(lblSudokuGordeta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(sudopanel, GroupLayout.PREFERRED_SIZE, 319, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(btnJokatu)
+						.addGap(40))
+				);
 
 		kargatu(baduSudokurik);
 
@@ -209,44 +209,44 @@ public class AukeratuLehioa extends JFrame {
 		lblError.setForeground(Color.RED);
 		GroupLayout gl_zailtasunakPanel = new GroupLayout(zailtasunakPanel);
 		gl_zailtasunakPanel.setHorizontalGroup(
-			gl_zailtasunakPanel.createParallelGroup(Alignment.TRAILING)
+				gl_zailtasunakPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_zailtasunakPanel.createSequentialGroup()
-					.addContainerGap(53, Short.MAX_VALUE)
-					.addComponent(btnSudokuBerria)
-					.addGap(41))
-				.addGroup(Alignment.LEADING, gl_zailtasunakPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblError, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_zailtasunakPanel.createSequentialGroup()
-					.addGap(118)
-					.addGroup(gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(rdbtnZaila, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(rdbtnErraza, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-						.addComponent(rdbtnErdikoa))
-					.addContainerGap(39, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_zailtasunakPanel.createSequentialGroup()
-					.addGap(48)
-					.addComponent(lblZailtasuna)
-					.addContainerGap(105, Short.MAX_VALUE))
-		);
+						.addContainerGap(53, Short.MAX_VALUE)
+						.addComponent(btnSudokuBerria)
+						.addGap(41))
+						.addGroup(Alignment.LEADING, gl_zailtasunakPanel.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(lblError, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+								.addContainerGap())
+								.addGroup(Alignment.LEADING, gl_zailtasunakPanel.createSequentialGroup()
+										.addGap(118)
+										.addGroup(gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING, false)
+												.addComponent(rdbtnZaila, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+												.addComponent(rdbtnErraza, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+												.addComponent(rdbtnErdikoa))
+												.addContainerGap(39, Short.MAX_VALUE))
+												.addGroup(Alignment.LEADING, gl_zailtasunakPanel.createSequentialGroup()
+														.addGap(48)
+														.addComponent(lblZailtasuna)
+														.addContainerGap(105, Short.MAX_VALUE))
+				);
 		gl_zailtasunakPanel.setVerticalGroup(
-			gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
+				gl_zailtasunakPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_zailtasunakPanel.createSequentialGroup()
-					.addContainerGap(29, Short.MAX_VALUE)
-					.addComponent(lblZailtasuna)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(rdbtnErraza)
-					.addGap(7)
-					.addComponent(rdbtnErdikoa)
-					.addGap(7)
-					.addComponent(rdbtnZaila)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblError, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnSudokuBerria)
-					.addGap(24))
-		);
+						.addContainerGap(29, Short.MAX_VALUE)
+						.addComponent(lblZailtasuna)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(rdbtnErraza)
+						.addGap(7)
+						.addComponent(rdbtnErdikoa)
+						.addGap(7)
+						.addComponent(rdbtnZaila)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(lblError, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(btnSudokuBerria)
+						.addGap(24))
+				);
 		zailtasunakPanel.setLayout(gl_zailtasunakPanel);
 		begiratuSudokurikBadu();
 	}
@@ -260,27 +260,27 @@ public class AukeratuLehioa extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			Sudokua pSudo=new Sudokua();
+			Sudokua pSudo=new SudokuAdapter();
 			if (sudokuBerria) {
-				if(rdbtnErraza.isSelected()){
-					pSudo.setZailtasuna(0);
-					SudokuLehioa.main(erabiltzaile, sudokuBerria);
+				if (rdbtnErraza.isSelected()||rdbtnErdikoa.isSelected()||rdbtnZaila.isSelected()) {
+					if(rdbtnErraza.isSelected()){
+						pSudo.ausazBete(0);
+					}else if(rdbtnErdikoa.isSelected()){
+						pSudo.ausazBete(1);
+					}else if(rdbtnZaila.isSelected()){
+						pSudo.ausazBete(2);	
+					}
+					erabiltzaile.setSudoku(pSudo);
+					SudokuLehioa.main(erabiltzaile);
 					frame.setVisible(false);
-				}else if(rdbtnErdikoa.isSelected()){
-					pSudo.setZailtasuna(1);
-					SudokuLehioa.main(erabiltzaile, sudokuBerria);
-					frame.setVisible(false);
-				}else if(rdbtnZaila.isSelected()){
-					pSudo.setZailtasuna(2);
-					SudokuLehioa.main(erabiltzaile, sudokuBerria);
-					frame.setVisible(false);
-				} else {
+				}else {
 					lblError.setText("Zailtasuna aukeratu barik");
 				}
+
 			} else {
 				if (erabiltzaile.getSudoku().getKasila(0, 0).getBalioZuzena()!=0) {
-				SudokuLehioa.main(erabiltzaile, sudokuBerria);
-				frame.dispose();
+					SudokuLehioa.main(erabiltzaile);
+					frame.dispose();
 				} else 
 					lblSudokuGordeta.setForeground(Color.RED);
 			}
