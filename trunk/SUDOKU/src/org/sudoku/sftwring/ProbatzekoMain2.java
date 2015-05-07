@@ -9,7 +9,7 @@ public class ProbatzekoMain2 {
 	}
 	
 	private static void proba(){
-		GeneradoreSudoku s = new GeneradoreSudoku();
+		GeneradoreSudoku s = new GeneradoreSudoku(0);
 		s.beteAusaz();
 		s.setZailtasuna(0);
 		s.kasilakEzabatu(0);
@@ -17,6 +17,7 @@ public class ProbatzekoMain2 {
 		s.inprimatuErabiltzaile();
 	}
 	
+	@SuppressWarnings("unused")
 	private static void sudokuaAusazBete() {
 		
 		//GeneradoreSudoku s = new GeneradoreSudoku();
