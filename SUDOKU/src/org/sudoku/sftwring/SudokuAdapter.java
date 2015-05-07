@@ -2,12 +2,12 @@ package org.sudoku.sftwring;
 
 public class SudokuAdapter extends Sudokua {
 
-	public SudokuAdapter(int i) {
+	public SudokuAdapter() {
 		super();
 	}
 
-	public void ausazBete(int i) {
-		GeneradoreSudoku genSudo = new GeneradoreSudoku(i);
+	public void ausazBete(int zailtasun) {
+		GeneradoreSudoku genSudo = new GeneradoreSudoku(zailtasun);
 		genSudo.beteAusaz();
 		pasatu(genSudo);
 	}

@@ -18,7 +18,7 @@ public class ProbatzekoMain2 {
 	private static void sudokuaAusazBete() {
 		
 		//GeneradoreSudoku s = new GeneradoreSudoku();
-		Sudokua s = new SudokuAdapter(0);
+		Sudokua s = new SudokuAdapter();
 		System.out.println("\nHasieran...\n");
 		//s.beteAusaz();
 		s.ausazBete(0);
