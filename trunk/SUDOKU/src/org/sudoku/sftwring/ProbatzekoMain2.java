@@ -9,10 +9,12 @@ public class ProbatzekoMain2 {
 	}
 	
 	private static void proba(){
-		GeneradoreSudoku s = new GeneradoreSudoku(0);
+		GeneradoreSudoku s = new GeneradoreSudoku();
 		s.beteAusaz();
+		s.setZailtasuna(0);
+		s.kasilakEzabatu(0);
 		s.inprimatuZuzena();
-//		s.inprimatuErabiltzaile();
+		s.inprimatuErabiltzaile();
 	}
 	
 	private static void sudokuaAusazBete() {
