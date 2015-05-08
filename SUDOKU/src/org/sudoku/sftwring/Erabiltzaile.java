@@ -143,8 +143,8 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		this.azkenengoSudokua=pSudo;
 	}
 
-	public int puntuatu(int laguntzaKop) {
-		boolean[][] sudo =azkenengoSudokua.zuzendu();
+	public int puntuatu(int laguntzaKop , boolean[][] zuzenketa) {
+		boolean[][] sudo = zuzenketa;
 		boolean zuzena = true;
 		for (int i = 0; i < sudo.length; i++) {
 			for (int j = 0; j < sudo.length; j++) {

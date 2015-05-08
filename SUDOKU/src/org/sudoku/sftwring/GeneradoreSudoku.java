@@ -84,9 +84,9 @@ public class GeneradoreSudoku {
 		Random rg=new Random();
 		int batu = rg.nextInt(4);
 		switch(zailtasuna){							//zailtasunaren arabera erabakitako kentzeko zenbakiak
-		case 0:kopurua = 36 + batu; break;
-		case 1:kopurua = 42 + batu; break;
-		case 2:kopurua = 46 + batu; break;
+		case 0:kopurua = 44 + batu; break;
+		case 1:kopurua = 48 + batu; break;
+		case 2:kopurua = 52 + batu; break;
 		}
 
 		kopiatu();
@@ -120,10 +120,6 @@ public class GeneradoreSudoku {
 			}
 		}
 	}
-
-	//		private void ezabatuAusaz2(int kopurua){
-	//			
-	//		}
 
 	private void ezabatuAusaz(int kopurua) {
 		Random r = new Random();
