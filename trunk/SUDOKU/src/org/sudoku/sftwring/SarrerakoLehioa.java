@@ -108,54 +108,54 @@ public class SarrerakoLehioa extends JFrame {
 		lblIcon = new JLabel("icon");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(16)
-							.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 452, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(28)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblErregistratu)
-										.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGap(16)
+										.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 452, GroupLayout.PREFERRED_SIZE))
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addGap(168)
-											.addComponent(btnSartu)))
-									.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addContainerGap()
-									.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)))
-							.addComponent(lblIcon, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
-		);
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addGap(28)
+																.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+																		.addComponent(lblErregistratu)
+																		.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+																		.addGroup(gl_contentPane.createSequentialGroup()
+																				.addGap(168)
+																				.addComponent(btnSartu)))
+																				.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE))
+																				.addGroup(gl_contentPane.createSequentialGroup()
+																						.addContainerGap()
+																						.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE)
+																						.addPreferredGap(ComponentPlacement.RELATED)))
+																						.addComponent(lblIcon, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+																						.addContainerGap())
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(11)
-					.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(30)
-							.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblIcon, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-					.addGap(24)
-					.addComponent(btnSartu)
-					.addGap(24)
-					.addComponent(lblErregistratu)
-					.addGap(16))
-		);
-		
+						.addGap(11)
+						.addComponent(lblOngietorria, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(30)
+										.addComponent(loginPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(lblErrorea, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(lblIcon, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+												.addGap(24)
+												.addComponent(btnSartu)
+												.addGap(24)
+												.addComponent(lblErregistratu)
+												.addGap(16))
+				);
+
 		lblIcon.setText("");
 		lblIcon.setIcon(sortuImageIcon("icon1.png", "icon1.png"));
-		
+
 		loginPanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
 				FormFactory.DEFAULT_COLSPEC,
@@ -188,7 +188,7 @@ public class SarrerakoLehioa extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 		btnSartu.addActionListener(new Kudeatzailea());
-		
+
 		try {
 			ErabiltzaileLista.getErabiltzaileLista().kargatu();
 		} catch (IOException e) {
@@ -197,7 +197,7 @@ public class SarrerakoLehioa extends JFrame {
 		}
 
 	}
-	
+
 	public ImageIcon sortuImageIcon(String path, String deskribapena) {
 		java.net.URL imgURL = getClass().getResource(path);
 		if (imgURL != null) {
@@ -207,7 +207,7 @@ public class SarrerakoLehioa extends JFrame {
 			return null;
 		}
 	}
-	
+
 	private class Kudeatzailea extends WindowAdapter implements ActionListener, KeyListener, MouseListener {
 
 		@Override
@@ -247,15 +247,15 @@ public class SarrerakoLehioa extends JFrame {
 			//Aurre:
 			//Post:Izena eta pasahitza ondo dauden begiratu, txarto egon ezkero
 			//errore mezua emango du. 
-			
+
 			Erabiltzaile erab = ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile(textField.getText(), String.copyValueOf(passwordField.getPassword()));
-			
+
 			if (erab==null) {
 				lblErrorea.setText("Erabiltzaile izena edo pasahitza okerra");
 			} else {
 				lblErrorea.setText("");
 				frame.dispose();
-				
+
 				AukeratuLehioa.main(erab);
 			}
 		}

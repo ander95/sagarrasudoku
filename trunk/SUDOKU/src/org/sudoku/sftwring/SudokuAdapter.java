@@ -12,7 +12,7 @@ public class SudokuAdapter extends Sudokua {
 		genSudo.beteAusaz();
 		pasatu(genSudo);
 	}
-	
+
 	private void pasatu(GeneradoreSudoku pGenSudo){
 
 		for (int i = 0; i < 9; i++) {

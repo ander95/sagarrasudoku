@@ -136,7 +136,7 @@ public class GeneradoreSudoku {
 					kopurua--;
 				} else {
 					try{
-						} catch (Exception e){}
+					} catch (Exception e){}
 					sudoku[i][z].aldatu(sudoku[i][z].getBalioZuzena());
 				}
 			}
