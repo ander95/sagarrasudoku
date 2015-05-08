@@ -92,30 +92,47 @@ public class AukeratuLehioa extends JFrame {
 		jokatuPanel = new JPanel();
 
 		infoPanel = new JPanel();
+		
+		JButton btnKlask = new JButton("Klasifikazioa");
+		btnKlask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				KlasifikazioLehioa.main(erabiltzaile);
+			}
+		});
+		btnKlask.setFont(new Font("EHUSerif", Font.BOLD, 16));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(15)
-						.addComponent(jokatuPanel, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-						.addGap(30)
+					.addGap(15)
+					.addComponent(jokatuPanel, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(zailtasunakPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
-								.addContainerGap())
-				);
-		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(20)
-						.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-						.addGap(90)
-						.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE)
-						.addGap(22))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(30)
+								.addComponent(zailtasunakPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(jokatuPanel, GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
-								.addContainerGap())
-				);
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnKlask)))
+					.addContainerGap())
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(btnKlask)
+					.addGap(29)
+					.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(56)
+					.addComponent(zailtasunakPanel, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE)
+					.addGap(22))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(jokatuPanel, GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 		infoPanel.setLayout(new MigLayout("", "[85px][][][][][][]", "[19px][]"));
 
 		lblErabizen = new JLabel(erabiltzaile.getIzen());

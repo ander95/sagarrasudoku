@@ -411,9 +411,9 @@ public class SudokuLehioa{
 	}
 
 	private void zuzendu() {
-		int puntu = erabiltzailea.puntuatu(laguntzaKop);
 		gorde();
 		boolean[][] zuzenketa = unekoSudoku.zuzendu();
+		int puntu = erabiltzailea.puntuatu(laguntzaKop,zuzenketa);
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				if (!zuzenketa[i][j]) {
@@ -424,8 +424,8 @@ public class SudokuLehioa{
 			}
 		}
 
-		erabiltzailea.setSudoku(new Sudokua());
-		ErabiltzaileLista.getErabiltzaileLista().gorde();
+		unekoSudoku = new Sudokua();
+		gorde();
 
 		Object[] opzioak={"Menu Nagusia","Klasifikazioa"};
 		int baiEz = JOptionPane.showOptionDialog(
