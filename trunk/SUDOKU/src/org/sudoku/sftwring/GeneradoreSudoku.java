@@ -136,8 +136,6 @@ public class GeneradoreSudoku {
 					kopurua--;
 				} else {
 					try{
-						System.err.println("ertrsts");
-						Thread.sleep(1000);
 						} catch (Exception e){}
 					sudoku[i][z].aldatu(sudoku[i][z].getBalioZuzena());
 				}
@@ -155,164 +153,18 @@ public class GeneradoreSudoku {
 		}
 	}
 
-	private void posibleakEguneratu() {
-		for (int z = 0; z < sudoku.length; z++) {
-			for (int i = 0; i < sudoku.length; i++) {
-				if (sudoku[z][i].getErabiltzaileBal()!=0) {
-					int balioa = sudoku[z][i].getErabiltzaileBal();
-					blokeaEzgaitu(z,i,balioa);			//amaieran daude hiru metodoak
-					errenkadaEzgaitu(z,i,balioa);
-					zutabeaEzgaitu(z,i,balioa);
-				}				
-			}
-		}
-	}
-
-	private boolean sudokuaEgin() {
-		boolean aldaketak = false;
-		while (!bukatuDu()) {
-			aldaketak=kasilaAlgoritmo();
-			//				if (!aldaketak) {aldaketak=zutabeAlgoritmo();}
-			//				if (!aldaketak) {aldaketak=ilaraAlgoritmo();}
-			if (!aldaketak) {return false;}
-			else {aldaketak = false;}
-		}
-		return true;
-	}
-
-	private boolean kasilaAlgoritmo(){
-		boolean aldaketak=false;
-		for (int z = 0; z < sudoku.length; z++) {
-			for (int i = 0; i < sudoku.length; i++) {
-				if (sudoku[z][i].getErabiltzaileBal()==0 && sudoku[z][i].getPosibleak().size()==1) {
-					int balioa = sudoku[z][i].getPosibleak().get(0);
-					sudoku[z][i].aldatu(balioa);
-					blokeaEzgaitu(z,i,balioa);
-					errenkadaEzgaitu(z,i,balioa);
-					zutabeaEzgaitu(z,i,balioa);
-					aldaketak = true;
-				}	
-			}
-		}
-		return aldaketak;
-	}
-
-	private boolean ilaraAlgoritmo(){
-		boolean aldaketak = false;
-		for (int z = 0; z < sudoku.length; z++) {
-
-		}
-		return aldaketak;
-	}
-
-	//		private boolean ilaraAlgoritmo() {
-	//			boolean aldaketak=false;
-	//			for (int z = 0; z < sudoku.length; z++) {
-	//				Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};
-	//				for (int i = 0; i < sudoku.length; i++) {
-	//					if (sudoku[i][z].getErabiltzaileBal()!=0) {
-	//						ArrayList<Integer> unekoPosibleak= sudoku[i][z].getPosibleak();
-	//						for (Integer zenb : unekoPosibleak) {
-	//							agerpenKop[zenb-1]++;								
-	//						}
-	//					}
-	//				}
-	//				for (int i = 0; i < agerpenKop.length; i++) {
-	//					if (agerpenKop[i]==1) {
-	//						for (int i1 = 0; i1 < sudoku.length; i1++) {
-	//							if (sudoku[i1][z].getErabiltzaileBal()!=0) {
-	//								ArrayList<Integer> unekoPosibleak= sudoku[i1][z].getPosibleak();
-	//								for (Integer zenb : unekoPosibleak) {
-	//									if (zenb==i+1) {
-	//										sudoku[i1][z].aldatu(i+1);
-	//										aldaketak=true;
-	//										zutabeaEzgaitu(i1, z, i+1);
-	//										errenkadaEzgaitu(i1, z, i+1);
-	//										blokeaEzgaitu(i1, z, i+1);
-	//									}	
-	//								}
-	//							}
-	//						}
-	//					}
-	//				}
-	//			}
-	//			return aldaketak;
-	//		}
-
 	private boolean soluzioBakarra()  {
 
-		SudokuSolver solver = new SudokuSolver();
 		int [][] model = new int[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				model[i][j]=sudoku[i][j].getErabiltzaileBal();
 			}
 		}
-		boolean emaitza=true;
-		solver.init(model);
-		for (int k = 0; k < 1000; k++) {
-			emaitza =solver.run();
-			solver.print();
-			model = solver.getModel();
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					if (model[i][j]!=sudoku[i][j].getBalioZuzena()){
-						System.out.println("................................................");
-						try{
-						Thread.sleep(1000);
-						} catch (Exception e){}
-						return false;
-					}
-				}
-			}
-		}
+		SudokuSolver solver = new SudokuSolver(model);
+		int emaitzKop = solver.solve();
+		boolean emaitza= emaitzKop==1;
 		return emaitza;
-	}
-
-	private boolean zutabeAlgoritmo() {
-		boolean aldaketak=false;
-		for (int z = 0; z < sudoku.length; z++) {
-			Integer[] agerpenKop = {0,0,0,0,0,0,0,0,0};
-			for (int i = 0; i < sudoku.length; i++) {
-				if (sudoku[z][i].getErabiltzaileBal()!=0) {
-					ArrayList<Integer> unekoPosibleak= sudoku[z][i].getPosibleak();
-					for (Integer zenb : unekoPosibleak) {
-						agerpenKop[zenb-1]++;								
-					}
-				}
-			}
-			for (int i = 0; i < agerpenKop.length; i++) {
-				if (agerpenKop[i]==1) {
-					for (int i1 = 0; i1 < sudoku.length; i1++) {
-						if (sudoku[z][i1].getErabiltzaileBal()!=0) {
-							ArrayList<Integer> unekoPosibleak= sudoku[z][i1].getPosibleak();
-							for (Integer zenb : unekoPosibleak) {
-								if (zenb==i+1) {
-									sudoku[z][i1].aldatu(i+1);
-									aldaketak=true;
-									zutabeaEzgaitu(z, i1, i+1);
-									errenkadaEzgaitu(z, i1, i+1);
-									blokeaEzgaitu(z, i1, i+1);
-								}							
-							}
-						}
-					}
-				}
-			}
-		}
-		return aldaketak;
-	}
-
-	private boolean bukatuDu() {
-		boolean amaituta = true;
-		for (int z = 0; z < sudoku.length; z++) {
-			for (int i = 0; i < sudoku[0].length; i++) {
-				if (sudoku[z][i].getErabiltzaileBal()!=sudoku[z][i].getBalioZuzena()) {
-					return false;
-				}
-			}
-		}
-		return amaituta;
 	}
 
 	public void inprimatuZuzena(){
@@ -595,82 +447,6 @@ public class GeneradoreSudoku {
 				int balioa = zerrenda[indize];
 				zerrenda[indize] = zerrenda [i];
 				zerrenda[i] = balioa;
-			}
-		}
-	}
-
-	private void zutabeaEzgaitu(int z, int i, int balioa) {
-		for (int j = 0; j < sudoku.length; j++) {
-			sudoku[z][j].kenduPosibleak(balioa);
-		}
-	}
-	private void errenkadaEzgaitu(int z, int i, int balioa) {
-		for (int j = 0; j < sudoku.length; j++) {
-			sudoku[j][i].kenduPosibleak(balioa);
-		}
-	}
-	private void blokeaEzgaitu(int z, int i, int balioa) {
-		if(z<3 && i<3){
-			for (z = 0; z < 3; z++) {
-				for (i = 0; i < 3; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z<3 && i>2 && i<6){
-			for (z = 0; z < 3; z++) {
-				for (i = 3; i < 6; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z<3 && i>5 && i<9){
-			for (z = 0; z < 3; z++) {
-				for (i = 6; i < 9; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z>2 && z<6 && i<3){
-			for (z = 3; z < 6; z++) {
-				for (i = 0; i < 3; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z>2 && z<6 && i>2 && i<6){
-			for (z = 3; z < 6; z++) {
-				for (i = 3; i < 6; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z>2 && z<6 && i>5 && i<9){
-			for (z = 3; z < 6; z++) {
-				for (i = 6; i < 9; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z>5 && z<9 && i<3){
-			for (z = 6; z < 9; z++) {
-				for (i = 0; i < 3; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z>5 && z<9 && i>2 && i<6){
-			for (z = 6; z < 9; z++) {
-				for (i = 3; i < 6; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
-			}
-		}
-		else if(z>5 && z<9 && i>5 && i<9){
-			for (z = 6; z < 9; z++) {
-				for (i = 6; i < 9; i++) {
-					sudoku[z][i].kenduPosibleak(balioa);
-				}
 			}
 		}
 	}
