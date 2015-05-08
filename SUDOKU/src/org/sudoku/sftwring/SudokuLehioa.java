@@ -33,6 +33,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 
 
@@ -53,6 +54,7 @@ public class SudokuLehioa{
 	private JButton btnLaguntza;
 	private JPanel panel_1;
 	private int laguntzaKop;
+	private JLabel lblZailtasuna;
 	/**
 	 * Launch the application.
 	 */
@@ -186,6 +188,11 @@ public class SudokuLehioa{
 		panel_1 = new JPanel();
 		menuBar.add(panel_1);
 
+		lblZailtasuna = new JLabel("");
+		lblZailtasuna.setFont(new Font("EHUSerif", Font.BOLD, 18));
+		panel_1.add(lblZailtasuna);
+
+
 
 
 
@@ -269,9 +276,20 @@ public class SudokuLehioa{
 			} else lerro = 1;
 		}
 
-	
-			unekoSudoku = erabiltzailea.getSudoku();
-			this.kargatu();
+
+		unekoSudoku = erabiltzailea.getSudoku();
+		if (unekoSudoku.getZailtasuna()==0) {
+			lblZailtasuna.setText("Erraza");
+			lblZailtasuna.setForeground(new Color(0, 128, 0));
+		} else if (unekoSudoku.getZailtasuna()==1) {
+			lblZailtasuna.setText("Erdikoa");
+			lblZailtasuna.setForeground(new Color(255, 215, 0));
+		} else {
+			lblZailtasuna.setText("Zaila");
+			lblZailtasuna.setForeground(new Color(255, 0, 0));
+		}
+
+		this.kargatu();
 
 	}
 
@@ -443,19 +461,19 @@ public class SudokuLehioa{
 				count++;
 			}else if(tokatu==1){
 				i=erabiltzailea.getSudoku().laguntzaZutabe();
-				System.out.println("zutab"+i);
 				if(i!=-1){bukatu=true;zenbatgarrena=i;}
 				else tokatu++;
 				count++;
 			}else{
 				i=erabiltzailea.getSudoku().laguntzaIlarak();
-				System.out.println("ilara"+i);
 				if(i!=-1){bukatu=true;zenbatgarrena=i;}
 				else tokatu=0;
 				count++;
 			}
 		}
-		if(!bukatu){System.out.println("dena ondo!!!");
+		if(!bukatu){
+			Object[] opzioak={"OK"};
+			JOptionPane.showOptionDialog(frmSudokua, "Dena ondo!!!", "Ondo", JOptionPane.OK_OPTION, JOptionPane.PLAIN_MESSAGE, null, opzioak, null);
 		}
 		else{
 			TimerTask timerTask = new TimerTask()
