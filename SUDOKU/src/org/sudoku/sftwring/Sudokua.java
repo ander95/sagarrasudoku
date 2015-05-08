@@ -7,7 +7,7 @@ public class Sudokua {
 	private int luzera = 3;
 	private int zabalera = 3;
 	private int zailtasuna;
-	
+
 	public Sudokua() {
 		sudoku = new Bloke[luzera][zabalera];
 		beteZeroz();
@@ -21,7 +21,7 @@ public class Sudokua {
 			}
 		}
 	}
-	
+
 	public void inprimatuSudokuZuzena(){
 
 		for (int i = 0; i < luzera; i++) {
@@ -30,7 +30,7 @@ public class Sudokua {
 			}
 		}
 	}
-	
+
 	public Sudokua erreseteatuSudoku(){
 		//Aurre:
 		//Post:Sudokua hasieratuko du
@@ -51,8 +51,8 @@ public class Sudokua {
 		case 7:pBloke=sudoku[2][1];break;
 		case 8:pBloke=sudoku[2][2];break;
 		}
-		
-		
+
+
 		return pBloke;
 	}
 	public Kasila getKasila(int i, int j) {
@@ -106,7 +106,7 @@ public class Sudokua {
 			}
 		}
 	}
-	
+
 
 	public void setZailtasuna(int i){
 		this.zailtasuna=i;
@@ -114,7 +114,7 @@ public class Sudokua {
 	public int getZailtasuna(){
 		return this.zailtasuna;
 	}
-	
+
 	public boolean[][] zuzendu()  {
 		boolean[][] zuzen = new boolean[9][9];
 		for (int i = 0; i < 9; i++) {
@@ -128,7 +128,7 @@ public class Sudokua {
 	}
 
 	public void ausazBete(int zailtasuna) {/*Ausaz betetzeko metodoa bere semeetan definituko da Adib.: Adapterrean*/}
-	
+
 	public int laguntzaIlarak(){
 		Random rand=new Random();
 		int i=-1;
@@ -140,7 +140,6 @@ public class Sudokua {
 		int bukatu=0;
 		Kasila[] ilar=new Kasila[9];
 		int k=rand.nextInt(3);
-		System.out.println(i);
 		while(bukatu<9){
 			ilar=this.artuIlara(k, i);
 			for (int j = 0; j < ilar.length; j++) {
@@ -148,7 +147,7 @@ public class Sudokua {
 					if(ilara[ilar[j].getErabiltzaileBal()]){
 						System.out.println("Erabiltzaile bal: "+ilar[j].getErabiltzaileBal());
 
-							return i+k;
+						return i+k;
 					}else {
 						ilara[ilar[j].getErabiltzaileBal()]=true;
 					}
@@ -159,20 +158,20 @@ public class Sudokua {
 						return i+k;
 					}
 					else{
-					ilara[ilar[j].getBalioZuzena()]=true;
-				}
+						ilara[ilar[j].getBalioZuzena()]=true;
+					}
 				}
 			}
 			bukatu++;
 			ilara=new boolean[10];
 			if(k==2){ k=0;
-					if(i==6)i=0;
-					else i=i+3;}
+			if(i==6)i=0;
+			else i=i+3;}
 			else {k++;}
 		}
 		return -1;
 	}
-	
+
 	public int laguntzaZutabe(){
 		Random rand=new Random();
 		int i=rand.nextInt(3);
@@ -185,7 +184,7 @@ public class Sudokua {
 			for (int j = 0; j < zutab.length; j++) {
 				if(zutab[j].getErabiltzaileBal()!=0){
 					if(ilara[zutab[j].getErabiltzaileBal()]){
-							return i*3+k;
+						return i*3+k;
 					}else {
 						ilara[zutab[j].getErabiltzaileBal()]=true;
 					}
@@ -196,22 +195,22 @@ public class Sudokua {
 						return i*3+k;
 					}
 					else{
-					ilara[zutab[j].getBalioZuzena()]=true;
-				}
+						ilara[zutab[j].getBalioZuzena()]=true;
+					}
 				}
 			}
 			bukatu++;
 			ilara=new boolean[10];
 			if(k==2){ k=0;
-				if(i==2)i=0;
-				else i++;
-				
+			if(i==2)i=0;
+			else i++;
+
 			}
 			else {k++;}
-			}
+		}
 		return -1;
 	}
-	
+
 	public int laguntzaBloke(){
 		Random rand=new Random();
 		int i=rand.nextInt(9);
@@ -221,7 +220,7 @@ public class Sudokua {
 			}
 			if(i==8)i=0;
 			else i++;
-			
+
 		}
 		return -1;
 	}

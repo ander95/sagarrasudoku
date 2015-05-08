@@ -12,7 +12,7 @@ public class Panel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	ImageIcon irudia;
 	String izena;
-	
+
 	public Panel(String pIzena){
 		this.izena=pIzena;
 	}
@@ -23,5 +23,5 @@ public class Panel extends JPanel{
 		setOpaque(false);
 		super.paint(g);
 	}
-	
+
 }

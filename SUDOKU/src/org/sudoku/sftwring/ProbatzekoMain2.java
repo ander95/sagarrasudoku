@@ -7,10 +7,10 @@ public class ProbatzekoMain2 {
 
 	public static void main(String[] args) {
 		sudokuaAusazBete();
-//		proba();
+		//		proba();
 
 	}
-	
+
 	private static void proba(){
 
 		GeneradoreSudoku s = new GeneradoreSudoku(0);
@@ -20,12 +20,12 @@ public class ProbatzekoMain2 {
 		}
 		Collections.shuffle(posizioak);
 		for (Object i : posizioak) {
-		int unekoPosizioa=(int) posizioak.get((int) i);
-		if(s.KalkulatuPosibleak(unekoPosizioa).length>1){
-			
-		}else{
-		
-		}
+			int unekoPosizioa=(int) posizioak.get((int) i);
+			if(s.KalkulatuPosibleak(unekoPosizioa).length>1){
+
+			}else{
+
+			}
 		}
 
 		GeneradoreSudoku s1 = new GeneradoreSudoku(0);
@@ -36,19 +36,19 @@ public class ProbatzekoMain2 {
 		s1.inprimatuZuzena();
 		s1.inprimatuErabiltzaile();
 	}
-	
+
 	@SuppressWarnings("unused")
 	private static void sudokuaAusazBete() {
-		
+
 		//GeneradoreSudoku s = new GeneradoreSudoku();
 		Sudokua s = new SudokuAdapter();
 		System.out.println("\nHasieran...\n");
 		//s.beteAusaz();
 		s.ausazBete(0);
-	
+
 		System.out.println("\nAusaz bete ondoren...\n");
-//		s.inprimatuSudokuZuzena();
-		
+		//		s.inprimatuSudokuZuzena();
+
 		s.inprimatuSudoku();
 		//s.inprimatuZuzena();
 	}

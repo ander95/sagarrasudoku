@@ -8,7 +8,7 @@ public class Kasila{
 	private boolean finkoa;
 	private ArrayList<Integer> posibleak;
 	private boolean pantailaratuta;
-	
+
 	public Kasila(Integer Balioa){
 		zuzena=Balioa;
 		this.erabiltzaileBal=0;
@@ -55,11 +55,11 @@ public class Kasila{
 	public Kasila kasilaErreseteatu(){
 		return new Kasila(0);
 	}
-	
+
 	public void setPantailaratuta(boolean bai) {
 		this.pantailaratuta=bai;
 	}
-	
+
 	public boolean getPantailaratuta() {
 		return this.pantailaratuta;
 	}
@@ -93,20 +93,20 @@ public class Kasila{
 	public void setBalioZuzena(int zenb){
 		zuzena=zenb;
 	}
-	
+
 	public ArrayList<Integer> getPosibleak(){
 		return posibleak;
 	}
-	
+
 	public void setPosibleak(ArrayList<Integer> balioak){
 		this.posibleak = balioak;
 	}
-	
+
 	public void kenduPosibleak(int balioa){
 		if (this.posibleak.contains(balioa)) {
 			this.posibleak.remove((Integer)balioa);
 		}
 	}
-	
+
 }
 

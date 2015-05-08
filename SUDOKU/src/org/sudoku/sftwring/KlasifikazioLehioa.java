@@ -111,31 +111,31 @@ public class KlasifikazioLehioa extends JFrame {
 		lblErabInfo.setFont(new Font("EHUSerif", Font.BOLD, 30));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(107)
-							.addComponent(lblErabInfo))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(154)
-							.addComponent(btnHasiera))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(47)
-							.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, 438, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(58, Short.MAX_VALUE))
-		);
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(107)
+										.addComponent(lblErabInfo))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addGap(154)
+												.addComponent(btnHasiera))
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addGap(47)
+														.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, 438, GroupLayout.PREFERRED_SIZE)))
+														.addContainerGap(58, Short.MAX_VALUE))
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(5)
-					.addComponent(lblErabInfo)
-					.addGap(5)
-					.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnHasiera)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+						.addGap(5)
+						.addComponent(lblErabInfo)
+						.addGap(5)
+						.addComponent(KlasifikazioPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(btnHasiera)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				);
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -160,7 +160,7 @@ public class KlasifikazioLehioa extends JFrame {
 			}
 			double punt = erab.getPuntuazioa();
 			if (punt == 0) punt++;
-			
+
 			for (int i = 0; i < 6-((int)Math.log10(punt)+1); i++) {
 				eespazioak = eespazioak + "   ";
 			}
@@ -197,7 +197,7 @@ public class KlasifikazioLehioa extends JFrame {
 			erabiltzaile = erab;
 			klsf = pKlsf;
 		}
-		
+
 		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 			//Aurre:
 			//Post: JListaren barruko klasifikazioari formatua emango dio eta sartutako erabiltzailea gorriz

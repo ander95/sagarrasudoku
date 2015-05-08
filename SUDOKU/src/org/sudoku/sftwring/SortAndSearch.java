@@ -4,10 +4,10 @@ import java.util.Random;
 
 
 public class SortAndSearch <T extends Comparable<T>>{
-	
+
 	public SortAndSearch(){
 	}
-	
+
 	public  void quicksort(ArrayList<T> a){
 		quicksort(a,0,a.size()-1);
 	}
@@ -26,16 +26,16 @@ public class SortAndSearch <T extends Comparable<T>>{
 		int eskuin=f;
 		while(ezker<eskuin){
 			while(a.get(ezker).compareTo(lag)<=0 &&ezker<eskuin)ezker++;
-				while(a.get(eskuin).compareTo(lag)>0 )
-					eskuin--;	
-				if(ezker<eskuin)
-					aldatuPos(a,ezker,eskuin);
+			while(a.get(eskuin).compareTo(lag)>0 )
+				eskuin--;	
+			if(ezker<eskuin)
+				aldatuPos(a,ezker,eskuin);
 		}
 		a.set(i, a.get(eskuin));
 		a.set(eskuin, lag);
 		return eskuin;
 	}
-	
+
 
 	private void aldatuPos(ArrayList<T> a, int i, int j) {
 		T aux;
@@ -43,32 +43,32 @@ public class SortAndSearch <T extends Comparable<T>>{
 		a.set(i, a.get(j));
 		a.set(j, aux);
 	}
-		public static int[] beteAusazArray(int nondik, int nora, int tamaina) {
-	        int[] zenbakienArray = new int[tamaina];
-	        Random rnd = new Random();
-	        int n;
-	        for (int g = 0; g < zenbakienArray.length; g++) {
-	            do {
-	                n = rnd.nextInt(nora - nondik + 1) + nondik;
-	            } while (egiaztauErrepikapena(zenbakienArray, g, n));
-	            zenbakienArray[g] = n;
-	        }
-	        return zenbakienArray;
+	public static int[] beteAusazArray(int nondik, int nora, int tamaina) {
+		int[] zenbakienArray = new int[tamaina];
+		Random rnd = new Random();
+		int n;
+		for (int g = 0; g < zenbakienArray.length; g++) {
+			do {
+				n = rnd.nextInt(nora - nondik + 1) + nondik;
+			} while (egiaztauErrepikapena(zenbakienArray, g, n));
+			zenbakienArray[g] = n;
 		}
+		return zenbakienArray;
+	}
 
 
 	public static boolean egiaztauErrepikapena(int[] zenbakienArray, int indizea, int momentukoBalorea) {
-	      
-		 for (int i = 0; i < indizea; i++) {
-	            if (zenbakienArray[i] == momentukoBalorea) {
-	                return true;
-	            }
-	        }
-	        return false;        
-	
+
+		for (int i = 0; i < indizea; i++) {
+			if (zenbakienArray[i] == momentukoBalorea) {
+				return true;
+			}
+		}
+		return false;        
+
 	}
-	
-	
+
+
 	public T bilaketaDikotomikoa(ArrayList<T> a,String izen){
 
 		int pos=bilatu(a,izen);
@@ -76,9 +76,9 @@ public class SortAndSearch <T extends Comparable<T>>{
 			return a.get(pos);
 		}
 		else{return null;}
-		
+
 	}
-	
+
 	private int bilatu(ArrayList<T> a,String izen){
 		int i=0;
 		int j=a.size();
@@ -90,7 +90,7 @@ public class SortAndSearch <T extends Comparable<T>>{
 			if(count==2){
 				count=0;
 				if (aurreko==erdia) {
-				return -1;}
+					return -1;}
 			}else if(count==1){aurreko=erdia;
 			count++;}
 			else{count++;}
@@ -105,13 +105,13 @@ public class SortAndSearch <T extends Comparable<T>>{
 		}
 		return -1;
 	}
-	
+
 	private String getIzena(T obj) {
 		if (obj instanceof Erabiltzaile) return ((Erabiltzaile) obj).getIzen();
 		else {return null;}
-		
+
 	}
 
 }
 
-	
+
