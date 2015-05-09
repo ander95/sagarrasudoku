@@ -51,8 +51,74 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void klasifikazioaFrogak() {
-		System.out.println("Klasifikazioa era egokian sortzen da?\n------------------------------------- ");
+		
+		klasifikazioBerriaSortuFrogak();
+		addFrogak();
+		eguneratuFrogak();
+		emanErabHonenPosFrogak();
+		erabiltzaileenListaKlasifikatorianFrogak();
+		gordeFrogak();
+		kargatuFrogak();
+		tamainaFrogak();
+		
 		                      
+	}
+
+	private static void tamainaFrogak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void kargatuFrogak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void gordeFrogak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void erabiltzaileenListaKlasifikatorianFrogak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void emanErabHonenPosFrogak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void eguneratuFrogak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void addFrogak() {
+		System.out.println("- Erabiltzailea era zuzenean gehitzen da?");
+		Klasifikazioa klasif=new Klasifikazioa();
+		System.out.println("Klasifikazioa berria sortu da");
+		Erabiltzaile erab=new Erabiltzaile("erabIzen2", 2, "12345");
+		
+		
+		klasif.erabiltzaileenListaKlasifikatorian().add(erab);
+		klasif.eguneratu();
+		
+		if(ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa().emanErabHonenPos(erab)==0){
+			System.out.println(" "+erab.getIzen()+" erbailtzailea "+erab.getID()+" PID-arekin,Klasifikaziora gehitu da");
+			klasif.inprimatuKlasifikazioa();}
+		else System.out.println("Ezin izan da erabiltzailea klasifikazioan gehitu");
+
+	}
+
+	private static void klasifikazioBerriaSortuFrogak() {
+		System.out.println("- Klasifikazioa sortzen da? -");
+		Klasifikazioa klasif=new Klasifikazioa();
+		if (klasif instanceof Klasifikazioa){
+			System.out.println("Kaixo klasifikazio berria naiz!");
+		}
+	else System.out.println("Klasifikazioa ez dago");
+		
 	}
 
 	private static void generadoreSudokuFrogak() {
@@ -64,9 +130,10 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void aukeratuLeihoaFrogak() {
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-oOo-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		System.out.println("2.Aukeratu leihoaren metodoen frogak:\n------------------------------------");
 		System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////");
-		System.out.println("Aukeratu leihoaren metodoen frogak:\n----------------------------------");
-		
+
 		klasifikazioaFrogak();
 		generadoreSudokuFrogak();
 		zailtasunaFrogak();
@@ -109,13 +176,13 @@ public class ProbatzekoMain2 {
 		}
 	}
 	System.out.print("Sudoku errezari kendutako kasila kopurua: "+kontErraza+" ");
-	if (kontErraza>=44&&kontErraza<=48){
+	if (kontErraza>=44&&kontErraza<48){
 		System.out.println("Erraza...OK");
 	}
 	else
 		System.out.println("Erraza...ERROR");
 	System.out.print("Sudoku ertainari kendutako kasila kopurua: "+kontErtaina+" ");
-	if (kontErtaina>=48&&kontErtaina<=52){
+	if (kontErtaina>=48&&kontErtaina<52){
 		System.out.println("Ertaina...OK");
 	}
 	else
@@ -123,7 +190,7 @@ public class ProbatzekoMain2 {
 	System.out.print("Sudoku zailari kendutako kasila kopurua: "+kontZaila+" ");
 
 
-	if (kontZaila>=52&&kontZaila<=56){
+	if (kontZaila>=52&&kontZaila<56){
 		System.out.println("Zaila...OK");
 	}
 	else
@@ -133,7 +200,8 @@ public class ProbatzekoMain2 {
 	
 
 	private static void adabegiFrogak() {
-		System.out.println("Adabegi klasearen metodoen frogak:\n----------------------------------");
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-oOo-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		System.out.println("1.Adabegi klasearen metodoen frogak:\n------------------------------------");
 		System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////");
 		adabegiaSortuFrogak();
 		semeaGehituFrogak();
