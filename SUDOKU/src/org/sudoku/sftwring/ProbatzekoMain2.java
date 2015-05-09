@@ -79,17 +79,29 @@ public class ProbatzekoMain2 {
 
 	private static void eguneratuFrogak() {
 		System.out.println("- Klasifikazioa eguneratzen da?");
+		System.out.println("Hasieran...");
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erabIzen4", "3", "123456");
+		Klasifikazioa klasif=new Klasifikazioa();
+		System.out.println("Klasifikazioa berria sortu da");
+		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+			System.out.println("Zerrenda hutsik");
+		}
+		
+		klasif.erabiltzaileenListaKlasifikatorian().add(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erabIzen2", "12345"));
+		klasif.inprimatuKlasifikazioa();
+		ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erabIzen2", "12345").gehituPuntuak(100);
+		klasif.eguneratu();
+		System.out.println("Bukaeran...");
+		klasif.inprimatuKlasifikazioa();
 		
 	}
 
 	private static void addFrogak() {
 		System.out.println("- Erabiltzailea era zuzenean gehitzen da?");
-
-		System.out.println("Klasifikazioa berria sortu da");
-
 		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erabIzen3", "2", "12345");
 		System.out.println("Hasieran...");
 		Klasifikazioa klasif=new Klasifikazioa();
+		System.out.println("Klasifikazioa berria sortu da");
 		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
 			System.out.println("Zerrenda hutsik");
 		}
@@ -113,6 +125,7 @@ public class ProbatzekoMain2 {
 
 	private static void generadoreSudokuFrogak() {
 		System.out.println("Sudoku berria ausaz eta zailtazunaren arabera sortzen da?\n---------------------------------------------------------");
+		
 	}
 
 	private static void erregistroLehioaFrogak() {
