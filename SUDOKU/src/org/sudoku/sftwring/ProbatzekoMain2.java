@@ -70,13 +70,23 @@ public class ProbatzekoMain2 {
 
 	private static void adabegiFrogak() {
 		System.out.println("Adabegi klasearen metodoen frogak:\n----------------------------------");
+		System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////");
 		adabegiaSortuFrogak();
 		semeaGehituFrogak();
 		semeaEzabatuFrogak();
+		System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////");
 	}
 
 	private static void semeaEzabatuFrogak() {
-		// TODO Auto-generated method stub
+		System.out.print("- Semea ezabatzen da? \n");
+		Adabegia<String> ada=new Adabegia<String>("Adabegi berria naiz", 0);
+		Adabegia<String> adaSeme=ada.gehituSemea("Ni semea naiz aldiz", 0);
+		System.out.print(ada.content+",");
+		System.out.println(adaSeme.content);
+		System.out.println("Semerik gabe utziko dugu adabegia:");
+		ada.ezabatuSemea("Ni semea naiz aldiz");
+		if(ada.semea.isEmpty())System.out.println("Semea ezabatuta...OK");
+		else System.out.println("Ezin izan da semea ezabatu...ERROR");
 		
 	}
 
@@ -87,12 +97,19 @@ public class ProbatzekoMain2 {
 		System.out.print(ada.content+",");
 		System.out.println(adaSeme.content);
 		
+		if (ada.semea==null) {
+			System.out.println("Ez da gehitu....ERROR");
+		}
+		else System.out.println("Gehitu da....OK");
 	}
 
 	private static void adabegiaSortuFrogak() {
 		System.out.print("- Adabegia berria zara? ");
 		Adabegia<String> ada=new Adabegia<String>("Adabegi berria naiz", 0);
-		System.out.println(ada.content);
+		if (ada.content.equals("Adabegi berria naiz"))
+		System.out.println(ada.content+"\nSortu...OK");
+		else
+			System.out.println("Sortu...ERROR");
 	}
 
 	private static void proba(){
