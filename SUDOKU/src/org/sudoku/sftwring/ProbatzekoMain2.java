@@ -13,16 +13,16 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void frogaBerriak() {
-		adabegiFrogak();
-		aukeratuLeihoaFrogak();
-		erregistroLehioaFrogak();
+		//adabegiFrogak();
+		//aukeratuLeihoaFrogak();
+		//erregistroLehioaFrogak();
 		generadoreSudokuFrogak();
-		klasifikazioaFrogak();
-		klasifikazioaLeihoaFrogak();
+		//klasifikazioaFrogak();
+		//klasifikazioaLeihoaFrogak();
 		laguntzaFrogak();
-		sudokuAdapterFrogak();
-		sudokuSolverFrogak();
-		zifraFrogak();
+		//sudokuAdapterFrogak();
+		//sudokuSolverFrogak();
+		//zifraFrogak();
 		
 	}
 
@@ -42,9 +42,187 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void laguntzaFrogak() {
-		//System.out.println("Laguntza behar bezala funtzionatzen du?\n---------------------------------------");
-							
+		System.out.println("Laguntza behar bezala funtzionatzen du?\n---------------------------------------");
+		Sudokua s = new Sudokua();
+		s.getBloke(0).setKasila(0,0, new Kasila(5));
+		s.getBloke(0).getKasila(0,0).setFinkoa(true);
+		s.getBloke(0).setKasila(0,1, new Kasila(3));
+		s.getBloke(0).getKasila(0,1).setFinkoa(true);
+		s.getBloke(0).setKasila(0,2, new Kasila(4));
+		s.getBloke(0).setKasila(1,0, new Kasila(6));
+		s.getBloke(0).getKasila(1,0).setFinkoa(true);
+		s.getBloke(0).setKasila(1,1, new Kasila(7));
+		s.getBloke(0).setKasila(1,2, new Kasila(2));
+		s.getBloke(0).setKasila(2,0, new Kasila(1));
+		s.getBloke(0).setKasila(2,1, new Kasila(9));
+		s.getBloke(0).getKasila(2,1).setFinkoa(true);
+		s.getBloke(0).setKasila(2,2, new Kasila(8));
+		s.getBloke(0).getKasila(2,2).setFinkoa(true);
+
+		s.getBloke(1).setKasila(0,0, new Kasila(6));
+		s.getBloke(1).setKasila(0,1, new Kasila(7));
+		s.getBloke(1).getKasila(0,1).setFinkoa(true);
+		s.getBloke(1).setKasila(0,2, new Kasila(8));
+		s.getBloke(1).setKasila(1,0, new Kasila(1));
+		s.getBloke(1).getKasila(1,0).setFinkoa(true);
+		s.getBloke(1).setKasila(1,1, new Kasila(9));
+		s.getBloke(1).getKasila(1,1).setFinkoa(true);
+		s.getBloke(1).setKasila(1,2, new Kasila(5));
+		s.getBloke(1).getKasila(1,2).setFinkoa(true);
+		s.getBloke(1).setKasila(2,0, new Kasila(3));
+		s.getBloke(1).setKasila(2,1, new Kasila(4));
+		s.getBloke(1).setKasila(2,2, new Kasila(2));
+
+		s.getBloke(2).setKasila(0,0, new Kasila(9));
+		s.getBloke(2).setKasila(0,1, new Kasila(1));
+		s.getBloke(2).setKasila(0,2, new Kasila(2));
+		s.getBloke(2).setKasila(1,0, new Kasila(3));
+		s.getBloke(2).setKasila(1,1, new Kasila(4));
+		s.getBloke(2).setKasila(1,2, new Kasila(8));
+		s.getBloke(2).setKasila(2,0, new Kasila(5));
+		s.getBloke(2).setKasila(2,1, new Kasila(6));
+		s.getBloke(2).getKasila(2,1).setFinkoa(true);
+		s.getBloke(2).setKasila(2,2, new Kasila(7));
+
+		s.getBloke(3).setKasila(0,0, new Kasila(8));
+		s.getBloke(3).getKasila(0,0).setFinkoa(true);
+		s.getBloke(3).setKasila(0,1, new Kasila(5));
+		s.getBloke(3).setKasila(0,2, new Kasila(9));
+		s.getBloke(3).setKasila(1,0, new Kasila(4));
+		s.getBloke(3).getKasila(1,0).setFinkoa(true);
+		s.getBloke(3).setKasila(1,1, new Kasila(2));
+		s.getBloke(3).setKasila(1,2, new Kasila(6));
+		s.getBloke(3).setKasila(2,0, new Kasila(7));
+		s.getBloke(3).getKasila(2,0).setFinkoa(true);
+		s.getBloke(3).setKasila(2,1, new Kasila(1));
+		s.getBloke(3).setKasila(2,2, new Kasila(3));
+
+		s.getBloke(4).setKasila(0,0, new Kasila(7));
+		s.getBloke(4).setKasila(0,1, new Kasila(6));
+		s.getBloke(4).getKasila(0,1).setFinkoa(true);
+		s.getBloke(4).setKasila(0,2, new Kasila(1));
+		s.getBloke(4).setKasila(1,0, new Kasila(8));
+		s.getBloke(4).getKasila(1,0).setFinkoa(true);
+		s.getBloke(4).setKasila(1,1, new Kasila(5));
+		s.getBloke(4).setKasila(1,2, new Kasila(3));
+		s.getBloke(4).getKasila(1,2).setFinkoa(true);
+		s.getBloke(4).setKasila(2,0, new Kasila(9));
+		s.getBloke(4).setKasila(2,1, new Kasila(2));
+		s.getBloke(4).getKasila(2,1).setFinkoa(true);
+		s.getBloke(4).setKasila(2,2, new Kasila(4));
+
+		s.getBloke(5).setKasila(0,0, new Kasila(4));
+		s.getBloke(5).setKasila(0,1, new Kasila(2));
+		s.getBloke(5).setKasila(0,2, new Kasila(3));
+		s.getBloke(5).getKasila(0,2).setFinkoa(true);
+		s.getBloke(5).setKasila(1,0, new Kasila(7));
+		s.getBloke(5).setKasila(1,1, new Kasila(9));
+		s.getBloke(5).setKasila(1,2, new Kasila(1));
+		s.getBloke(5).getKasila(1,2).setFinkoa(true);
+		s.getBloke(5).setKasila(2,0, new Kasila(8));
+		s.getBloke(5).setKasila(2,1, new Kasila(5));
+		s.getBloke(5).setKasila(2,2, new Kasila(6));
+		s.getBloke(5).getKasila(2,2).setFinkoa(true);
+
+		s.getBloke(6).setKasila(0,0, new Kasila(9));
+		s.getBloke(6).setKasila(0,1, new Kasila(6));
+		s.getBloke(6).getKasila(0,1).setFinkoa(true);
+		s.getBloke(6).setKasila(0,2, new Kasila(1));
+		s.getBloke(6).setKasila(1,0, new Kasila(2));
+		s.getBloke(6).setKasila(1,1, new Kasila(8));
+		s.getBloke(6).setKasila(1,2, new Kasila(7));
+		s.getBloke(6).setKasila(2,0, new Kasila(3));
+		s.getBloke(6).setKasila(2,1, new Kasila(4));
+		s.getBloke(6).setKasila(2,2, new Kasila(5));
+
+		s.getBloke(7).setKasila(0,0, new Kasila(5));
+		s.getBloke(7).setKasila(0,1, new Kasila(3));
+		s.getBloke(7).setKasila(0,2, new Kasila(7));
+		s.getBloke(7).setKasila(1,0, new Kasila(4));
+		s.getBloke(7).getKasila(1,0).setFinkoa(true);
+		s.getBloke(7).setKasila(1,1, new Kasila(1));
+		s.getBloke(7).getKasila(1,1).setFinkoa(true);
+		s.getBloke(7).setKasila(1,2, new Kasila(9));
+		s.getBloke(7).getKasila(1,2).setFinkoa(true);
+		s.getBloke(7).setKasila(2,0, new Kasila(2));
+		s.getBloke(7).setKasila(2,1, new Kasila(8));
+		s.getBloke(7).getKasila(2,1).setFinkoa(true);
+		s.getBloke(7).setKasila(2,2, new Kasila(6));
+
+		s.getBloke(8).setKasila(0,0, new Kasila(2));
+		s.getBloke(8).getKasila(0,0).setFinkoa(true);
+		s.getBloke(8).setKasila(0,1, new Kasila(8));
+		s.getBloke(8).getKasila(0,1).setFinkoa(true);
+		s.getBloke(8).setKasila(0,2, new Kasila(4));
+		s.getBloke(8).setKasila(1,0, new Kasila(6));
+		s.getBloke(8).setKasila(1,1, new Kasila(3));
+		s.getBloke(8).setKasila(1,2, new Kasila(5));
+		s.getBloke(8).getKasila(1,2).setFinkoa(true);
+		s.getBloke(8).setKasila(2,0, new Kasila(1));
+		s.getBloke(8).setKasila(2,1, new Kasila(7));
+		s.getBloke(8).getKasila(2,1).setFinkoa(true);
+		s.getBloke(8).setKasila(2,2, new Kasila(9));
+		s.getBloke(8).getKasila(2,2).setFinkoa(true);
+		//Bloke proba:
+		System.out.println("- Bloke guztiak ondo daude eta bueltatzen duen emaitza -1 da? "+s.laguntzaBloke());
+		s.getBloke(1).getKasila(0, 2).setFinkoa(true);
+		s.getBloke(1).getKasila(0, 2).setBalioZuzena(1);
+		System.out.println("- 2. blokean zenbaki errepikatu bat gehituko dugu(finko moduan)...1 ematen du? "+s.laguntzaBloke());
+		s.getBloke(1).getKasila(0, 2).setFinkoa(false);
+		s.getBloke(1).getKasila(0, 2).setBalioZuzena(8);
+		s.getBloke(8).getKasila(2, 0).aldatu(5);
+
+		System.out.println("- 9. blokean zenbaki errepikatu bat gehitu dugu...8 ematen du? "+s.laguntzaBloke());
+		s.getBloke(1).getKasila(0, 2).setFinkoa(true);
+		s.getBloke(1).getKasila(0, 2).setBalioZuzena(1);
+		System.out.println("- 2 Bloke ezberdinetan zenbakiak errepikatuta daude...8 edo 1 ematen du? "+s.laguntzaBloke());
+		s.getBloke(1).getKasila(0, 2).setFinkoa(false);
+		s.getBloke(1).getKasila(0, 2).setBalioZuzena(8);
+		s.getBloke(8).getKasila(2, 0).aldatu(0);
+		//
+		System.out.println("Zutabe proba:");
+		System.out.println();
+		System.out.println("Zutabe guztiak ondo daude eta bueltatzen duen emaitza -1 da? "+s.laguntzaZutabe());
+		s.getBloke(0).getKasila(0, 2).setFinkoa(true);
+		s.getBloke(0).getKasila(0, 2).setBalioZuzena(1);
+		s.getBloke(3).getKasila(0, 2).setFinkoa(true);
+		s.getBloke(3).getKasila(0, 2).setBalioZuzena(1);
+
+		System.out.println("- 3.zutabean zenbaki errepikatu bat gehituko dugu(finko moduan)...2 ematen du? "+s.laguntzaZutabe());
+		s.getBloke(1).getKasila(0, 2).setFinkoa(false);
+		s.getBloke(1).getKasila(0, 2).setBalioZuzena(8);
+		s.getBloke(3).getKasila(0, 2).setFinkoa(false);
+		s.getBloke(3).getKasila(0, 2).setBalioZuzena(2);
+
+		s.getBloke(8).getKasila(0, 2).aldatu(9);
+		System.out.println("- 9. zutabean zenbaki errepikatu gehitu da...8 ematen du? "+s.laguntzaZutabe());
+		s.getBloke(6).getKasila(0, 0).aldatu(5);
+		System.out.println("- 2 Zutabe ezberdinetan zenbakiak errepikatuta daude...8 edo 0 ematen du? "+s.laguntzaZutabe());
+		s.getBloke(6).getKasila(0, 0).aldatu(0);
+		s.getBloke(8).getKasila(0, 2).aldatu(0);
+
+		//
+		System.out.println("Ilara proba:");
+		System.out.println();
+		System.out.println("- Ilara guztiak ondo daude eta bueltatzen duen emaitza -1 da? "+s.laguntzaIlarak());
+
+		s.getBloke(1).getKasila(0, 0).setFinkoa(true);
+		s.getBloke(1).getKasila(0, 0).setBalioZuzena(5);
+
+		System.out.println("- 1.ilaran zenbaki errepikatu bat gehituko dugu(finko moduan)...0 ematen du? "+s.laguntzaIlarak());
+		s.getBloke(1).getKasila(0, 0).setFinkoa(false);
+		s.getBloke(1).getKasila(0, 0).setBalioZuzena(6);
+
+		s.getBloke(7).getKasila(2, 2).aldatu(8);
+		System.out.println("- 9. ilaran zenbaki errepikatua gehitu da...8 ematen du? "+s.laguntzaIlarak());
+		s.getBloke(1).getKasila(0, 0).setBalioZuzena(5);
+		System.out.println("- 2 Ilara ezberdinetan zenbakiak errepikatuta daude...8 edo 0 ematen du? "+s.laguntzaIlarak());
+		s.getBloke(1).getKasila(0, 0).aldatu(0);
+		s.getBloke(7).getKasila(2, 2).aldatu(0);
 	}
+
+							
+	
 
 	private static void klasifikazioaLeihoaFrogak() {
 		//System.out.println("Klasifikazio leihoaren frogak:\n------------------------------");  	
@@ -126,6 +304,72 @@ public class ProbatzekoMain2 {
 	private static void generadoreSudokuFrogak() {
 		System.out.println("Sudoku berria ausaz eta zailtazunaren arabera sortzen da?\n---------------------------------------------------------");
 		
+		System.out.println("- Kasila kopuru egokia kentzen da zailtasunaren arabera?");
+		int kontErraza=0;
+		int kontErtaina=0;
+		int kontZaila=0;
+		GeneradoreSudoku sErraza = new GeneradoreSudoku(0);
+		GeneradoreSudoku sErtaina = new GeneradoreSudoku(1);
+		GeneradoreSudoku sZaila = new GeneradoreSudoku(2);
+		sErraza.beteAusaz();
+		sErtaina.beteAusaz();
+		sZaila.beteAusaz();
+		for (int f = 0; f < 9; f++) {
+			for (int i = 0; i < 9; i++) {
+				if(sErraza.getSudokuKasila(f, i).getErabiltzaileBal()==0){
+					kontErraza++;
+				}
+			}
+		}
+		for (int f = 0; f < 9; f++) {
+			for (int i = 0; i < 9; i++) {
+				if(sErtaina.getSudokuKasila(f, i).getErabiltzaileBal()==0){
+					kontErtaina++;
+				}
+			}
+		}
+		for (int f = 0; f < 9; f++) {
+			for (int i = 0; i < 9; i++) {
+				if(sZaila.getSudokuKasila(f, i).getErabiltzaileBal()==0){
+					kontZaila++;
+				}
+			}
+		}
+		System.out.print("Sudoku errezari kendutako kasila kopurua: "+kontErraza+" ");
+		if (kontErraza>=44&&kontErraza<48){
+			System.out.println("Erraza...OK");
+		}
+		else
+			System.out.println("Erraza...ERROR");
+		System.out.print("Sudoku ertainari kendutako kasila kopurua: "+kontErtaina+" ");
+		if (kontErtaina>=48&&kontErtaina<52){
+			System.out.println("Ertaina...OK");
+		}
+		else
+			System.out.println("Ertaina...ERROR");
+		System.out.print("Sudoku zailari kendutako kasila kopurua: "+kontZaila+" ");
+
+
+		if (kontZaila>=52&&kontZaila<56){
+			System.out.println("Zaila...OK");
+		}
+		else
+			System.out.println("Zaila...ERROR");
+		
+		System.out.println("- Sudokuek soluzio bakarra dute?");
+		if (sErraza.soluzioBakarra()) {
+			System.out.println("Erraza...OK");
+		}
+		else System.out.println("Erraza...ERROR");
+		if (sErtaina.soluzioBakarra()) {
+			System.out.println("Ertaina...OK");
+		}
+		else System.out.println("Ertaina...ERROR");
+		if (sZaila.soluzioBakarra()) {
+			System.out.println("Zaila...OK");
+		}
+		else System.out.println("Zaila...ERROR");
+		
 	}
 
 	private static void erregistroLehioaFrogak() {
@@ -198,6 +442,8 @@ public class ProbatzekoMain2 {
 	}
 	else
 		System.out.println("Zaila...ERROR");
+	
+
 	}
 	
 	
