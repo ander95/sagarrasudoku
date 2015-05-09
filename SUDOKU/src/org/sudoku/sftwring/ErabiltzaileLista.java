@@ -10,11 +10,9 @@ public class ErabiltzaileLista {
 
 	private static ErabiltzaileLista nErabiltzaileLista=null;
 	private ArrayList<Erabiltzaile> erabiltzaileLista;
-	private Klasifikazioa egunekoKlasifikazioa;
 	private Klasifikazioa klasifikazioa;
 	private ErabiltzaileLista(){
 		this.erabiltzaileLista=new ArrayList<Erabiltzaile>();
-		this.egunekoKlasifikazioa = new Klasifikazioa();
 		this.klasifikazioa = new Klasifikazioa();
 	}
 
@@ -90,7 +88,6 @@ public class ErabiltzaileLista {
 	public void kargatu() throws IOException{
 		try{
 			Scanner sarrera = new Scanner(new FileReader("usr.log"));
-			this.egunekoKlasifikazioa.kargatu(sarrera.next());
 			this.klasifikazioa.kargatu(sarrera.next());
 			while(sarrera.hasNext()){
 				String lerroa=sarrera.next();
@@ -111,7 +108,6 @@ public class ErabiltzaileLista {
 		try
 		{
 			PrintWriter pw = new PrintWriter(new FileWriter("usr.log"));
-			pw.println(this.egunekoKlasifikazioa.gorde());
 			pw.println(this.klasifikazioa.gorde());
 			Iterator<Erabiltzaile> it=this.getIteradorea();
 			while(it.hasNext()){
@@ -129,9 +125,6 @@ public class ErabiltzaileLista {
 		return klasifikazioa;
 	}
 
-	public Klasifikazioa getEgunekoKlasifikazioa() {
-		return egunekoKlasifikazioa;
-	}
 	public void erreseteatuErabiltzaileLista(){
 		ErabiltzaileLista.nErabiltzaileLista=null;
 		System.out.println("Erabiltzaile lista berrabiarazi da");
