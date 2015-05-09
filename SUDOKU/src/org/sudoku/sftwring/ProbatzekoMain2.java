@@ -57,24 +57,12 @@ public class ProbatzekoMain2 {
 		eguneratuFrogak();
 		emanErabHonenPosFrogak();
 		erabiltzaileenListaKlasifikatorianFrogak();
-		gordeFrogak();
-		kargatuFrogak();
 		tamainaFrogak();
 		
 		                      
 	}
 
 	private static void tamainaFrogak() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void kargatuFrogak() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void gordeFrogak() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -90,24 +78,26 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void eguneratuFrogak() {
-		// TODO Auto-generated method stub
+		System.out.println("- Klasifikazioa eguneratzen da?");
 		
 	}
 
 	private static void addFrogak() {
 		System.out.println("- Erabiltzailea era zuzenean gehitzen da?");
-		Klasifikazioa klasif=new Klasifikazioa();
+
 		System.out.println("Klasifikazioa berria sortu da");
-		Erabiltzaile erab=new Erabiltzaile("erabIzen2", 2, "12345");
-		
-		
-		klasif.erabiltzaileenListaKlasifikatorian().add(erab);
+
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erabIzen3", "2", "12345");
+		System.out.println("Hasieran...");
+		Klasifikazioa klasif=new Klasifikazioa();
+		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+			System.out.println("Zerrenda hutsik");
+		}
+		klasif.inprimatuKlasifikazioa();
+		klasif.erabiltzaileenListaKlasifikatorian().add(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erabIzen2", "12345"));
 		klasif.eguneratu();
-		
-		if(ErabiltzaileLista.getErabiltzaileLista().getKlasifikazioa().emanErabHonenPos(erab)==0){
-			System.out.println(" "+erab.getIzen()+" erbailtzailea "+erab.getID()+" PID-arekin,Klasifikaziora gehitu da");
-			klasif.inprimatuKlasifikazioa();}
-		else System.out.println("Ezin izan da erabiltzailea klasifikazioan gehitu");
+		System.out.println("Bukaeran...");
+		klasif.inprimatuKlasifikazioa();
 
 	}
 
