@@ -139,6 +139,15 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 		System.out.println("Erabiltzailearen azken sudokua: ");
 		this.azkenengoSudokua.inprimatuSudoku();
 	}
+	public void inprimatuDatuakSudokuGabe() {
+		//Aurre:
+		//Post: Erabiltzailearen datuak inprimatuko ditu
+		System.out.println("Izena: "+this.izena);
+		System.out.println("ID: "+this.ID);
+		System.out.println("Puntuazioa: "+this.puntuazioa);
+		//System.out.println("Erabiltzailearen azken sudokua: ");
+		//this.azkenengoSudokua.inprimatuSudoku();
+	}
 	public void setSudoku(Sudokua pSudo){
 		this.azkenengoSudokua=pSudo;
 	}

@@ -66,7 +66,7 @@ public class Klasifikazioa {
 		while(itr.hasNext()){
 			int erabID=(int)itr.next();
 			Erabiltzaile unekoa = ErabiltzaileLista.getErabiltzaileLista().getErabiltzaile(erabID);
-			unekoa.inprimatuDatuak();
+			unekoa.inprimatuDatuakSudokuGabe();
 		}
 	}
 
