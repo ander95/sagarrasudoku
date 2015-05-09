@@ -27,27 +27,27 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void zifraFrogak() {
-		System.out.println("Datuak ondo zifratzen dira?\n---------------------------");
+		//System.out.println("Datuak ondo zifratzen dira?\n---------------------------");
 							
 	}
 
 	private static void sudokuSolverFrogak() {
-		System.out.println("Beti soluzio berdina (bakarra) bueltatzen da?\n-----------------------------------------------"); 
+		//System.out.println("Beti soluzio berdina (bakarra) bueltatzen da?\n-----------------------------------------------"); 
 							
 	}
 
 	private static void sudokuAdapterFrogak() {
-		System.out.println("Patroia era zuzenenan funtzionatzen du?\n---------------------------------------");   
+		//System.out.println("Patroia era zuzenenan funtzionatzen du?\n---------------------------------------");   
 							
 	}
 
 	private static void laguntzaFrogak() {
-		System.out.println("Laguntza behar bezala funtzionatzen du?\n---------------------------------------");
+		//System.out.println("Laguntza behar bezala funtzionatzen du?\n---------------------------------------");
 							
 	}
 
 	private static void klasifikazioaLeihoaFrogak() {
-		System.out.println("Klasifikazio leihoaren frogak:\n------------------------------");  	
+		//System.out.println("Klasifikazio leihoaren frogak:\n------------------------------");  	
 	}
 
 	private static void klasifikazioaFrogak() {
