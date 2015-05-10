@@ -23,7 +23,7 @@ public class ProbatzekoMain2 {
 		laguntzaFrogak();
 		sudokuAdapterFrogak();
 		//klasifikazioaFrogak();
-		//sudokuSolverFrogak();
+		sudokuSolverFrogak();
 		//zifraFrogak();
 		
 	}
@@ -34,8 +34,23 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void sudokuSolverFrogak() {
-		//System.out.println("Beti soluzio berdina (bakarra) bueltatzen da?\n-----------------------------------------------"); 
-							
+		System.out.println("Beti soluzio berdina (bakarra) bueltatzen da?\n-----------------------------------------------"); 
+		SudokuAdapter sa=new SudokuAdapter();
+		sa.setZailtasuna(0);
+		GeneradoreSudoku genSudo = new GeneradoreSudoku(0);
+		genSudo.beteAusaz();
+		if(genSudo instanceof GeneradoreSudoku)
+			System.out.println("Generadore...OK");
+		else System.out.println("Generadore...ERROR");
+		System.out.println("- Soluzio bakarra du?");
+		if (genSudo.soluzioBakarra()) {
+			System.out.println("Bakarra...OK");
+		}else System.out.println("Bakarra...ERROR");
+		sa.pasatu(genSudo);
+		System.out.println("Hasieran dugun sudokua");
+		sa.inprimatuSudokuZuzena();
+		System.out.println("Bukaeran, hasieran dituen zenbaki berdinak posizio berdinean ditu, 0-ak kenduta? ");
+		sa.inprimatuSudoku();
 	}
 
 	private static void sudokuAdapterFrogak() {
