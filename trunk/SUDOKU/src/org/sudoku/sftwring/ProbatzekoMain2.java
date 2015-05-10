@@ -15,13 +15,12 @@ public class ProbatzekoMain2 {
 	private static void frogaBerriak() {
 		adabegiFrogak();
 		aukeratuLeihoaFrogak();
-		//erregistroLehioaFrogak();
+		erregistroLehioaFrogak();
 		generadoreSudokuFrogak();
-		
 		//klasifikazioaLeihoaFrogak();
 		laguntzaFrogak();
 		sudokuAdapterFrogak();
-		//klasifikazioaFrogak();
+		klasifikazioaFrogak();
 		sudokuSolverFrogak();
 		zifraFrogak();
 		
@@ -29,8 +28,8 @@ public class ProbatzekoMain2 {
 
 	private static void zifraFrogak() {
 		System.out.println("Datuak ondo zifratzen dira?\n---------------------------");
-		Erabiltzaile erab3=new Erabiltzaile("martin", 7, "12345");
-		;
+		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
+		
 		Zifra zifrPas = new Zifra(erab3.getPasahitza());
 		try {
 			String zifra= zifrPas.encrypt("12345");
@@ -280,8 +279,8 @@ public class ProbatzekoMain2 {
 	private static void klasifikazioaFrogak() {
 		
 		klasifikazioBerriaSortuFrogak();
-		//addFrogak();
-		//eguneratuFrogak();
+		addFrogak();
+		eguneratuFrogak();
 		emanErabHonenPosFrogak();
 		erabiltzaileenListaKlasifikatorianFrogak();
 		tamainaFrogak();
@@ -300,32 +299,81 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void emanErabHonenPosFrogak() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void eguneratuFrogak() {
-		System.out.println("- Klasifikazioa eguneratzen da?");
+		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
+		Zifra zifrPas = new Zifra(erab3.getPasahitza());
+		try {
+			String zifra= zifrPas.encrypt("12345");
+			System.out.println("Zifratutako pasahitza: "+zifra);
+			if (zifrPas.decrypt(zifra).equals("12345")) {
+			System.out.println("Deszifratu...OK");
+			}else System.out.println("Deszifratu...ERROR");
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
 		System.out.println("Hasieran...");
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erabIzen4", "3", "123456");
 		Klasifikazioa klasif=new Klasifikazioa();
 		System.out.println("Klasifikazioa berria sortu da");
 		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
 			System.out.println("Zerrenda hutsik");
 		}
-		
-		klasif.erabiltzaileenListaKlasifikatorian().add(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erabIzen2", "12345"));
 		klasif.inprimatuKlasifikazioa();
-		ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erabIzen2", "12345").gehituPuntuak(100);
+		klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
+		System.out.println("Klasifikazioa eguneratu aurretik...");
+		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+			System.out.println("Zerrenda hutsik");
+		}erab3.gehituPuntuak(100);
 		klasif.eguneratu();
-		System.out.println("Bukaeran...");
+		
+		System.out.println("Eguneratu ostean...");
+		System.out.println(erab3.getIzen()+"-(r)en Posizioa: "+klasif.emanErabHonenPos(erab3));
+		klasif.inprimatuKlasifikazioa();}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+
+	private static void eguneratuFrogak() {
+		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
+		Zifra zifrPas = new Zifra(erab3.getPasahitza());
+		try {
+			String zifra= zifrPas.encrypt("12345");
+			System.out.println("Zifratutako pasahitza: "+zifra);
+			if (zifrPas.decrypt(zifra).equals("12345")) {
+			System.out.println("Deszifratu...OK");
+			}else System.out.println("Deszifratu...ERROR");
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+		System.out.println("Hasieran...");
+		Klasifikazioa klasif=new Klasifikazioa();
+		System.out.println("Klasifikazioa berria sortu da");
+		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+			System.out.println("Zerrenda hutsik");
+		}
 		klasif.inprimatuKlasifikazioa();
+		klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
+		System.out.println("Klasifikazioa eguneratu aurretik...");
+		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+			System.out.println("Zerrenda hutsik");
+		}erab3.gehituPuntuak(100);
+		klasif.eguneratu();
+		System.out.println("Eguneratu ostean...");
+		klasif.inprimatuKlasifikazioa();}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+
 		
 	}
 
 	private static void addFrogak() {
 		System.out.println("- Erabiltzailea era zuzenean gehitzen da?");
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erabIzen3", "2", "12345");
+		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
+		Zifra zifrPas = new Zifra(erab3.getPasahitza());
+		try {
+			String zifra= zifrPas.encrypt("12345");
+			System.out.println("Zifratutako pasahitza: "+zifra);
+			if (zifrPas.decrypt(zifra).equals("12345")) {
+			System.out.println("Deszifratu...OK");
+			}else System.out.println("Deszifratu...ERROR");
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
 		System.out.println("Hasieran...");
 		Klasifikazioa klasif=new Klasifikazioa();
 		System.out.println("Klasifikazioa berria sortu da");
@@ -333,10 +381,13 @@ public class ProbatzekoMain2 {
 			System.out.println("Zerrenda hutsik");
 		}
 		klasif.inprimatuKlasifikazioa();
-		klasif.erabiltzaileenListaKlasifikatorian().add(ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erabIzen2", "12345"));
+		klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
 		klasif.eguneratu();
 		System.out.println("Bukaeran...");
-		klasif.inprimatuKlasifikazioa();
+		klasif.inprimatuKlasifikazioa();}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 
 	}
 
@@ -422,138 +473,22 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void erregistroLehioaFrogak() {
-		System.out.println("Erregistroa ondo dabil?\n-----------------------");
-
-			Sudokua s = new Sudokua();
-
-			s.getBloke(0).setKasila(0,0, new Kasila(5));
-			s.getBloke(0).getKasila(0,0).setFinkoa(true);
-			s.getBloke(0).setKasila(0,1, new Kasila(3));
-			s.getBloke(0).getKasila(0,1).setFinkoa(true);
-			s.getBloke(0).setKasila(0,2, new Kasila(4));
-			s.getBloke(0).setKasila(1,0, new Kasila(6));
-			s.getBloke(0).getKasila(1,0).setFinkoa(true);
-			s.getBloke(0).setKasila(1,1, new Kasila(7));
-			s.getBloke(0).setKasila(1,2, new Kasila(2));
-			s.getBloke(0).setKasila(2,0, new Kasila(1));
-			s.getBloke(0).setKasila(2,1, new Kasila(9));
-			s.getBloke(0).getKasila(2,1).setFinkoa(true);
-			s.getBloke(0).setKasila(2,2, new Kasila(8));
-			s.getBloke(0).getKasila(2,2).setFinkoa(true);
-
-			s.getBloke(1).setKasila(0,0, new Kasila(6));
-			s.getBloke(1).setKasila(0,1, new Kasila(7));
-			s.getBloke(1).getKasila(0,1).setFinkoa(true);
-			s.getBloke(1).setKasila(0,2, new Kasila(8));
-			s.getBloke(1).setKasila(1,0, new Kasila(1));
-			s.getBloke(1).getKasila(1,0).setFinkoa(true);
-			s.getBloke(1).setKasila(1,1, new Kasila(9));
-			s.getBloke(1).getKasila(1,1).setFinkoa(true);
-			s.getBloke(1).setKasila(1,2, new Kasila(5));
-			s.getBloke(1).getKasila(1,2).setFinkoa(true);
-			s.getBloke(1).setKasila(2,0, new Kasila(3));
-			s.getBloke(1).setKasila(2,1, new Kasila(4));
-			s.getBloke(1).setKasila(2,2, new Kasila(2));
-
-			s.getBloke(2).setKasila(0,0, new Kasila(9));
-			s.getBloke(2).setKasila(0,1, new Kasila(1));
-			s.getBloke(2).setKasila(0,2, new Kasila(2));
-			s.getBloke(2).setKasila(1,0, new Kasila(3));
-			s.getBloke(2).setKasila(1,1, new Kasila(4));
-			s.getBloke(2).setKasila(1,2, new Kasila(8));
-			s.getBloke(2).setKasila(2,0, new Kasila(5));
-			s.getBloke(2).setKasila(2,1, new Kasila(6));
-			s.getBloke(2).getKasila(2,1).setFinkoa(true);
-			s.getBloke(2).setKasila(2,2, new Kasila(7));
-
-			s.getBloke(3).setKasila(0,0, new Kasila(8));
-			s.getBloke(3).getKasila(0,0).setFinkoa(true);
-			s.getBloke(3).setKasila(0,1, new Kasila(5));
-			s.getBloke(3).setKasila(0,2, new Kasila(9));
-			s.getBloke(3).setKasila(1,0, new Kasila(4));
-			s.getBloke(3).getKasila(1,0).setFinkoa(true);
-			s.getBloke(3).setKasila(1,1, new Kasila(2));
-			s.getBloke(3).setKasila(1,2, new Kasila(6));
-			s.getBloke(3).setKasila(2,0, new Kasila(7));
-			s.getBloke(3).getKasila(2,0).setFinkoa(true);
-			s.getBloke(3).setKasila(2,1, new Kasila(1));
-			s.getBloke(3).setKasila(2,2, new Kasila(3));
-
-			s.getBloke(4).setKasila(0,0, new Kasila(7));
-			s.getBloke(4).setKasila(0,1, new Kasila(6));
-			s.getBloke(4).getKasila(0,1).setFinkoa(true);
-			s.getBloke(4).setKasila(0,2, new Kasila(1));
-			s.getBloke(4).setKasila(1,0, new Kasila(8));
-			s.getBloke(4).getKasila(1,0).setFinkoa(true);
-			s.getBloke(4).setKasila(1,1, new Kasila(5));
-			s.getBloke(4).setKasila(1,2, new Kasila(3));
-			s.getBloke(4).getKasila(1,2).setFinkoa(true);
-			s.getBloke(4).setKasila(2,0, new Kasila(9));
-			s.getBloke(4).setKasila(2,1, new Kasila(2));
-			s.getBloke(4).getKasila(2,1).setFinkoa(true);
-			s.getBloke(4).setKasila(2,2, new Kasila(4));
-
-			s.getBloke(5).setKasila(0,0, new Kasila(4));
-			s.getBloke(5).setKasila(0,1, new Kasila(2));
-			s.getBloke(5).setKasila(0,2, new Kasila(3));
-			s.getBloke(5).getKasila(0,2).setFinkoa(true);
-			s.getBloke(5).setKasila(1,0, new Kasila(7));
-			s.getBloke(5).setKasila(1,1, new Kasila(9));
-			s.getBloke(5).setKasila(1,2, new Kasila(1));
-			s.getBloke(5).getKasila(1,2).setFinkoa(true);
-			s.getBloke(5).setKasila(2,0, new Kasila(8));
-			s.getBloke(5).setKasila(2,1, new Kasila(5));
-			s.getBloke(5).setKasila(2,2, new Kasila(6));
-			s.getBloke(5).getKasila(2,2).setFinkoa(true);
-
-			s.getBloke(6).setKasila(0,0, new Kasila(9));
-			s.getBloke(6).setKasila(0,1, new Kasila(6));
-			s.getBloke(6).getKasila(0,1).setFinkoa(true);
-			s.getBloke(6).setKasila(0,2, new Kasila(1));
-			s.getBloke(6).setKasila(1,0, new Kasila(2));
-			s.getBloke(6).setKasila(1,1, new Kasila(8));
-			s.getBloke(6).setKasila(1,2, new Kasila(7));
-			s.getBloke(6).setKasila(2,0, new Kasila(3));
-			s.getBloke(6).setKasila(2,1, new Kasila(4));
-			s.getBloke(6).setKasila(2,2, new Kasila(5));
-
-			s.getBloke(7).setKasila(0,0, new Kasila(5));
-			s.getBloke(7).setKasila(0,1, new Kasila(3));
-			s.getBloke(7).setKasila(0,2, new Kasila(7));
-			s.getBloke(7).setKasila(1,0, new Kasila(4));
-			s.getBloke(7).getKasila(1,0).setFinkoa(true);
-			s.getBloke(7).setKasila(1,1, new Kasila(1));
-			s.getBloke(7).getKasila(1,1).setFinkoa(true);
-			s.getBloke(7).setKasila(1,2, new Kasila(9));
-			s.getBloke(7).getKasila(1,2).setFinkoa(true);
-			s.getBloke(7).setKasila(2,0, new Kasila(2));
-			s.getBloke(7).setKasila(2,1, new Kasila(8));
-			s.getBloke(7).getKasila(2,1).setFinkoa(true);
-			s.getBloke(7).setKasila(2,2, new Kasila(6));
-
-			s.getBloke(8).setKasila(0,0, new Kasila(2));
-			s.getBloke(8).getKasila(0,0).setFinkoa(true);
-			s.getBloke(8).setKasila(0,1, new Kasila(8));
-			s.getBloke(8).getKasila(0,1).setFinkoa(true);
-			s.getBloke(8).setKasila(0,2, new Kasila(4));
-			s.getBloke(8).setKasila(1,0, new Kasila(6));
-			s.getBloke(8).setKasila(1,1, new Kasila(3));
-			s.getBloke(8).setKasila(1,2, new Kasila(5));
-			s.getBloke(8).getKasila(1,2).setFinkoa(true);
-			s.getBloke(8).setKasila(2,0, new Kasila(1));
-			s.getBloke(8).setKasila(2,1, new Kasila(7));
-			s.getBloke(8).getKasila(2,1).setFinkoa(true);
-			s.getBloke(8).setKasila(2,2, new Kasila(9));
-			s.getBloke(8).getKasila(2,2).setFinkoa(true);
-
-			s.inprimatuSudokuZuzena();
-
-			try {
-				ErabiltzaileLista.getErabiltzaileLista().kargatu();
-				ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("erab", "qwerty");
-				ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("erab", "qwerty").setSudoku(s);
-				ErabiltzaileLista.getErabiltzaileLista().gorde();
+		System.out.println("3.Erregistroa ondo dabil?\n-------------------------");
+		Erabiltzaile erab4=new Erabiltzaile("martin2", 7, "12345");
+		
+		Zifra zifrPas = new Zifra(erab4.getPasahitza());
+		try {
+			String zifra= zifrPas.encrypt("12345");
+			System.out.println("Zifratutako pasahitza: "+zifra);
+			
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+			if (ErabiltzaileLista.getErabiltzaileLista().badago("martin")) {
+			System.out.println("Erailtzailea gehitu...OK");
+			}else System.out.println("Erabiltzailea gehitu...ERROR");
 			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -568,6 +503,7 @@ public class ProbatzekoMain2 {
 		//klasifikazioaFrogak();
 		generadoreSudokuFrogak();
 		zailtasunaFrogak();
+		klasifikazioaFrogak();
 		System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////");
 	}
 
@@ -679,7 +615,8 @@ public class ProbatzekoMain2 {
 
 	
 	private static void sudokuaAusazBete() {
-
+System.out.println("0.Sudokua ausaz betetzen da?\n----------------------------");
+					
 		//GeneradoreSudoku s = new GeneradoreSudoku();
 		Sudokua s = new SudokuAdapter();
 		System.out.println("\nHasieran...\n");
