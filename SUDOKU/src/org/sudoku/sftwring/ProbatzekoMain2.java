@@ -21,8 +21,8 @@ public class ProbatzekoMain2 {
 		
 		//klasifikazioaLeihoaFrogak();
 		laguntzaFrogak();
-		//sudokuAdapterFrogak();
-		klasifikazioaFrogak();
+		sudokuAdapterFrogak();
+		//klasifikazioaFrogak();
 		//sudokuSolverFrogak();
 		//zifraFrogak();
 		
@@ -39,8 +39,26 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void sudokuAdapterFrogak() {
-		//System.out.println("Patroia era zuzenenan funtzionatzen du?\n---------------------------------------");   
-							
+		System.out.println("Patroia era zuzenenan funtzionatzen du?\n---------------------------------------");   
+			System.out.println("Sortuko dugu SudokuAdapter motako objektua: " );	
+			SudokuAdapter sa=new SudokuAdapter();
+			if(sa instanceof SudokuAdapter)
+			System.out.println("Adapter...OK");
+			else System.out.println("Adapter...ERROR");
+			sa.setZailtasuna(0);
+			System.out.println("Sortuko dugu GeneradoreSudoku motako objektua: " );
+			GeneradoreSudoku genSudo = new GeneradoreSudoku(0);
+			if(genSudo instanceof GeneradoreSudoku)
+				System.out.println("Generadore...OK");
+				else System.out.println("Generadore...ERROR");
+			genSudo.beteAusaz();
+			sa.pasatu(genSudo);
+			System.out.println("Eta orain sudokuAdapter motako objektuak, sudoku klaseko metodoak eskuragai ditu: \nAdibidez beteZeroz edo inprimatu:");
+		System.out.println("Hasieran Adapterra...");
+			sa.inprimatuSudoku();
+			sa.beteZeroz();
+			System.out.println("Betezeroz egin ondoren...");
+		sa.inprimatuSudoku();
 	}
 
 	private static void laguntzaFrogak() {
