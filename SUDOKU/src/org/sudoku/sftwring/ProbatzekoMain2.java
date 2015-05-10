@@ -8,7 +8,6 @@ public class ProbatzekoMain2 {
 
 	public static void main(String[] args) {
 		sudokuaAusazBete();
-				//proba();
 		frogaBerriak();
 
 	}
@@ -24,14 +23,29 @@ public class ProbatzekoMain2 {
 		sudokuAdapterFrogak();
 		//klasifikazioaFrogak();
 		sudokuSolverFrogak();
-		//zifraFrogak();
+		zifraFrogak();
 		
 	}
 
 	private static void zifraFrogak() {
-		//System.out.println("Datuak ondo zifratzen dira?\n---------------------------");
-							
-	}
+		System.out.println("Datuak ondo zifratzen dira?\n---------------------------");
+		Erabiltzaile erab3=new Erabiltzaile("martin", 7, "12345");
+		;
+		Zifra zifrPas = new Zifra(erab3.getPasahitza());
+		try {
+			String zifra= zifrPas.encrypt("12345");
+			System.out.println("Zifratutako pasahitza: "+zifra);
+			if (zifrPas.decrypt(zifra).equals("12345")) {
+			System.out.println("Deszifratu...OK");
+			}else System.out.println("Deszifratu...ERROR");
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+		if(ErabiltzaileLista.getErabiltzaileLista().badago("martin"))
+			System.out.println("Erabiltzailea gehituta...OK");				
+		 else	System.out.println("Erabiltzailea gehituta...ERROR");}catch (Exception e) {
+			System.out.println("Excepzioa:");
+			e.printStackTrace();
+		}
+		}
 
 	private static void sudokuSolverFrogak() {
 		System.out.println("Beti soluzio berdina (bakarra) bueltatzen da?\n-----------------------------------------------"); 
@@ -266,8 +280,8 @@ public class ProbatzekoMain2 {
 	private static void klasifikazioaFrogak() {
 		
 		klasifikazioBerriaSortuFrogak();
-		addFrogak();
-		eguneratuFrogak();
+		//addFrogak();
+		//eguneratuFrogak();
 		emanErabHonenPosFrogak();
 		erabiltzaileenListaKlasifikatorianFrogak();
 		tamainaFrogak();
@@ -663,33 +677,7 @@ public class ProbatzekoMain2 {
 			System.out.println("Sortu...ERROR");
 	}
 
-	private static void proba(){
-
-		GeneradoreSudoku s = new GeneradoreSudoku(0);
-		ArrayList posizioak = new ArrayList(81);
-		for (int i = 0; i < posizioak.size(); i++) {
-			posizioak.add(i);
-		}
-		Collections.shuffle(posizioak);
-		for (Object i : posizioak) {
-			int unekoPosizioa=(int) posizioak.get((int) i);
-			if(s.KalkulatuPosibleak(unekoPosizioa).length>1){
-
-			}else{
-
-			}
-		}
-
-		GeneradoreSudoku s1 = new GeneradoreSudoku(0);
-
-		s1.beteAusaz();
-		s1.setZailtasuna(0);
-		s1.kasilakEzabatu(0);
-		s1.inprimatuZuzena();
-		s1.inprimatuErabiltzaile();
-	}
-
-	@SuppressWarnings("unused")
+	
 	private static void sudokuaAusazBete() {
 
 		//GeneradoreSudoku s = new GeneradoreSudoku();
