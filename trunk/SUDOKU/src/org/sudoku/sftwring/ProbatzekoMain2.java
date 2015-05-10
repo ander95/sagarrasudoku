@@ -16,12 +16,13 @@ public class ProbatzekoMain2 {
 	private static void frogaBerriak() {
 		adabegiFrogak();
 		aukeratuLeihoaFrogak();
-		erregistroLehioaFrogak();
+		//erregistroLehioaFrogak();
 		generadoreSudokuFrogak();
-		//klasifikazioaFrogak();
+		
 		//klasifikazioaLeihoaFrogak();
 		laguntzaFrogak();
-		sudokuAdapterFrogak();
+		//sudokuAdapterFrogak();
+		klasifikazioaFrogak();
 		//sudokuSolverFrogak();
 		//zifraFrogak();
 		
