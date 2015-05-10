@@ -17,7 +17,6 @@ public class ProbatzekoMain2 {
 		aukeratuLeihoaFrogak();
 		erregistroLehioaFrogak();
 		generadoreSudokuFrogak();
-		//klasifikazioaLeihoaFrogak();
 		laguntzaFrogak();
 		sudokuAdapterFrogak();
 		klasifikazioaFrogak();
@@ -269,12 +268,6 @@ public class ProbatzekoMain2 {
 		s.getBloke(7).getKasila(2, 2).aldatu(0);
 	}
 
-							
-	
-
-	private static void klasifikazioaLeihoaFrogak() {
-		//System.out.println("Klasifikazio leihoaren frogak:\n------------------------------");  	
-	}
 
 	private static void klasifikazioaFrogak() {
 		
