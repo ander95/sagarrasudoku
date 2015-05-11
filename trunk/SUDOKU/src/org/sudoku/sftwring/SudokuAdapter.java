@@ -10,6 +10,7 @@ public class SudokuAdapter extends Sudokua {
 		setZailtasuna(zailtasun);
 		GeneradoreSudoku genSudo = new GeneradoreSudoku(zailtasun);
 		genSudo.beteAusaz();
+		genSudo.inprimatuZuzena();
 		pasatu(genSudo);
 	}
 

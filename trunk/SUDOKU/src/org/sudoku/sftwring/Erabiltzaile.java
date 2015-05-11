@@ -163,7 +163,7 @@ public class Erabiltzaile implements Comparable<Erabiltzaile> {
 			if (!zuzena) break;
 		}
 		
-		int puntu = ((azkenengoSudokua.getZailtasuna()+1)*100)-(7*azkenengoSudokua.getZailtasuna()*laguntzaKop);
+		int puntu = ((azkenengoSudokua.getZailtasuna()+1)*100)-(7*(azkenengoSudokua.getZailtasuna()+1)*laguntzaKop);
 		System.out.println(puntu);
 		if (zuzena&&puntu>0) {
 			gehituPuntuak(puntu);
