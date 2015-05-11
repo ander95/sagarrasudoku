@@ -1,8 +1,6 @@
 package org.sudoku.sftwring;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class ProbatzekoMain2 {
 
@@ -22,28 +20,28 @@ public class ProbatzekoMain2 {
 		klasifikazioaFrogak();
 		sudokuSolverFrogak();
 		zifraFrogak();
-		
+
 	}
 
 	private static void zifraFrogak() {
 		System.out.println("Datuak ondo zifratzen dira?\n---------------------------");
 		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
-		
+
 		Zifra zifrPas = new Zifra(erab3.getPasahitza());
 		try {
 			String zifra= zifrPas.encrypt("12345");
 			System.out.println("Zifratutako pasahitza: "+zifra);
 			if (zifrPas.decrypt(zifra).equals("12345")) {
-			System.out.println("Deszifratu...OK");
+				System.out.println("Deszifratu...OK");
 			}else System.out.println("Deszifratu...ERROR");
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
-		if(ErabiltzaileLista.getErabiltzaileLista().badago("martin"))
-			System.out.println("Erabiltzailea gehituta...OK");				
-		 else	System.out.println("Erabiltzailea gehituta...ERROR");}catch (Exception e) {
-			System.out.println("Excepzioa:");
-			e.printStackTrace();
-		}
-		}
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+			if(ErabiltzaileLista.getErabiltzaileLista().badago("martin"))
+				System.out.println("Erabiltzailea gehituta...OK");				
+			else	System.out.println("Erabiltzailea gehituta...ERROR");}catch (Exception e) {
+				System.out.println("Excepzioa:");
+				e.printStackTrace();
+			}
+	}
 
 	private static void sudokuSolverFrogak() {
 		System.out.println("Beti soluzio berdina (bakarra) bueltatzen da?\n-----------------------------------------------"); 
@@ -67,24 +65,24 @@ public class ProbatzekoMain2 {
 
 	private static void sudokuAdapterFrogak() {
 		System.out.println("Patroia era zuzenenan funtzionatzen du?\n---------------------------------------");   
-			System.out.println("Sortuko dugu SudokuAdapter motako objektua: " );	
-			SudokuAdapter sa=new SudokuAdapter();
-			if(sa instanceof SudokuAdapter)
+		System.out.println("Sortuko dugu SudokuAdapter motako objektua: " );	
+		SudokuAdapter sa=new SudokuAdapter();
+		if(sa instanceof SudokuAdapter)
 			System.out.println("Adapter...OK");
-			else System.out.println("Adapter...ERROR");
-			sa.setZailtasuna(0);
-			System.out.println("Sortuko dugu GeneradoreSudoku motako objektua: " );
-			GeneradoreSudoku genSudo = new GeneradoreSudoku(0);
-			if(genSudo instanceof GeneradoreSudoku)
-				System.out.println("Generadore...OK");
-				else System.out.println("Generadore...ERROR");
-			genSudo.beteAusaz();
-			sa.pasatu(genSudo);
-			System.out.println("Eta orain sudokuAdapter motako objektuak, sudoku klaseko metodoak eskuragai ditu: \nAdibidez beteZeroz edo inprimatu:");
+		else System.out.println("Adapter...ERROR");
+		sa.setZailtasuna(0);
+		System.out.println("Sortuko dugu GeneradoreSudoku motako objektua: " );
+		GeneradoreSudoku genSudo = new GeneradoreSudoku(0);
+		if(genSudo instanceof GeneradoreSudoku)
+			System.out.println("Generadore...OK");
+		else System.out.println("Generadore...ERROR");
+		genSudo.beteAusaz();
+		sa.pasatu(genSudo);
+		System.out.println("Eta orain sudokuAdapter motako objektuak, sudoku klaseko metodoak eskuragai ditu: \nAdibidez beteZeroz edo inprimatu:");
 		System.out.println("Hasieran Adapterra...");
-			sa.inprimatuSudoku();
-			sa.beteZeroz();
-			System.out.println("Betezeroz egin ondoren...");
+		sa.inprimatuSudoku();
+		sa.beteZeroz();
+		System.out.println("Betezeroz egin ondoren...");
 		sa.inprimatuSudoku();
 	}
 
@@ -268,39 +266,37 @@ public class ProbatzekoMain2 {
 		s.getBloke(7).getKasila(2, 2).aldatu(0);
 	}
 
+	private static void klasifikazioaLeihoaFrogak() {
+		//System.out.println("Klasifikazio leihoaren frogak:\n------------------------------");  	
+	}
+
 
 	private static void klasifikazioaFrogak() {
-		
+
 		klasifikazioBerriaSortuFrogak();
 		addFrogak();
 		eguneratuFrogak();
 		emanErabHonenPosFrogak();
 		erabiltzaileenListaKlasifikatorianFrogak();
 		tamainaFrogak();
-		
-		                      
+
+
 	}
 
 	private static void tamainaFrogak() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private static void erabiltzaileenListaKlasifikatorianFrogak() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private static void emanErabHonenPosFrogak() {
-		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
-		Zifra zifrPas = new Zifra(erab3.getPasahitza());
-		try {
-			String zifra= zifrPas.encrypt("12345");
-			System.out.println("Zifratutako pasahitza: "+zifra);
-			if (zifrPas.decrypt(zifra).equals("12345")) {
-			System.out.println("Deszifratu...OK");
-			}else System.out.println("Deszifratu...ERROR");
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+
+		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin2", "12345");
+		Erabiltzaile erab3 = ErabiltzaileLista.getErabiltzaileLista().bilatuErabiltzaile("martin2", "12345");
 		System.out.println("Hasieran...");
 		Klasifikazioa klasif=new Klasifikazioa();
 		System.out.println("Klasifikazioa berria sortu da");
@@ -314,15 +310,12 @@ public class ProbatzekoMain2 {
 			System.out.println("Zerrenda hutsik");
 		}erab3.gehituPuntuak(100);
 		klasif.eguneratu();
-		
+
 		System.out.println("Eguneratu ostean...");
 		System.out.println(erab3.getIzen()+"-(r)en Posizioa: "+klasif.emanErabHonenPos(erab3));
-		klasif.inprimatuKlasifikazioa();}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		
+		klasif.inprimatuKlasifikazioa();
 	}
+
 
 	private static void eguneratuFrogak() {
 		Erabiltzaile erab3=new Erabiltzaile("martin2", 7, "12345");
@@ -331,29 +324,29 @@ public class ProbatzekoMain2 {
 			String zifra= zifrPas.encrypt("12345");
 			System.out.println("Zifratutako pasahitza: "+zifra);
 			if (zifrPas.decrypt(zifra).equals("12345")) {
-			System.out.println("Deszifratu...OK");
+				System.out.println("Deszifratu...OK");
 			}else System.out.println("Deszifratu...ERROR");
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
-		System.out.println("Hasieran...");
-		Klasifikazioa klasif=new Klasifikazioa();
-		System.out.println("Klasifikazioa berria sortu da");
-		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
-			System.out.println("Zerrenda hutsik");
-		}
-		klasif.inprimatuKlasifikazioa();
-		klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
-		System.out.println("Klasifikazioa eguneratu aurretik...");
-		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
-			System.out.println("Zerrenda hutsik");
-		}erab3.gehituPuntuak(100);
-		klasif.eguneratu();
-		System.out.println("Eguneratu ostean...");
-		klasif.inprimatuKlasifikazioa();}
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+			System.out.println("Hasieran...");
+			Klasifikazioa klasif=new Klasifikazioa();
+			System.out.println("Klasifikazioa berria sortu da");
+			if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+				System.out.println("Zerrenda hutsik");
+			}
+			klasif.inprimatuKlasifikazioa();
+			klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
+			System.out.println("Klasifikazioa eguneratu aurretik...");
+			if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+				System.out.println("Zerrenda hutsik");
+			}erab3.gehituPuntuak(100);
+			klasif.eguneratu();
+			System.out.println("Eguneratu ostean...");
+			klasif.inprimatuKlasifikazioa();}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 
-		
+
 	}
 
 	private static void addFrogak() {
@@ -364,20 +357,20 @@ public class ProbatzekoMain2 {
 			String zifra= zifrPas.encrypt("12345");
 			System.out.println("Zifratutako pasahitza: "+zifra);
 			if (zifrPas.decrypt(zifra).equals("12345")) {
-			System.out.println("Deszifratu...OK");
+				System.out.println("Deszifratu...OK");
 			}else System.out.println("Deszifratu...ERROR");
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
-		System.out.println("Hasieran...");
-		Klasifikazioa klasif=new Klasifikazioa();
-		System.out.println("Klasifikazioa berria sortu da");
-		if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
-			System.out.println("Zerrenda hutsik");
-		}
-		klasif.inprimatuKlasifikazioa();
-		klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
-		klasif.eguneratu();
-		System.out.println("Bukaeran...");
-		klasif.inprimatuKlasifikazioa();}
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+			System.out.println("Hasieran...");
+			Klasifikazioa klasif=new Klasifikazioa();
+			System.out.println("Klasifikazioa berria sortu da");
+			if (klasif.erabiltzaileenListaKlasifikatorian().isEmpty()){
+				System.out.println("Zerrenda hutsik");
+			}
+			klasif.inprimatuKlasifikazioa();
+			klasif.erabiltzaileenListaKlasifikatorian().add(erab3);
+			klasif.eguneratu();
+			System.out.println("Bukaeran...");
+			klasif.inprimatuKlasifikazioa();}
 		catch(Exception e){
 			e.printStackTrace();
 		}
@@ -390,13 +383,13 @@ public class ProbatzekoMain2 {
 		if (klasif instanceof Klasifikazioa){
 			System.out.println("Kaixo klasifikazio berria naiz!");
 		}
-	else System.out.println("Klasifikazioa ez dago");
-		
+		else System.out.println("Klasifikazioa ez dago");
+
 	}
 
 	private static void generadoreSudokuFrogak() {
 		System.out.println("Sudoku berria ausaz eta zailtazunaren arabera sortzen da?\n---------------------------------------------------------");
-		
+
 		System.out.println("- Kasila kopuru egokia kentzen da zailtasunaren arabera?");
 		int kontErraza=0;
 		int kontErtaina=0;
@@ -448,7 +441,7 @@ public class ProbatzekoMain2 {
 		}
 		else
 			System.out.println("Zaila...ERROR");
-		
+
 		System.out.println("- Sudokuek soluzio bakarra dute?");
 		if (sErraza.soluzioBakarra()) {
 			System.out.println("Erraza...OK");
@@ -462,29 +455,29 @@ public class ProbatzekoMain2 {
 			System.out.println("Zaila...OK");
 		}
 		else System.out.println("Zaila...ERROR");
-		
+
 	}
 
 	private static void erregistroLehioaFrogak() {
 		System.out.println("3.Erregistroa ondo dabil?\n-------------------------");
 		Erabiltzaile erab4=new Erabiltzaile("martin2", 7, "12345");
-		
+
 		Zifra zifrPas = new Zifra(erab4.getPasahitza());
 		try {
 			String zifra= zifrPas.encrypt("12345");
 			System.out.println("Zifratutako pasahitza: "+zifra);
-			
-		ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
+
+			ErabiltzaileLista.getErabiltzaileLista().gehituErabiltzaile("martin", "12345",zifra);
 			if (ErabiltzaileLista.getErabiltzaileLista().badago("martin")) {
-			System.out.println("Erailtzailea gehitu...OK");
+				System.out.println("Erailtzailea gehitu...OK");
 			}else System.out.println("Erabiltzailea gehitu...ERROR");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -502,64 +495,64 @@ public class ProbatzekoMain2 {
 
 	private static void zailtasunaFrogak() {
 
-	System.out.println("- Zailtasun bat aukeratuta beharrezko kasilak kentzen dira?");
-	int kontErraza=0;
-	int kontErtaina=0;
-	int kontZaila=0;
-	Sudokua sErraza = new SudokuAdapter();
-	Sudokua sErtaina = new SudokuAdapter();
-	Sudokua sZaila = new SudokuAdapter();
-	sErraza.ausazBete(0);
-	sErtaina.ausazBete(1);
-	sZaila.ausazBete(2);
-	
-	
-	for (int f = 0; f < 9; f++) {
-		for (int i = 0; i < 9; i++) {
-			if(sErraza.getKasila(f, i).getErabiltzaileBal()==0){
-				kontErraza++;
-			}
-		}
-	}
-	for (int f = 0; f < 9; f++) {
-		for (int i = 0; i < 9; i++) {
-			if(sErtaina.getKasila(f, i).getErabiltzaileBal()==0){
-				kontErtaina++;
-			}
-		}
-	}
-	for (int f = 0; f < 9; f++) {
-		for (int i = 0; i < 9; i++) {
-			if(sZaila.getKasila(f, i).getErabiltzaileBal()==0){
-				kontZaila++;
-			}
-		}
-	}
-	System.out.print("Sudoku errezari kendutako kasila kopurua: "+kontErraza+" ");
-	if (kontErraza>=44&&kontErraza<48){
-		System.out.println("Erraza...OK");
-	}
-	else
-		System.out.println("Erraza...ERROR");
-	System.out.print("Sudoku ertainari kendutako kasila kopurua: "+kontErtaina+" ");
-	if (kontErtaina>=48&&kontErtaina<52){
-		System.out.println("Ertaina...OK");
-	}
-	else
-		System.out.println("Ertaina...ERROR");
-	System.out.print("Sudoku zailari kendutako kasila kopurua: "+kontZaila+" ");
+		System.out.println("- Zailtasun bat aukeratuta beharrezko kasilak kentzen dira?");
+		int kontErraza=0;
+		int kontErtaina=0;
+		int kontZaila=0;
+		Sudokua sErraza = new SudokuAdapter();
+		Sudokua sErtaina = new SudokuAdapter();
+		Sudokua sZaila = new SudokuAdapter();
+		sErraza.ausazBete(0);
+		sErtaina.ausazBete(1);
+		sZaila.ausazBete(2);
 
 
-	if (kontZaila>=52&&kontZaila<56){
-		System.out.println("Zaila...OK");
-	}
-	else
-		System.out.println("Zaila...ERROR");
-	
+		for (int f = 0; f < 9; f++) {
+			for (int i = 0; i < 9; i++) {
+				if(sErraza.getKasila(f, i).getErabiltzaileBal()==0){
+					kontErraza++;
+				}
+			}
+		}
+		for (int f = 0; f < 9; f++) {
+			for (int i = 0; i < 9; i++) {
+				if(sErtaina.getKasila(f, i).getErabiltzaileBal()==0){
+					kontErtaina++;
+				}
+			}
+		}
+		for (int f = 0; f < 9; f++) {
+			for (int i = 0; i < 9; i++) {
+				if(sZaila.getKasila(f, i).getErabiltzaileBal()==0){
+					kontZaila++;
+				}
+			}
+		}
+		System.out.print("Sudoku errezari kendutako kasila kopurua: "+kontErraza+" ");
+		if (kontErraza>=44&&kontErraza<48){
+			System.out.println("Erraza...OK");
+		}
+		else
+			System.out.println("Erraza...ERROR");
+		System.out.print("Sudoku ertainari kendutako kasila kopurua: "+kontErtaina+" ");
+		if (kontErtaina>=48&&kontErtaina<52){
+			System.out.println("Ertaina...OK");
+		}
+		else
+			System.out.println("Ertaina...ERROR");
+		System.out.print("Sudoku zailari kendutako kasila kopurua: "+kontZaila+" ");
+
+
+		if (kontZaila>=52&&kontZaila<56){
+			System.out.println("Zaila...OK");
+		}
+		else
+			System.out.println("Zaila...ERROR");
+
 
 	}
-	
-	
+
+
 
 	private static void adabegiFrogak() {
 		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-oOo-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -581,7 +574,7 @@ public class ProbatzekoMain2 {
 		ada.ezabatuSemea("Ni semea naiz aldiz");
 		if(ada.semea.isEmpty())System.out.println("Semea ezabatuta...OK");
 		else System.out.println("Ezin izan da semea ezabatu...ERROR");
-		
+
 	}
 
 	private static void semeaGehituFrogak() {
@@ -590,7 +583,7 @@ public class ProbatzekoMain2 {
 		Adabegia<String> adaSeme=ada.gehituSemea("Ni semea naiz aldiz", 0);
 		System.out.print(ada.content+",");
 		System.out.println(adaSeme.content);
-		
+
 		if (ada.semea==null) {
 			System.out.println("Ez da gehitu....ERROR");
 		}
@@ -601,15 +594,15 @@ public class ProbatzekoMain2 {
 		System.out.print("- Adabegi berria zara? ");
 		Adabegia<String> ada=new Adabegia<String>("Adabegi berria naiz", 0);
 		if (ada.content.equals("Adabegi berria naiz"))
-		System.out.println(ada.content+"\nSortu...OK");
+			System.out.println(ada.content+"\nSortu...OK");
 		else
 			System.out.println("Sortu...ERROR");
 	}
 
-	
+
 	private static void sudokuaAusazBete() {
-System.out.println("0.Sudokua ausaz betetzen da?\n----------------------------");
-					
+		System.out.println("0.Sudokua ausaz betetzen da?\n----------------------------");
+
 		//GeneradoreSudoku s = new GeneradoreSudoku();
 		Sudokua s = new SudokuAdapter();
 		System.out.println("\nHasieran...\n");
@@ -623,5 +616,5 @@ System.out.println("0.Sudokua ausaz betetzen da?\n----------------------------")
 		System.out.println("\n");
 		//s.inprimatuZuzena();
 	}
-	
+
 }

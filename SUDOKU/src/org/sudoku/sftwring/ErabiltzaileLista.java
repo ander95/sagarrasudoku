@@ -88,7 +88,6 @@ public class ErabiltzaileLista {
 	public void kargatu() throws IOException{
 		try{
 			Scanner sarrera = new Scanner(new FileReader("usr.log"));
-			this.klasifikazioa.kargatu(sarrera.next());
 			while(sarrera.hasNext()){
 				String lerroa=sarrera.next();
 				Erabiltzaile pErab = new Erabiltzaile("",0,"","");
@@ -108,7 +107,6 @@ public class ErabiltzaileLista {
 		try
 		{
 			PrintWriter pw = new PrintWriter(new FileWriter("usr.log"));
-			pw.println(this.klasifikazioa.gorde());
 			Iterator<Erabiltzaile> it=this.getIteradorea();
 			while(it.hasNext()){
 				String pErab=it.next().gorde();

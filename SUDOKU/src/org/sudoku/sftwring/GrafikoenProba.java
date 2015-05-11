@@ -5,8 +5,8 @@ import java.io.IOException;
 public class GrafikoenProba {
 	public static void main(String[] args) {
 
-		sudokuProba();
-		//	    	klsfProba();
+		//sudokuProba();
+		klsfProba();
 
 	}
 	@SuppressWarnings("unused")

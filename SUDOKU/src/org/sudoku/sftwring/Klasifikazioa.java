@@ -70,28 +70,6 @@ public class Klasifikazioa {
 		}
 	}
 
-	public String gorde(){
-		if (!(this.ranking.size()==0)) {
-			Iterator<Integer> it=this.getIteradorea();
-			String emaitza="";
-			while(it.hasNext()){
-				emaitza=it.next().toString();
-				emaitza=emaitza+"·";
-			}
-			return emaitza;
-		} else
-			return "$";
-	}
-
-	public void kargatu(String pKlas){
-		if (!pKlas.equals("$")) {
-			String[] pK=pKlas.split("·");
-			for(int i=0;i<pK.length;i++)
-				this.ranking.add(new Integer(pK[i]));
-		}
-	}
-
-
 	private void quickSort(ArrayList<Integer> taula, int hasiera,int bukaera) {
 		//Aurre:
 		//Post: IDak erabiltzailearen puntuen arabera ordenatuko ditu
