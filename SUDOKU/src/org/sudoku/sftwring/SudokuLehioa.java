@@ -2,6 +2,10 @@ package org.sudoku.sftwring;
 
 import java.awt.EventQueue;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,10 +14,13 @@ import javax.swing.JTextField;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JToggleButton;
 import javax.swing.WindowConstants;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
@@ -28,6 +35,8 @@ import javax.swing.SwingConstants;
 
 import java.awt.Font;
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -55,6 +64,7 @@ public class SudokuLehioa{
 	private JPanel panel_1;
 	private int laguntzaKop;
 	private JLabel lblZailtasuna;
+	private JToggleButton btnSoinua;
 	/**
 	 * Launch the application.
 	 */
@@ -191,6 +201,38 @@ public class SudokuLehioa{
 		lblZailtasuna = new JLabel("");
 		lblZailtasuna.setFont(new Font("EHUSerif", Font.BOLD, 18));
 		panel_1.add(lblZailtasuna);
+
+//		btnSoinua = new JToggleButton("Soinua");
+//		menuBar.add(btnSoinua);
+//		btnSoinua.addItemListener(new ItemListener() {
+//
+//			@Override
+//			public void itemStateChanged(ItemEvent e) {
+//				try {
+//					Clip sonido = AudioSystem.getClip();
+//					try{
+//					sonido.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("sudoku_tema_bukley_160kbps.mp3")));
+//					}catch(Exception e4){
+//						System.err.println("Ezin izan da fitxeroa irakurri!");
+//					}
+//					if (e.getStateChange() == ItemEvent.SELECTED) {
+//						try {
+//							sonido.start();
+//							Thread.sleep(108000);
+//							itemStateChanged(e);
+//						}
+//						catch (Exception e1){
+//
+//						}
+//					}else{
+//						sonido.stop();
+//					}
+//				} catch (LineUnavailableException e2) {
+//					// TODO Auto-generated catch block
+//					e2.printStackTrace();
+//				}
+//			}
+//		});
 
 
 
@@ -528,5 +570,4 @@ public class SudokuLehioa{
 		}
 
 	}	
-
 }	

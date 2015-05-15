@@ -1,6 +1,7 @@
 package org.sudoku.sftwring;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProbatzekoMain2 {
 
@@ -284,12 +285,29 @@ public class ProbatzekoMain2 {
 	}
 
 	private static void tamainaFrogak() {
-		// TODO Auto-generated method stub
+		Klasifikazioa kl=new Klasifikazioa();
+		System.out.println("Hasieran tamaina 0?"+ kl.tamaina());
+		kl.eguneratu();
+		System.out.println("Erabiltzaile bi daudelari ErabiltzaileListan klasifikazioa eguneratuta, tamaina 2?"+ kl.tamaina());
+		kl.inprimatuKlasifikazioa();
+
 
 	}
 
 	private static void erabiltzaileenListaKlasifikatorianFrogak() {
-		// TODO Auto-generated method stub
+		Klasifikazioa kl=new Klasifikazioa();
+		System.out.println("Hasieran ez du ezer ematen?");
+		ArrayList<Erabiltzaile> arr=kl.erabiltzaileenListaKlasifikatorian();
+		for (int i = 0; i < arr.size(); i++) {
+			arr.get(i).inprimatuDatuak();
+		}
+		kl.eguneratu();
+		System.out.println("Bi erabiltzaile daudelarik lehena martin2 eta bigarrena martin?");
+		arr=kl.erabiltzaileenListaKlasifikatorian();
+		System.out.println(arr.size());
+		for (int i = 0; i < arr.size(); i++) {
+			arr.get(i).inprimatuDatuak();
+		}
 
 	}
 
