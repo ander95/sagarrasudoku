@@ -1,0 +1,1 @@
+Proiektu honen emaitza erabiltzaileari soluzio bakarra duten zailtasun maila konkretu bateko sudokuak eskaintzen dizkion aplikazioa da. Bai sudokua eta bai bere soluzioa egitura egokietan gorde behar dira, pentsatu zein izan daitekeen egokiena.
